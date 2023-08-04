@@ -9,10 +9,14 @@
   "devDependencies": {
     "@turbo/gen": "^1.9.7",
     "eslint": "^7.32.0",
-    "eslint-config-custom": "workspace:*",
+    "eslint-config-custom": "*",
     "prettier": "^2.5.1",
     "turbo": "latest"
   },
-  "packageManager": "pnpm@8.6.10",
-  "name": "expo-mlkit"
+  "name": "expo-mlkit",
+  "packageManager": "yarn@3.6.1",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
 }
