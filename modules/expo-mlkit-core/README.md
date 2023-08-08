@@ -1,35 +1,99 @@
-# expo-mlkit-core
+# @infinitered/expo-mlkit-core
 
-Shared Library for ExpoMLKit
+## Description
 
-# API documentation
+This is a shared library for ExpoMLKit that contains helper functions and shared code for various packages. It offers
+some helpful methods that are used by many apps on the React Native (JS) side and includes functionality to work with
+images and bounding boxes.
 
-- [Documentation for the main branch](https://github.com/expo/expo/blob/main/docs/pages/versions/unversioned/sdk/mlkit-core.md)
-- [Documentation for the latest stable release](https://docs.expo.dev/versions/latest/sdk/mlkit-core/)
+## Installation
 
-# Installation in managed Expo projects
+Use the following command to install the package:
 
-For [managed](https://docs.expo.dev/archive/managed-vs-bare/) Expo projects, please follow the installation instructions in the [API documentation for the latest stable release](#api-documentation). If you follow the link and there is no documentation available then this library is not yet usable within managed projects &mdash; it is likely to be included in an upcoming Expo SDK release.
-
-# Installation in bare React Native projects
-
-For bare React Native projects, you must ensure that you have [installed and configured the `expo` package](https://docs.expo.dev/bare/installing-expo-modules/) before continuing.
-
-### Add the package to your npm dependencies
-
-```
-npm install expo-mlkit-core
+```bash
+npm install @infinitered/expo-mlkit-core
 ```
 
-### Configure for iOS
+## Usage
 
-Run `npx pod-install` after installing the npm package.
+### ExpoMLKitImage
 
+#### Swift
 
-### Configure for Android
+Use this class in Swift to create and manage images with MLKitVision. It provides utility methods for loading images and
+managing their vision representations.
 
+```swift
+import ExpoMLKitCore
+let image = ExpoMLKitImage(imagePath: imagePath)
+// ...
+```
 
+* `imagePath` - should be the localUri of the image to process. i.e. `Asset.localUri` from an Expo Asset or `Image.uri`
+  from
+  an ImagePickerAsset.
 
-# Contributing
+#### Kotlin
 
-Contributions are very welcome! Please refer to guidelines described in the [contributing guide]( https://github.com/expo/expo#contributing).
+Use this class in Kotlin to create and manage images with MLKitVision. It provides utility methods for loading images
+and managing their vision representations.
+
+```kotlin
+import com.infinitered.expomlkitcore.ExpoMLKitImage
+
+val imageUri = Uri.parse(imagePath)
+var image:InputImage = ExpoMLKitImage(imagePath, appContext.reactContext!!).image
+// ...
+```
+
+* `imagePath` is the localUri of the image to process.  `Asset.localUri` from an Expo Asset or `Image.uri` from an Expo
+  ImagePickerAsset.
+* `appContext` is the AppContext from your expo module -- it's accessible as a property on the Module class.
+
+### React Components
+
+#### BoundingBoxView
+
+Renders a bounding box based on the specified dimensions and scale.
+
+```jsx
+import { BoundingBoxView } from "@infinitered/expo-mlkit-core";
+// ...
+<BoundingBoxView box={box} scale={scale} />;
+```
+
+* `box` is the bounding box to render of type `BoundingBox`
+
+```ts
+/**
+ * Represents a bounding box with origin, size, color, label, and width properties.
+ */
+export interface BoundingBox {
+  origin: { x: number; y: number };
+  size: { x: number; y: number };
+  color?: string;
+  label?: string;
+  width?: number;
+}
+```
+
+#### ImageWithBoundingBoxes
+
+Renders an image with bounding boxes drawn over specified regions.
+
+```jsx
+import { ImageWithBoundingBoxes } from "@infinitered/expo-mlkit-core";
+// ...
+<ImageWithBoundingBoxes image={image} boundingBoxes={boundingBoxes} />;
+```
+
+* `boundingBoxes` is an array of `BoundingBox` objects to render over the image.
+* `image` is the image to render. Accepts an `Image` from `expo-image`
+
+### Hooks
+
+Several hooks are included to assist with layout and scaling:
+
+- `useBoundingBoxStyle`: Calculates the style object for a bounding box.
+- `useImageScale`: Calculates the image scale based on the provided parameters.
+- `useLayout`: Handles layout change events.
