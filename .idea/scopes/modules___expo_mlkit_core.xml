@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="modules - expo-mlkit-core" pattern="file[expo-mlkit]:modules/expo-mlkit-core//*" />
+</component>

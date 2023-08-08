@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="apps - InfiniteRedAI" pattern="file[expo-mlkit]:apps/InfiniteRedAI//*" />
+</component>

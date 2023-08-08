@@ -1,0 +1,42 @@
+{
+  "name": "@infinitered/expo-mlkit-core",
+  "version": "0.0.0",
+  "description": "Shared Library for ExpoMLKit",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "scripts": {
+    "build": "expo-module build",
+    "clean": "expo-module clean",
+    "lint": "expo-module lint",
+    "test": "expo-module test",
+    "prepare": "expo-module prepare",
+    "prepublishOnly": "expo-module prepublishOnly",
+    "expo-module": "expo-module",
+    "open:ios": "open -a \"Xcode\" example/ios",
+    "open:android": "open -a \"Android Studio\" example/android"
+  },
+  "keywords": [
+    "react-native",
+    "expo",
+    "expo-mlkit-core",
+    "ExpoMlkitCore"
+  ],
+  "repository": "https://github.com/trevor-coleman/expo-mlkit-core",
+  "bugs": {
+    "url": "https://github.com/trevor-coleman/expo-mlkit-core/issues"
+  },
+  "author": "Trevor Coleman <trevor@trevorcoleman.design> (https://github.com/trevor-coleman)",
+  "license": "MIT",
+  "homepage": "https://github.com/trevor-coleman/expo-mlkit-core#readme",
+  "devDependencies": {
+    "expo-image": "^1.3.2",
+    "expo-module-scripts": "^3.0.11",
+    "expo-modules-core": "^1.5.7"
+  },
+  "peerDependencies": {
+    "expo": "*",
+    "expo-image": "*",
+    "react": "*",
+    "react-native": "*"
+  }
+}

@@ -8,15 +8,16 @@
   },
   "devDependencies": {
     "@turbo/gen": "^1.9.7",
-    "eslint": "^7.32.0",
-    "eslint-config-custom": "*",
+    "eslint": "^8.0.0",
+    "eslint-config-expo-mlkit": "*",
     "prettier": "^2.5.1",
     "turbo": "latest"
   },
   "name": "expo-mlkit",
-  "packageManager": "yarn@3.6.1",
   "workspaces": [
     "apps/*",
+    "modules/*",
     "packages/*"
-  ]
+  ],
+  "packageManager": "yarn@3.6.1"
 }
