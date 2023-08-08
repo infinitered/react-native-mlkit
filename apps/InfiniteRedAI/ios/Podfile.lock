@@ -36,6 +36,8 @@ PODS:
     - ExpoMLKitCore
     - ExpoModulesCore
     - GoogleMLKit/FaceDetection
+  - ExpoMLKitImageLabeler (0.1.0):
+    - ExpoModulesCore
   - ExpoModulesCore (1.2.7):
     - React-Core
     - React-RCTAppDelegate
@@ -539,7 +541,8 @@ DEPENDENCIES:
   - ExpoLocalization (from `../../../node_modules/expo-localization/ios`)
   - ExpoMLKitCore (from `../../../modules/expo-mlkit-core/ios`)
   - ExpoMLKitFaceDetection (from `../../../modules/expo-mlkit-face-detection/ios`)
-  - ExpoModulesCore (from `../../../node_modules/expo-modules-core`)
+  - ExpoMLKitImageLabeler (from `../../../modules/expo-mlkit-image-labeler/ios`)
+  - ExpoModulesCore (from `../node_modules/expo-modules-core`)
   - EXSplashScreen (from `../../../node_modules/expo-splash-screen/ios`)
   - FBLazyVector (from `../../../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../../../node_modules/react-native/React/FBReactNativeSpec`)
@@ -640,8 +643,10 @@ EXTERNAL SOURCES:
     :path: "../../../modules/expo-mlkit-core/ios"
   ExpoMLKitFaceDetection:
     :path: "../../../modules/expo-mlkit-face-detection/ios"
+  ExpoMLKitImageLabeler:
+    :path: "../../../modules/expo-mlkit-image-labeler/ios"
   ExpoModulesCore:
-    :path: "../../../node_modules/expo-modules-core"
+    :path: "../node_modules/expo-modules-core"
   EXSplashScreen:
     :path: "../../../node_modules/expo-splash-screen/ios"
   FBLazyVector:
@@ -738,6 +743,7 @@ SPEC CHECKSUMS:
   ExpoLocalization: f26cd431ad9ea3533c5b08c4fabd879176a794bb
   ExpoMLKitCore: ca87d7c0141155b86da85c2a2ba81d40277627a6
   ExpoMLKitFaceDetection: f2e86990e1c13d75fddb7ccce947bf37ac12e826
+  ExpoMLKitImageLabeler: 1022ac58bb3c57a1a0df5e8ad8ad6a935b7a2f53
   ExpoModulesCore: 653958063a301098b541ae4dfed1ac0b98db607b
   EXSplashScreen: 0e0a9ba0cf7553094e93213099bd7b42e6e237e9
   FBLazyVector: f637f31eacba90d4fdeff3fa41608b8f361c173b

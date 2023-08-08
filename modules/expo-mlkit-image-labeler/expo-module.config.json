@@ -1,0 +1,9 @@
+{
+  "platforms": ["ios", "android", "web"],
+  "ios": {
+    "modules": ["ExpoMLKitImageLabelerModule"]
+  },
+  "android": {
+    "modules": ["red.infinite.expomlkit.imagelabeler.ExpoMLKitImageLabelerModule"]
+  }
+}
