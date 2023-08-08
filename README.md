@@ -1,4 +1,4 @@
-# @infinitered/expo-mlkit Monorepo
+# @infinitered/expo-mlkit
 
 ExpoMLKit provides Expo modules that allow developers to utilize MLKit native libraries in their Expo apps.
 
