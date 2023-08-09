@@ -85,5 +85,8 @@ repositories {
 
 dependencies {
   implementation project(':expo-modules-core')
+  implementation project(path: ':infinitered-expo-mlkit-core')
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${getKotlinVersion()}"
+  implementation 'com.google.mlkit:image-labeling-common:18.1.0'
+  implementation 'com.google.mlkit:image-labeling-custom-common:17.0.0'
 }

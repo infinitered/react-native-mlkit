@@ -1,6 +1,7 @@
-import ExpoMLKitCore
+
 import ExpoModulesCore
 import MLKitFaceDetection
+import ExpoMLKitCore
 
 // Function to reject a promise with a specified message and domain
 func rejectPromiseWithMessage(promise: Promise, message: String, domain: String) {
@@ -18,7 +19,7 @@ public class ExpoMLKitFaceDetectionModule: Module {
     public func definition() -> ModuleDefinition {
         Name("ExpoMLKitFaceDetection")
 
-        AsyncFunction("initialize") { (record: ExpoMlKitFaceDetectorOptionsRecord, promise: Promise) in
+        AsyncFunction("initialize") { (record: ExpoMLKitFaceDetectorOptionsRecord, promise: Promise) in
             let options = ExpoMLKitFaceDetectorOptions(record: record)
             self.faceDetector = ExpoMLKitFaceDetector(options: options)
             promise.resolve()

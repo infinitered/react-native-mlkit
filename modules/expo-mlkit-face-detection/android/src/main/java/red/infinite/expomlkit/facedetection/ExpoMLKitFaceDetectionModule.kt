@@ -2,7 +2,7 @@ package red.infinite.expomlkit.facedetection
 
 import ExpoMLKitFaceDetector
 import ExpoMLKitFaceDetectorOptions
-import ExpoMlKitFaceDetectorOptionsRecord
+import ExpoMLKitFaceDetectorOptionsRecord
 import android.net.Uri
 import android.util.Log
 import expo.modules.kotlin.Promise
@@ -26,7 +26,7 @@ class ExpoMLKitFaceDetectionModule : Module() {
         // The module will be accessible from `requireNativeModule('ExpoMLKitFaceDetection')` in JavaScript.
         Name("ExpoMLKitFaceDetection")
 
-        AsyncFunction("initialize") { options: ExpoMlKitFaceDetectorOptionsRecord, promise: Promise ->
+        AsyncFunction("initialize") { options: ExpoMLKitFaceDetectorOptionsRecord, promise: Promise ->
             Log.d("ExpoMLKitFaceDetection", "initialize: Initializing Face Detection")
             faceDetector = ExpoMLKitFaceDetector(ExpoMLKitFaceDetectorOptions(options))
             Log.d("ExpoMLKitFaceDetection", "initialize: Initializing Face Detection")

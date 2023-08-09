@@ -1,6 +1,6 @@
 {
   "name": "@infinitered/expo-mlkit-image-labeler",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "My new module",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -28,6 +28,9 @@
   "author": "Trevor Coleman <trevor@infinite.red> (https://www.github.com/trevor-coleman)",
   "license": "MIT",
   "homepage": "http://www.github.com/infinitered/expo-mlkit#readme",
+  "dependencies": {
+    "@infinitered/expo-mlkit-core": "*"
+  },
   "devDependencies": {
     "@types/react": "^18.0.25",
     "expo-module-scripts": "^3.0.11",
@@ -37,5 +40,10 @@
     "expo": "*",
     "react": "*",
     "react-native": "*"
+  },
+  "expo": {
+    "autolinking": {
+      "nativeModulesDir": "../../modules"
+    }
   }
 }

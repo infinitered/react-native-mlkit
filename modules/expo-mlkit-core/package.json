@@ -29,7 +29,7 @@
   "license": "MIT",
   "homepage": "https://github.com/trevor-coleman/expo-mlkit-core#readme",
   "devDependencies": {
-    "expo-image": "^1.3.2",
+    "expo-image": "~1.0.1",
     "expo-module-scripts": "^3.0.11",
     "expo-modules-core": "^1.5.7"
   },

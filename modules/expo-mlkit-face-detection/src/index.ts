@@ -6,15 +6,14 @@ import {
 
 // Import the native module. On web, it will be resolved to ExpoMLKitFaceDetection.web.ts
 // and on native platforms to ExpoMLKitFaceDetection.ts
+import ExpoMLKitFaceDetectionModule from "./ExpoMLKitFaceDetectionModule";
+import { ExpoMLKitFaceDetectorOptionsRecord } from "./types";
 
-import ExpoMLKitFaceDetectionModule from "./ExpoMLkitFaceDetectionModule";
-import { ExpoMlKitFaceDetectorOptionsRecord } from "./types";
-
-export async function initialize(options: ExpoMlKitFaceDetectorOptionsRecord) {
+export async function initialize(options: ExpoMLKitFaceDetectorOptionsRecord) {
   return await ExpoMLKitFaceDetectionModule.initialize(options);
 }
 
-export async function detectFaces(imageUri: String) {
+export async function detectFaces(imageUri: string) {
   const result = await ExpoMLKitFaceDetectionModule.detectFaces(imageUri);
   return result;
 }

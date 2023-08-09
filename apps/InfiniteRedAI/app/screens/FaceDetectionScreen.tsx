@@ -1,6 +1,6 @@
 import React, { FC, useState, useEffect } from "react"
 import { observer } from "mobx-react-lite"
-import { ViewStyle, View, ImageStyle } from "react-native"
+import { ViewStyle, View } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { AppStackScreenProps } from "app/navigators"
 import { Screen, Text, Icon, Button } from "app/components"
@@ -10,6 +10,7 @@ import * as ExpoMLKitFaceDetection from "@infinitered/expo-mlkit-face-detection"
 import { Camera } from "expo-camera"
 import { ImageWithBoundingBoxes, BoundingBox } from "@infinitered/expo-mlkit-core"
 import { ExpoMLKitFace } from "@infinitered/expo-mlkit-face-detection"
+import { Image } from "expo-image"
 
 interface FaceDetectionScreenProps
   extends NativeStackScreenProps<AppStackScreenProps<"FaceDetection">> {}
@@ -82,6 +83,8 @@ export const FaceDetectionScreen: FC<FaceDetectionScreenProps> = observer(
       })()
     }, [image?.uri])
 
+    console.log("Image", image)
+
     return (
       <Screen style={$root} preset="scroll">
         <View>
@@ -89,11 +92,13 @@ export const FaceDetectionScreen: FC<FaceDetectionScreenProps> = observer(
           <Text preset={"heading"} text="Face Detection" />
         </View>
         <Button text={"Take Photo"} onPress={takePhoto} />
+
         <ImageWithBoundingBoxes
           image={image}
-          style={{ width: "100%", aspectRatio: 1, borderColor: "red", borderWidth: 5 }}
           boundingBoxes={boxes}
+          style={{ width: "100%", aspectRatio: 1, borderWidth: 1, borderColor: "cyan" }}
         />
+
         {image && <Button text={"Clear Photo"} onPress={clearPhoto} />}
       </Screen>
     )

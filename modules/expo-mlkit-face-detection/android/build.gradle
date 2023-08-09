@@ -87,5 +87,5 @@ dependencies {
   implementation project(':expo-modules-core')
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${getKotlinVersion()}"
   implementation 'com.google.mlkit:face-detection:16.1.5'
-  implementation project(path: ':expo-mlkit-core')
+  implementation project(path: ':infinitered-expo-mlkit-core')
 }

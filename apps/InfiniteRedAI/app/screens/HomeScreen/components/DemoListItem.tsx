@@ -1,8 +1,8 @@
 import { Text } from "~/components"
 import { DemoInfo } from "../demoInfo"
 import { ViewStyle, Pressable } from "react-native"
-import { Image } from "expo-image"
 import { useAssets } from "expo-asset"
+import { Image } from "expo-image"
 
 interface DemoListItemProps {
   demo: DemoInfo
@@ -30,8 +30,7 @@ export function DemoListItem({ demo, onPress }: DemoListItemProps) {
 
   const [image] = images ?? [undefined]
 
-  console.log(demo)
-  console.log(image)
+  console.log({ image })
 
   return (
     <Pressable

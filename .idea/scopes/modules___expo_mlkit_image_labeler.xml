@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="modules - expo-mlkit-image-labeler" pattern="file[expo-mlkit]:modules/expo-mlkit-image-labeler//*" />
+</component>

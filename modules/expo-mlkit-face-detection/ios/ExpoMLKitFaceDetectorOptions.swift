@@ -9,7 +9,7 @@ import ExpoModulesCore
 import Foundation
 import MLKitFaceDetection
 
-public struct ExpoMlKitFaceDetectorOptionsRecord: Record {
+public struct ExpoMLKitFaceDetectorOptionsRecord: Record {
 
     public init() {}
 
@@ -47,7 +47,7 @@ public class ExpoMLKitFaceDetectorOptions {
         self.isTrackingEnabled = isTrackingEnabled ?? false
     }
 
-    convenience init(record: ExpoMlKitFaceDetectorOptionsRecord) {
+    convenience init(record: ExpoMLKitFaceDetectorOptionsRecord) {
         self.init(
             performanceMode: record.performanceMode == "accurate"
             ? FaceDetectorPerformanceMode.accurate
@@ -65,8 +65,8 @@ public class ExpoMLKitFaceDetectorOptions {
             isTrackingEnabled: record.isTrackingEnabled)
     }
 
-    var record: ExpoMlKitFaceDetectorOptionsRecord {
-        let record = ExpoMlKitFaceDetectorOptionsRecord()
+    var record: ExpoMLKitFaceDetectorOptionsRecord {
+        let record = ExpoMLKitFaceDetectorOptionsRecord()
         record.performanceMode = self.performanceMode == .accurate ? "accurate" : "fast"
         record.landmarkMode = self.landmarkMode == .all
         record.contourMode = self.contourMode == .all

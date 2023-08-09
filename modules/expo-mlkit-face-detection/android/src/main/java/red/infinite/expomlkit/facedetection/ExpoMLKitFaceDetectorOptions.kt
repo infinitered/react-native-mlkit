@@ -9,7 +9,7 @@ import com.google.mlkit.vision.face.FaceDetectorOptions
 import expo.modules.kotlin.records.Field
 import expo.modules.kotlin.records.Record
 
-data class ExpoMlKitFaceDetectorOptionsRecord(
+data class ExpoMLKitFaceDetectorOptionsRecord(
     @Field var performanceMode: String = "fast",
     @Field var landmarkMode: Boolean? = null,
     @Field var contourMode: Boolean? = null,
@@ -34,7 +34,7 @@ class ExpoMLKitFaceDetectorOptions(
     var minFaceSize = minFaceSize ?: 0.1f
     var isTrackingEnabled = isTrackingEnabled ?: false
 
-    constructor(record: ExpoMlKitFaceDetectorOptionsRecord) : this(
+    constructor(record: ExpoMLKitFaceDetectorOptionsRecord) : this(
         performanceMode = record.performanceMode,
         landmarkMode = record.landmarkMode,
         contourMode = record.contourMode,
@@ -43,9 +43,9 @@ class ExpoMLKitFaceDetectorOptions(
         isTrackingEnabled = record.isTrackingEnabled
     )
 
-    val record: ExpoMlKitFaceDetectorOptionsRecord
+    val record: ExpoMLKitFaceDetectorOptionsRecord
         get() {
-            return ExpoMlKitFaceDetectorOptionsRecord(
+            return ExpoMLKitFaceDetectorOptionsRecord(
                 performanceMode = this.performanceMode,
                 landmarkMode = this.landmarkMode,
                 contourMode = this.contourMode,

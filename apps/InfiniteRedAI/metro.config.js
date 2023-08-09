@@ -9,10 +9,10 @@ try {
   isExpo =
     Constants.executionEnvironment === "standalone" ||
     Constants.executionEnvironment === "storeClient"
-} catch {
-}
+} catch {}
 
 if (isExpo) {
+  console.log("Using Expo metro config")
   /**
    *  Expo metro config
    * Learn more https://docs.expo.io/guides/customizing-metro
@@ -22,6 +22,7 @@ if (isExpo) {
    */
   metroConfig = getDefaultExpoConfig(__dirname)
 } else {
+  console.log("Using custom metro config")
   /**
    * Vanilla metro config - we're using a custom metro config because we want to support symlinks
    * out of the box. This allows you to use pnpm and/or play better in a monorepo.
@@ -34,11 +35,14 @@ if (isExpo) {
   const { makeMetroConfig } = require("@rnx-kit/metro-config")
   const MetroSymlinksResolver = require("@rnx-kit/metro-resolver-symlinks")
 
+  console.log("DIRNAME", __dirname)
+
   metroConfig = (async () => {
     const defaultConfig = await getDefaultConfig()
     return makeMetroConfig({
       projectRoot: __dirname,
-      // watchFolders: [`${__dirname}/../..`], // for monorepos
+      // eslint-disable-next-line n/no-path-concat
+      watchFolders: [`${__dirname}/../..`], // for monorepos
       resolver: {
         /**
          * This custom resolver is for if you're using symlinks.

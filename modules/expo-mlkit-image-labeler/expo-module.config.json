@@ -1,9 +1,18 @@
 {
-  "platforms": ["ios", "android", "web"],
+  "platforms": [
+    "ios",
+    "android",
+    "web"
+  ],
   "ios": {
-    "modules": ["ExpoMLKitImageLabelerModule"]
+    "modules": [
+      "ExpoMLKitImageLabelerModule"
+    ]
   },
   "android": {
-    "modules": ["red.infinite.expomlkit.imagelabeler.ExpoMLKitImageLabelerModule"]
+    "modules": [
+      "red.infinite.expomlkit.imagelabeler.ExpoMLKitImageLabelerModule"
+    ]
   }
 }
+

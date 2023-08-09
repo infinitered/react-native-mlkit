@@ -31,25 +31,25 @@ export interface ExpoMLKitFace {
 }
 
 export type FaceLandmarkType =
-    'leftEye'
-    | 'leftMouth'
-    | 'leftEar'
-    | 'noseBase'
-    | 'leftCheek'
-    | 'rightEye'
-    | 'rightMouth'
-    | 'rightEar'
-    | 'rightCheek'
-    | 'bottomMouth'
-    | 'leftEarTip'
-    | 'rightEarTip';
+  | "leftEye"
+  | "leftMouth"
+  | "leftEar"
+  | "noseBase"
+  | "leftCheek"
+  | "rightEye"
+  | "rightMouth"
+  | "rightEar"
+  | "rightCheek"
+  | "bottomMouth"
+  | "leftEarTip"
+  | "rightEarTip";
 
 export interface ExpoMLKitFaceLandmark {
   type: FaceLandmarkType | null;
   position: {
-              x: number;
-              y: number;
-            } | null;
+    x: number;
+    y: number;
+  } | null;
 }
 
 export interface ExpoMLKitFaceContour {
@@ -61,23 +61,23 @@ export interface ExpoMLKitFaceContour {
 }
 
 export type FaceContourType =
-    'faceOval'
-    | 'leftEyebrowTop'
-    | 'leftEyebrowBottom'
-    | 'rightEyebrowTop'
-    | 'rightEyebrowBottom'
-    | 'leftEye'
-    | 'rightEye'
-    | 'upperLipTop'
-    | 'upperLipBottom'
-    | 'lowerLipTop'
-    | 'lowerLipBottom'
-    | 'noseBridge'
-    | 'noseBottom'
-    | 'leftCheekCenter'
-    | 'rightCheekCenter';
+  | "faceOval"
+  | "leftEyebrowTop"
+  | "leftEyebrowBottom"
+  | "rightEyebrowTop"
+  | "rightEyebrowBottom"
+  | "leftEye"
+  | "rightEye"
+  | "upperLipTop"
+  | "upperLipBottom"
+  | "lowerLipTop"
+  | "lowerLipBottom"
+  | "noseBridge"
+  | "noseBottom"
+  | "leftCheekCenter"
+  | "rightCheekCenter";
 
-export interface ExpoMlKitFaceDetectorOptionsRecord {
+export interface ExpoMLKitFaceDetectorOptionsRecord {
   performanceMode: string;
   landmarkMode?: boolean | null;
   contourMode?: boolean | null;

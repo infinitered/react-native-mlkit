@@ -12,16 +12,20 @@ Pod::Spec.new do |s|
   s.homepage       = package['homepage']
   s.platform       = :ios, '13.0'
   s.swift_version  = '5.4'
-  s.source         = { git: 'http://www.github.com/infinitered/expo-mlkit' }
+  s.source         = { git: 'https://github.com/infinitered/expo-mlkit' }
   s.static_framework = true
 
   s.dependency 'ExpoModulesCore'
+  s.dependency 'ExpoMLKitCore'
+  s.dependency 'MLKitImageLabeling'
+  s.dependency 'GoogleMLKit/ImageLabelingCustom', '3.2.0'
+
 
   # Swift/Objective-C compatibility
   s.pod_target_xcconfig = {
     'DEFINES_MODULE' => 'YES',
     'SWIFT_COMPILATION_MODE' => 'wholemodule'
   }
-  
+
   s.source_files = "**/*.{h,m,swift}"
 end

@@ -1,6 +1,7 @@
+import { Image, ImageStyle, ImageSource } from "expo-image";
 import React, { useMemo } from "react";
 import { View, ViewStyle } from "react-native";
-import { Image, ImageStyle } from "expo-image";
+
 import { BoundingBoxView } from "./BoundingBox";
 import { useLayout, useImageScale, ContentFit, BoundingBox } from "../hooks";
 
@@ -27,16 +28,24 @@ export function ImageWithBoundingBoxes({
   const [containerLayout, onLayout] = useLayout();
   const scaleFactor = useImageScale(contentFit, containerLayout, image);
   const localUri = image?.localUri ?? image?.uri ?? undefined;
-  const imageSource = useMemo(
-    () => (localUri ? { uri: localUri } : undefined),
-    [localUri]
-  );
+  const imageSource = useMemo(() => {
+    console.log({ uri: localUri });
+    return localUri
+      ? ({
+          uri: localUri,
+          width: image?.width,
+          height: image?.height,
+        } as ImageSource)
+      : undefined;
+  }, [localUri]);
+
+  console.log(imageSource, localUri);
 
   return (
     <View style={style} onLayout={onLayout}>
       <Image
         source={imageSource}
-        style={[{ width: "100%", height: "100%" }, imageStyle]}
+        style={[{ width: "100%", height: "100%" }, imageStyle ?? {}]}
         contentFit={contentFit}
       />
       {boundingBoxes.map((box, index) => (

@@ -18,12 +18,12 @@ PODS:
     - ExpoModulesCore
   - ExpoDevice (5.2.1):
     - ExpoModulesCore
-  - ExpoImage (1.4.1):
+  - ExpoImage (1.0.1):
     - ExpoModulesCore
-    - SDWebImage (~> 5.15.8)
+    - SDWebImage (~> 5.15.0)
     - SDWebImageAVIFCoder (~> 0.10.0)
-    - SDWebImageSVGCoder (~> 1.7.0)
-    - SDWebImageWebPCoder (~> 0.11.0)
+    - SDWebImageSVGCoder (~> 1.6.1)
+    - SDWebImageWebPCoder (~> 0.9.1)
   - ExpoImagePicker (14.1.1):
     - ExpoModulesCore
   - ExpoKeepAwake (12.0.1):
@@ -36,9 +36,13 @@ PODS:
     - ExpoMLKitCore
     - ExpoModulesCore
     - GoogleMLKit/FaceDetection
-  - ExpoMLKitImageLabeler (0.1.0):
+  - ExpoMLKitImageLabeler (0.0.0):
+    - ExpoMLKitCore
     - ExpoModulesCore
-  - ExpoModulesCore (1.2.7):
+    - GoogleMLKit/ImageLabelingCustom (= 3.2.0)
+    - MLKitImageLabeling
+  - ExpoModulesCore (1.6.0):
+    - RCT-Folly (= 2021.07.22.00)
     - React-Core
     - React-RCTAppDelegate
     - ReactCommon/turbomodule/core
@@ -59,11 +63,14 @@ PODS:
     - GoogleUtilities/Environment (~> 7.7)
     - nanopb (< 2.30910.0, >= 2.30908.0)
     - PromisesObjC (< 3.0, >= 1.2)
-  - GoogleMLKit/FaceDetection (4.0.0):
+  - GoogleMLKit/FaceDetection (3.2.0):
     - GoogleMLKit/MLKitCore
-    - MLKitFaceDetection (~> 3.0.0)
-  - GoogleMLKit/MLKitCore (4.0.0):
-    - MLKitCommon (~> 9.0.0)
+    - MLKitFaceDetection (~> 2.2.0)
+  - GoogleMLKit/ImageLabelingCustom (3.2.0):
+    - GoogleMLKit/MLKitCore
+    - MLKitImageLabelingCustom (~> 2.2.0)
+  - GoogleMLKit/MLKitCore (3.2.0):
+    - MLKitCommon (~> 8.0.0)
   - GoogleToolboxForMac/DebugUtils (2.3.2):
     - GoogleToolboxForMac/Defines (= 2.3.2)
   - GoogleToolboxForMac/Defines (2.3.2)
@@ -84,7 +91,7 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilitiesComponents (1.1.0):
     - GoogleUtilities/Logger
-  - GTMSessionFetcher/Core (2.3.0)
+  - GTMSessionFetcher/Core (1.7.2)
   - hermes-engine (0.71.8):
     - hermes-engine/Pre-built (= 0.71.8)
   - hermes-engine/Pre-built (0.71.8)
@@ -110,30 +117,54 @@ PODS:
   - libwebp/sharpyuv (1.3.1)
   - libwebp/webp (1.3.1):
     - libwebp/sharpyuv
-  - MLImage (1.0.0-beta4)
-  - MLKitCommon (9.0.0):
+  - MLImage (1.0.0-beta3)
+  - MLKitCommon (8.0.0):
     - GoogleDataTransport (~> 9.0)
     - GoogleToolboxForMac/Logger (~> 2.1)
     - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
     - "GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)"
     - GoogleUtilities/UserDefaults (~> 7.0)
     - GoogleUtilitiesComponents (~> 1.0)
-    - GTMSessionFetcher/Core (< 3.0, >= 1.1)
-  - MLKitFaceDetection (3.0.0):
-    - MLKitCommon (~> 9.0)
-    - MLKitVision (~> 5.0)
-  - MLKitVision (5.0.0):
+    - GTMSessionFetcher/Core (~> 1.1)
+    - Protobuf (~> 3.12)
+  - MLKitFaceDetection (2.2.0):
+    - MLKitCommon (~> 8.0)
+    - MLKitVision (~> 4.2)
+  - MLKitImageLabeling (2.2.0):
+    - MLKitCommon (~> 8.0)
+    - MLKitImageLabelingCommon (~> 4.2)
+    - MLKitVision (~> 4.2)
+    - MLKitVisionKit (~> 5.2)
+  - MLKitImageLabelingCommon (4.2.0):
+    - MLKitCommon (~> 8.0)
+    - MLKitVision (~> 4.2)
+  - MLKitImageLabelingCustom (2.2.0):
+    - MLKitCommon (~> 8.0)
+    - MLKitImageLabelingCommon (~> 4.2)
+    - MLKitVision (~> 4.2)
+    - MLKitVisionKit (~> 5.2)
+  - MLKitObjectDetectionCommon (4.2.0):
+    - MLKitCommon (~> 8.0)
+    - MLKitVision (~> 4.2)
+  - MLKitVision (4.2.0):
     - GoogleToolboxForMac/Logger (~> 2.1)
     - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
-    - GTMSessionFetcher/Core (< 3.0, >= 1.1)
-    - MLImage (= 1.0.0-beta4)
-    - MLKitCommon (~> 9.0)
+    - GTMSessionFetcher/Core (~> 1.1)
+    - MLImage (= 1.0.0-beta3)
+    - MLKitCommon (~> 8.0)
+    - Protobuf (~> 3.12)
+  - MLKitVisionKit (5.2.0):
+    - MLKitCommon (~> 8.0)
+    - MLKitImageLabelingCommon (~> 4.2)
+    - MLKitObjectDetectionCommon (~> 4.2)
+    - MLKitVision (~> 4.2)
   - nanopb (2.30909.0):
     - nanopb/decode (= 2.30909.0)
     - nanopb/encode (= 2.30909.0)
   - nanopb/decode (2.30909.0)
   - nanopb/encode (2.30909.0)
   - PromisesObjC (2.3.1)
+  - Protobuf (3.24.0)
   - RCT-Folly (2021.07.22.00):
     - boost
     - DoubleConversion
@@ -517,11 +548,11 @@ PODS:
   - SDWebImageAVIFCoder (0.10.1):
     - libavif (>= 0.11.0)
     - SDWebImage (~> 5.10)
-  - SDWebImageSVGCoder (1.7.0):
+  - SDWebImageSVGCoder (1.6.1):
     - SDWebImage/Core (~> 5.6)
-  - SDWebImageWebPCoder (0.11.0):
+  - SDWebImageWebPCoder (0.9.1):
     - libwebp (~> 1.0)
-    - SDWebImage/Core (~> 5.15)
+    - SDWebImage/Core (~> 5.13)
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -542,7 +573,7 @@ DEPENDENCIES:
   - ExpoMLKitCore (from `../../../modules/expo-mlkit-core/ios`)
   - ExpoMLKitFaceDetection (from `../../../modules/expo-mlkit-face-detection/ios`)
   - ExpoMLKitImageLabeler (from `../../../modules/expo-mlkit-image-labeler/ios`)
-  - ExpoModulesCore (from `../node_modules/expo-modules-core`)
+  - ExpoModulesCore (from `../../../node_modules/expo-modules-core`)
   - EXSplashScreen (from `../../../node_modules/expo-splash-screen/ios`)
   - FBLazyVector (from `../../../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../../../node_modules/react-native/React/FBReactNativeSpec`)
@@ -602,9 +633,15 @@ SPEC REPOS:
     - MLImage
     - MLKitCommon
     - MLKitFaceDetection
+    - MLKitImageLabeling
+    - MLKitImageLabelingCommon
+    - MLKitImageLabelingCustom
+    - MLKitObjectDetectionCommon
     - MLKitVision
+    - MLKitVisionKit
     - nanopb
     - PromisesObjC
+    - Protobuf
     - SDWebImage
     - SDWebImageAVIFCoder
     - SDWebImageSVGCoder
@@ -646,7 +683,7 @@ EXTERNAL SOURCES:
   ExpoMLKitImageLabeler:
     :path: "../../../modules/expo-mlkit-image-labeler/ios"
   ExpoModulesCore:
-    :path: "../node_modules/expo-modules-core"
+    :path: "../../../node_modules/expo-modules-core"
   EXSplashScreen:
     :path: "../../../node_modules/expo-splash-screen/ios"
   FBLazyVector:
@@ -737,37 +774,43 @@ SPEC CHECKSUMS:
   EXImageLoader: fd053169a8ee932dd83bf1fe5487a50c26d27c2b
   Expo: b7d2843b0a0027d0ce76121a63085764355a16ed
   ExpoDevice: e0bebf68f978b3d353377ce42e73c20c0a070215
-  ExpoImage: f345323299804fe839c92a4e18f9a1bc82784029
+  ExpoImage: 55b537a1f50df2f6fc3c2d82552e6d1df397a73d
   ExpoImagePicker: 270dea232b3a072d981dd564e2cafc63a864edb1
   ExpoKeepAwake: 69f5f627670d62318410392d03e0b5db0f85759a
   ExpoLocalization: f26cd431ad9ea3533c5b08c4fabd879176a794bb
   ExpoMLKitCore: ca87d7c0141155b86da85c2a2ba81d40277627a6
-  ExpoMLKitFaceDetection: f2e86990e1c13d75fddb7ccce947bf37ac12e826
-  ExpoMLKitImageLabeler: 1022ac58bb3c57a1a0df5e8ad8ad6a935b7a2f53
-  ExpoModulesCore: 653958063a301098b541ae4dfed1ac0b98db607b
+  ExpoMLKitFaceDetection: 8e3730f2628c450828fefe8208a9690a10ade930
+  ExpoMLKitImageLabeler: 1646d842c9b679281cc1090d61b0220c74f2a0df
+  ExpoModulesCore: 11a5d7c305ca2929d22bbae62db29f9f2f5c39e5
   EXSplashScreen: 0e0a9ba0cf7553094e93213099bd7b42e6e237e9
   FBLazyVector: f637f31eacba90d4fdeff3fa41608b8f361c173b
   FBReactNativeSpec: cb987e363d0b0348a739a87f6c181c5560730850
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
   glog: 04b94705f318337d7ead9e6d17c019bd9b1f6b1b
   GoogleDataTransport: 54dee9d48d14580407f8f5fbf2f496e92437a2f2
-  GoogleMLKit: 2bd0dc6253c4d4f227aad460f69215a504b2980e
+  GoogleMLKit: 0017a6a8372e1a182139b9def4d89be5d87ca5a7
   GoogleToolboxForMac: 8bef7c7c5cf7291c687cf5354f39f9db6399ad34
   GoogleUtilities: 13e2c67ede716b8741c7989e26893d151b2b2084
   GoogleUtilitiesComponents: 679b2c881db3b615a2777504623df6122dd20afe
-  GTMSessionFetcher: 3a63d75eecd6aa32c2fc79f578064e1214dfdec2
+  GTMSessionFetcher: 5595ec75acf5be50814f81e9189490412bad82ba
   hermes-engine: 47986d26692ae75ee7a17ab049caee8864f855de
   libaom: 144606b1da4b5915a1054383c3a4459ccdb3c661
   libavif: 84bbb62fb232c3018d6f1bab79beea87e35de7b7
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   libvmaf: 27f523f1e63c694d14d534cd0fddd2fab0ae8711
   libwebp: 33dc822fbbf4503668d09f7885bbfedc76c45e96
-  MLImage: 7bb7c4264164ade9bf64f679b40fb29c8f33ee9b
-  MLKitCommon: c1b791c3e667091918d91bda4bba69a91011e390
-  MLKitFaceDetection: 4981488f71ea8ed718cda692a29ab562637d9ae5
-  MLKitVision: 8baa5f46ee3352614169b85250574fde38c36f49
+  MLImage: 489dfec109f21da8621b28d476401aaf7a0d4ff4
+  MLKitCommon: f6da6c5659618c070b50a80db01248ebe2964175
+  MLKitFaceDetection: 9f29d8d0bb38911281407e24e74d2e5da812ba8d
+  MLKitImageLabeling: 3a7c9b4ba2550c8a37d392c74b7d75c4c39aaa4c
+  MLKitImageLabelingCommon: 48a3d85b80a993edb168576f94192338e046a836
+  MLKitImageLabelingCustom: 4d3d01cb80d27a30bb713662b75afca4af4d8922
+  MLKitObjectDetectionCommon: 9fd75e357db52714013d9dda97a9f35e7b5d7d5b
+  MLKitVision: 96c96571190b7f63eddf4a12068ce8a8689e0d2c
+  MLKitVisionKit: bd7f84af2da356322872182b1f5bdf66f68e4584
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
+  Protobuf: 74a8b46ebe3001096a6f4b624e9efbae8adb2edd
   RCT-Folly: 424b8c9a7a0b9ab2886ffe9c3b041ef628fd4fb1
   RCTRequired: 8af6a32dfc2b65ec82193c2dee6e1011ff22ac2a
   RCTTypeSafety: bee9dd161c175896c680d47ef1d9eaacf2b587f4
@@ -803,8 +846,8 @@ SPEC CHECKSUMS:
   RNScreens: 218801c16a2782546d30bd2026bb625c0302d70f
   SDWebImage: cb032eba469c54e0000e78bcb0a13cdde0a52798
   SDWebImageAVIFCoder: 8348fef6d0ec69e129c66c9fe4d74fbfbf366112
-  SDWebImageSVGCoder: 15a300a97ec1c8ac958f009c02220ac0402e936c
-  SDWebImageWebPCoder: 295a6573c512f54ad2dd58098e64e17dcf008499
+  SDWebImageSVGCoder: 6fc109f9c2a82ab44510fff410b88b1a6c271ee8
+  SDWebImageWebPCoder: 18503de6621dd2c420d680e33d46bf8e1d5169b0
   Yoga: 065f0b74dba4832d6e328238de46eb72c5de9556
 
 PODFILE CHECKSUM: 3fff9404472ccbf82a158da5a42a2010bc424345
