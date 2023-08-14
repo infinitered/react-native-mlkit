@@ -1,4 +1,4 @@
-const { getDefaultConfig } = require("metro-config")
+const { getDefaultConfig } = require("@react-native/metro-config")
 const { getDefaultConfig: getDefaultExpoConfig } = require("@expo/metro-config")
 
 let metroConfig
@@ -38,9 +38,8 @@ if (isExpo) {
   console.log("DIRNAME", __dirname)
 
   metroConfig = (async () => {
-    const defaultConfig = await getDefaultConfig()
+    const defaultConfig = await getDefaultConfig(__dirname)
     return makeMetroConfig({
-      projectRoot: __dirname,
       // eslint-disable-next-line n/no-path-concat
       watchFolders: [`${__dirname}/../..`], // for monorepos
       resolver: {
@@ -50,7 +49,7 @@ if (isExpo) {
          * You can disable it if you're not using pnpm or a monorepo or symlinks.
          */
         resolveRequest: MetroSymlinksResolver(),
-        assetExts: [...defaultConfig.resolver.assetExts, "bin"],
+        assetExts: [...defaultConfig.resolver.assetExts, "bin", "tflite"],
       },
     })
   })()

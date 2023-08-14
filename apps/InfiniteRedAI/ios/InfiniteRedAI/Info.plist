@@ -29,6 +29,12 @@
           <string>red.infinite.aidemo</string>
         </array>
       </dict>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>exp+infiniteredai</string>
+        </array>
+      </dict>
     </array>
     <key>CFBundleVersion</key>
     <string>1</string>

@@ -31,7 +31,11 @@
         "image": "./assets/images/splash-logo-android-universal.png",
         "resizeMode": "contain",
         "backgroundColor": "#191015"
-      }
+      },
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "ios": {
       "icon": "./assets/images/app-icon-ios.png",
@@ -66,6 +70,11 @@
           "photosPermission": "Allow $(PRODUCT_NAME) to access your photos to run machine learning algorithms on them."
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "e11a8443-2750-4b9f-b422-a6c1ecb8ba33"
+      }
+    }
   }
 }

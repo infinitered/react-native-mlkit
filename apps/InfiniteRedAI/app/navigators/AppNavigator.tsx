@@ -32,7 +32,8 @@ export type AppStackParamList = {
   // 🔥 Your screens go here
   Home: undefined
   FaceDetection: undefined
-  // IGNITE_GENERATOR_ANCHOR_APP_STACK_PARAM_LIST
+  ImageLabeling: undefined
+	// IGNITE_GENERATOR_ANCHOR_APP_STACK_PARAM_LIST
 }
 
 /**
@@ -62,7 +63,8 @@ const AppStack = observer(function AppStack() {
       {/** 🔥 Your screens go here */}
       <Stack.Screen name="Home" component={Screens.HomeScreen} />
       <Stack.Screen name="FaceDetection" component={Screens.FaceDetectionScreen} />
-      {/* IGNITE_GENERATOR_ANCHOR_APP_STACK_SCREENS */}
+      <Stack.Screen name="ImageLabeling" component={Screens.ImageLabelingScreen} />
+			{/* IGNITE_GENERATOR_ANCHOR_APP_STACK_SCREENS */}
     </Stack.Navigator>
   )
 })

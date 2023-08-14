@@ -22,7 +22,7 @@ public struct ExpoMLKitFaceDetectorOptionsRecord: Record {
     @Field
     var classificationMode: Bool? = nil
     @Field
-    var minFaceSize: Float? = nil
+    var minFaceSize: CGFloat? = nil
     @Field
     var isTrackingEnabled: Bool? = nil
 
@@ -71,7 +71,7 @@ public class ExpoMLKitFaceDetectorOptions {
         record.landmarkMode = self.landmarkMode == .all
         record.contourMode = self.contourMode == .all
         record.classificationMode = self.classificationMode == .all
-        record.minFaceSize = Float(self.minFaceSize)
+        record.minFaceSize = self.minFaceSize
         record.isTrackingEnabled = self.isTrackingEnabled
         return record
     }

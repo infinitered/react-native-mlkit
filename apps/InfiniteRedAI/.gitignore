@@ -24,7 +24,6 @@ ios/.xcode.env.local
 
 # Android/IntelliJ
 #
-build/
 .idea
 .gradle
 local.properties
@@ -60,7 +59,8 @@ buck-out/
 *.jsbundle
 
 # CocoaPods
-/ios/Pods/
+ios
+android
 
 # Ignite-specific items below
 # You can safely replace everything above this comment with whatever is

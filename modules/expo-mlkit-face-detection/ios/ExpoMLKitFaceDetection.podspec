@@ -13,6 +13,7 @@ Pod::Spec.new do |s|
   s.platform       = :ios, '13.0'
   s.swift_version  = '5.4'
   s.source         = { git: 'http://github.com/trevor-coleman/expo-mlkit' }
+  s.static_framework = true
 
   s.dependency 'GoogleMLKit/FaceDetection'
   s.dependency 'ExpoModulesCore'

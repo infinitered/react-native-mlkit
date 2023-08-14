@@ -8,6 +8,7 @@ export interface DemoInfo {
 }
 
 const FACE_DETECTION = require("../../../assets/images/face-detection.jpg")
+const FACE_HOLDER = require("../../../assets/images/welcome-face.png")
 
 // List of available demos as a typescript object
 export const DEMO_LIST: DemoInfo[] = [
@@ -18,15 +19,15 @@ export const DEMO_LIST: DemoInfo[] = [
     image: FACE_DETECTION,
   },
   {
-    title: "Face Detection",
-    description: "Detect faces in a photo, using ML Kit",
-    screen: "FaceDetection",
-    image: FACE_DETECTION,
+    title: "Image Labeling with NSFWjs",
+    description: "Detect NSFW Images",
+    screen: "ImageLabeling",
+    image: FACE_HOLDER,
   },
   {
-    title: "Face Detection",
-    description: "Detect faces in a photo, using ML Kit",
-    screen: "FaceDetection",
-    image: FACE_DETECTION,
+    title: "Other Demo",
+    description: "Soon to be another demo",
+    screen: "Home",
+    image: FACE_HOLDER,
   },
 ]

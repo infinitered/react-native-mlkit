@@ -19,7 +19,7 @@
     "react-native",
     "expo",
     "expo-mlkit-core",
-    "ExpoMlkitCore"
+    "ExpoMLkitCore"
   ],
   "repository": "https://github.com/trevor-coleman/expo-mlkit-core",
   "bugs": {
