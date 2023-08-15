@@ -1,6 +1,6 @@
 # @infinitered/expo-mlkit
 
-ExpoMLKit provides Expo modules that allow developers to utilize MLKit native libraries in their Expo apps.
+ExpoMLKit provides Expo modules that allow developers to use MLKit native libraries in their Expo apps.
 
 ## Organization
 
