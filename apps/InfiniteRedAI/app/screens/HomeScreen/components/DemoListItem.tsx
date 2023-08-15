@@ -30,8 +30,6 @@ export function DemoListItem({ demo, onPress }: DemoListItemProps) {
 
   const [image] = images ?? [undefined]
 
-  console.log({ image })
-
   return (
     <Pressable
       style={({ pressed }) => {

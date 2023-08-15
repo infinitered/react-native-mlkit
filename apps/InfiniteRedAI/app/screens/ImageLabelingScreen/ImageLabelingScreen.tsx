@@ -1,4 +1,4 @@
-import React, { FC, useState, useCallback, useEffect, PropsWithChildren } from "react"
+import React, { FC, useState, useEffect, PropsWithChildren } from "react"
 import { Image } from "expo-image"
 import { observer } from "mobx-react-lite"
 import { ViewStyle, View, ImageStyle, Pressable, TextStyle, ActivityIndicator } from "react-native"
@@ -6,25 +6,16 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { AppStackScreenProps } from "../../navigators"
 import { Screen, Text, Icon, Button } from "../../components"
 import { useTypedNavigation } from "../../navigators/useTypedNavigation"
-import {
-  ImagePickerAsset,
-  launchCameraAsync,
-  MediaTypeOptions,
-  launchImageLibraryAsync,
-  ImagePickerResult,
-  ImagePickerOptions,
-} from "expo-image-picker"
-
-import { Camera } from "expo-camera"
 
 import { colors } from "../../theme"
 
-import { useRandomImages, RandomImageLabel } from "./images"
+import { imageLabelerExamples } from "./images"
 import {
   useModels,
   useImageLabeler,
   ClassificationResult,
 } from "@infinitered/expo-mlkit-image-labeling"
+import { useExpoImageAsset, UseExpoCameraImageStatus } from "../../utils/useExpoImageAsset"
 
 interface ImageLabelingScreenProps
   extends NativeStackScreenProps<AppStackScreenProps<"ImageLabeling">> {}
@@ -46,7 +37,7 @@ const $imagePlaceholder: ViewStyle = {
   backgroundColor: "rgba(255,255,255,0.9)",
 }
 const $button: ViewStyle = { backgroundColor: colors.palette.accent300, marginVertical: 8 }
-const $rowButton: ViewStyle = { flexGrow: 1 }
+const $rowButton: ViewStyle = { flexGrow: 1, marginHorizontal: 2 }
 
 const $description: TextStyle = {
   marginVertical: 8,
@@ -62,12 +53,6 @@ const $status: ViewStyle = {
   alignItems: "center",
 }
 
-const IMAGE_PICKER_OPTIONS: ImagePickerOptions = {
-  mediaTypes: MediaTypeOptions.Images,
-  allowsEditing: true,
-  quality: 0.5,
-  aspect: [1, 1],
-}
 const $takePhoto: TextStyle = { color: "rgba(0,0,0,0.2)" }
 
 const MODELS = {
@@ -84,65 +69,47 @@ const $randomImageButtons: ViewStyle = {
   flexDirection: "row",
   justifyContent: "space-around",
 }
+const $resultContainer: { borderWidth: number; width: string; height: number } = {
+  width: "100%",
+  height: 200,
+  borderWidth: 1,
+}
+const $resultRow: ViewStyle = {
+  flexDirection: "row",
+  justifyContent: "space-between",
+  alignItems: "center",
+  padding: 8,
+}
+const $resultText: ViewStyle = { flex: 1 }
+const $resultBarContainer: { flex: number; height: number } = {
+  flex: 3,
+  height: 20,
+}
+const $resultBar: ViewStyle = {
+  height: 20,
+  position: "absolute",
+  top: 0,
+  left: 0,
+  backgroundColor: "rgba(255,0,255,1)",
+  borderRadius: 4,
+  overflow: "hidden",
+}
+const $resultBarBackground: ViewStyle = {
+  flex: 3,
+  height: 20,
+  backgroundColor: "rgba(0,0,0,0.1)",
+  borderRadius: 4,
+  overflow: "hidden",
+}
 const ImageLabelingScreenComponent: FC<ImageLabelingScreenProps> = observer(
   function ImageLabelingScreen() {
     const navigation = useTypedNavigation<"ImageLabeling">()
-    const [image, setImage] = React.useState<ImagePickerAsset | null>(null)
-
-    const [cameraPermission, requestCameraPermission] = Camera.useCameraPermissions()
     const [status, setStatus] = useState<
-      | "init"
-      | "noPermissions"
-      | "takingPhoto"
-      | "selectingPhoto"
-      | "classifying"
-      | "done"
-      | "error"
-      | "loading"
+      "init" | "noPermissions" | "done" | "error" | "loading" | UseExpoCameraImageStatus
     >("init")
 
-    const { getRandomImageOfType, imageTypes } = useRandomImages()
-
-    const getPhoto = useCallback(
-      async (source: "camera" | "library" | RandomImageLabel) => {
-        setStatus("takingPhoto")
-
-        let result: ImagePickerResult | undefined
-
-        switch (source) {
-          case "camera":
-            if (!cameraPermission?.granted) {
-              setStatus("noPermissions")
-              await requestCameraPermission()
-            }
-            if (cameraPermission?.granted) {
-              setStatus("takingPhoto")
-              result = await launchCameraAsync(IMAGE_PICKER_OPTIONS)
-            }
-            break
-          case "library":
-            setStatus("selectingPhoto")
-            result = await launchImageLibraryAsync(IMAGE_PICKER_OPTIONS)
-            break
-          case "sexy":
-          case "neutral":
-          case "drawing":
-            result = getRandomImageOfType(source)
-            break
-          default:
-            throw new Error("Invalid source")
-        }
-
-        if (!result || result.canceled) {
-          setStatus("init")
-          return
-        }
-
-        setImage(result.assets[0])
-        setStatus("done")
-      },
-      [cameraPermission?.granted, getRandomImageOfType, requestCameraPermission],
-    )
+    const { image, takePhoto, selectPhoto, randomPhoto, clearPhoto, categories } =
+      useExpoImageAsset(setStatus, imageLabelerExamples)
 
     const model = useImageLabeler("nsfw")
     const [result, setResult] = useState<ClassificationResult | null>(null)
@@ -164,11 +131,6 @@ const ImageLabelingScreenComponent: FC<ImageLabelingScreenProps> = observer(
     useEffect(() => {
       classifyImage()
     }, [image, model])
-
-    const clearPhoto = () => {
-      setImage(null)
-      setStatus("init")
-    }
 
     const statusMessage = React.useMemo(() => {
       if (!image && status !== "init") {
@@ -202,18 +164,21 @@ const ImageLabelingScreenComponent: FC<ImageLabelingScreenProps> = observer(
           <Text style={$description}>Take a photo, and find out if it is 🚫NSFW.</Text>
         </View>
 
-        {image ? (
-          <View style={[$squareImage, $imagePlaceholder]}>
+        <Pressable
+          onPress={image ? clearPhoto : takePhoto}
+          style={[$squareImage, $imagePlaceholder]}
+        >
+          {image ? (
             <Image contentFit={"contain"} source={image} style={$squareImage} />
-          </View>
-        ) : (
-          <Pressable onPress={() => getPhoto("camera")} style={[$squareImage, $imagePlaceholder]}>
-            <Icon icon={"camera"} size={80} color={"rgba(0,0,0,0.1)"} />
-            <Text style={$takePhoto} size={"lg"}>
-              Take Photo
-            </Text>
-          </Pressable>
-        )}
+          ) : (
+            <>
+              <Icon icon={"camera"} size={80} color={"rgba(0,0,0,0.1)"} />
+              <Text style={$takePhoto} size={"lg"}>
+                Take Photo
+              </Text>
+            </>
+          )}
+        </Pressable>
         <View style={$status}>
           {status === "classifying" ? (
             <ActivityIndicator />
@@ -221,48 +186,15 @@ const ImageLabelingScreenComponent: FC<ImageLabelingScreenProps> = observer(
             <Text style={$statusMessage}>{statusMessage}</Text>
           )}
         </View>
-        <View style={{ width: "100%", height: 200, borderWidth: 1 }}>
+        <View style={$resultContainer}>
           {result &&
             result.map((item) => {
-              console.log(item)
               return (
-                <View
-                  key={item.text}
-                  style={{
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    padding: 8,
-                  }}
-                >
-                  <Text style={{ flex: 1 }} text={item.text} />
-                  <View
-                    style={{
-                      flex: 3,
-                      height: 20,
-                    }}
-                  >
-                    <View
-                      style={{
-                        height: 20,
-                        width: `${item.confidence * 100}%`,
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        backgroundColor: "rgba(255,0,255,1)",
-                        borderRadius: 4,
-                        overflow: "hidden",
-                      }}
-                    />
-                    <View
-                      style={{
-                        flex: 3,
-                        height: 20,
-                        backgroundColor: "rgba(0,0,0,0.1)",
-                        borderRadius: 4,
-                        overflow: "hidden",
-                      }}
-                    />
+                <View key={item.text} style={$resultRow}>
+                  <Text style={$resultText} text={item.text} />
+                  <View style={$resultBarContainer}>
+                    <View style={[$resultBar, { width: `${item.confidence * 100}%` }]} />
+                    <View style={$resultBarBackground} />
                   </View>
                 </View>
               )
@@ -271,18 +203,18 @@ const ImageLabelingScreenComponent: FC<ImageLabelingScreenProps> = observer(
         {image ? (
           <Button text={"Clear Photo"} onPress={clearPhoto} style={$button} />
         ) : (
-          <Button text={"Select Photo"} onPress={() => getPhoto("library")} style={$button} />
+          <Button text={"Select Photo"} onPress={selectPhoto} style={$button} />
         )}
         <View style={$randomImageButtons}>
-          {imageTypes.map((type) => (
+          {categories.map((type) => (
             <Button
               key={`${type}-button`}
               text={`Random ${type}`}
               onPress={async () => {
                 clearPhoto()
-                await getPhoto(type)
+                randomPhoto(type)
               }}
-              style={[$button, $rowButton, { marginHorizontal: 2 }]}
+              style={[$button, $rowButton]}
             />
           ))}
         </View>

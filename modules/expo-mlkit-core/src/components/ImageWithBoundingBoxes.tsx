@@ -29,7 +29,6 @@ export function ImageWithBoundingBoxes({
   const scaleFactor = useImageScale(contentFit, containerLayout, image);
   const localUri = image?.localUri ?? image?.uri ?? undefined;
   const imageSource = useMemo(() => {
-    console.log({ uri: localUri });
     return localUri
       ? ({
           uri: localUri,

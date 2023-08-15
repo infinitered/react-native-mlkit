@@ -22,7 +22,6 @@ export type Models<T extends Record<string, any>> = {
 };
 
 export function useModels<T extends AssetRecord>(assets: T) {
-  console.log(assets);
   const assetNumbers = Object.values(assets).map(({ model }) => model);
   const [assetObjects, assetsError] = useAssets(assetNumbers);
   const [loadedModels, setLoadedModels] = useState<Partial<Models<T>>>({});

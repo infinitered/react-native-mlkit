@@ -174,7 +174,6 @@ export const FaceDetectionScreen: FC<FaceDetectionScreenProps> = observer(
           color: BOX_COLORS[index % BOX_COLORS.length],
         }))
         setBoxes(boxes ?? [])
-        console.log("done -->", image?.uri)
         setStatus("done")
       })()
     }, [image?.uri])
@@ -200,8 +199,6 @@ export const FaceDetectionScreen: FC<FaceDetectionScreenProps> = observer(
           throw new Error("Invalid status")
       }
     }, [status, facesDetected])
-
-    console.log({ image })
 
     return (
       <Screen style={$root} preset="scroll" safeAreaEdges={["top", "bottom"]}>
