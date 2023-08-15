@@ -30,6 +30,7 @@ interface UseExpoCameraImageReturnType<T> {
   selectPhoto: () => Promise<void>
   takePhoto: () => Promise<void>
   randomPhoto?: (category: T) => void
+  nextPhoto?: (category: T) => void
   categories?: T[]
 }
 
@@ -137,6 +138,36 @@ export function useExpoImageAsset<
     [zippedImages],
   )
 
+  const [currentIndexes, setCurrentIndexes] = useState<Record<TCategory, number>>(
+    {} as Record<TCategory, number>,
+  )
+
+  const nextPhoto = useCallback(
+    (category: TCategory) => {
+      if (category in zippedImages) {
+        const categoryImages = zippedImages[category]
+        const currentCategoryIndex = currentIndexes[category] || 0
+        const nextIndex = (currentCategoryIndex + 1) % categoryImages.length
+
+        setCurrentIndexes((prev) => ({
+          ...prev,
+          [category]: nextIndex,
+        }))
+
+        const selectedImage: ZippedImage = categoryImages[currentCategoryIndex]
+
+        setImage({
+          ...selectedImage.asset,
+          uri: selectedImage.asset.localUri,
+          caption: selectedImage.credit,
+        } as SelectedImage)
+      } else {
+        setImage(undefined)
+      }
+    },
+    [zippedImages, currentIndexes],
+  )
+
   const categories = Object.keys(randomPhotos) as TCategory[]
 
   const clearPhoto = useCallback(() => {
@@ -150,6 +181,7 @@ export function useExpoImageAsset<
     selectPhoto,
     takePhoto,
     randomPhoto,
+    nextPhoto,
     categories,
   }
 }

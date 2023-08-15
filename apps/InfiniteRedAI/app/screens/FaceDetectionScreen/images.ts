@@ -1,4 +1,6 @@
-export const FACES = [
+import { RandomImages } from "../../utils/useExpoImageAsset"
+
+export const faces = [
   {
     image: require("../../../assets/images/face-detection/justus-menke-s2OisyY9YGU-unsplash.jpg"),
     credit: "Photo by Justus Menke on Unsplash",
@@ -17,7 +19,7 @@ export const FACES = [
   },
 ]
 
-export const NO_FACES = [
+export const noFaces = [
   {
     image: require("../../../assets/images/face-detection/kevin-seibel-oo6XOGrSyX8-unsplash.jpg"),
     credit: "Photo by Kevin Seibel on Unsplash",
@@ -35,3 +37,5 @@ export const NO_FACES = [
     credit: "Photo by Stas Ostrikov on Unsplash",
   },
 ]
+
+export const faceDetectionExamples = { faces, noFaces } as RandomImages

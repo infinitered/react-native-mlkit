@@ -13,7 +13,7 @@ interface ImageWithBoundingBoxesProps {
     height?: number | null;
   };
   boundingBoxes?: BoundingBox[];
-  style?: ViewStyle;
+  style?: ViewStyle | ViewStyle[];
   contentFit?: Exclude<ContentFit, "cover">;
   imageStyle?: ImageStyle;
 }

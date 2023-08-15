@@ -1,10 +1,9 @@
 import React, { FC, useState, useEffect, PropsWithChildren } from "react"
-import { Image } from "expo-image"
 import { observer } from "mobx-react-lite"
-import { ViewStyle, View, ImageStyle, Pressable, TextStyle, ActivityIndicator } from "react-native"
+import { ViewStyle, View, ImageStyle, TextStyle, ActivityIndicator } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { AppStackScreenProps } from "../../navigators"
-import { Screen, Text, Icon, Button } from "../../components"
+import { Screen, Text, Icon, Button, ExpoMlKitImageView } from "../../components"
 import { useTypedNavigation } from "../../navigators/useTypedNavigation"
 
 import { colors } from "../../theme"
@@ -21,21 +20,6 @@ interface ImageLabelingScreenProps
   extends NativeStackScreenProps<AppStackScreenProps<"ImageLabeling">> {}
 
 const $backIcon: ImageStyle = { marginVertical: 8 }
-const $squareImage: ImageStyle = { width: "100%", aspectRatio: "16 / 9", marginVertical: 8 }
-
-const $imagePlaceholder: ViewStyle = {
-  borderWidth: 1,
-  borderTopWidth: 1,
-  borderLeftWidth: 1,
-  borderColor: "rgba(0,0,0,0.2)",
-  borderTopColor: "rgba(0,0,0,0.4)",
-  borderLeftColor: "rgba(0,0,0,0.4)",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  padding: 8,
-  backgroundColor: "rgba(255,255,255,0.9)",
-}
 const $button: ViewStyle = { backgroundColor: colors.palette.accent300, marginVertical: 8 }
 const $rowButton: ViewStyle = { flexGrow: 1, marginHorizontal: 2 }
 
@@ -52,8 +36,6 @@ const $status: ViewStyle = {
   justifyContent: "center",
   alignItems: "center",
 }
-
-const $takePhoto: TextStyle = { color: "rgba(0,0,0,0.2)" }
 
 const MODELS = {
   nsfw: {
@@ -164,21 +146,7 @@ const ImageLabelingScreenComponent: FC<ImageLabelingScreenProps> = observer(
           <Text style={$description}>Take a photo, and find out if it is 🚫NSFW.</Text>
         </View>
 
-        <Pressable
-          onPress={image ? clearPhoto : takePhoto}
-          style={[$squareImage, $imagePlaceholder]}
-        >
-          {image ? (
-            <Image contentFit={"contain"} source={image} style={$squareImage} />
-          ) : (
-            <>
-              <Icon icon={"camera"} size={80} color={"rgba(0,0,0,0.1)"} />
-              <Text style={$takePhoto} size={"lg"}>
-                Take Photo
-              </Text>
-            </>
-          )}
-        </Pressable>
+        <ExpoMlKitImageView image={image} onPress={image ? clearPhoto : takePhoto} />
         <View style={$status}>
           {status === "classifying" ? (
             <ActivityIndicator />
