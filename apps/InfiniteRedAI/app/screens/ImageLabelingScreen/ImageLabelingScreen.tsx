@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect, PropsWithChildren } from "react"
+import React, { FC, useState, useEffect, PropsWithChildren, useMemo } from "react"
 import { observer } from "mobx-react-lite"
 import { ViewStyle, View, ImageStyle, TextStyle, ActivityIndicator } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
@@ -90,8 +90,10 @@ const ImageLabelingScreenComponent: FC<ImageLabelingScreenProps> = observer(
       "init" | "noPermissions" | "done" | "error" | "loading" | UseExpoCameraImageStatus
     >("init")
 
-    const { image, takePhoto, selectPhoto, randomPhoto, clearPhoto, categories } =
-      useExpoImageAsset(setStatus, imageLabelerExamples)
+    const { image, takePhoto, selectPhoto, nextPhoto, clearPhoto, categories } = useExpoImageAsset(
+      setStatus,
+      imageLabelerExamples,
+    )
 
     const model = useImageLabeler("nsfw")
     const [result, setResult] = useState<ClassificationResult | null>(null)
@@ -114,6 +116,16 @@ const ImageLabelingScreenComponent: FC<ImageLabelingScreenProps> = observer(
       classifyImage()
     }, [image, model])
 
+    const bestGuess = useMemo(() => {
+      if (result && result.length > 0) {
+        const bestResult = result.reduce((prev, current) => {
+          return current.confidence > prev.confidence ? current : prev
+        })
+        return bestResult.text
+      }
+      return ""
+    }, [result])
+
     const statusMessage = React.useMemo(() => {
       if (!image && status !== "init") {
         setStatus("init")
@@ -128,7 +140,7 @@ const ImageLabelingScreenComponent: FC<ImageLabelingScreenProps> = observer(
         case "selectingPhoto":
           return "Selecting photo..."
         case "done":
-          return `Classification Complete`
+          return bestGuess === "Porn" ? "🚫 NSFW" : "✅ Safe"
         case "error":
           return "Error during classification!"
         case "classifying":
@@ -151,8 +163,30 @@ const ImageLabelingScreenComponent: FC<ImageLabelingScreenProps> = observer(
           {status === "classifying" ? (
             <ActivityIndicator />
           ) : (
-            <Text style={$statusMessage}>{statusMessage}</Text>
+            <Text style={$statusMessage} size={status === "done" ? "xl" : undefined}>
+              {statusMessage}
+            </Text>
           )}
+        </View>
+        <View>
+          {image ? (
+            <Button text={"Clear Photo"} onPress={clearPhoto} style={$button} />
+          ) : (
+            <Button text={"Select Photo"} onPress={selectPhoto} style={$button} />
+          )}
+          <View style={$randomImageButtons}>
+            {categories.map((type) => (
+              <Button
+                key={`${type}-button`}
+                text={type}
+                onPress={async () => {
+                  clearPhoto()
+                  nextPhoto(type)
+                }}
+                style={[$button, $rowButton]}
+              />
+            ))}
+          </View>
         </View>
         <View style={$resultContainer}>
           {result &&
@@ -167,24 +201,6 @@ const ImageLabelingScreenComponent: FC<ImageLabelingScreenProps> = observer(
                 </View>
               )
             })}
-        </View>
-        {image ? (
-          <Button text={"Clear Photo"} onPress={clearPhoto} style={$button} />
-        ) : (
-          <Button text={"Select Photo"} onPress={selectPhoto} style={$button} />
-        )}
-        <View style={$randomImageButtons}>
-          {categories.map((type) => (
-            <Button
-              key={`${type}-button`}
-              text={`Random ${type}`}
-              onPress={async () => {
-                clearPhoto()
-                randomPhoto(type)
-              }}
-              style={[$button, $rowButton]}
-            />
-          ))}
         </View>
       </Screen>
     )

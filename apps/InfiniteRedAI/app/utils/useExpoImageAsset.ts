@@ -37,6 +37,7 @@ interface UseExpoCameraImageReturnType<T> {
 export interface RandomImage {
   image: number
   credit?: string
+  name: string
 }
 
 interface ZippedImage extends RandomImage {
@@ -62,24 +63,33 @@ export function useExpoImageAsset<
   const [image, setImage] = useState<SelectedImage | undefined>(undefined)
 
   const flattenedImages = useMemo(() => {
-    return Object.values(randomPhotos || {}).flat()
+    return Object.entries(randomPhotos || {})
+      .flatMap(([category, images]) => images.map((image) => ({ category, ...image })))
+      .sort((a, b) => {
+        if (a.category === b.category) {
+          return a.image - b.image
+        }
+        return a.category.localeCompare(b.category) || a.image - b.image
+      })
   }, [randomPhotos])
 
-  const imageNumbers = flattenedImages.map((image) => image.image)
-  const [assets] = useAssets(imageNumbers)
+  const [assets] = useAssets(flattenedImages.map((image) => image.image)) ?? []
 
   const zippedImages: Record<TCategory, ZippedImage[]> = useMemo(() => {
     const result = {} as Record<TCategory, ZippedImage[]>
 
-    Object.keys(randomPhotos || {}).forEach((category, index) => {
-      result[category] = (randomPhotos as any)[category].map(
-        (image: RandomImage, imageIndex: number) => ({
-          ...image,
-          asset: assets
-            ? assets[index * (randomPhotos as any)[category].length + imageIndex]
-            : undefined, // Handle this case as needed
-        }),
-      )
+    Object.entries(randomPhotos || {}).forEach(([category, images]) => {
+      result[category as TCategory] = images.map((image: RandomImage) => ({
+        ...image,
+        asset: assets?.find((asset) => asset.name === image.name) || undefined,
+      }))
+    })
+
+    Object.entries(result).forEach(([category, images]: [string, ZippedImage[]]) => {
+      console.log("CATEGORY", category)
+      images.forEach((image) => {
+        console.log(image?.name, image?.asset?.name)
+      })
     })
 
     return result
@@ -118,25 +128,6 @@ export function useExpoImageAsset<
       setImage(undefined)
     }
   }, [checkPermissions, launchCameraAsync]) // Note: Removed parentheses from launchCameraAsync
-
-  const randomPhoto = useCallback(
-    (category: TCategory) => {
-      if (category in zippedImages) {
-        const categoryImages = zippedImages[category]
-        const randomIndex = Math.floor(Math.random() * categoryImages.length)
-        const selectedImage: ZippedImage = categoryImages[randomIndex]
-
-        setImage({
-          ...selectedImage.asset,
-          uri: selectedImage.asset.localUri, // Spread the asset properties
-          caption: selectedImage.credit,
-        } as SelectedImage)
-      } else {
-        setImage(undefined)
-      }
-    },
-    [zippedImages],
-  )
 
   const [currentIndexes, setCurrentIndexes] = useState<Record<TCategory, number>>(
     {} as Record<TCategory, number>,
@@ -180,7 +171,6 @@ export function useExpoImageAsset<
     clearPhoto,
     selectPhoto,
     takePhoto,
-    randomPhoto,
     nextPhoto,
     categories,
   }

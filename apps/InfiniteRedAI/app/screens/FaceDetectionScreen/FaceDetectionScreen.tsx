@@ -135,6 +135,7 @@ export const FaceDetectionScreen: FC<FaceDetectionScreenProps> = observer(
               text={`${item}}`}
               onPress={() => {
                 clearPhoto()
+                setBoxes([])
                 nextPhoto(item)
               }}
               style={[$button, $rowButton]}

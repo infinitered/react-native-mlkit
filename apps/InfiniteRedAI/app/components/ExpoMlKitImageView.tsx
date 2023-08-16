@@ -5,7 +5,7 @@ import { Text } from "app/components/Text"
 import { ImageWithBoundingBoxes, BoundingBox } from "@infinitered/expo-mlkit-core"
 import { Icon } from "./Icon"
 
-const $image: ViewStyle = { width: "100%", aspectRatio: 1, marginVertical: 8 }
+const $image: ViewStyle = { width: "100%", aspectRatio: "16/9", marginVertical: 8 }
 const $imagePlaceholder: ViewStyle = {
   borderWidth: 1,
   borderTopWidth: 1,
