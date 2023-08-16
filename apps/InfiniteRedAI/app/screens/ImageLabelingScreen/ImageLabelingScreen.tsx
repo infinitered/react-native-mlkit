@@ -83,6 +83,22 @@ const $resultBarBackground: ViewStyle = {
   borderRadius: 4,
   overflow: "hidden",
 }
+
+const $imagePlaceholder: ViewStyle = {
+  borderWidth: 1,
+  borderTopWidth: 1,
+  borderLeftWidth: 1,
+  borderColor: "rgba(0,0,0,0.2)",
+  borderTopColor: "rgba(0,0,0,0.4)",
+  borderLeftColor: "rgba(0,0,0,0.4)",
+  display: "flex",
+  justifyContent: "center",
+  aspectRatio: 16 / 9,
+  alignItems: "center",
+  padding: 8,
+  backgroundColor: "rgba(255,255,255,0.9)",
+}
+
 const ImageLabelingScreenComponent: FC<ImageLabelingScreenProps> = observer(
   function ImageLabelingScreen() {
     const navigation = useTypedNavigation<"ImageLabeling">()
@@ -157,8 +173,14 @@ const ImageLabelingScreenComponent: FC<ImageLabelingScreenProps> = observer(
           <Text preset={"heading"} text="Image Labeling" />
           <Text style={$description}>Take a photo, and find out if it is 🚫NSFW.</Text>
         </View>
-
-        <ExpoMlKitImageView image={image} onPress={image ? clearPhoto : takePhoto} />
+        {model?.isLoaded() ? (
+          <ExpoMlKitImageView image={image} onPress={image ? clearPhoto : takePhoto} />
+        ) : (
+          <View style={$imagePlaceholder}>
+            <ActivityIndicator />
+            <Text>Loading Model....</Text>
+          </View>
+        )}
         <View style={$status}>
           {status === "classifying" ? (
             <ActivityIndicator />

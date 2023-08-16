@@ -46,4 +46,4 @@ export const noFaces = [
   },
 ]
 
-export const faceDetectionExamples = { faces, noFaces } as RandomImages
+export const faceDetectionExamples = { Face: faces, Other: noFaces } as RandomImages

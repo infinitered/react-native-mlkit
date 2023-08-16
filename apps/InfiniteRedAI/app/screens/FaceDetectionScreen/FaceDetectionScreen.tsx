@@ -129,14 +129,14 @@ export const FaceDetectionScreen: FC<FaceDetectionScreenProps> = observer(
           <Button text={"Select Photo"} onPress={selectPhoto} style={$button} />
         )}
         <View style={$photoButton}>
-          {categories.map((item) => (
+          {categories.map((category) => (
             <Button
-              key={item}
-              text={`${item}}`}
+              key={category}
+              text={category}
               onPress={() => {
                 clearPhoto()
                 setBoxes([])
-                nextPhoto(item)
+                nextPhoto(category)
               }}
               style={[$button, $rowButton]}
             />

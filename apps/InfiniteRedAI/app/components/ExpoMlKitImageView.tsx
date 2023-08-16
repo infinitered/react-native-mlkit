@@ -1,5 +1,5 @@
 import * as React from "react"
-import { StyleProp, ViewStyle, Pressable, ImageStyle } from "react-native"
+import { StyleProp, ViewStyle, Pressable, ImageStyle, TextStyle, View } from "react-native"
 import { observer } from "mobx-react-lite"
 import { Text } from "app/components/Text"
 import { ImageWithBoundingBoxes, BoundingBox } from "@infinitered/expo-mlkit-core"
@@ -20,13 +20,32 @@ const $imagePlaceholder: ViewStyle = {
   backgroundColor: "rgba(255,255,255,0.9)",
 }
 
+const $caption: TextStyle = {
+  marginLeft: 2,
+  fontSize: 8,
+  textAlign: "right",
+  fontWeight: "bold",
+  color: "rgba(0,0,0,0.6)",
+}
+const $captionContainer: ViewStyle = {
+  position: "absolute",
+  bottom: 0,
+  right: 8,
+  backgroundColor: "rgba(255,255,255,0.6)",
+  paddingHorizontal: 4,
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-between",
+  alignItems: "center",
+}
+
 export interface ExpoMlKitImageViewProps {
   /**
    * An optional style override useful for padding & margin.
    */
   style?: StyleProp<ViewStyle>
   imageStyle?: ImageStyle
-  image?: { localUri?: string; uri?: string; width?: number; height?: number }
+  image?: { localUri?: string; uri?: string; width?: number; height?: number; caption?: string }
   onPress?: () => void
   boxes?: BoundingBox[]
 }
@@ -46,12 +65,18 @@ export const ExpoMlKitImageView = observer(function ExpoMlKitImageView({
   return (
     <Pressable onPress={onPress} style={[$image, $imagePlaceholder, style]}>
       {image ? (
-        <ImageWithBoundingBoxes
-          image={image}
-          boundingBoxes={boxes}
-          style={$image}
-          imageStyle={imageStyle}
-        />
+        <>
+          <ImageWithBoundingBoxes
+            image={image}
+            boundingBoxes={boxes}
+            style={$image}
+            imageStyle={imageStyle}
+          />
+          <View style={$captionContainer}>
+            <Icon icon={"camera"} size={10} color={"rgba(0,0,0,0.9)"} />
+            <Text style={$caption} text={image.caption} />
+          </View>
+        </>
       ) : (
         <>
           <Icon icon={"camera"} size={80} color={"rgba(0,0,0,0.1)"} />

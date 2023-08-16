@@ -84,14 +84,6 @@ export function useExpoImageAsset<
         asset: assets?.find((asset) => asset.name === image.name) || undefined,
       }))
     })
-
-    Object.entries(result).forEach(([category, images]: [string, ZippedImage[]]) => {
-      console.log("CATEGORY", category)
-      images.forEach((image) => {
-        console.log(image?.name, image?.asset?.name)
-      })
-    })
-
     return result
   }, [randomPhotos, assets])
 
