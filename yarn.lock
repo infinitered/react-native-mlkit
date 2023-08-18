@@ -1899,7 +1899,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@expo/config-plugins@npm:6.0.2, @expo/config-plugins@npm:~6.0.0":
+"@expo/config-plugins@npm:~6.0.0":
   version: 6.0.2
   resolution: "@expo/config-plugins@npm:6.0.2"
   dependencies:
@@ -1919,52 +1919,6 @@ __metadata:
     xcode: ^3.0.1
     xml2js: 0.4.23
   checksum: 2c689f767d3fd6578535b90bae42f6559e7e53321d71e621d38975fdf49853f9c16b5bd7a5f8574a72133cb2b93490c28a46a8c5dcc1f999940b7fa742acfca9
-  languageName: node
-  linkType: hard
-
-"@expo/config-plugins@npm:~7.2.0":
-  version: 7.2.5
-  resolution: "@expo/config-plugins@npm:7.2.5"
-  dependencies:
-    "@expo/config-types": ^49.0.0-alpha.1
-    "@expo/json-file": ~8.2.37
-    "@expo/plist": ^0.0.20
-    "@expo/sdk-runtime-versions": ^1.0.0
-    "@react-native/normalize-color": ^2.0.0
-    chalk: ^4.1.2
-    debug: ^4.3.1
-    find-up: ~5.0.0
-    getenv: ^1.0.0
-    glob: 7.1.6
-    resolve-from: ^5.0.0
-    semver: ^7.5.3
-    slash: ^3.0.0
-    xcode: ^3.0.1
-    xml2js: 0.6.0
-  checksum: 7ebed343d2109cdb43d03c909845bae5e5a329ee6408acbb4ff09e3dd2a65ed7b80d7b9e09101d20e4c9609f154de8b13c21791e1fa9a30a1875acb5e4be048f
-  languageName: node
-  linkType: hard
-
-"@expo/config-plugins@npm:~7.3.0":
-  version: 7.3.1
-  resolution: "@expo/config-plugins@npm:7.3.1"
-  dependencies:
-    "@expo/config-types": ^49.0.0-alpha.1
-    "@expo/json-file": ~8.2.37
-    "@expo/plist": ^0.0.20
-    "@expo/sdk-runtime-versions": ^1.0.0
-    "@react-native/normalize-color": ^2.0.0
-    chalk: ^4.1.2
-    debug: ^4.3.1
-    find-up: ~5.0.0
-    getenv: ^1.0.0
-    glob: 7.1.6
-    resolve-from: ^5.0.0
-    semver: ^7.5.3
-    slash: ^3.0.0
-    xcode: ^3.0.1
-    xml2js: 0.6.0
-  checksum: b3f3e8dc95f7f2c409494ce37c7a336127ef212015ed6c80aa2a3dfcb1e1dd30bfb0e763687dd6e836c2fc5dd7a81e0192b093a1474f6ba69b196011ee5a58df
   languageName: node
   linkType: hard
 
@@ -2445,6 +2399,20 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@infinitered/expo-mlkit-object-detection@*, @infinitered/expo-mlkit-object-detection@workspace:modules/expo-mlkit-object-detection":
+  version: 0.0.0-use.local
+  resolution: "@infinitered/expo-mlkit-object-detection@workspace:modules/expo-mlkit-object-detection"
+  dependencies:
+    "@types/react": ^18.0.25
+    expo-module-scripts: ^3.0.11
+    expo-modules-core: ^1.5.7
+  peerDependencies:
+    expo: "*"
+    react: "*"
+    react-native: "*"
+  languageName: unknown
+  linkType: soft
+
 "@infinitered/infinite-red-ai@workspace:apps/InfiniteRedAI":
   version: 0.0.0-use.local
   resolution: "@infinitered/infinite-red-ai@workspace:apps/InfiniteRedAI"
@@ -2457,6 +2425,7 @@ __metadata:
     "@expo/webpack-config": ^18.0.1
     "@infinitered/expo-mlkit-face-detection": "*"
     "@infinitered/expo-mlkit-image-labeling": "*"
+    "@infinitered/expo-mlkit-object-detection": "*"
     "@react-native-async-storage/async-storage": 1.17.11
     "@react-native-community/cli-platform-ios": ^8.0.2
     "@react-native/metro-config": ^0.72.9
@@ -2485,6 +2454,7 @@ __metadata:
     eslint-plugin-node: 11.1.0
     eslint-plugin-promise: 6.0.0
     eslint-plugin-react: 7.30.0
+    eslint-plugin-react-hooks: 4.6.0
     eslint-plugin-react-native: 4.0.0
     expo: ~48.0.18
     expo-application: ~5.1.1
@@ -8210,21 +8180,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-react-hooks@npm:4.6.0, eslint-plugin-react-hooks@npm:^4.6.0":
+  version: 4.6.0
+  resolution: "eslint-plugin-react-hooks@npm:4.6.0"
+  peerDependencies:
+    eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0
+  checksum: 23001801f14c1d16bf0a837ca7970d9dd94e7b560384b41db378b49b6e32dc43d6e2790de1bd737a652a86f81a08d6a91f402525061b47719328f586a57e86c3
+  languageName: node
+  linkType: hard
+
 "eslint-plugin-react-hooks@npm:5.0.0-canary-7118f5dd7-20230705":
   version: 5.0.0-canary-7118f5dd7-20230705
   resolution: "eslint-plugin-react-hooks@npm:5.0.0-canary-7118f5dd7-20230705"
   peerDependencies:
     eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0
   checksum: 20e334e60bf5e56cf9f760598411847525c3ff826e6ae7757c8efdc60b33d47a97ddbe1b94ce95956ea9f7bbef37995b19c716be50bd44e6a1e789cba08b6224
-  languageName: node
-  linkType: hard
-
-"eslint-plugin-react-hooks@npm:^4.6.0":
-  version: 4.6.0
-  resolution: "eslint-plugin-react-hooks@npm:4.6.0"
-  peerDependencies:
-    eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0
-  checksum: 23001801f14c1d16bf0a837ca7970d9dd94e7b560384b41db378b49b6e32dc43d6e2790de1bd737a652a86f81a08d6a91f402525061b47719328f586a57e86c3
   languageName: node
   linkType: hard
 
@@ -8872,6 +8842,20 @@ __metadata:
   checksum: b4bba58bb781ac7b9b38971923716a9fae0860b3d845bbbbeb46c666a0acc10515f4b86d0f32d67975d7f7cfbeb06707484ab1365b905b80c99dfb9c34a342be
   languageName: node
   linkType: hard
+
+"expo-mlkit-object-detection@workspace:packages/expo-settings":
+  version: 0.0.0-use.local
+  resolution: "expo-mlkit-object-detection@workspace:packages/expo-settings"
+  dependencies:
+    "@types/react": ^18.0.25
+    expo-module-scripts: ^3.0.11
+    expo-modules-core: ^1.5.7
+  peerDependencies:
+    expo: "*"
+    react: "*"
+    react-native: "*"
+  languageName: unknown
+  linkType: soft
 
 "expo-mlkit@workspace:.":
   version: 0.0.0-use.local
@@ -20089,16 +20073,6 @@ __metadata:
     sax: ">=0.6.0"
     xmlbuilder: ~11.0.0
   checksum: ca0cf2dfbf6deeaae878a891c8fbc0db6fd04398087084edf143cdc83d0509ad0fe199b890f62f39c4415cf60268a27a6aed0d343f0658f8779bd7add690fa98
-  languageName: node
-  linkType: hard
-
-"xml2js@npm:0.6.0":
-  version: 0.6.0
-  resolution: "xml2js@npm:0.6.0"
-  dependencies:
-    sax: ">=0.6.0"
-    xmlbuilder: ~11.0.0
-  checksum: 437f353fd66d367bf158e9555a0625df9965d944e499728a5c6bc92a54a2763179b144f14b7e1c725040f56bbd22b0fa6cfcb09ec4faf39c45ce01efe631f40b
   languageName: node
   linkType: hard
 

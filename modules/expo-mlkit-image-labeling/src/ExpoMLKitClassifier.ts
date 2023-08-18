@@ -8,7 +8,6 @@ export class ExpoMLKitClassifier {
   private modelSpec: ExpoMLKitImageLabelerSpec;
 
   constructor(modelSpec: ExpoMLKitImageLabelerSpec) {
-    console.log("ExpoMLKitClassifier - constructor", modelSpec);
     this.modelSpec = modelSpec;
   }
 

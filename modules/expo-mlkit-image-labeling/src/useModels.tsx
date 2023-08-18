@@ -59,7 +59,7 @@ export function useModels<T extends AssetRecord>(assets: T) {
 
   return {
     models: loadedModels,
-    ModelContextProvider: (props: PropsWithChildren<object>) => (
+    ObjectDetectionModelContextProvider: (props: PropsWithChildren<object>) => (
       <ModelContextProviderComponent {...props} models={loadedModels} />
     ),
   };

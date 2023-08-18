@@ -106,6 +106,7 @@ PODS:
   - ExpoLocalization (14.1.1):
     - ExpoModulesCore
   - ExpoMLKitCore (0.0.0):
+    - ExpoModulesCore
     - MLKitVision
   - ExpoMLKitFaceDetection (0.0.0):
     - ExpoMLKitCore
@@ -116,6 +117,11 @@ PODS:
     - ExpoModulesCore
     - GoogleMLKit/ImageLabelingCustom (= 3.2.0)
     - MLKitImageLabeling
+  - ExpoMLKitObjectDetection (0.1.0):
+    - ExpoMLKitCore
+    - ExpoModulesCore
+    - GoogleMLKit/ObjectDetection (= 3.2.0)
+    - GoogleMLKit/ObjectDetectionCustom (= 3.2.0)
   - ExpoModulesCore (1.6.0):
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
@@ -147,6 +153,12 @@ PODS:
     - MLKitImageLabelingCustom (~> 2.2.0)
   - GoogleMLKit/MLKitCore (3.2.0):
     - MLKitCommon (~> 8.0.0)
+  - GoogleMLKit/ObjectDetection (3.2.0):
+    - GoogleMLKit/MLKitCore
+    - MLKitObjectDetection (~> 2.2.0)
+  - GoogleMLKit/ObjectDetectionCustom (3.2.0):
+    - GoogleMLKit/MLKitCore
+    - MLKitObjectDetectionCustom (~> 2.2.0)
   - GoogleToolboxForMac/DebugUtils (2.3.2):
     - GoogleToolboxForMac/Defines (= 2.3.2)
   - GoogleToolboxForMac/Defines (2.3.2)
@@ -219,9 +231,19 @@ PODS:
     - MLKitImageLabelingCommon (~> 4.2)
     - MLKitVision (~> 4.2)
     - MLKitVisionKit (~> 5.2)
+  - MLKitObjectDetection (2.2.0):
+    - MLKitCommon (~> 8.0)
+    - MLKitObjectDetectionCommon (~> 4.2)
+    - MLKitVision (~> 4.2)
+    - MLKitVisionKit (~> 5.2)
   - MLKitObjectDetectionCommon (4.2.0):
     - MLKitCommon (~> 8.0)
     - MLKitVision (~> 4.2)
+  - MLKitObjectDetectionCustom (2.2.0):
+    - MLKitCommon (~> 8.0)
+    - MLKitObjectDetectionCommon (~> 4.2)
+    - MLKitVision (~> 4.2)
+    - MLKitVisionKit (~> 5.2)
   - MLKitVision (4.2.0):
     - GoogleToolboxForMac/Logger (~> 2.1)
     - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
@@ -655,6 +677,7 @@ DEPENDENCIES:
   - ExpoMLKitCore (from `../../../modules/expo-mlkit-core/ios`)
   - ExpoMLKitFaceDetection (from `../../../modules/expo-mlkit-face-detection/ios`)
   - ExpoMLKitImageLabeler (from `../../../modules/expo-mlkit-image-labeling/ios`)
+  - ExpoMLKitObjectDetection (from `../../../modules/expo-mlkit-object-detection/ios`)
   - ExpoModulesCore (from `../../../node_modules/expo-modules-core`)
   - EXSplashScreen (from `../../../node_modules/expo-splash-screen/ios`)
   - EXUpdatesInterface (from `../../../node_modules/expo-updates-interface/ios`)
@@ -719,7 +742,9 @@ SPEC REPOS:
     - MLKitImageLabeling
     - MLKitImageLabelingCommon
     - MLKitImageLabelingCustom
+    - MLKitObjectDetection
     - MLKitObjectDetectionCommon
+    - MLKitObjectDetectionCustom
     - MLKitVision
     - MLKitVisionKit
     - nanopb
@@ -777,6 +802,8 @@ EXTERNAL SOURCES:
     :path: "../../../modules/expo-mlkit-face-detection/ios"
   ExpoMLKitImageLabeler:
     :path: "../../../modules/expo-mlkit-image-labeling/ios"
+  ExpoMLKitObjectDetection:
+    :path: "../../../modules/expo-mlkit-object-detection/ios"
   ExpoModulesCore:
     :path: "../../../node_modules/expo-modules-core"
   EXSplashScreen:
@@ -881,9 +908,10 @@ SPEC CHECKSUMS:
   ExpoImagePicker: 270dea232b3a072d981dd564e2cafc63a864edb1
   ExpoKeepAwake: 69f5f627670d62318410392d03e0b5db0f85759a
   ExpoLocalization: f26cd431ad9ea3533c5b08c4fabd879176a794bb
-  ExpoMLKitCore: ca87d7c0141155b86da85c2a2ba81d40277627a6
+  ExpoMLKitCore: 6d5db5d7b23b9e216e8775d9b615f1f10a0f0487
   ExpoMLKitFaceDetection: 3582674543b3d3b2c916e619d9b5cb914dfcf7fa
   ExpoMLKitImageLabeler: 1646d842c9b679281cc1090d61b0220c74f2a0df
+  ExpoMLKitObjectDetection: 4069cbdda5dfac8d871962c04c9c66b5ee63f654
   ExpoModulesCore: 11a5d7c305ca2929d22bbae62db29f9f2f5c39e5
   EXSplashScreen: 0e0a9ba0cf7553094e93213099bd7b42e6e237e9
   EXUpdatesInterface: e86394c0770f14eb96386cbb32be83fa6a97e8f9
@@ -909,7 +937,9 @@ SPEC CHECKSUMS:
   MLKitImageLabeling: 3a7c9b4ba2550c8a37d392c74b7d75c4c39aaa4c
   MLKitImageLabelingCommon: 48a3d85b80a993edb168576f94192338e046a836
   MLKitImageLabelingCustom: 4d3d01cb80d27a30bb713662b75afca4af4d8922
+  MLKitObjectDetection: 76da46294ddf1aba22d2b6d69fa83ed1ce5dad49
   MLKitObjectDetectionCommon: 9fd75e357db52714013d9dda97a9f35e7b5d7d5b
+  MLKitObjectDetectionCustom: 1c5f27e4b5afd9e4348da4c890b8c69e508dd52d
   MLKitVision: 96c96571190b7f63eddf4a12068ce8a8689e0d2c
   MLKitVisionKit: bd7f84af2da356322872182b1f5bdf66f68e4584
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431

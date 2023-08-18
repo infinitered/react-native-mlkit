@@ -15,7 +15,8 @@
     "turbo": "latest"
   },
   "resolutions": {
-    "expo-constants": "^14.0.0"
+    "expo-constants": "^14.0.0",
+    "@expo/config-plugins": "~6.0.0"
   },
   "name": "expo-mlkit",
   "workspaces": [

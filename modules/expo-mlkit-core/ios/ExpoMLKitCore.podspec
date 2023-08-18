@@ -15,6 +15,7 @@ Pod::Spec.new do |s|
   s.source         = { git: 'http://github.com/infinitered/expo-mlkit-core' }
 
   s.dependency 'MLKitVision'
+  s.dependency 'ExpoModulesCore'
 
   # Swift/Objective-C compatibility
   s.pod_target_xcconfig = {

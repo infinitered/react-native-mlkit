@@ -59,7 +59,7 @@ buck-out/
 *.jsbundle
 
 # CocoaPods
-ios
+iosgit s
 android
 
 # Ignite-specific items below

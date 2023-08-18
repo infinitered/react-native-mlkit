@@ -38,8 +38,6 @@ export function ImageWithBoundingBoxes({
       : undefined;
   }, [localUri]);
 
-  console.log(imageSource, localUri);
-
   return (
     <View style={style} onLayout={onLayout}>
       <Image

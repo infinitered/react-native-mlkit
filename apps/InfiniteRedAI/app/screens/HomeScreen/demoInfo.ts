@@ -13,6 +13,12 @@ const FACE_HOLDER = require("../../../assets/images/welcome-face.png")
 // List of available demos as a typescript object
 export const DEMO_LIST: DemoInfo[] = [
   {
+    title: "Object Detection",
+    description: "Detect objects",
+    screen: "ObjectDetection",
+    image: FACE_HOLDER,
+  },
+  {
     title: "Face Detection",
     description: "Detect faces in a photo, using ML Kit",
     screen: "FaceDetection",
@@ -22,12 +28,6 @@ export const DEMO_LIST: DemoInfo[] = [
     title: "Image Labeling with NSFWjs",
     description: "Detect NSFW Images",
     screen: "ImageLabeling",
-    image: FACE_HOLDER,
-  },
-  {
-    title: "Other Demo",
-    description: "Soon to be another demo",
-    screen: "Home",
     image: FACE_HOLDER,
   },
 ]

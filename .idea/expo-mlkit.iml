@@ -35,6 +35,7 @@
       <excludeFolder url="file://$MODULE_DIR$/modules/expo-mlkit-image-labeling/android/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/modules/expo-mlkit-image-labeling/android/build" />
       <excludeFolder url="file://$MODULE_DIR$/modules/expo-mlkit-image-labeling/build" />
+      <excludeFolder url="file://$MODULE_DIR$/modules/expo-mlkit-object-detection/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
