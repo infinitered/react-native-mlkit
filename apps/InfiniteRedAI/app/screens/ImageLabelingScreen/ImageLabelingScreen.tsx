@@ -39,7 +39,7 @@ const $status: ViewStyle = {
 
 const MODELS = {
   nsfw: {
-    model: require("../../../assets/models/nsfwjs.tflite"),
+    model: require("assets/models/nsfw-quant-mobilenet.tflite"),
     options: {
       maxResultCount: 5,
       confidenceThreshold: 0,
@@ -230,12 +230,12 @@ const ImageLabelingScreenComponent: FC<ImageLabelingScreenProps> = observer(
 )
 
 export function ImageLabelingScreen(props: PropsWithChildren<ImageLabelingScreenProps>) {
-  const { ModelContextProvider } = useModels(MODELS)
+  const { ObjectDetectionModelContextProvider } = useModels(MODELS)
 
   return (
-    <ModelContextProvider>
+    <ObjectDetectionModelContextProvider>
       <ImageLabelingScreenComponent {...props} />
-    </ModelContextProvider>
+    </ObjectDetectionModelContextProvider>
   )
 }
 
