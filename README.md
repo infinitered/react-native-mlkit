@@ -2,6 +2,69 @@
 
 ExpoMLKit provides Expo modules that allow developers to use MLKit native libraries in their Expo apps.
 
+## Quickstart: Running the example app
+
+### 1. Clone the project
+
+```bash
+git clone git@github.com:infinitered/expo-mlkit.git
+```
+
+### 2. Install dependencies
+
+```bash
+cd expo-mlkit
+yarn
+```
+
+### 3. Build native modules
+
+```bash
+yarn build
+```
+
+###                        
+
+### 5. Create a development build of the app
+
+#### iOS
+
+_Note: MLKit is not supported in the iOS simulator. You will need to use a hardware device._
+
+##### Via Terminal
+
+```bash
+cd apps/InfiniteRedAI
+
+npx expo run:ios -d
+```
+
+##### Via XCode
+
+1. Create the native project folders
+
+```bash
+cd apps/InderfiniteRedAI
+
+npx expo prebuild
+```
+
+2. Open `apps/InfiniteRedAI/ios/InfiniteRedAI.xcworkspace` in XCode
+3. Select the `InfiniteRedAI` target, and select a Team on the "Signing & Capabilities" tab
+4. Select your target hardware device (MLKit is not supported in the simulator at this time)
+5. Click the play button to build the app
+
+#### Android
+
+_Note: Android support is currently under active development, some modules may not function as intended_
+
+```bash
+cd apps/InfiniteRedAI
+
+# run on hardware device
+npx expo run:android -d
+```
+
 ## Organization
 
 The monorepo is organized into the following sections:
