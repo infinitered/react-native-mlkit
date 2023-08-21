@@ -40,7 +40,7 @@ class ExpoMLKitImageLabelerOptions(
 }
 
 class ExpoMLKitImageLabeler(
-    modelPath: String, var options: ExpoMLKitImageLabelerOptions?
+    modelPath: String, private var options: ExpoMLKitImageLabelerOptions?
 ) {
     private val modelPath: String
     private var labeler: ImageLabeler? = null
@@ -50,18 +50,37 @@ class ExpoMLKitImageLabeler(
 
 
     init {
+
+
         this.modelPath = Uri.parse(modelPath).path
-            ?: throw FileNotFoundException("ExpoMLKitImageLabeler: Could not parse model path")
+            ?: throw FileNotFoundException("ExpoMLKitImageLabeler: Could not parse model path $modelPath")
+        Log.d("ExpoMLKitImageLabeler", "init: parsed path successfully")
         localModel = LocalModel.Builder().setAbsoluteFilePath(this.modelPath).build()
-        val labelerOptions = CustomImageLabelerOptions.Builder(localModel)
+
+        try {
+            val labelerOptions = CustomImageLabelerOptions.Builder(localModel)
             .setMaxResultCount(options?.maxResultCount ?: 1)
             .setConfidenceThreshold(options?.confidenceThreshold ?: 0.0f).build()
 
-        try {
+                Log.d("ExpoMLKitImageLabeler", "init: created options successfully")
+
+
+
+
+            if(labelerOptions == null) {
+                Log.e("ExpoMLKitImageLabeler", "init: labelerOptions is null")
+            } else {
+                Log.i("ExpoMLKitImageLabeler", "init: labelerOptions is not null")
+                Log.d("ExpoMLKitImageLabeler", "init: labelerOptions.maxResultCount = ${labelerOptions.maxResultCount}")
+                Log.d("ExpoMLKitImageLabeler", "init: labelerOptions.confidenceThreshold = ${labelerOptions.confidenceThreshold}")
+            }
+
             labeler = ImageLabeling.getClient(labelerOptions)
+            Log.d("ExpoMLKitImageLabeler", "init: created labeler successfully")
             isLoaded = true
         } catch (e: Exception) {
-            throw Exception("ExpoMLKitImageLabeler: Could not create labeler", e)
+            Log.e("ExpoMLKitImageLabeler", e.localizedMessage?:"Unknown error")
+            throw Exception("ExpoMLKitImageLabeler", e)
         }
     }
 

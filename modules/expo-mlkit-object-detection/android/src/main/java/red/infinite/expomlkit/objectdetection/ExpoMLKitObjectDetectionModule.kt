@@ -1,5 +1,7 @@
 package red.infinite.expomlkit.objectdetection
 
+import android.util.Log
+import expo.modules.kotlin.Promise
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
 
@@ -13,35 +15,25 @@ class ExpoMLKitObjectDetectionModule : Module() {
     // The module will be accessible from `requireNativeModule('ExpoMLKitObjectDetection')` in JavaScript.
     Name("ExpoMLKitObjectDetection")
 
-    // Sets constant properties on the module. Can take a dictionary or a closure that returns a dictionary.
-    Constants(
-      "PI" to Math.PI
-    )
-
-    // Defines event names that the module can send to JavaScript.
-    Events("onChange")
-
-    // Defines a JavaScript synchronous function that runs the native code on the JavaScript thread.
-    Function("hello") {
-      "Hello world! 👋"
+    AsyncFunction("loadCustomModel") { name: String, modelPath: String, options: ExpoMLKitObjectDetectorOptions?, promise: Promise ->
+      Log.d("ExpoMLKitObjects", "loadCustomModel: $name, $modelPath, $options")
+      promise.resolve("loadCustomModel: $name, $modelPath, $options")
     }
 
-    // Defines a JavaScript function that always returns a Promise and whose native code
-    // is by default dispatched on the different thread than the JavaScript runtime runs on.
-    AsyncFunction("setValueAsync") { value: String ->
-      // Send an event to JavaScript.
-      sendEvent("onChange", mapOf(
-        "value" to value
-      ))
+    AsyncFunction("loadDefaultModel") { options: ExpoMLKitObjectDetectorOptions?, promise: Promise ->
+      Log.d("ExpoMLKitObjects", "loadDefaultModel: $options")
+      promise.resolve("loadDefaultModel: $options")
     }
 
-    // Enables the module to be used as a native view. Definition components that are accepted as part of
-    // the view definition: Prop, Events.
-    View(ExpoMLKitObjectDetectionView::class) {
-      // Defines a setter for the `name` prop.
-      Prop("name") { view: ExpoMLKitObjectDetectionView, prop: String ->
-        println(prop)
-      }
+    AsyncFunction("detectObjects") { modelName:String, imagePath: String, promise:Promise ->
+      Log.d("ExpoMLKitObjects", "detectObjects: $modelName, $imagePath")
+      promise.resolve("detectObjects: $modelName, $imagePath")
     }
+
+    Function("isLoaded") {
+      return@Function true
+    }
+
   }
+
 }
