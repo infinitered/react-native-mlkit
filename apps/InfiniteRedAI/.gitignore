@@ -58,7 +58,9 @@ buck-out/
 # Bundle artifact
 *.jsbundle
 
-# CocoaPods
+# Native Directories (using managed workflow)
+ios
+android
 
 # Ignite-specific items below
 # You can safely replace everything above this comment with whatever is
