@@ -38,6 +38,7 @@ export interface RandomImage {
   image: number
   credit?: string
   name: string
+  tags?: string[]
 }
 
 interface ZippedImage extends RandomImage {

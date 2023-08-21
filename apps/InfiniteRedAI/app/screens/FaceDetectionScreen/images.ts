@@ -1,25 +1,29 @@
-import { RandomImages } from "../../utils/useExpoImageAsset"
+import { RandomImage, RandomImages } from "../../utils/useExpoImageAsset"
 
-export const faces = [
+export const faces: RandomImage[] = [
   {
     image: require("../../../assets/images/face-detection/justus-menke-s2OisyY9YGU-unsplash.jpg"),
     credit: "Photo by Justus Menke on Unsplash",
     name: "justus-menke-s2OisyY9YGU-unsplash",
+    tags: ["face", "neutral", "no-plate"],
   },
   {
     image: require("../../../assets/images/face-detection/boxed-water-is-better-WbpsINKjB9Y-unsplash.jpg"),
     credit: "Photo by Boxed Water Is Better on Unsplash",
     name: "boxed-water-is-better-WbpsINKjB9Y-unsplash",
+    tags: ["face", "neutral", "no-plate"],
   },
   {
     image: require("../../../assets/images/face-detection/nicholas-green-nPz8akkUmDI-unsplash.jpg"),
     credit: "Photo by Nicholas Green on Unsplash",
     name: "nicholas-green-nPz8akkUmDI-unsplash",
+    tags: ["face", "neutral", "no-plate"],
   },
   {
     image: require("../../../assets/images/face-detection/naassom-azevedo-Q_Sei-TqSlc-unsplash.jpg"),
     credit: "Photo by Naassom Azevedo on Unsplash",
     name: "naassom-azevedo-Q_Sei-TqSlc-unsplash",
+    tags: ["faces"],
   },
 ]
 
@@ -28,11 +32,13 @@ export const noFaces = [
     image: require("../../../assets/images/face-detection/kevin-seibel-oo6XOGrSyX8-unsplash.jpg"),
     credit: "Photo by Kevin Seibel on Unsplash",
     name: "kevin-seibel-oo6XOGrSyX8-unsplash",
+    tags: ["no-faces"],
   },
   {
     image: require("../../../assets/images/face-detection/neom-207NEuFvjlg-unsplash.jpg"),
     credit: "Photo by NEOM on Unsplash",
     name: "neom-207NEuFvjlg-unsplash",
+    tags: ["faces"],
   },
   {
     image: require("../../../assets/images/face-detection/denis-kirichkov-PVQcdxcFxfQ-unsplash.jpg"),
