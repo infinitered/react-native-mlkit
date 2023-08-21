@@ -59,8 +59,6 @@ buck-out/
 *.jsbundle
 
 # CocoaPods
-iosgit s
-android
 
 # Ignite-specific items below
 # You can safely replace everything above this comment with whatever is
