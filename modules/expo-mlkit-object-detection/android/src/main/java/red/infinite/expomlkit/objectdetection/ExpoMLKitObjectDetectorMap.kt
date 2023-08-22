@@ -18,21 +18,21 @@ class ExpoMLKitObjectDetectorSpec : Record {
 
 class ExpoMLKitObjectDetectorMap {
 
-    private val detectorMap = mutableMapOf<String, ExpoMLKitObjectDetector>()
+    private val detectorMap = mutableMapOf<String, ExpoMLKitCustomObjectDetector>()
 
-    fun add(spec: ExpoMLKitObjectDetectorSpec): ExpoMLKitObjectDetector {
+    fun add(spec: ExpoMLKitObjectDetectorSpec): ExpoMLKitCustomObjectDetector {
         Log.d("ExpoMLKit", "add: Loading model '${spec.modelName}' from ${spec.modelPath} with options ${spec.options}")
 
-        detectorMap[spec.modelName] = ExpoMLKitObjectDetector(spec.modelPath, null)
+        detectorMap[spec.modelName] = ExpoMLKitCustomObjectDetector(spec.modelPath, null)
         Log.d("ExpoMLKit", "add: ${detectorMap.size} models loaded");
         return detectorMap[spec.modelName]!!
     }
 
-    operator fun get(modelName:String): ExpoMLKitObjectDetector? {
+    operator fun get(modelName:String): ExpoMLKitCustomObjectDetector? {
         return detectorMap[modelName]
     }
 
-    fun remove(modelName:String): ExpoMLKitObjectDetector? {
+    fun remove(modelName:String): ExpoMLKitCustomObjectDetector? {
         return detectorMap.remove(modelName)
     }
 
