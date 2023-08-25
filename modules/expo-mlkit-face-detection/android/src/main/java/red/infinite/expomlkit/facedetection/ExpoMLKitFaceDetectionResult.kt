@@ -1,10 +1,10 @@
 package red.infinite.expomlkit.facedetection
 
-import android.graphics.PointF
-import android.graphics.Rect
 import expo.modules.kotlin.records.Record
 import expo.modules.kotlin.records.Field
 import com.google.mlkit.vision.face.Face
+import red.infinite.expomlkit.core.ExpoMLKitPoint
+import red.infinite.expomlkit.core.ExpoMLKitRect
 
 data class ExpoMLKitFaceDetectionResultRecord(
     @Field var faces: List<ExpoMLKitFace> = mutableListOf(),
@@ -57,41 +57,3 @@ data class ExpoMLKitFaceContour(
     @Field var points: List<ExpoMLKitPoint> = mutableListOf()
 ) : Record
 
-data class ExpoMLKitPoint(
-    @Field var x: Float = 0f,
-    @Field var y: Float = 0f
-) : Record {
-    companion object {
-        fun fromPointF(p: PointF): ExpoMLKitPoint {
-            return ExpoMLKitPoint(p.x, p.y)
-        }
-
-        fun zero(): ExpoMLKitPoint {
-            return ExpoMLKitPoint(0f, 0f)
-        }
-    }
-
-}
-
-data class ExpoMLKitRect(
-    @Field var origin: ExpoMLKitPoint,
-    @Field var size: ExpoMLKitPoint
-) : Record {
-    companion object {
-        fun fromRect(rect: Rect): ExpoMLKitRect {
-            return ExpoMLKitRect(
-                origin = ExpoMLKitPoint(rect.left.toFloat(), rect.top.toFloat()),
-                size = ExpoMLKitPoint(rect.width().toFloat(), rect.height().toFloat())
-            )
-        }
-
-        fun zero(): ExpoMLKitRect {
-            return ExpoMLKitRect(
-                origin = ExpoMLKitPoint.zero(),
-                size = ExpoMLKitPoint.zero()
-            )
-        }
-    }
-
-
-}

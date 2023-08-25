@@ -30,7 +30,7 @@
   "homepage": "https://github.com/trevor-coleman/expo-mlkit-object-detection#readme",
   "devDependencies": {
     "@types/react": "^18.0.25",
-    "expo-module-scripts": "^3.0.11",
+    "expo-module-scripts": "^3.0.0",
     "expo-modules-core": "^1.5.7"
   },
   "peerDependencies": {

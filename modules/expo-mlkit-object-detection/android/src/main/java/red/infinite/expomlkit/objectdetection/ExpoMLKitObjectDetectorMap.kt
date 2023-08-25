@@ -1,8 +1,8 @@
 package red.infinite.expomlkit.objectdetection
 
-import android.util.Log
 import expo.modules.kotlin.records.Field
 import expo.modules.kotlin.records.Record
+import red.infinite.expomlkit.core.ExpoMLKitLog
 
 class ExpoMLKitObjectDetectorSpec : Record {
     @Field
@@ -15,24 +15,25 @@ class ExpoMLKitObjectDetectorSpec : Record {
     var options: ExpoMLKitObjectDetectorOptions? = null
 }
 
+const val LOG_TAG = "ExpoMLKitObjDetectMap"
 
 class ExpoMLKitObjectDetectorMap {
 
-    private val detectorMap = mutableMapOf<String, ExpoMLKitObjectDetector>()
+    private val detectorMap = mutableMapOf<String, ExpoMLKitCustomObjectDetector>()
+    private val log = ExpoMLKitLog(LOG_TAG)
 
-    fun add(spec: ExpoMLKitObjectDetectorSpec): ExpoMLKitObjectDetector {
-        Log.d("ExpoMLKit", "add: Loading model '${spec.modelName}' from ${spec.modelPath} with options ${spec.options}")
-
-        detectorMap[spec.modelName] = ExpoMLKitObjectDetector(spec.modelPath, null)
-        Log.d("ExpoMLKit", "add: ${detectorMap.size} models loaded");
+    fun add(spec: ExpoMLKitObjectDetectorSpec): ExpoMLKitCustomObjectDetector {
+        log.d("add: Loading model '${spec.modelName}' from ${spec.modelPath} with options ${spec.options}")
+        detectorMap[spec.modelName] = ExpoMLKitCustomObjectDetector(spec.modelPath, spec.options)
+        log.d("add: ${detectorMap.size} models in map");
         return detectorMap[spec.modelName]!!
     }
 
-    operator fun get(modelName:String): ExpoMLKitObjectDetector? {
+    operator fun get(modelName:String): ExpoMLKitCustomObjectDetector? {
         return detectorMap[modelName]
     }
 
-    fun remove(modelName:String): ExpoMLKitObjectDetector? {
+    fun remove(modelName:String): ExpoMLKitCustomObjectDetector? {
         return detectorMap.remove(modelName)
     }
 
@@ -40,16 +41,6 @@ class ExpoMLKitObjectDetectorMap {
         detectorMap.clear()
     }
 
-    fun size() {
-        detectorMap.size
-    }
-
-    fun reloadWithNewOptions(modelName:String, options: ExpoMLKitObjectDetectorOptions):String {
-        val labeler = detectorMap.getOrElse(modelName) {
-            Log.e("ExpoMLKit","Model $modelName not found", Exception("Model $modelName not found"))
-            throw Exception("Model $modelName not found")
-        }
-//        labeler.reloadWithNewOptions(options)
-        return modelName
-    }
+    val size: Int
+        get() = detectorMap.size
 }

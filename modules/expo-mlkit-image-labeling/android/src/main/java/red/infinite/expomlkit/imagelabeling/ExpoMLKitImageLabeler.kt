@@ -59,27 +59,33 @@ class ExpoMLKitImageLabeler(
 
         try {
             val labelerOptions = CustomImageLabelerOptions.Builder(localModel)
-            .setMaxResultCount(options?.maxResultCount ?: 1)
-            .setConfidenceThreshold(options?.confidenceThreshold ?: 0.0f).build()
+                .setMaxResultCount(options?.maxResultCount ?: 1)
+                .setConfidenceThreshold(options?.confidenceThreshold ?: 0.0f).build()
 
-                Log.d("ExpoMLKitImageLabeler", "init: created options successfully")
-
-
+            Log.d("ExpoMLKitImageLabeler", "init: created options successfully")
 
 
-            if(labelerOptions == null) {
+
+
+            if (labelerOptions == null) {
                 Log.e("ExpoMLKitImageLabeler", "init: labelerOptions is null")
             } else {
                 Log.i("ExpoMLKitImageLabeler", "init: labelerOptions is not null")
-                Log.d("ExpoMLKitImageLabeler", "init: labelerOptions.maxResultCount = ${labelerOptions.maxResultCount}")
-                Log.d("ExpoMLKitImageLabeler", "init: labelerOptions.confidenceThreshold = ${labelerOptions.confidenceThreshold}")
+                Log.d(
+                    "ExpoMLKitImageLabeler",
+                    "init: labelerOptions.maxResultCount = ${labelerOptions.maxResultCount}"
+                )
+                Log.d(
+                    "ExpoMLKitImageLabeler",
+                    "init: labelerOptions.confidenceThreshold = ${labelerOptions.confidenceThreshold}"
+                )
             }
 
             labeler = ImageLabeling.getClient(labelerOptions)
             Log.d("ExpoMLKitImageLabeler", "init: created labeler successfully")
             isLoaded = true
         } catch (e: Exception) {
-            Log.e("ExpoMLKitImageLabeler", e.localizedMessage?:"Unknown error")
+            Log.e("ExpoMLKitImageLabeler", e.localizedMessage ?: "Unknown error")
             throw Exception("ExpoMLKitImageLabeler", e)
         }
     }

@@ -1,8 +1,10 @@
 import { ExpoMLKitRect } from "@infinitered/expo-mlkit-core";
 
+import { ExpoMLKitLabel } from "./ExpoMLKitObjectDetectionModule";
+
 export interface ExpoMLKitObjectDetectionObject {
   frame: ExpoMLKitRect;
-  labels: string[];
+  labels: ExpoMLKitLabel[];
   trackingID?: number;
 }
 

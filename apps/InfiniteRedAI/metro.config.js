@@ -1,58 +1,15 @@
-const { getDefaultConfig } = require("@react-native/metro-config")
-const { getDefaultConfig: getDefaultExpoConfig } = require("@expo/metro-config")
+// Learn more https://docs.expo.io/guides/customizing-metro
+const { getDefaultConfig } = require("expo/metro-config")
 
-let metroConfig
-let isExpo = false
-try {
-  const Constants = require("expo-constants")
-  // True if the app is running in an `expo build` app or if it's running in Expo Go.
-  isExpo =
-    Constants.executionEnvironment === "standalone" ||
-    Constants.executionEnvironment === "storeClient"
-} catch {}
+/** @type {import("expo/metro-config").MetroConfig} */
+const defaultConfig = getDefaultConfig(__dirname)
 
-if (isExpo) {
-  console.log("Using Expo metro config")
-  /**
-   *  Expo metro config
-   * Learn more https://docs.expo.io/guides/customizing-metro
-
-   * For one idea on how to support symlinks in Expo, see:
-   * https://github.com/infinitered/ignite/issues/1904#issuecomment-1054535068
-   */
-  metroConfig = getDefaultExpoConfig(__dirname)
-} else {
-  console.log("Using custom metro config")
-  /**
-   * Vanilla metro config - we're using a custom metro config because we want to support symlinks
-   * out of the box. This allows you to use pnpm and/or play better in a monorepo.
-   *
-   * You can safely delete this file and remove @rnx-kit/metro-* if you're not
-   * using PNPM or monorepo or symlinks at all.
-   *
-   * However, it doesn't hurt to have it either.
-   */
-  const { makeMetroConfig } = require("@rnx-kit/metro-config")
-  const MetroSymlinksResolver = require("@rnx-kit/metro-resolver-symlinks")
-
-  console.log("DIRNAME", __dirname)
-
-  metroConfig = (async () => {
-    const defaultConfig = await getDefaultConfig(__dirname)
-    return makeMetroConfig({
-      // eslint-disable-next-line n/no-path-concat
-      watchFolders: [`${__dirname}/../..`], // for monorepos
-      resolver: {
-        /**
-         * This custom resolver is for if you're using symlinks.
-         *
-         * You can disable it if you're not using pnpm or a monorepo or symlinks.
-         */
-        resolveRequest: MetroSymlinksResolver(),
-        assetExts: [...defaultConfig.resolver.assetExts, "bin", "tflite"],
-      },
-    })
-  })()
+const config = {
+  ...defaultConfig,
+  resolver: {
+    ...defaultConfig.resolver,
+    assetExts: [...defaultConfig.resolver.assetExts, "bin", "tflite"],
+  },
 }
 
-module.exports = metroConfig
+module.exports = config

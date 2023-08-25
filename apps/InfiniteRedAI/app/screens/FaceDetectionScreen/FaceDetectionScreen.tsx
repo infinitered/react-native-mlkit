@@ -13,8 +13,7 @@ import {
 
 import { BoundingBox } from "@infinitered/expo-mlkit-core"
 import { colors } from "../../theme"
-import { faceDetectionExamples } from "./images"
-import { UseExpoCameraImageStatus, useExpoImageAsset } from "../../utils/useExpoImageAsset"
+import { UseExampleImageStatus, useExampleImage } from "../../utils/useExampleImage"
 import { BOX_COLORS } from "./boxColors"
 
 interface FaceDetectionScreenProps
@@ -44,20 +43,22 @@ const FACE_DETECTOR_OPTIONS: ExpoMLKitFaceDetectorOptionsRecord = {
   contourMode: true,
   isTrackingEnabled: true,
   landmarkMode: true,
-  minFaceSize: 0.01,
+  minFaceSize: 0.001,
   performanceMode: "accurate",
 }
 export const FaceDetectionScreen: FC<FaceDetectionScreenProps> = observer(
   function FaceDetectionScreen() {
     const navigation = useTypedNavigation<"FaceDetection">()
 
-    const [status, setStatus] = useState<"detecting" | "done" | UseExpoCameraImageStatus>("init")
+    const [status, setStatus] = useState<"detecting" | "done" | UseExampleImageStatus>("init")
     const [boxes, setBoxes] = useState<BoundingBox[]>([])
     const facesDetected = React.useMemo(() => boxes.length, [boxes])
 
-    const { image, clearPhoto, takePhoto, selectPhoto, nextPhoto, categories } = useExpoImageAsset(
+    const { image, clearPhoto, takePhoto, selectPhoto, nextPhoto, categories } = useExampleImage(
       setStatus,
-      faceDetectionExamples,
+      {
+        groupBy: "face",
+      },
     )
 
     useEffect(() => {
@@ -104,7 +105,7 @@ export const FaceDetectionScreen: FC<FaceDetectionScreenProps> = observer(
         default:
           throw new Error("Invalid status")
       }
-    }, [status, facesDetected])
+    }, [image, status, facesDetected])
 
     return (
       <Screen style={$root} preset="scroll" safeAreaEdges={["top", "bottom"]}>

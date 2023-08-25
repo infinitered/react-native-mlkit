@@ -1,26 +1,12 @@
 package red.infinite.expomlkit.objectdetection
 
-import expo.modules.kotlin.records.Field
-import expo.modules.kotlin.records.Record
+import com.google.mlkit.vision.objects.ObjectDetector
 
+abstract class ExpoMLKitObjectDetector {
+    internal abstract var objectDetector: ObjectDetector?
+    abstract suspend fun detectObjects(
+        imagePath: String
+    ): Result<List<ExpoMLKitDetectedObject>>
 
-class ExpoMLKitObjectDetectorOptions: Record {
-    @Field
-    var shouldEnableClassification: Boolean = false
-    @Field
-    var shouldEnableMultipleObjects: Boolean = false
-    @Field
-    var detectorMode: String = "singleImage"
-    @Field
-    var classificationConfidenceThreshold: Float = 0.0f
-    @Field
-    var maxPerObjectLabelCount: Int = 10
-}
-
-public class ExpoMLKitObjectDetector (
-    val modelPath: String, private var options: ExpoMLKitObjectDetectorOptions?
-        ) {
-    init {
-        println("ExpoMLKitObjectDetector: init")
-    }
+    abstract val isLoaded: Boolean
 }

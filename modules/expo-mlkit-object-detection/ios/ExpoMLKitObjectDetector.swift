@@ -15,15 +15,35 @@ import MLKitObjectDetectionCustom
 func getDefaultObjectDetectorOptions() -> ObjectDetectorOptions {
     let options = ObjectDetectorOptions()
     options.detectorMode = .singleImage
-    options.shouldEnableMultipleObjects = true
-    options.shouldEnableClassification = true
+    options.shouldEnableMultipleObjects = false
+    options.shouldEnableClassification = false
     return options;
 }
 
 public class ExpoMLKitObjectDetector: ExpoMLKitObjectDetectorCommon {
+    public var name: String = "default"
+    
+    var nativeOptions:ObjectDetectorOptions
+    
     public init(options: ExpoMLKitObjectDetectorOptions?) {
-        let nativeOptions = options?.objectDetectorOptions ?? getDefaultObjectDetectorOptions()
+        nativeOptions = options?.objectDetectorOptions ?? getDefaultObjectDetectorOptions()
+    }
+    
+    public func detectObjects(imagePath: String) async throws -> [ExpoMLKitObjectDetectionObjectRecord] {
+        print(" --> IMAGEPATH: \(imagePath)")
+        let image = try ExpoMLKitImage(imagePath: imagePath)
+        print("IMAGE \(image)")
+        return try self.detectObjects(image: image)
+    }
+    
+    public func detectObjects(image: ExpoMLKitImage) throws -> [ExpoMLKitObjectDetectionObjectRecord] {
         let objectDetector = ObjectDetector.objectDetector(options: nativeOptions)
-        super.init(name: "default", objectDetector: objectDetector)
+        let visionImage = image.visionImage;
+        print(visionImage.description)
+        let result = try objectDetector.results(in: visionImage)
+        print (result)
+        return result.map({ object in
+            return ExpoMLKitObjectDetectionObject(detectedObject: object).record
+        })
     }
 }

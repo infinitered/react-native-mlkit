@@ -22,7 +22,7 @@
     ],
     "android": {
       "icon": "./assets/images/app-icon-android-legacy.png",
-      "package": "red.infinite.aidemo",
+      "package": "red.infinite.expomlkit.demo",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/app-icon-android-adaptive-foreground.png",
         "backgroundImage": "./assets/images/app-icon-android-adaptive-background.png"
@@ -40,7 +40,7 @@
     "ios": {
       "icon": "./assets/images/app-icon-ios.png",
       "supportsTablet": true,
-      "bundleIdentifier": "red.infinite.aidemo",
+      "bundleIdentifier": "red.infinite.expomlkit.demo",
       "splash": {
         "image": "./assets/images/splash-logo-ios-mobile.png",
         "tabletImage": "./assets/images/splash-logo-ios-tablet.png",
@@ -59,14 +59,9 @@
     "plugins": [
       "expo-localization",
       [
-        "expo-camera",
-        {
-          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera."
-        }
-      ],
-      [
         "expo-image-picker",
         {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to use your camera to take pictures and record video",
           "photosPermission": "Allow $(PRODUCT_NAME) to access your photos to run machine learning algorithms on them."
         }
       ],

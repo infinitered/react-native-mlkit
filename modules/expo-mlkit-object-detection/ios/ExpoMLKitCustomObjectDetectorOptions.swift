@@ -33,7 +33,9 @@ public class ExpoMLKitCustomObjectDetectorOptions {
         if let record = record {
             self.shouldEnableClassification = record.shouldEnableClassification ?? true
             self.shouldEnableMultipleObjects = record.shouldEnableMultipleObjects ?? true
+            print("-------->>>>>  \(String(describing: record.detectorMode))")
             if let detectorMode = record.detectorMode {
+                print("DETECTORMODE: \(String(describing: record.detectorMode))")
                 switch detectorMode {
                 case "singleImage": self.detectorMode = .singleImage
                 case "stream": self.detectorMode = .stream
@@ -43,6 +45,7 @@ public class ExpoMLKitCustomObjectDetectorOptions {
             self.classificationConfidenceThreshold = record.classificationConfidenceThreshold ?? 0.0
             self.maxPerObjectLabelCount = record.maxPerObjectLabelCount ?? 10
         }
+        print("END RESULT: \(String(describing: self.detectorMode))")
     }
 
     public func createWithLocalModel(localModel: LocalModel) throws -> CustomObjectDetectorOptions {

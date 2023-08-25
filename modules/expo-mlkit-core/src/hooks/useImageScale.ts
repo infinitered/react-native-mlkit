@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { LayoutRectangle } from "react-native";
-import { Asset } from "expo-asset";
 
 export type ContentFit = "cover" | "contain" | "fill" | "none" | "scale-down";
 
@@ -43,12 +42,21 @@ export function useImageScale(
 
     let newScale: ImageScale;
 
+    const coverScale = Math.max(
+      container.width / image.width,
+      container.height / image.height
+    );
+    const containScale = Math.min(
+      container.width / image.width,
+      container.height / image.height
+    );
+    const scaleDownScale = Math.min(
+      1,
+      Math.min(container.width / image.width, container.height / image.height)
+    );
+
     switch (contentFit) {
       case "cover":
-        const coverScale = Math.max(
-          container.width / image.width,
-          container.height / image.height
-        );
         newScale = {
           x: coverScale,
           y: coverScale,
@@ -57,10 +65,6 @@ export function useImageScale(
         };
         break;
       case "contain":
-        const containScale = Math.min(
-          container.width / image.width,
-          container.height / image.height
-        );
         newScale = {
           x: containScale,
           y: containScale,
@@ -85,13 +89,6 @@ export function useImageScale(
         };
         break;
       case "scale-down":
-        const scaleDownScale = Math.min(
-          1,
-          Math.min(
-            container.width / image.width,
-            container.height / image.height
-          )
-        );
         newScale = {
           x: scaleDownScale,
           y: scaleDownScale,

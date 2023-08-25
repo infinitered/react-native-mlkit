@@ -7,6 +7,29 @@ func rejectPromiseWithMessage(promise: Promise, message: String, domain: String)
     )
 }
 
+public struct ExpoMLKitObjectDetectionModelSpec:Record {
+    public init() {}
+    @Field
+    var modelName:String = ""
+    @Field
+    var modelPath:String = ""
+    @Field
+    var options:ExpoMLKitObjectDetectorOptionsRecord
+    
+}
+
+public struct ExpoMLKitObjectDetectionCustomModelSpec:Record {
+     public init() {}
+    
+    @Field
+    var modelName:String = ""
+    @Field
+    var modelPath:String = ""
+    @Field
+    var options:ExpoMLKitCustomObjectDetectorOptionsRecord
+    
+}
+
 public class ExpoMLKitObjectDetectionModule: Module {
     let ERROR_DOMAIN: String = "red.infinite.expomlkit.ObjectDetectionErrorDomain" // 1. Moved inside the class
     var objectDetectors: [String: ExpoMLKitObjectDetectorCommon] = [:] // 2. Handling multiple detectors
@@ -17,25 +40,25 @@ public class ExpoMLKitObjectDetectionModule: Module {
     public func definition() -> ModuleDefinition {
         Name("ExpoMLKitObjectDetection")
         
-        AsyncFunction("loadCustomModel") { (name: String, modelPath: String, options: ExpoMLKitCustomObjectDetectorOptionsRecord?, promise: Promise) in
+        AsyncFunction("loadCustomModel") { (spec:ExpoMLKitObjectDetectionCustomModelSpec, promise: Promise) in
             let logger = Logger()
             
             let regex = try! NSRegularExpression(pattern: "file://")
-            let trimmedPath = regex.stringByReplacingMatches(in: modelPath, options: [], range: NSMakeRange(0, 7), withTemplate: "")
+            let trimmedPath = regex.stringByReplacingMatches(in: spec.modelPath, options: [], range: NSMakeRange(0, 7), withTemplate: "")
             
-            logger.info("ExpoMLKItObjectDetection: Loading Custom Model name:\(String(describing: name)) modelPath:\(trimmedPath)")
+            logger.info("ExpoMLKItObjectDetection: Loading Custom Model name:\(String(describing: spec.modelName)) modelPath:\(trimmedPath)")
             var customModelOptions: ExpoMLKitCustomObjectDetectorOptions
             
             do {
-                customModelOptions = try ExpoMLKitCustomObjectDetectorOptions(record: options)
+                customModelOptions = try ExpoMLKitCustomObjectDetectorOptions(record: spec.options)
             } catch {
                 rejectPromiseWithMessage(promise: promise, message: "Error creating options object \(error.localizedDescription)", domain: ERROR_DOMAIN)
                 return
             }
             
             do {
-                let objectDetector = try ExpoMLKitCustomObjectDetector(name: name, modelPath: trimmedPath, options: customModelOptions)
-                self.objectDetectors[name] = objectDetector // 2. Store the detector
+                let objectDetector = try ExpoMLKitCustomObjectDetector(name: spec.modelName, modelPath: trimmedPath, options: customModelOptions)
+                self.objectDetectors[spec.modelName] = objectDetector // 2. Store the detector
             } catch {
                 rejectPromiseWithMessage(promise: promise, message: "Error instantiating object detector: \(error.localizedDescription)", domain: ERROR_DOMAIN)
                 return
@@ -79,7 +102,8 @@ public class ExpoMLKitObjectDetectionModule: Module {
             
             Task {
                 do {
-                    let result = try await objectDetector.detectObjects(imagePath: imagePath)
+                let result = try await objectDetector.detectObjects(imagePath: imagePath)
+                    logger.info("detectObjects(\(modelName)): found \(result.count) objects")
                     logger.info("ExpoMLKitObjectDetection", "detectObjects: Detection completed successfully")
                     promise.resolve(result)
                 } catch {

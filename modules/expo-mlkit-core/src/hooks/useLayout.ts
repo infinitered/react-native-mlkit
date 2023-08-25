@@ -1,8 +1,8 @@
-import React from "react";
 import { useState } from "react";
 import { LayoutChangeEvent, LayoutRectangle } from "react-native";
 
 type LayoutChangeEventHandler = (event: LayoutChangeEvent) => void;
+
 export function useLayout() {
   const [layout, setLayout] = useState<LayoutRectangle>({
     x: 0,
