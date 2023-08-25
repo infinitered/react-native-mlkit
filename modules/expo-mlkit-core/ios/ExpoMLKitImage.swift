@@ -14,7 +14,6 @@ public class ExpoMLKitImage {
     public var visionImage: VisionImage
 
     public init(imagePath:String) throws {
-
         guard let imageURL = URL(string:imagePath) else {
             throw ExpoMLKitImageError.invalidImageURL(imagePath:imagePath)
         }

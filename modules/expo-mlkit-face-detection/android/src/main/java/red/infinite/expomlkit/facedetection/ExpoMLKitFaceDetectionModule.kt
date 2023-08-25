@@ -4,17 +4,16 @@ import ExpoMLKitFaceDetector
 import ExpoMLKitFaceDetectorOptions
 import ExpoMLKitFaceDetectorOptionsRecord
 import android.net.Uri
-import android.util.Log
+
 import expo.modules.kotlin.Promise
 import expo.modules.kotlin.exception.CodedException
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
 import kotlinx.coroutines.runBlocking
+import red.infinite.expomlkit.core.ExpoMLKitModule
 
 
-class ExpoMLKitFaceDetectionModule : Module() {
-
-
+class ExpoMLKitFaceDetectionModule : ExpoMLKitModule("ExpoMLKitFaceDetection") {
     private var faceDetector: ExpoMLKitFaceDetector? = null
 
     // Each module class must implement the definition function. The definition consists of components
@@ -27,9 +26,9 @@ class ExpoMLKitFaceDetectionModule : Module() {
         Name("ExpoMLKitFaceDetection")
 
         AsyncFunction("initialize") { options: ExpoMLKitFaceDetectorOptionsRecord, promise: Promise ->
-            Log.d("ExpoMLKitFaceDetection", "initialize: Initializing Face Detection")
+            log.d("initialize: Initializing Face Detection")
             faceDetector = ExpoMLKitFaceDetector(ExpoMLKitFaceDetectorOptions(options))
-            Log.d("ExpoMLKitFaceDetection", "initialize: Initializing Face Detection")
+            log.d("initialize: Initializing Face Detection")
             promise.resolve(null)
         }
 
@@ -39,21 +38,18 @@ class ExpoMLKitFaceDetectionModule : Module() {
             runBlocking suspend@{
                 val faceDetector = faceDetector
                 if (faceDetector == null) {
-                    promise.reject(CodedException("ExpoMLKitFaceDetection: Face Detector not initialized"))
+                    handleException(promise, message = "Face Detector not initialized")
                     return@suspend
                 }
                 try {
-
                     var result =
                         faceDetector.detectFaces(imagePath, appContext).getOrElse {
-                            promise.reject(CodedException("ExpoMLKitFaceDetection", it))
+                            handleException(promise, it)
                             throw it
                         }
-
                     promise.resolve(result.record)
-
                 } catch (e: Exception) {
-                    promise.reject(CodedException("ExpoMLKitFaceDetection", e))
+                    handleException(promise, e)
                 }
 
             }

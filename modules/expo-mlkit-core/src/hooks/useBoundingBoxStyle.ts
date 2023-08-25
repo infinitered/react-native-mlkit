@@ -1,6 +1,6 @@
 import { useMemo } from "react";
-
 import { ViewStyle } from "react-native";
+
 import { ImageScale } from "./useImageScale";
 
 /**

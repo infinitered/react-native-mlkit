@@ -21,11 +21,15 @@ export class ExpoMLKitCustomObjectDetector implements ExpoMLKitObjectDetector {
   }
 
   load(): Promise<void> {
-    return ExpoMLKitObjectDetectionModule.loadCustomModel(
-      this.modelName,
-      this.modelPath,
+    console.log(
+      `ExpoMLKitCustomObjectDetector(${this.modelName}).load`,
       this.options
     );
+    return ExpoMLKitObjectDetectionModule.loadCustomModel({
+      modelName: this.modelName,
+      modelPath: this.modelPath,
+      options: this.options,
+    });
   }
 
   isLoaded() {
@@ -35,7 +39,9 @@ export class ExpoMLKitCustomObjectDetector implements ExpoMLKitObjectDetector {
   async detectObjects(
     imagePath: string
   ): Promise<ExpoMLKitObjectDetectionObject[]> {
-    console.log("ExpoMLKitCustomObjectDetector.detectObjects");
+    console.log(
+      `ExpoMLKitCustomObjectDetector(${this.modelName}).detectObjects`
+    );
     if (!this.isLoaded()) {
       throw new Error("Custom model is not loaded");
     }

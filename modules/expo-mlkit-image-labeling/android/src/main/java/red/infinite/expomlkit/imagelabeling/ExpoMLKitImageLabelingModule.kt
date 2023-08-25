@@ -37,7 +37,9 @@ class ExpoMLKitImageLabelingModule : Module() {
                 promise.resolve(spec.modelName)
             } catch (e: Exception) {
                 promise.reject(
-                    CodedException("ExpoMLKitImageLabelingModule - Classifier Error: ${e.message}", e)
+                    CodedException(
+                        "ExpoMLKitImageLabelingModule - Classifier Error: ${e.message}", e
+                    )
                 )
             }
         }
@@ -57,31 +59,35 @@ class ExpoMLKitImageLabelingModule : Module() {
                     )
 
                 } else {
-
-                    val result = model.classifyImage(imagePath).getOrElse {
+                    try {
+                        val result = model.classifyImage(imagePath).getOrThrow()
+                        promise.resolve(result)
+                        return@suspend
+                    } catch (e: Throwable) {
                         promise.reject(
                             CodedException(
-                                "ExpoMLKitImageLabelingModule - Classifier Error: ${it.message}", it
+                                "ExpoMLKitImageLabelingModule - Classifier Error: ${e.message}", e
                             )
                         )
                     }
-                    promise.resolve(result)
-
                 }
-
             }
-
         }
 
-        AsyncFunction("updateOptionsAndReload") { modelName:String, options: ExpoMLKitImageLabelerOptions, promise:Promise ->
-            Log.d("ExpoMLKit", "updateOptionsAndReload: $modelName -- maxResultCount: ${options.maxResultCount} -- confidenceThreshold: ${options.confidenceThreshold}")
+        AsyncFunction("updateOptionsAndReload") { modelName: String, options: ExpoMLKitImageLabelerOptions, promise: Promise ->
+            Log.d(
+                "ExpoMLKit",
+                "updateOptionsAndReload: $modelName -- maxResultCount: ${options.maxResultCount} -- confidenceThreshold: ${options.confidenceThreshold}"
+            )
 
             runBlocking {
                 try {
                     labelerMap.reloadWithNewOptions(modelName, options)
-                } catch (e:Exception) {
+                } catch (e: Exception) {
                     promise.reject(
-                        CodedException("ExpoMLKitImageLabelingModule - Error Updating Options: ${e.message}", e)
+                        CodedException(
+                            "ExpoMLKitImageLabelingModule - Error Updating Options: ${e.message}", e
+                        )
                     )
                 }
             }

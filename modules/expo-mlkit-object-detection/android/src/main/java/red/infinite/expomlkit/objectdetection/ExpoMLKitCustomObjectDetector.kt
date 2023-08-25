@@ -2,7 +2,6 @@ package red.infinite.expomlkit.objectdetection
 
 import android.graphics.BitmapFactory
 import android.net.Uri
-import android.util.Log
 import com.google.mlkit.common.model.LocalModel
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.objects.ObjectDetection
@@ -13,6 +12,7 @@ import expo.modules.kotlin.records.Record
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import red.infinite.expomlkit.core.ExpoMLKitLog
 import java.io.FileNotFoundException
 import java.net.URL
 
@@ -37,9 +37,13 @@ class ExpoMLKitObjectDetectorOptions : Record {
 class ExpoMLKitCustomObjectDetector(
     modelPath: String, private var options: ExpoMLKitObjectDetectorOptions?)
     : ExpoMLKitObjectDetector() {
-
+    override var objectDetector: ObjectDetector? = null
     private val modelPath: String
     private val localModel: LocalModel
+    private val log = ExpoMLKitLog("ExpoMLKitCustomObjDet")
+    private var isModelLoaded: Boolean = false
+    override val isLoaded: Boolean
+        get() = isModelLoaded
 
 
     init {
@@ -58,21 +62,21 @@ class ExpoMLKitCustomObjectDetector(
                 options?.classificationConfidenceThreshold ?: 0.0f
             val maxPerObjectLabelCount = options?.maxPerObjectLabelCount ?: 10
 
-            val unbuiltOptions = CustomObjectDetectorOptions.Builder(localModel).setDetectorMode(
-                detectorMode
-            ).setClassificationConfidenceThreshold(classificationConfidenceThreshold)
+            val objectDetectorOptions = CustomObjectDetectorOptions.Builder(localModel)
+                .setDetectorMode(detectorMode)
+                .setClassificationConfidenceThreshold(classificationConfidenceThreshold)
                 .setMaxPerObjectLabelCount(maxPerObjectLabelCount)
+                .apply {
+                    options?.let {
+                        if (it.shouldEnableClassification) enableClassification()
+                        if (it.shouldEnableMultipleObjects) enableMultipleObjects()
+                    }
+                }
+                .build()
 
-            if (options?.shouldEnableClassification == true) {
-                unbuiltOptions.enableClassification()
-            }
-
-            if (options?.shouldEnableMultipleObjects == true) {
-                unbuiltOptions.enableMultipleObjects()
-            }
-            val objectDetectorOptions = unbuiltOptions.build()
 
             objectDetector = ObjectDetection.getClient(objectDetectorOptions)
+            isModelLoaded = true
 
 
         } catch (e: Exception) {
@@ -80,36 +84,36 @@ class ExpoMLKitCustomObjectDetector(
         }
     }
 
-    suspend fun detectObjects(
+    override suspend fun detectObjects(
         imagePath:String
-    ) {
-        var result = CompletableDeferred<Result<List<ExpoMLKitImageLabelerLabel>>>()
+    ): Result<List<ExpoMLKitDetectedObject>> {
+        var result = CompletableDeferred<Result<List<ExpoMLKitDetectedObject>>>()
 
         val image: InputImage
 
         try {
             // TODO: Make a separate status state visible to user for "preprocessing image" before classification? Might require event based status updates.
             // TODO: Cache results for images that have already been classified?
-            Log.d("ExpoMLKit", "classifyImage: Loading Image")
+            log.d("detectObjects: Loading Image")
             val bitmap = BitmapFactory.decodeStream(withContext(Dispatchers.IO) {
                 URL(imagePath).openStream()
             })
             image = InputImage.fromBitmap(bitmap, 0)
-            Log.d("ExpoMLKit", "classifyImage: Image Loaded Successfully")
+            log.d("detectObjects: Image Loaded Successfully")
         } catch (e: Exception) {
             throw Exception("ExpoMLKitImageLabeler: Could not load image from $imagePath", e)
         }
 
-        if (labeler == null || !isLoaded) {
+        if (objectDetector == null || !isModelLoaded) {
             throw Exception("ExpoMLKitImageLabeler: Model is not loaded")
         }
 
-        labeler?.process(image)?.addOnSuccessListener { labels ->
-            Log.d("ExpoMLKit", "classifyImage.addOnSuccessListener: Got Labels")
+        objectDetector?.process(image)?.addOnSuccessListener { detectedObjects ->
+            log.d("detectObjects.addOnSuccessListener: Got Labels")
 
-            val expoLabels = labels.map { label ->
-                ExpoMLKitImageLabelerLabel(
-                    text = label.text, confidence = label.confidence, index = label.index
+            val expoLabels = detectedObjects.map { detectedObject ->
+                ExpoMLKitDetectedObject(
+                    detectedObject
                 )
             }
 
@@ -120,6 +124,5 @@ class ExpoMLKitCustomObjectDetector(
 
         return result.await()
     }
-
 
 }

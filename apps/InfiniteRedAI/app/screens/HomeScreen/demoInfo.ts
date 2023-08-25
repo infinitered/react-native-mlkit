@@ -14,19 +14,19 @@ const FACE_HOLDER = require("../../../assets/images/welcome-face.png")
 export const DEMO_LIST: DemoInfo[] = [
   {
     title: "Object Detection",
-    description: "Detect objects",
+    description: "Detect objects or license plates in a photo using ExpoMLKitObjectDetection",
     screen: "ObjectDetection",
     image: FACE_HOLDER,
   },
   {
     title: "Face Detection",
-    description: "Detect faces in a photo, using ML Kit",
+    description: "Detect faces in a photo, using ExpoMLKitFaceDetection",
     screen: "FaceDetection",
     image: FACE_DETECTION,
   },
   {
     title: "Image Labeling with NSFWjs",
-    description: "Detect NSFW Images",
+    description: "Classify Images as SFW or NSFW using ExpoMLKit and the NSFWJS TFLite Model",
     screen: "ImageLabeling",
     image: FACE_HOLDER,
   },

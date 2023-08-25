@@ -89,4 +89,5 @@ dependencies {
   implementation 'com.google.mlkit:object-detection-common:17.0.0'
   implementation 'com.google.mlkit:object-detection-custom:17.0.0'
   implementation project(path: ':infinitered-expo-mlkit-core')
+  implementation 'com.google.mlkit:object-detection:17.0.0'
 }
