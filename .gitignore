@@ -14,7 +14,6 @@ out/
 build
 
 # misc
-.DS_Store
 *.pem
 
 # debug
@@ -28,9 +27,6 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
-
-# turbo
-.turbo
 
 # vercel
 .vercel
