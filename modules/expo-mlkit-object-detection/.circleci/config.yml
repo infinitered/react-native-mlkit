@@ -32,7 +32,7 @@ jobs:
           name: PWD
           command: pwd
       - common-static-tests:
-          working_directory: ~/modules/expo-mlkit-object-detection
+          working_directory: /mnt/ramdisk/repo/modules/expo-mlkit-object-detection
   object-detection-publish:
     <<: *defaults
     steps:
