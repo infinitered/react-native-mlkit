@@ -40,7 +40,7 @@ jobs:
             git config --global user.name "Infinite Red CI"
       - run:
           name: Run static tests
-          command: yarn ci:lint && yarn test
+          command: yarn ci:lint && yarn ci:test
           no_output_timeout: 5m
   publish:
     <<: *defaults
