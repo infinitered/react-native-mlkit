@@ -40,7 +40,7 @@ jobs:
             git config --global user.name "Infinite Red CI"
       - run:
           name: Run static tests
-          command: yarn format:check && yarn lint && yarn typecheck
+          command: yarn ci:lint
       - run:
           name: Run jest tests
           command: yarn test
