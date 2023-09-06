@@ -21,13 +21,13 @@
     "expo-mlkit-core",
     "ExpoMLkitCore"
   ],
-  "repository": "https://github.com/trevor-coleman/expo-mlkit-core",
+  "repository": "https://github.com/infinitered/expo-mlkit-core",
   "bugs": {
-    "url": "https://github.com/trevor-coleman/expo-mlkit-core/issues"
+    "url": "https://github.com/infinitered/expo-mlkit-core/issues"
   },
-  "author": "Trevor Coleman <trevor@trevorcoleman.design> (https://github.com/trevor-coleman)",
+  "author": "Trevor Coleman <trevor@infinitered.com> (https://github.com/trevor-coleman)",
   "license": "MIT",
-  "homepage": "https://github.com/trevor-coleman/expo-mlkit-core#readme",
+  "homepage": "https://github.com/infinitered/expo-mlkit#readme",
   "devDependencies": {
     "expo-module-scripts": "^3.0.11",
     "expo-modules-core": "^1.5.10"

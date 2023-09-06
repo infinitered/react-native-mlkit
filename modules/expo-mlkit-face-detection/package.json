@@ -21,13 +21,13 @@
     "expo-mlkit-face-detection",
     "ExpoMLKitFaceDetection"
   ],
-  "repository": "http://github.com/trevor-coleman/expo-mlkit-face-detection",
+  "repository": "https://github.com/infinitered/expo-mlkit",
   "bugs": {
-    "url": "http://github.com/trevor-coleman/expo-mlkit-face-detection/issues"
+    "url": "https://github.com/infinitered/expo-mlkit/issues"
   },
-  "author": "Trevor Coleman <trevor@infinitered.com> (http://github.com/trevor-coleman)",
+  "author": "Trevor Coleman <trevor@infinitered.com> (https://github.com/trevor-coleman)",
   "license": "MIT",
-  "homepage": "http://github.com/trevor-coleman/expo-mlkit-face-detection#readme",
+  "homepage": "https://github.com/infinitered/expo-mlkit#readme",
   "dependencies": {
     "@infinitered/expo-mlkit-core": "*"
   },
