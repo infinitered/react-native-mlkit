@@ -62,6 +62,18 @@ commands:
           working_directory: << parameters.working_directory >>
           name: Publish to NPM
           command: yarn ci:publish
+  common-build:
+    parameters:
+      working_directory:
+        description: Path to the directory where the tests are run
+        type: string
+        default: .
+    steps:
+      - run:
+          working_directory: << parameters.working_directory >>
+          name: Publish to NPM
+          command: yarn build
+
 # Common jobs for the main workflows
 jobs:
   common-pre:
