@@ -1,3 +1,0 @@
-<component name="DependencyValidationManager">
-  <scope name="apps - InfiniteRedAI" pattern="(!file[expo-mlkit]:.yarn//*&amp;&amp;!file[expo-mlkit]:.idea//*&amp;&amp;!file[expo-mlkit]:apps//*&amp;&amp;!file[expo-mlkit]:modules//*&amp;&amp;!file[expo-mlkit]:packages//*&amp;&amp;!file[expo-mlkit]:*/||file[expo-mlkit]:apps/InfiniteRedAI//*)&amp;&amp;!file[expo-mlkit]:apps/InfiniteRedAI/.idea//*&amp;&amp;!file[expo-mlkit]:apps/InfiniteRedAI/.expo//*&amp;&amp;!file[expo-mlkit]:apps/InfiniteRedAI/.turbo//*&amp;&amp;!file[expo-mlkit]:apps/InfiniteRedAI/android/app/build//*&amp;&amp;!file[expo-mlkit]:apps/InfiniteRedAI/ios/build//*" />
-</component>
