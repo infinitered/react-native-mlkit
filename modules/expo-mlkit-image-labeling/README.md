@@ -1,3 +1,3 @@
-# expo-mlkit-image-labeling
+# @infinitered/expo-mlkit-image-labeling
 
-My new module
+
