@@ -22,18 +22,26 @@ parameters:
     default: ""
 
 # Custom commands aimed for the main workflows and jobs
-commands:
-  common-say-hello:
-    parameters:
-      to:
-        description: To whom you say hello
-        type: string
-        default: you anonymous
-    steps:
-      - run: echo 'Greetings to << parameters.to >> from the shared command!'
-      - run: echo 'The value of `custom-parameter` was "<< pipeline.parameters.custom-parameter >>"'
 
-# Common jobs for the main workflows
+commands:
+  common-install-deps:
+    name: Restore Cache & Install dependencies
+    steps:
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install --immutable
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - .yarn/cache
+            - .yarn/unplugged
+
+      # Common jobs for the main workflows
 jobs:
   common-pre:
     docker:
@@ -98,7 +106,6 @@ orbs:
                 cat \<< EOD | sed -e '/^$/d' | while read row; do module="$(echo "$row" | awk '{ print $1 }')"; if [ << parameters.force-all >> == 'true' ] || [ $(git diff --name-only << parameters.base-revision >> "$module" | wc -l) -gt 0 ] || (! git rev-parse --verify HEAD~1) || [ $(git diff --name-only HEAD~1 "$module" | wc -l) -gt 0 ]; then echo "$row" | sed -e 's/ /\n/g' >> << parameters.modules-filtered >>; fi; done
                 << parameters.modules >>
                 EOD
-
       merge-modular-configs:
         parameters:
           modules:
