@@ -37,6 +37,7 @@ jobs:
       - checkout
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
       - common-install-deps
+      - common-build-core
       - common-build:
           working_directory: /mnt/ramdisk/repo/modules/expo-mlkit-object-detection
       # Run semantic-release after all the above is set.
