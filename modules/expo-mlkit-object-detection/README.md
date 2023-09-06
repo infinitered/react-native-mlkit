@@ -3,23 +3,21 @@
 ## Table of Contents
 
 <!-- TOC -->
-
 * [ExpoMLKit Object Detection](#expomlkit-object-detection)
-    * [Table of Contents](#table-of-contents)
-    * [Overview](#overview)
-    * [Installation](#installation)
-    * [Basic Usage with Default Model](#basic-usage-with-default-model)
-        * [1. Set up the model context provider](#1-set-up-the-model-context-provider)
-        * [2. Fetch the model using the `useObjectDetectionModel` hook, and use it to detect objects in an image](#2-fetch-the-model-using-the-useobjectdetectionmodel-hook-and-use-it-to-detect-objects-in-an-image)
-    * [Using a custom model](#using-a-custom-model)
-        * [Compatible Models](#compatible-models)
-        * [1. Add your model to the project, and Configure Metro to bundle your model](#1-add-your-model-to-the-project-and-configure-metro-to-bundle-your-model)
-        * [2. Set up the model context provider](#2-set-up-the-model-context-provider)
-        * [3. Fetch the model using the `useObjectDetectionModel` hook, and use it to detect objects in an image](#3-fetch-the-model-using-the-useobjectdetectionmodel-hook-and-use-it-to-detect-objects-in-an-image)
-
+  * [Table of Contents](#table-of-contents)
+  * [Overview](#overview)
+  * [Installation](#installation)
+  * [Basic Usage with Default Model](#basic-usage-with-default-model)
+    * [1. Set up the model context provider](#1-set-up-the-model-context-provider)
+    * [2. Fetch the model using the `useObjectDetectionModel` hook, and use it to detect objects in an image](#2-fetch-the-model-using-the-useobjectdetectionmodel-hook-and-use-it-to-detect-objects-in-an-image)
+  * [Using a custom model](#using-a-custom-model)
+    * [Compatible Models](#compatible-models)
+    * [1. Add your model to the project, and Configure Metro to bundle your model](#1-add-your-model-to-the-project-and-configure-metro-to-bundle-your-model)
+    * [2. Set up the model context provider](#2-set-up-the-model-context-provider)
+    * [3. Fetch the model using the `useObjectDetectionModel` hook, and use it to detect objects in an image](#3-fetch-the-model-using-the-useobjectdetectionmodel-hook-and-use-it-to-detect-objects-in-an-image)
 <!-- TOC -->
 
----
+--- 
 
 ## Overview
 
