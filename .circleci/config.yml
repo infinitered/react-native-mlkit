@@ -25,7 +25,6 @@ parameters:
 
 commands:
   common-install-deps:
-    name: Restore Cache & Install dependencies
     steps:
       - restore_cache:
           name: Restore Yarn Package Cache
