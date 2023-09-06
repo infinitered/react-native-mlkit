@@ -39,6 +39,7 @@ yarn-error.log*
 # Edit at https://www.toptal.com/developers/gitignore?templates=intellij,reactnative,turbo,yarn,react,macos,windows,swift,java,kotlin,objective-c
 
 ### Intellij ###
+.idea
 .idea/**/*
 
 ### Java ###
