@@ -1,25 +1,80 @@
+# JavaScript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+
+defaults: &defaults
+  docker: # Choose the version of Node you want here
+    - image: cimg/node:18.16.1
+  working_directory: /mnt/ramdisk/repo
+
 version: 2.1
 
-# Define the jobs we want to run for this project
-jobs:
-  build:
-    docker:
-      - image: cimg/base:2023.03
-    steps:
-      - checkout
-      - run: echo "this is the build job"
-  test:
-    docker:
-      - image: cimg/base:2023.03
-    steps:
-      - checkout
-      - run: echo "this is the test job"
+orbs: node:circleci/node@5.1.0
 
-# Orchestrate our job run sequence
+jobs:
+  image-labeling-tests:
+    <<: *defaults
+    resource_class: large
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install --immutable
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - .yarn/cache
+            - .yarn/unplugged
+      - run: # We don't want to install CocoaPods on ubuntu where we run the tests.
+          name: Set up dummy `pod` command
+          command: |
+            sudo ln /bin/true /usr/local/bin/pod
+      - run:
+          name: Ensure git user is configured
+          command: |
+            git config --global user.email "ci@infinite.red"
+            git config --global user.name "Infinite Red CI"
+      - run:
+          name: PWD
+          command: pwd
+      - run:
+          name: Run static tests
+          command: yarn ci:lint && yarn ci:test
+          no_output_timeout: 5m
+  image-labeling-publish:
+    <<: *defaults
+    steps:
+      - checkout
+      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+      - restore_cache:
+          name: Restore node modules
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}-{{ arch }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+      - run:
+          name: Build package
+          command: yarn build
+      # Run semantic-release after all the above is set.
+      - run:
+          name: Publish to npm
+          command: yarn ci:publish # this will be added to your package.json scripts
+
 workflows:
-  build_and_test:
+  version: 2
+  image-labeling-test_and_release:
     jobs:
-      - build
-      - test:
+      - image-labeling-tests
+      - image-labeling-publish:
+          context: infinitered-npm-package
           requires:
-            - build
+            - image-labeling-tests
+          filters:
+            branches:
+              only: main

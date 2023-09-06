@@ -11,7 +11,7 @@ defaults: &defaults
 version: 2.1
 
 jobs:
-  tests:
+  core-tests:
     <<: *defaults
     resource_class: large
     steps:
@@ -42,7 +42,7 @@ jobs:
           name: Run static tests
           command: yarn ci:lint && yarn ci:test
           no_output_timeout: 5m
-  publish:
+  core-publish:
     <<: *defaults
     steps:
       - checkout
@@ -63,13 +63,13 @@ jobs:
 
 workflows:
   version: 2
-  test_and_release:
+  core-test_and_release:
     jobs:
-      - tests
-      - publish:
+      - core-tests
+      - core-publish:
           context: infinitered-npm-package
           requires:
-            - tests
+            - core-tests
           filters:
             branches:
-              only: master
+              only: main
