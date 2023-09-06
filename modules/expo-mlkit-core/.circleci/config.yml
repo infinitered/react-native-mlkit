@@ -26,10 +26,8 @@ jobs:
           command: |
             git config --global user.email "ci@infinite.red"
             git config --global user.name "Infinite Red CI"
-      - run:
-          name: Run static tests
-          command: yarn ci:lint && yarn ci:test
-          no_output_timeout: 5m
+      - common-static-tests:
+          working_directory: ~/modules/expo-mlkit-core
   core-publish:
     <<: *defaults
     steps:
@@ -43,10 +41,12 @@ jobs:
             - v1-dependencies-
       - run:
           name: Build package
+          working_directory: ~/modules/expo-mlkit-core
           command: yarn build
       # Run semantic-release after all the above is set.
       - run:
           name: Publish to npm
+          working_directory: ~/modules/expo-mlkit-core
           command: yarn ci:publish # this will be added to your package.json scripts
 
 workflows:

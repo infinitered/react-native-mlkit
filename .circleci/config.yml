@@ -39,8 +39,30 @@ commands:
           paths:
             - .yarn/cache
             - .yarn/unplugged
-
-      # Common jobs for the main workflows
+  common-static-tests:
+    parameters:
+      working_directory:
+        description: Path to the directory where the tests are run
+        type: string
+        default: .
+    steps:
+      - run:
+          working_directory: << parameters.working_directory >>
+          name: Run static tests
+          command: yarn ci:lint && yarn ci:test
+          no_output_timeout: 5m
+  common-publish:
+    parameters:
+      working_directory:
+        description: Path to the directory where the tests are run
+        type: string
+        default: .
+    steps:
+      - run:
+          working_directory: << parameters.working_directory >>
+          name: Publish to NPM
+          command: yarn ci:publish
+# Common jobs for the main workflows
 jobs:
   common-pre:
     docker:

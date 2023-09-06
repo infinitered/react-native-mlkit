@@ -31,10 +31,8 @@ jobs:
       - run:
           name: PWD
           command: pwd
-      - run:
-          name: Run static tests
-          command: yarn ci:lint && yarn ci:test
-          no_output_timeout: 5m
+      - common-static-tests:
+          working_directory: ~/modules/expo-mlkit-face-detection
   face-detection-publish:
     <<: *defaults
     steps:
