@@ -62,6 +62,12 @@ commands:
           working_directory: << parameters.working_directory >>
           name: Publish to NPM
           command: yarn ci:publish
+  common-build-core:
+    steps:
+      - run:
+          working_directory: /mnt/ramdisk/repo/modules/expo-mlkit-core
+          name: Build core library
+          command: yarn build
   common-build:
     parameters:
       working_directory:

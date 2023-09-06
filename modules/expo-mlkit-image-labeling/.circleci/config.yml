@@ -28,9 +28,7 @@ jobs:
           command: |
             git config --global user.email "ci@infinite.red"
             git config --global user.name "Infinite Red CI"
-      - run:
-          name: PWD
-          command: pwd
+      - common-build-core
       - common-static-tests:
           working_directory: /mnt/ramdisk/repo/modules/expo-mlkit-image-labeling
   image-labeling-publish:
@@ -39,6 +37,7 @@ jobs:
       - checkout
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
       - common-install-deps
+      - common-build-core
       - common-build:
           working_directory: /mnt/ramdisk/repo/modules/expo-mlkit-image-labeling
       # Run semantic-release after all the above is set.
