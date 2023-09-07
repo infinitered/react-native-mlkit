@@ -14,7 +14,6 @@ out/
 build
 
 # misc
-.DS_Store
 *.pem
 
 # debug
@@ -29,9 +28,6 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
-# turbo
-.turbo
-
 # vercel
 .vercel
 
@@ -39,6 +35,7 @@ yarn-error.log*
 # Edit at https://www.toptal.com/developers/gitignore?templates=intellij,reactnative,turbo,yarn,react,macos,windows,swift,java,kotlin,objective-c
 
 ### Intellij ###
+.idea
 .idea/**/*
 
 ### Java ###

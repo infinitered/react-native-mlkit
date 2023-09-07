@@ -20,5 +20,6 @@
     "modules/*",
     "packages/*"
   ],
-  "packageManager": "yarn@3.6.1"
+  "packageManager": "yarn@3.6.1",
+  "repository": "https://www.github.com/infinitered/expo-mlkit"
 }

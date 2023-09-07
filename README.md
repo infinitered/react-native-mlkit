@@ -2,6 +2,10 @@
 
 ExpoMLKit provides Expo modules that allow developers to use MLKit native libraries in their Expo apps.
 
+* [Face Detection](https://github.com/infinitered/expo-mlkit/tree/main/modules/expo-mlkit-face-detection)
+* [Image Labeling](https://github.com/infinitered/expo-mlkit/tree/main/modules/expo-mlkit-image-labeling)
+* [Object Detection](https://github.com/infinitered/expo-mlkit/tree/main/modules/expo-mlkit-object-detection)
+
 ## Quickstart: Running the example app
 
 ### 1. Clone the project
