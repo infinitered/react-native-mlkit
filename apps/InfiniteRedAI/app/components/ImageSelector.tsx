@@ -4,11 +4,11 @@ import { View, ViewStyle, ActivityIndicator, TextStyle } from "react-native"
 import { observer } from "mobx-react-lite"
 import { Text } from "app/components/Text"
 import { useExampleImage, UseExampleImageStatus, SelectedImage } from "../utils/useExampleImage"
-import { ExpoMlKitImageView } from "./ExpoMlKitImageView"
+import { RNMLKitImageView } from "./RNMLKitImageView"
 import { Button } from "./Button"
 import { colors } from "../theme"
 import { ImageFilter, ImageGrouper } from "../utils/useExampleImage/examples"
-import { BoundingBox } from "@infinitered/expo-mlkit-core"
+import { BoundingBox } from "@infinitered/react-native-mlkit-core"
 
 export interface ImageSelectorProps {
   onImageChange(image: SelectedImage): void
@@ -53,7 +53,7 @@ export const ImageSelector = observer(function ImageSelector({
   return (
     <View style={$container}>
       {!isLoading ? (
-        <ExpoMlKitImageView
+        <RNMLKitImageView
           image={image}
           onPress={image ? clearPhoto : takePhoto}
           boxes={boundingBoxes}

@@ -1,0 +1,17 @@
+{
+  "platforms": [
+    "ios",
+    "android",
+    "web"
+  ],
+  "ios": {
+    "modules": [
+      "RNMLKitImageLabelingModule"
+    ]
+  },
+  "android": {
+    "modules": [
+      "red.infinite.reactnativemlkit.imagelabeling.RNMLKitImageLabelingModule"
+    ]
+  }
+}

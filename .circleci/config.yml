@@ -65,7 +65,7 @@ commands:
   common-build-core:
     steps:
       - run:
-          working_directory: /mnt/ramdisk/repo/modules/expo-mlkit-core
+          working_directory: /mnt/ramdisk/repo/modules/react-native-mlkit-core
           name: Build core library
           command: yarn build
   common-build:
@@ -101,10 +101,10 @@ workflows:
           # Similarly if B is modified, the job for B will run
           # If C is modified, then the jobs for both C and B (as a dependency) will run
           modules: |
-            modules/expo-mlkit-core
-            modules/expo-mlkit-face-detection
-            modules/expo-mlkit-image-labeling
-            modules/expo-mlkit-object-detection
+            modules/react-native-mlkit-core
+            modules/react-native-mlkit-face-detection
+            modules/react-native-mlkit-image-labeling
+            modules/react-native-mlkit-object-detection
 
 orbs:
   # An "embedded" orb to facilitate config splitting
@@ -228,4 +228,3 @@ orbs:
           - continuation/continue:
               configuration_path: << parameters.continue-config >>
               parameters: '{"run-setup":false}'
-

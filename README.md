@@ -1,23 +1,23 @@
-# @infinitered/expo-mlkit
+# @infinitered/react-native-mlkit
 
-ExpoMLKit provides Expo modules that allow developers to use MLKit native libraries in their Expo apps.
+RNMLKit provides Expo modules that allow developers to use MLKit native libraries in their Expo apps.
 
-* [Face Detection](https://github.com/infinitered/expo-mlkit/tree/main/modules/expo-mlkit-face-detection)
-* [Image Labeling](https://github.com/infinitered/expo-mlkit/tree/main/modules/expo-mlkit-image-labeling)
-* [Object Detection](https://github.com/infinitered/expo-mlkit/tree/main/modules/expo-mlkit-object-detection)
+* [Face Detection](https://github.com/infinitered/react-native-mlkit/tree/main/modules/react-native-mlkit-face-detection)
+* [Image Labeling](https://github.com/infinitered/react-native-mlkit/tree/main/modules/react-native-mlkit-image-labeling)
+* [Object Detection](https://github.com/infinitered/react-native-mlkit/tree/main/modules/react-native-mlkit-object-detection)
 
 ## Quickstart: Running the example app
 
 ### 1. Clone the project
 
 ```bash
-git clone git@github.com:infinitered/expo-mlkit.git
+git clone git@github.com:infinitered/react-native-mlkit.git
 ```
 
 ### 2. Install dependencies
 
 ```bash
-cd expo-mlkit
+cd react-native-mlkit
 yarn
 ```
 
@@ -83,8 +83,8 @@ The monorepo is organized into the following sections:
 
 For usage instructions see the readme in each module's directory.
 
-* [expo-mlkit-core](./modules/expo-mlkit-core/README.md)
-* [expo-mlkit-face-detection](./modules/expo-mlkit-face-detection/README.md)
+* [react-native-mlkit-core](./modules/react-native-mlkit-core/README.md)
+* [react-native-mlkit-face-detection](./modules/react-native-mlkit-face-detection/README.md)
 
 # Building
 

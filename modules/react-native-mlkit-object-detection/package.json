@@ -1,0 +1,44 @@
+{
+  "name": "@infinitered/react-native-mlkit-object-detection",
+  "version": "0.0.0",
+  "description": "Expo module for MLKit Object Detection",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "scripts": {
+    "build": "expo-module build",
+    "clean": "expo-module clean",
+    "lint": "expo-module lint",
+    "test": "expo-module test",
+    "prepare": "expo-module prepare",
+    "prepublishOnly": "expo-module prepublishOnly",
+    "ci:publish": "echo \"Fake publishing to NPM\"",
+    "ci:lint": "echo \"Fake linting....\"",
+    "ci:test": "echo \"Fake testing....\"",
+    "expo-module": "expo-module",
+    "open:ios": "open -a \"Xcode\" example/ios",
+    "open:android": "open -a \"Android Studio\" example/android"
+  },
+  "keywords": [
+    "react-native",
+    "expo",
+    "react-native-mlkit-object-detection",
+    "RNMLKitObjectDetection"
+  ],
+  "repository": "https://github.com/infinitered/react-native-mlkit-object-detection",
+  "bugs": {
+    "url": "https://github.com/infinitered/react-native-mlkit-object-detection/issues"
+  },
+  "author": "Trevor Coleman <trevor@infinitered.com> (https://github.com/trevor-coleman)",
+  "license": "MIT",
+  "homepage": "https://github.com/infinitered/react-native-mlkit#readme",
+  "devDependencies": {
+    "@types/react": "^18.0.25",
+    "expo-module-scripts": "^3.0.0",
+    "expo-modules-core": "^1.5.7"
+  },
+  "peerDependencies": {
+    "expo": "*",
+    "react": "*",
+    "react-native": "*"
+  }
+}

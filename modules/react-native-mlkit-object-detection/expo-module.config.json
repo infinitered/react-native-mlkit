@@ -1,0 +1,9 @@
+{
+  "platforms": ["ios", "android", "web"],
+  "ios": {
+    "modules": ["RNMLKitObjectDetectionModule"]
+  },
+  "android": {
+    "modules": ["red.infinite.reactnativemlkit.objectdetection.RNMLKitObjectDetectionModule"]
+  }
+}

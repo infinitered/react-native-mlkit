@@ -10,16 +10,16 @@
   "devDependencies": {
     "@turbo/gen": "^1.9.7",
     "eslint": "^8.0.0",
-    "eslint-config-expo-mlkit": "*",
+    "eslint-config-react-native-mlkit": "*",
     "prettier": "^2.5.1",
     "turbo": "latest"
   },
-  "name": "expo-mlkit",
+  "name": "react-native-mlkit",
   "workspaces": [
     "apps/*",
     "modules/*",
     "packages/*"
   ],
   "packageManager": "yarn@3.6.1",
-  "repository": "https://www.github.com/infinitered/expo-mlkit"
+  "repository": "https://www.github.com/infinitered/react-native-mlkit"
 }

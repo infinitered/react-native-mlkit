@@ -1,8 +1,8 @@
-### ExpoMLKit
+### RNMLKit
 
 # Apps
 
-* **InfiniteRedAI** - demo application showcasing the various ExpoMLKit options
+* **InfiniteRedAI** - demo application showcasing the various RNMLKit options
 * **docs** -- placeholder web app for the project's docs
 
 # Creating a New App (for demos/testing etc)
@@ -71,9 +71,9 @@ Creating a new app inside the monorepo requires a little extra config.
       // import the module(s) you want to use      
       "dependencies": {
         // ...other dependencies
-        "@infinitered/expo-mlkit-image-labeling": "*",
-        "@infinitered/expo-mlkit-object-detection": "*",
-        "@infinitered/expo-mlkit-face-detection": "*"
+        "@infinitered/react-native-mlkit-image-labeling": "*",
+        "@infinitered/react-native-mlkit-object-detection": "*",
+        "@infinitered/react-native-mlkit-face-detection": "*"
       },
       // ...
       // tell expo where to find the native modules

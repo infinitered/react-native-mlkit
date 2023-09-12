@@ -3,15 +3,15 @@ import { observer } from "mobx-react-lite"
 import { ViewStyle, View, TextStyle, ActivityIndicator } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { AppStackScreenProps } from "../../navigators"
-import { Screen, Text, Button, ExpoMlKitImageView, ScreenTitle } from "../../components"
+import { Screen, Text, Button, RNMLKitImageView, ScreenTitle } from "../../components"
 import { useTypedNavigation } from "../../navigators/useTypedNavigation"
-import * as ExpoMLKitFaceDetection from "@infinitered/expo-mlkit-face-detection"
+import * as RNMLKitFaceDetection from "@infinitered/react-native-mlkit-face-detection"
 import {
-  ExpoMLKitFace,
-  ExpoMLKitFaceDetectorOptionsRecord,
-} from "@infinitered/expo-mlkit-face-detection"
+  RNMLKitFace,
+  RNMLKitFaceDetectorOptionsRecord,
+} from "@infinitered/react-native-mlkit-face-detection"
 
-import { BoundingBox } from "@infinitered/expo-mlkit-core"
+import { BoundingBox } from "@infinitered/react-native-mlkit-core"
 import { colors } from "../../theme"
 import { UseExampleImageStatus, useExampleImage } from "../../utils/useExampleImage"
 import { BOX_COLORS } from "./boxColors"
@@ -38,7 +38,7 @@ const $photoButton: ViewStyle = {
   justifyContent: "space-around",
 }
 
-const FACE_DETECTOR_OPTIONS: ExpoMLKitFaceDetectorOptionsRecord = {
+const FACE_DETECTOR_OPTIONS: RNMLKitFaceDetectorOptionsRecord = {
   classificationMode: true,
   contourMode: true,
   isTrackingEnabled: true,
@@ -63,7 +63,7 @@ export const FaceDetectionScreen: FC<FaceDetectionScreenProps> = observer(
 
     useEffect(() => {
       ;(async () => {
-        await ExpoMLKitFaceDetection.initialize(FACE_DETECTOR_OPTIONS)
+        await RNMLKitFaceDetection.initialize(FACE_DETECTOR_OPTIONS)
       })()
     }, [])
 
@@ -71,8 +71,8 @@ export const FaceDetectionScreen: FC<FaceDetectionScreenProps> = observer(
       ;(async () => {
         if (!image?.uri) return
         setStatus("detecting")
-        const faces = await ExpoMLKitFaceDetection.detectFaces(image?.uri ?? "")
-        const boxes = faces?.faces?.map((face: ExpoMLKitFace, index: number) => ({
+        const faces = await RNMLKitFaceDetection.detectFaces(image?.uri ?? "")
+        const boxes = faces?.faces?.map((face: RNMLKitFace, index: number) => ({
           ...face?.frame,
           width: 2,
           color: BOX_COLORS[index % BOX_COLORS.length],
@@ -116,7 +116,7 @@ export const FaceDetectionScreen: FC<FaceDetectionScreenProps> = observer(
             "Take a photo, or select one from your camera roll to detect faces using MLKit."
           }
         />
-        <ExpoMlKitImageView image={image} onPress={image ? clearPhoto : takePhoto} boxes={boxes} />
+        <RNMLKitImageView image={image} onPress={image ? clearPhoto : takePhoto} boxes={boxes} />
         <View style={$status}>
           {status === "detecting" ? (
             <ActivityIndicator />

@@ -6,12 +6,12 @@ import { AppStackScreenProps } from "app/navigators"
 import { Screen, Text, Icon, ImageSelector } from "app/components"
 import {
   useObjectDetectionModels,
-  ExpoMLKitObjectDetectionObject,
+  RNMLKitObjectDetectionObject,
   useObjectDetector,
   AssetRecord,
-  ExpoMLKitObjectDetectorOptions,
-} from "@infinitered/expo-mlkit-object-detection"
-import { BoundingBox } from "@infinitered/expo-mlkit-core"
+  RNMLKitObjectDetectorOptions,
+} from "@infinitered/react-native-mlkit-object-detection"
+import { BoundingBox } from "@infinitered/react-native-mlkit-core"
 import { SelectedImage, UseExampleImageStatus } from "../utils/useExampleImage"
 import { useTypedNavigation } from "../navigators/useTypedNavigation"
 
@@ -23,7 +23,7 @@ export const ObjectDetectionScreenComponent: FC<ObjectDetectionScreenProps> = ob
     const navigation = useTypedNavigation<"ObjectDetection">()
 
     const [image, setImage] = useState<SelectedImage | null>(null)
-    const [result, setResult] = useState<ExpoMLKitObjectDetectionObject[]>([])
+    const [result, setResult] = useState<RNMLKitObjectDetectionObject[]>([])
     const [boxes, setBoxes] = useState<BoundingBox[]>([])
     const [status, setStatus] = useState<
       "init" | "noPermissions" | "done" | "error" | "loading" | UseExampleImageStatus
@@ -175,7 +175,7 @@ const MODELS: AssetRecord = {
   },
 }
 
-const DEFAULT_MODEL_OPTIONS: ExpoMLKitObjectDetectorOptions = {
+const DEFAULT_MODEL_OPTIONS: RNMLKitObjectDetectorOptions = {
   shouldEnableMultipleObjects: true,
   shouldEnableClassification: true,
   detectorMode: "singleImage",

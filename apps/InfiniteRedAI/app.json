@@ -22,7 +22,7 @@
     ],
     "android": {
       "icon": "./assets/images/app-icon-android-legacy.png",
-      "package": "red.infinite.expomlkit.demo",
+      "package": "red.infinite.reactnativemlkit.demo",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/app-icon-android-adaptive-foreground.png",
         "backgroundImage": "./assets/images/app-icon-android-adaptive-background.png"
@@ -40,7 +40,7 @@
     "ios": {
       "icon": "./assets/images/app-icon-ios.png",
       "supportsTablet": true,
-      "bundleIdentifier": "red.infinite.expomlkit.demo",
+      "bundleIdentifier": "red.infinite.reactnativemlkit.demo",
       "splash": {
         "image": "./assets/images/splash-logo-ios-mobile.png",
         "tabletImage": "./assets/images/splash-logo-ios-tablet.png",

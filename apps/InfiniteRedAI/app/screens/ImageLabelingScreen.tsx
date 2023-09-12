@@ -10,7 +10,7 @@ import {
   useModels,
   useImageLabeler,
   ClassificationResult,
-} from "@infinitered/expo-mlkit-image-labeling"
+} from "@infinitered/react-native-mlkit-image-labeling"
 import { UseExampleImageStatus, SelectedImage } from "../utils/useExampleImage"
 
 interface ImageLabelingScreenProps
