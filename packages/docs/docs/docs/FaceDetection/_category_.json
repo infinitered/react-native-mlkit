@@ -1,0 +1,8 @@
+{
+  "label": "Face Detection",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Label images with TFLite Models"
+  }
+}
