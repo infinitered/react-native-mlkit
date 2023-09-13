@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 slug: /image-labeling
-title: Image Labeling
+title: Getting Started
 ---
 
 # react-native-mlkit-image-labeling

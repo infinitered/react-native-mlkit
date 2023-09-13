@@ -38,15 +38,15 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          routeBasePath:"/",
           sidebarPath: require.resolve('./sidebars.js'),
-          // Remove this to remove the "edit this page" links.
-          // editUrl:
-          //   'https://github.com/infinitered/react-native-mlkit/tree/main/packages/create-docusaurus/templates/shared/',
         },
+        theme: {
+            customCss: require.resolve('./src/css/custom.css'),
+        }
       }),
     ],
   ],
-
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -57,6 +57,7 @@ const config = {
         logo: {
           alt: 'react-native-mlkit Logo',
           src: 'img/logo.svg',
+          srcDark: 'img/logo-dark.svg',
         },
         items: [
           {to: '/', label: 'Home', position: 'left'},
@@ -65,6 +66,13 @@ const config = {
             sidebarId: 'docs',
             position: 'left',
             label: 'Docs',
+          },
+
+          {
+            type: 'docSidebar',
+            sidebarId: 'contribute',
+            position: 'left',
+            label: 'Contribute',
           },
           {
             type: 'docSidebar',
@@ -78,6 +86,7 @@ const config = {
             position: 'right',
           },
         ],
+        style: 'dark'
       },
       footer: {
         style: 'dark',
@@ -100,7 +109,7 @@ const config = {
               },
               {
                 label: 'Slack Community',
-                href: 'https://commmunity.infinite.red',
+                href: 'https://community.infinite.red',
               },
               {
                 label: 'Twitter',
@@ -118,7 +127,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Infinite Red Inc.`,
       },
       prism: {
         theme: lightCodeTheme,

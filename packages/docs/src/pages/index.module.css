@@ -8,6 +8,7 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+  color: white;
 }
 
 @media screen and (max-width: 996px) {
@@ -16,8 +17,15 @@
   }
 }
 
+
+
 .buttons {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+}
+
+.buttons a {
+  margin: 0.5rem 0.5rem;
 }
