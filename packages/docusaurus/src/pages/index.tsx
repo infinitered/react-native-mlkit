@@ -12,13 +12,14 @@ const LogoHorizontal = require('@site/static/img/irHorizontal.svg').default;
 const LogoHorizontalReversed = require('@site/static/img/irHorizontal--reversed.svg').default;
 const LogoVerticalReversed = require('@site/static/img/irVertical--reversed.svg').default;
 const LogoVerticalDark = require('@site/static/img/irVertical--dark.svg').default;
+const LogoVerticalRed = require('@site/static/img/irVertical--red.svg').default;
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
-        <LogoVerticalDark className={styles.featureSvg} role="img" style={{width:"100%",aspectRatio:0.5, height:150, contentFit:"cover"}}/>
+        <LogoVerticalRed className={styles.featureSvg} role="img" style={{width:"100%",aspectRatio:0.5, height:150, contentFit:"cover"}}/>
         <h1 className="hero__title">{siteConfig.title}</h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
