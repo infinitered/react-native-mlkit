@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[4897],{6774:a=>{a.exports=JSON.parse('{"label":"docusaurus","permalink":"/react-native-mlkit/blog/tags/docusaurus","allTagsPath":"/react-native-mlkit/blog/tags","count":4}')}}]);

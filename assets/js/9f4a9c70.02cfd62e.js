@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[2739],{3242:e=>{e.exports=JSON.parse('{"label":"hello","permalink":"/react-native-mlkit/blog/tags/hello","allTagsPath":"/react-native-mlkit/blog/tags","count":2}')}}]);
