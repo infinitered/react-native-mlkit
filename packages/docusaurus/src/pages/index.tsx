@@ -24,17 +24,17 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg homePageButton"
-            to="/face-detection">
+            to="/category/face-detection">
             Face Detection
           </Link>
           <Link
               className="button button--secondary button--lg homePageButton"
-              to="/image-labeling">
+              to="/category/image-labeling">
             Image Labeling
           </Link>
           <Link
               className="button button--secondary button--lg homePageButton"
-              to="/object-detection">
+              to="/category/object-detection">
             Object Detection
           </Link>
         </div>

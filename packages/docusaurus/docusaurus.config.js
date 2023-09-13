@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/nightOwl');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'react-native-mlkit',
-  tagline: 'Run TFLite Models on device for fast, low-cost inference',
+  tagline: 'Run MLKit and TFLite Models on-device for fast, low-cost inference',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -23,6 +23,7 @@ const config = {
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
+  trailingSlash: true,
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -55,9 +56,8 @@ const config = {
       navbar: {
         title: 'react-native-mlkit',
         logo: {
-          alt: 'react-native-mlkit Logo',
+          alt: 'Infinite Red Logo',
           src: 'img/logo.svg',
-          srcDark: 'img/logo-dark.svg',
         },
         items: [
           {to: '/', label: 'Home', position: 'left'},
@@ -90,7 +90,7 @@ const config = {
             items: [
               {
                 label: 'Docs',
-                to: '/docs/intro',
+                to: '/docs/introduction',
               },
             ],
           },
