@@ -10,9 +10,7 @@
       ],
       "outputs": [
         "dist/**",
-        "build/**",
-        ".next/**",
-        "!.next/cache/**"
+        "build/**"
       ]
     },
     "clean": {},
