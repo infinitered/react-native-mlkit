@@ -13,7 +13,7 @@ version: 2.1
 orbs: node:circleci/node@5.1.0
 
 jobs:
-  image-labeling-tests:
+  image-labeling-lint-and-tests:
     <<: *defaults
     resource_class: large
     steps:
@@ -31,28 +31,9 @@ jobs:
       - common-build-core
       - common-static-tests:
           working_directory: /mnt/ramdisk/repo/modules/react-native-mlkit-image-labeling
-  image-labeling-publish:
-    <<: *defaults
-    steps:
-      - checkout
-      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-      - common-install-deps
-      - common-build-core
-      - common-build:
-          working_directory: /mnt/ramdisk/repo/modules/react-native-mlkit-image-labeling
-      # Run semantic-release after all the above is set.
-      - common-publish:
-          working_directory: /mnt/ramdisk/repo/modules/react-native-mlkit-image-labeling
-
 workflows:
   version: 2
-  image-labeling-test_and_release:
+  image-labeling-test:
     jobs:
-      - image-labeling-tests
-      - image-labeling-publish:
-          context: infinitered-npm-package
-          requires:
-            - image-labeling-tests
-          filters:
-            branches:
-              only: main
+      - image-labeling-lint-and-tests
+
