@@ -3415,6 +3415,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@infinitered/react-native-mlkit-object-detection@workspace:modules/react-native-mlkit-object-detection"
   dependencies:
+    "@infinitered/react-native-mlkit-core": "*"
     "@types/react": ^18.0.25
     expo-module-scripts: ^3.0.0
     expo-modules-core: ^1.5.7

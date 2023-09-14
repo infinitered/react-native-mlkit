@@ -33,7 +33,10 @@
   "homepage": "https://github.com/infinitered/react-native-mlkit#readme",
   "devDependencies": {
     "@types/react": "^18.0.25",
-    "expo-module-scripts": "^3.0.0",
+    "expo-module-scripts": "^3.0.0"
+  },
+  "dependencies": {
+    "@infinitered/react-native-mlkit-core": "*",
     "expo-modules-core": "^1.5.7"
   },
   "peerDependencies": {
