@@ -16,7 +16,8 @@
     "ci:test": "echo \"Fake testing....\"",
     "expo-module": "expo-module",
     "open:ios": "open -a \"Xcode\" example/ios",
-    "open:android": "open -a \"Android Studio\" example/android"
+    "open:android": "open -a \"Android Studio\" example/android",
+    "release": "npm publish"
   },
   "keywords": [
     "react-native",
@@ -24,13 +25,13 @@
     "react-native-mlkit-core",
     "ExpoMLkitCore"
   ],
-  "repository": "https://github.com/infinitered/react-native-mlkit-core",
+  "repository": "https://github.com/infinitered/react-native-mlkit",
   "bugs": {
-    "url": "https://github.com/infinitered/react-native-mlkit-core/issues"
+    "url": "https://github.com/infinitered/react-native-mlkit/issues"
   },
   "author": "Trevor Coleman <trevor@infinitered.com> (https://github.com/trevor-coleman)",
   "license": "MIT",
-  "homepage": "https://github.com/infinitered/react-native-mlkit#readme",
+  "homepage": "https://infinitered.github.io/react-native-mlkit",
   "devDependencies": {
     "@testing-library/react-native": "^12.3.0",
     "expo-module-scripts": "^3.0.11",
