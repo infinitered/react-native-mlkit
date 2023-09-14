@@ -1,6 +1,6 @@
 {
   "name": "@infinitered/react-native-mlkit-core",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Shared Library for RNMLKit",
   "main": "build/index.js",
   "types": "build/index.d.ts",
