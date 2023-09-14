@@ -3519,9 +3519,9 @@ __metadata:
     "@expo-google-fonts/space-grotesk": ^0.2.2
     "@expo/metro-config": ^0.7.1
     "@expo/webpack-config": ^18.0.1
-    "@infinitered/react-native-mlkit-face-detection": ^0.1.0
-    "@infinitered/react-native-mlkit-image-labeling": ^0.1.0
-    "@infinitered/react-native-mlkit-object-detection": ^0.2.0
+    "@infinitered/react-native-mlkit-face-detection": ^0.2.0
+    "@infinitered/react-native-mlkit-image-labeling": ^0.2.0
+    "@infinitered/react-native-mlkit-object-detection": ^0.3.0
     "@react-native-async-storage/async-storage": 1.18.2
     "@react-native-community/cli-platform-ios": ^8.0.2
     "@react-native/metro-config": ^0.72.9
@@ -3619,7 +3619,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@infinitered/react-native-mlkit-face-detection@^0.1.0, @infinitered/react-native-mlkit-face-detection@workspace:modules/react-native-mlkit-face-detection":
+"@infinitered/react-native-mlkit-face-detection@^0.2.0, @infinitered/react-native-mlkit-face-detection@workspace:modules/react-native-mlkit-face-detection":
   version: 0.0.0-use.local
   resolution: "@infinitered/react-native-mlkit-face-detection@workspace:modules/react-native-mlkit-face-detection"
   dependencies:
@@ -3634,7 +3634,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@infinitered/react-native-mlkit-image-labeling@^0.1.0, @infinitered/react-native-mlkit-image-labeling@workspace:modules/react-native-mlkit-image-labeling":
+"@infinitered/react-native-mlkit-image-labeling@^0.2.0, @infinitered/react-native-mlkit-image-labeling@workspace:modules/react-native-mlkit-image-labeling":
   version: 0.0.0-use.local
   resolution: "@infinitered/react-native-mlkit-image-labeling@workspace:modules/react-native-mlkit-image-labeling"
   dependencies:
@@ -3649,7 +3649,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@infinitered/react-native-mlkit-object-detection@^0.2.0, @infinitered/react-native-mlkit-object-detection@workspace:modules/react-native-mlkit-object-detection":
+"@infinitered/react-native-mlkit-object-detection@^0.3.0, @infinitered/react-native-mlkit-object-detection@workspace:modules/react-native-mlkit-object-detection":
   version: 0.0.0-use.local
   resolution: "@infinitered/react-native-mlkit-object-detection@workspace:modules/react-native-mlkit-object-detection"
   dependencies:
