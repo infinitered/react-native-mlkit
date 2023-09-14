@@ -18,6 +18,14 @@
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "prebuild": {},
+    "postinstall": {
+      "dependsOn": [
+        "^postinstall",
+        "prebuild",
+        "build"
+      ]
     }
   }
 }

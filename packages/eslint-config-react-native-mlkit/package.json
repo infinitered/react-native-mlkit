@@ -10,7 +10,5 @@
     "eslint-config-universe": "11.3.0",
     "eslint-plugin-react": "7.28.0"
   },
-  "publishConfig": {
-    "access": "public"
-  }
+  "private": true
 }

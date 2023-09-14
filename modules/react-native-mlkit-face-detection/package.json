@@ -1,6 +1,6 @@
 {
   "name": "@infinitered/react-native-mlkit-face-detection",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "MLKit Face Detection for Expo",
   "main": "build/index.js",
   "types": "build/index.d.ts",
