@@ -23,7 +23,7 @@ jobs:
       - name: Install Dependencies
         run: yarn
 
-      - name: Publish to npm
+      - name: Version Packages or Publish to npm
         id: changesets
         uses: changesets/action@v1
         with:
