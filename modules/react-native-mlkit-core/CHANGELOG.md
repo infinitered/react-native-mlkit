@@ -1,5 +1,11 @@
 # @infinitered/react-native-mlkit-core
 
+## 0.5.0
+
+### Minor Changes
+
+- e0359c1: Fix release scripts
+
 ## 0.4.0
 
 ### Minor Changes
