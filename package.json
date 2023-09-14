@@ -8,9 +8,10 @@
     "lint": "turbo run lint",
     "clean": "turbo run clean",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "postinstall": "turbo run prebuild --filter=!docusaurus"
+    "setup": "./scripts/setup.sh"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.26.2",
     "@turbo/gen": "^1.9.7",
     "eslint": "^8.0.0",
     "eslint-config-react-native-mlkit": "*",
@@ -24,8 +25,5 @@
     "packages/*"
   ],
   "packageManager": "yarn@3.6.1",
-  "repository": "https://www.github.com/infinitered/react-native-mlkit",
-  "dependencies": {
-    "@changesets/cli": "^2.26.2"
-  }
+  "repository": "https://www.github.com/infinitered/react-native-mlkit"
 }
