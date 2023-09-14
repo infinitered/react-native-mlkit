@@ -19,7 +19,7 @@
     "bundle:android": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
     "release:ios": "echo 'Not implemented yet: release:ios. Use Xcode. More info: https://reactnative.dev/docs/next/publishing-to-app-store'",
     "release:android": "cd android && rm -rf app/src/main/res/drawable-* && ./gradlew assembleRelease && cd - && echo 'APK generated in ./android/app/build/outputs/apk/release/app-release.apk'",
-    "clean": "rm -rf node_modules && watchman watch-del-all && rm -rf ios/build ios/Pods ios/Podfile.lock android/build",
+    "clean": "rm -rf node_modulesios /build ios android && watchman watch-del-all",
     "clean-all": "npx react-native clean-project-auto",
     "expo:start": "expo start",
     "expo:android": "expo start --android",

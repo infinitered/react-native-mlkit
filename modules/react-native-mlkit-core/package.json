@@ -11,7 +11,7 @@
     "test": "expo-module test",
     "prepare": "expo-module prepare",
     "prepublishOnly": "expo-module prepublishOnly",
-    "ci:publish": "echo \"Fake publishing to NPM\"",
+    "ci:publish": "npm publish",
     "ci:lint": "echo \"Fake linting....\"",
     "ci:test": "echo \"Fake testing....\"",
     "expo-module": "expo-module",

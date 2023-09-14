@@ -31,6 +31,9 @@
   "author": "Trevor Coleman <trevor@infinitered.com> (https://github.com/trevor-coleman)",
   "license": "MIT",
   "homepage": "https://github.com/infinitered/react-native-mlkit#readme",
+  "dependencies": {
+    "@infinitered/react-native-mlkit-core": "*"
+  },
   "devDependencies": {
     "@types/react": "^18.0.25",
     "expo-module-scripts": "^3.0.0"

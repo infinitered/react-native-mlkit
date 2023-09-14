@@ -1,11 +1,13 @@
 {
   "private": true,
   "scripts": {
-    "build": "turbo run build",
+    "build": "turbo run build --filter=!docusaurus",
+    "build:docs": "turbo run build --filter=docusaurus",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "clean": "turbo run clean",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "postinstall": "turbo run build --filter=docusaurus"
   },
   "devDependencies": {
     "@turbo/gen": "^1.9.7",
