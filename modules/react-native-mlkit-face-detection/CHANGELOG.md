@@ -1,5 +1,16 @@
 # @infinitered/react-native-mlkit-face-detection
 
+## 0.3.0
+
+### Minor Changes
+
+- e0359c1: Fix release scripts
+
+### Patch Changes
+
+- Updated dependencies [e0359c1]
+  - @infinitered/react-native-mlkit-core@0.5.0
+
 ## 0.2.0
 
 ### Minor Changes
