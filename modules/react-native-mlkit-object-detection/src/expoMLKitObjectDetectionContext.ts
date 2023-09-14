@@ -29,9 +29,7 @@ export function useRNMLKitObjectDetectionContext<T extends ModelAssets>() {
 export function useObjectDetector(name: string = "default") {
   const { models } = useRNMLKitObjectDetectionContext<ModelAssets>();
 
-  const model = useMemo(() => {
+  return useMemo(() => {
     return models[name];
   }, [models, models[name]]);
-
-  return models[name];
 }

@@ -31,10 +31,7 @@ export async function detectObjects(
   modelName: string,
   imagePath: string
 ): Promise<RNMLKitObjectDetectionObject[]> {
-  return await RNMLKitObjectDetectionModule.detectObjects(
-    modelName,
-    imagePath
-  );
+  return await RNMLKitObjectDetectionModule.detectObjects(modelName, imagePath);
 }
 
 export function isLoaded(modelName: string) {

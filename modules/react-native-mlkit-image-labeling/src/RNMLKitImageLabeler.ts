@@ -20,9 +20,7 @@ export type RNMLKitImageLabelerSpec = {
 };
 
 type RNMLKitImageLabelingModule = {
-  addModel: (
-    modelSpec: RNMLKitImageLabelerSpec
-  ) => Promise<string | undefined>;
+  addModel: (modelSpec: RNMLKitImageLabelerSpec) => Promise<string | undefined>;
   loadModel: (
     modelSpec: RNMLKitImageLabelerSpec
   ) => Promise<string | undefined>;

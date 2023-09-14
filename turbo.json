@@ -18,6 +18,15 @@
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "test": {
+      "dependsOn": [
+        "^build",
+        "^lint"
+      ],
+      "cache": false,
+      "persistent": true
+
     }
   }
 }

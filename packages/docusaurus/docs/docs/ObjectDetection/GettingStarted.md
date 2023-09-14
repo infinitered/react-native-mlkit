@@ -22,9 +22,3 @@ yarn add react-native-mlkit-object-detection
 #npm
 npm install react-native-mlkit-object-detection
 ```
-
-
-
-
-
-

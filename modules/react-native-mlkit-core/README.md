@@ -29,7 +29,7 @@ let image = RNMLKitImage(imagePath: imagePath)
 // ...
 ```
 
-* `imagePath` - should be the localUri of the image to process. i.e. `Asset.localUri` from an Expo Asset or `Image.uri`
+- `imagePath` - should be the localUri of the image to process. i.e. `Asset.localUri` from an Expo Asset or `Image.uri`
   from
   an ImagePickerAsset.
 
@@ -46,9 +46,9 @@ var image:InputImage = RNMLKitImage(imagePath, appContext.reactContext!!).image
 // ...
 ```
 
-* `imagePath` is the localUri of the image to process.  `Asset.localUri` from an Expo Asset or `Image.uri` from an Expo
+- `imagePath` is the localUri of the image to process. `Asset.localUri` from an Expo Asset or `Image.uri` from an Expo
   ImagePickerAsset.
-* `appContext` is the AppContext from your expo module -- it's accessible as a property on the Module class.
+- `appContext` is the AppContext from your expo module -- it's accessible as a property on the Module class.
 
 ### React Components
 
@@ -62,7 +62,7 @@ import { BoundingBoxView } from "@infinitered/react-native-mlkit-core";
 <BoundingBoxView box={box} scale={scale} />;
 ```
 
-* `box` is the bounding box to render of type `BoundingBox`
+- `box` is the bounding box to render of type `BoundingBox`
 
 ```ts
 /**
@@ -87,8 +87,8 @@ import { ImageWithBoundingBoxes } from "@infinitered/react-native-mlkit-core";
 <ImageWithBoundingBoxes image={image} boundingBoxes={boundingBoxes} />;
 ```
 
-* `boundingBoxes` is an array of `BoundingBox` objects to render over the image.
-* `image` is the image to render. Accepts an `Image` from `expo-image`
+- `boundingBoxes` is an array of `BoundingBox` objects to render over the image.
+- `image` is the image to render. Accepts an `Image` from `expo-image`
 
 ### Hooks
 

@@ -39,9 +39,7 @@ export class RNMLKitCustomObjectDetector implements RNMLKitObjectDetector {
   async detectObjects(
     imagePath: string
   ): Promise<RNMLKitObjectDetectionObject[]> {
-    console.log(
-      `RNMLKitCustomObjectDetector(${this.modelName}).detectObjects`
-    );
+    console.log(`RNMLKitCustomObjectDetector(${this.modelName}).detectObjects`);
     if (!this.isLoaded()) {
       throw new Error("Custom model is not loaded");
     }

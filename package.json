@@ -4,6 +4,7 @@
     "build": "turbo run build --filter=!docusaurus",
     "build:docs": "turbo run build --filter=docusaurus",
     "docs": "yarn workspace docusaurus start",
+    "test": "turbo run test",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "clean": "turbo run clean",

@@ -32,6 +32,7 @@ Reactotron.use(
 
 if (Platform.OS !== "web") {
   Reactotron.setAsyncStorageHandler(AsyncStorage)
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   Reactotron.useReactNative()
 }
 
