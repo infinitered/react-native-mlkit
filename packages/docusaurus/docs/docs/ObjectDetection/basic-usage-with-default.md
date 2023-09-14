@@ -13,9 +13,12 @@ available via React context.
 ```tsx
 // App.tsx
 
-import { AssetRecord, useObjectDetectionModels } from "react-native-mlkit-object-detection"
+import {
+  AssetRecord,
+  useObjectDetectionModels,
+} from "react-native-mlkit-object-detection";
 
-// For descriptions of options for default models see link below this snipped.  
+// For descriptions of options for default models see link below this snipped.
 function App() {
   // fetch the provider component from the hook
   const { ObjectDetectionModelContextProvider } = useObjectDetectionModels({
@@ -25,13 +28,13 @@ function App() {
       shouldEnableClassification: true,
       detectorMode: "singleImage",
     },
-  })
+  });
 
   return (
     <ObjectDetectionModelContextProvider>
-      { /* Rest of your app */}
+      {/* Rest of your app */}
     </ObjectDetectionModelContextProvider>
-  )
+  );
 }
 ```
 
@@ -43,52 +46,48 @@ app's lifecycle you load the model.
 ```tsx
 // MyComponent.tsx
 
-import { useObjectDetector, RNMLKitDetectedObject } from "@infinitered/react-native-mlkit-object-detection"
-import { useEffect } from "react"
-
+import {
+  useObjectDetector,
+  RNMLKitDetectedObject,
+} from "@infinitered/react-native-mlkit-object-detection";
+import { useEffect } from "react";
 
 function MyComponent() {
   // fetch the model from the hook, if you don't pass a model name it will fetch the default MLKit Object Detection model
-  const { model } = useObjectDetector()
+  const { model } = useObjectDetector();
 
-  const [modelLoaded, setModelLoaded] = useState(model?.isLoaded() ?? false)
+  const [modelLoaded, setModelLoaded] = useState(model?.isLoaded() ?? false);
 
-  // Models must be loaded before they can be used. This can be slow, and consume 
+  // Models must be loaded before they can be used. This can be slow, and consume
   // a lot of resources so consider carefully where and when to load the model
-  useEffect(
-    () => {
-      // Loading models is done asynchronously, so in a useEffect we need to wrap it in an async function
-      async function loadModel() {
-        if (!model || modelIsLoaded) return
-        // load the model
-        await model.load()
-        // set the model loaded state to true
-        setModelLoaded(true)
-      }
+  useEffect(() => {
+    // Loading models is done asynchronously, so in a useEffect we need to wrap it in an async function
+    async function loadModel() {
+      if (!model || modelIsLoaded) return;
+      // load the model
+      await model.load();
+      // set the model loaded state to true
+      setModelLoaded(true);
+    }
 
-      loadModel()
-    },
-    [model, modelIsLoaded]
-  )
+    loadModel();
+  }, [model, modelIsLoaded]);
 
-
-// the output of the model is an array of `RNMLKitDetectedObject` objects
-  const [result, setResult] = useState<RNMLKitDetectedObject[]>([])
+  // the output of the model is an array of `RNMLKitDetectedObject` objects
+  const [result, setResult] = useState<RNMLKitDetectedObject[]>([]);
 
   useEffect(() => {
-    if (!modelLoaded) return
+    if (!modelLoaded) return;
 
     // model.detectObjects is async, so when we use it in a useEffect, we need to wrap it in an async function
     async function detectObjects(image: AssetRecord) {
-      const result = await model.detectObjects(image)
-      setResult(result)
+      const result = await model.detectObjects(image);
+      setResult(result);
     }
 
-    detectObjects()
-  }, [model, modelLoaded])
+    detectObjects();
+  }, [model, modelLoaded]);
 
-  return (
-    <View>{JSON.stringify(result)}</View>
-  )
+  return <View>{JSON.stringify(result)}</View>;
 }
 ```

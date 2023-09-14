@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from "react"
+/* eslint-disable react-hooks/rules-of-hooks */
+import { useState, useEffect, useRef, useCallback } from "react"
 import { BackHandler, Platform } from "react-native"
 import { NavigationState, createNavigationContainerRef } from "@react-navigation/native"
 import Config from "../config"
@@ -131,18 +132,18 @@ export function useNavigationPersistence(storage: Storage, persistenceKey: strin
     storage.save(persistenceKey, state)
   }
 
-  const restoreState = async () => {
+  const restoreState = useCallback(async () => {
     try {
       const state = (await storage.load(persistenceKey)) as NavigationProps["initialState"] | null
       if (state) setInitialNavigationState(state)
     } finally {
       if (isMounted()) setIsRestored(true)
     }
-  }
+  }, [isMounted, persistenceKey, storage])
 
   useEffect(() => {
     if (!isRestored) restoreState()
-  }, [isRestored])
+  }, [isRestored, restoreState])
 
   return { onNavigationStateChange, restoreState, isRestored, initialNavigationState }
 }

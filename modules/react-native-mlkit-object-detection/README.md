@@ -3,21 +3,22 @@
 ## Table of Contents
 
 <!-- TOC -->
-* [RNMLKit Object Detection](#reactnativemlkit-object-detection)
-  * [Table of Contents](#table-of-contents)
-  * [Overview](#overview)
-  * [Installation](#installation)
-  * [Basic Usage with Default Model](#basic-usage-with-default-model)
-    * [1. Set up the model context provider](#1-set-up-the-model-context-provider)
-    * [2. Fetch the model using the `useObjectDetectionModel` hook, and use it to detect objects in an image](#2-fetch-the-model-using-the-useobjectdetectionmodel-hook-and-use-it-to-detect-objects-in-an-image)
-  * [Using a custom model](#using-a-custom-model)
-    * [Compatible Models](#compatible-models)
-    * [1. Add your model to the project, and Configure Metro to bundle your model](#1-add-your-model-to-the-project-and-configure-metro-to-bundle-your-model)
-    * [2. Set up the model context provider](#2-set-up-the-model-context-provider)
-    * [3. Fetch the model using the `useObjectDetectionModel` hook, and use it to detect objects in an image](#3-fetch-the-model-using-the-useobjectdetectionmodel-hook-and-use-it-to-detect-objects-in-an-image)
-<!-- TOC -->
 
---- 
+- [RNMLKit Object Detection](#reactnativemlkit-object-detection)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Installation](#installation)
+  - [Basic Usage with Default Model](#basic-usage-with-default-model)
+    - [1. Set up the model context provider](#1-set-up-the-model-context-provider)
+    - [2. Fetch the model using the `useObjectDetectionModel` hook, and use it to detect objects in an image](#2-fetch-the-model-using-the-useobjectdetectionmodel-hook-and-use-it-to-detect-objects-in-an-image)
+  - [Using a custom model](#using-a-custom-model)
+  _ [Compatible Models](#compatible-models)
+  _ [1. Add your model to the project, and Configure Metro to bundle your model](#1-add-your-model-to-the-project-and-configure-metro-to-bundle-your-model)
+  _ [2. Set up the model context provider](#2-set-up-the-model-context-provider)
+  _ [3. Fetch the model using the `useObjectDetectionModel` hook, and use it to detect objects in an image](#3-fetch-the-model-using-the-useobjectdetectionmodel-hook-and-use-it-to-detect-objects-in-an-image)
+  <!-- TOC -->
+
+---
 
 ## Overview
 
@@ -46,9 +47,12 @@ available via React context.
 ```tsx
 // App.tsx
 
-import { AssetRecord, useObjectDetectionModels } from "react-native-mlkit-object-detection"
+import {
+  AssetRecord,
+  useObjectDetectionModels,
+} from "react-native-mlkit-object-detection";
 
-// For descriptions of options for default models see link below this snipped.  
+// For descriptions of options for default models see link below this snipped.
 function App() {
   // fetch the provider component from the hook
   const { ObjectDetectionModelContextProvider } = useObjectDetectionModels({
@@ -58,13 +62,13 @@ function App() {
       shouldEnableClassification: true,
       detectorMode: "singleImage",
     },
-  })
+  });
 
   return (
     <ObjectDetectionModelContextProvider>
-      { /* Rest of your app */}
+      {/* Rest of your app */}
     </ObjectDetectionModelContextProvider>
-  )
+  );
 }
 ```
 
@@ -76,53 +80,49 @@ app's lifecycle you load the model.
 ```tsx
 // MyComponent.tsx
 
-import { useObjectDetector, RNMLKitDetectedObject } from "@infinitered/react-native-mlkit-object-detection"
-import { useEffect } from "react"
-
+import {
+  useObjectDetector,
+  RNMLKitDetectedObject,
+} from "@infinitered/react-native-mlkit-object-detection";
+import { useEffect } from "react";
 
 function MyComponent() {
   // fetch the model from the hook, if you don't pass a model name it will fetch the default MLKit Object Detection model
-  const { model } = useObjectDetector()
+  const { model } = useObjectDetector();
 
-  const [modelLoaded, setModelLoaded] = useState(model?.isLoaded() ?? false)
+  const [modelLoaded, setModelLoaded] = useState(model?.isLoaded() ?? false);
 
-  // Models must be loaded before they can be used. This can be slow, and consume 
+  // Models must be loaded before they can be used. This can be slow, and consume
   // a lot of resources so consider carefully where and when to load the model
-  useEffect(
-    () => {
-      // Loading models is done asynchronously, so in a useEffect we need to wrap it in an async function
-      async function loadModel() {
-        if (!model || modelIsLoaded) return
-        // load the model
-        await model.load()
-        // set the model loaded state to true
-        setModelLoaded(true)
-      }
+  useEffect(() => {
+    // Loading models is done asynchronously, so in a useEffect we need to wrap it in an async function
+    async function loadModel() {
+      if (!model || modelIsLoaded) return;
+      // load the model
+      await model.load();
+      // set the model loaded state to true
+      setModelLoaded(true);
+    }
 
-      loadModel()
-    },
-    [model, modelIsLoaded]
-  )
+    loadModel();
+  }, [model, modelIsLoaded]);
 
-
-// the output of the model is an array of `RNMLKitDetectedObject` objects
-  const [result, setResult] = useState<RNMLKitDetectedObject[]>([])
+  // the output of the model is an array of `RNMLKitDetectedObject` objects
+  const [result, setResult] = useState<RNMLKitDetectedObject[]>([]);
 
   useEffect(() => {
-    if (!modelLoaded) return
+    if (!modelLoaded) return;
 
     // model.detectObjects is async, so when we use it in a useEffect, we need to wrap it in an async function
     async function detectObjects(image: AssetRecord) {
-      const result = await model.detectObjects(image)
-      setResult(result)
+      const result = await model.detectObjects(image);
+      setResult(result);
     }
 
-    detectObjects()
-  }, [model, modelLoaded])
+    detectObjects();
+  }, [model, modelLoaded]);
 
-  return (
-    <View>{JSON.stringify(result)}</View>
-  )
+  return <View>{JSON.stringify(result)}</View>;
 }
 ```
 
@@ -148,13 +148,13 @@ Then update your metro config so Metro knows to bundle TFLite files. You do this
 
 ```js
 // metro.config.js
-const { getDefaultConfig } = require('expo/metro-config');
+const { getDefaultConfig } = require("expo/metro-config");
 
 const config = getDefaultConfig(__dirname);
 
 config.resolver.assetExts.push(
   // Adds support for `.tflite` files for TFLite models
-  'tflite'
+  "tflite"
 );
 
 module.exports = config;
@@ -170,7 +170,10 @@ First define an AssetRecord object with the details of your model, and your desi
 ```js
 // App.tsx
 
-import { AssetRecord, useObjectDetectionModels } from "react-native-mlkit-object-detection"
+import {
+  AssetRecord,
+  useObjectDetectionModels,
+} from "react-native-mlkit-object-detection";
 
 const MODELS: AssetRecord = {
   // the name you'll use to refer to the model
@@ -183,22 +186,22 @@ const MODELS: AssetRecord = {
       shouldEnableClassification: false,
       detectorMode: "singleImage",
     },
-  }
-}
+  },
+};
 
-// For descriptions of options for default models see link below this snipped.  
+// For descriptions of options for default models see link below this snipped.
 function App() {
   // fetch the provider component from the hook
   const { ObjectDetectionModelContextProvider } = useObjectDetectionModels({
     models: MODELS,
     loadDefaultModel: false,
-  })
+  });
 
   return (
     <ObjectDetectionModelContextProvider>
       // Rest of your app
     </ObjectDetectionModelContextProvider>
-  )
+  );
 }
 ```
 
@@ -207,52 +210,48 @@ function App() {
 ```tsx
 // MyComponent.tsx
 
-import { useObjectDetector, RNMLKitDetectedObject } from "@infinitered/react-native-mlkit-object-detection"
-import { useEffect } from "react"
-
+import {
+  useObjectDetector,
+  RNMLKitDetectedObject,
+} from "@infinitered/react-native-mlkit-object-detection";
+import { useEffect } from "react";
 
 function MyComponent() {
   // fetch the model from the hook, if you don't pass a model name it will fetch the default MLKit Object Detection model
-  const { model } = useObjectDetector("myCustomModel")
+  const { model } = useObjectDetector("myCustomModel");
 
-  const [modelLoaded, setModelLoaded] = useState(model?.isLoaded() ?? false)
+  const [modelLoaded, setModelLoaded] = useState(model?.isLoaded() ?? false);
 
-  // Models must be loaded before they can be used. This can be slow, and consume 
+  // Models must be loaded before they can be used. This can be slow, and consume
   // a lot of resources so consider carefully where and when to load the model
-  useEffect(
-    () => {
-      // Loading models is done asynchronously, so in a useEffect we need to wrap it in an async function
-      async function loadModel() {
-        if (!model || modelIsLoaded) return
-        // load the model
-        await model.load()
-        // set the model loaded state to true
-        setModelLoaded(true)
-      }
+  useEffect(() => {
+    // Loading models is done asynchronously, so in a useEffect we need to wrap it in an async function
+    async function loadModel() {
+      if (!model || modelIsLoaded) return;
+      // load the model
+      await model.load();
+      // set the model loaded state to true
+      setModelLoaded(true);
+    }
 
-      loadModel()
-    },
-    [model, modelIsLoaded]
-  )
+    loadModel();
+  }, [model, modelIsLoaded]);
 
-
-// the output of the model is an array of `RNMLKitDetectedObject` objects
-  const [result, setResult] = useState<RNMLKitDetectedObject[]>([])
+  // the output of the model is an array of `RNMLKitDetectedObject` objects
+  const [result, setResult] = useState<RNMLKitDetectedObject[]>([]);
 
   useEffect(() => {
-    if (!modelLoaded) return
+    if (!modelLoaded) return;
 
     // model.detectObjects is async, so when we use it in a useEffect, we need to wrap it in an async function
     async function detectObjects(image: AssetRecord) {
-      const result = await model.detectObjects(image)
-      setResult(result)
+      const result = await model.detectObjects(image);
+      setResult(result);
     }
 
-    detectObjects()
-  }, [model, modelLoaded])
+    detectObjects();
+  }, [model, modelLoaded]);
 
-  return (
-    <View>{JSON.stringify(result)}</View>
-  )
+  return <View>{JSON.stringify(result)}</View>;
 }
 ```

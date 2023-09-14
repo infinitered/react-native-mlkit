@@ -6,7 +6,6 @@ import { RNMLKitDefaultObjectDetector } from "./RNMLKitDefaultObjectDetector";
 import {
   RNMLKitObjectDetectionContext,
   ModelAssets,
-  useRNMLKitObjectDetectionContext,
 } from "./expoMLKitObjectDetectionContext";
 import {
   RNMLKitCustomObjectDetectorOptions,

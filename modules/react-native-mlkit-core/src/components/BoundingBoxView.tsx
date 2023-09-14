@@ -6,15 +6,26 @@ import { useBoundingBoxStyle, ImageScale, BoundingBox } from "../hooks";
 export interface BoundingBoxProps {
   box: BoundingBox;
   scale: ImageScale;
+  testId?: string;
 }
 
-export const BoundingBoxView: React.FC<BoundingBoxProps> = ({ box, scale }) => {
+export const BoundingBoxView: React.FC<BoundingBoxProps> = ({
+  box,
+  scale,
+  testId,
+}) => {
   const boxStyle = useBoundingBoxStyle(box, scale);
-  console.log(">>> BOX LABEL:", box.label);
+  const {
+    origin: { x, y },
+    size: { x: w, y: h },
+    label,
+  } = box;
+  const newTestId = `${testId}--boundingBox--x${x}y${y}-w${w}h${h}`;
   return (
-    <View style={boxStyle}>
+    <View style={boxStyle} testID={newTestId}>
       {box.label && (
         <Text
+          testID={`${testId}-text`}
           style={{
             backgroundColor: boxStyle?.borderColor ?? "magenta",
             fontSize: 8,
@@ -28,7 +39,7 @@ export const BoundingBoxView: React.FC<BoundingBoxProps> = ({ box, scale }) => {
             paddingHorizontal: 2,
           }}
         >
-          {box.label}
+          {label}
         </Text>
       )}
     </View>

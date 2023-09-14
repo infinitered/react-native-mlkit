@@ -144,7 +144,7 @@ export const TextField = forwardRef(function TextField(props: TextFieldProps, re
     $inputWrapperStyleOverride,
   ]
 
-  const $inputStyles:StyleProp<ViewStyle|TextStyle> = [
+  const $inputStyles: StyleProp<ViewStyle | TextStyle> = [
     $inputStyle,
     disabled && { color: colors.textDim },
     isRTL && { textAlign: "right" as TextStyle["textAlign"] },

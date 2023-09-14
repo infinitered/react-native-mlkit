@@ -2,9 +2,9 @@
 
 RNMLKit provides Expo modules that allow developers to use MLKit native libraries in their Expo apps.
 
-* [Face Detection](https://github.com/infinitered/react-native-mlkit/tree/main/modules/react-native-mlkit-face-detection)
-* [Image Labeling](https://github.com/infinitered/react-native-mlkit/tree/main/modules/react-native-mlkit-image-labeling)
-* [Object Detection](https://github.com/infinitered/react-native-mlkit/tree/main/modules/react-native-mlkit-object-detection)
+- [Face Detection](https://github.com/infinitered/react-native-mlkit/tree/main/modules/react-native-mlkit-face-detection)
+- [Image Labeling](https://github.com/infinitered/react-native-mlkit/tree/main/modules/react-native-mlkit-image-labeling)
+- [Object Detection](https://github.com/infinitered/react-native-mlkit/tree/main/modules/react-native-mlkit-object-detection)
 
 ## Quickstart: Running the example app
 
@@ -27,7 +27,7 @@ yarn
 yarn build
 ```
 
-###                        
+###
 
 ### 5. Create a development build of the app
 
@@ -73,18 +73,18 @@ npx expo run:android -d
 
 The monorepo is organized into the following sections:
 
-* **Apps** -- holds the example app (`InfiniteRedAI`) that demonstrates how to use the modules.
-* **Modules** -- holds the modules themselves. Each module is a separate npm package, and they are published to npm
+- **Apps** -- holds the example app (`InfiniteRedAI`) that demonstrates how to use the modules.
+- **Modules** -- holds the modules themselves. Each module is a separate npm package, and they are published to npm
   under the name `@infinitered/[module name]`.
-* **Packages** -- holds internal packages that are only used by the modules and are not published to npm. Things like
+- **Packages** -- holds internal packages that are only used by the modules and are not published to npm. Things like
   the linter config.
 
 ## Usage
 
 For usage instructions see the readme in each module's directory.
 
-* [react-native-mlkit-core](./modules/react-native-mlkit-core/README.md)
-* [react-native-mlkit-face-detection](./modules/react-native-mlkit-face-detection/README.md)
+- [react-native-mlkit-core](./modules/react-native-mlkit-core/README.md)
+- [react-native-mlkit-face-detection](./modules/react-native-mlkit-face-detection/README.md)
 
 # Building
 

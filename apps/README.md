@@ -2,8 +2,8 @@
 
 # Apps
 
-* **InfiniteRedAI** - demo application showcasing the various RNMLKit options
-* **docs** -- placeholder web app for the project's docs
+- **InfiniteRedAI** - demo application showcasing the various RNMLKit options
+- **docs** -- placeholder web app for the project's docs
 
 # Creating a New App (for demos/testing etc)
 
@@ -11,25 +11,25 @@ Creating a new app inside the monorepo requires a little extra config.
 
 1. **From the project root** create the new app:
 
-    ```bash
-    # NOTE: This MUST be run from the project root
-    yarn create expo-app -t expo-template-blank-typescript apps/MyTypescriptApp
-    ```
+   ```bash
+   # NOTE: This MUST be run from the project root
+   yarn create expo-app -t expo-template-blank-typescript apps/MyTypescriptApp
+   ```
 
 2. Create a `metro.config.js` file with these contents:
 
-    ```js
+   ```js
    // apps/MyApp/metro.config.js
-   
-   const { getDefaultConfig } = require('expo/metro-config');
 
-   const path = require('path');
+   const { getDefaultConfig } = require("expo/metro-config");
+
+   const path = require("path");
 
    // Find the project and workspace directories
    const projectRoot = __dirname;
-   
+
    // This can be replaced with `find-yarn-workspace-root`
-   const workspaceRoot = path.resolve(projectRoot, '../..');
+   const workspaceRoot = path.resolve(projectRoot, "../..");
 
    const config = getDefaultConfig(projectRoot);
 
@@ -37,8 +37,8 @@ Creating a new app inside the monorepo requires a little extra config.
    config.watchFolders = [workspaceRoot];
    // 2. Let Metro know where to resolve packages and in what order
    config.resolver.nodeModulesPaths = [
-      path.resolve(projectRoot, 'node_modules'),
-      path.resolve(workspaceRoot, 'node_modules'),
+     path.resolve(projectRoot, "node_modules"),
+     path.resolve(workspaceRoot, "node_modules"),
    ];
    // 3. Force Metro to resolve (sub)dependencies only from the `nodeModulesPaths`
    config.resolver.disableHierarchicalLookup = true;
@@ -50,10 +50,10 @@ Creating a new app inside the monorepo requires a little extra config.
 
    ```js
    // apps/MyApp/index.js
-   import { registerRootComponent } from 'expo';
-   
-   import App from './App';
-   
+   import { registerRootComponent } from "expo";
+
+   import App from "./App";
+
    // registerRootComponent calls AppRegistry.registerComponent('main', () => App);
    // It also ensures that whether you load the app in Expo Go or in a native build,
    // the environment is set up appropriately
@@ -62,30 +62,30 @@ Creating a new app inside the monorepo requires a little extra config.
 
 4. Update your `package.json`
 
-    ```json
-    // apps/MyApp/package.json
-    {
-      // point to the new entry file
-      "main": "index.js",
-      // ...
-      // import the module(s) you want to use      
-      "dependencies": {
-        // ...other dependencies
-        "@infinitered/react-native-mlkit-image-labeling": "*",
-        "@infinitered/react-native-mlkit-object-detection": "*",
-        "@infinitered/react-native-mlkit-face-detection": "*"
-      },
-      // ...
-      // tell expo where to find the native modules
-      "expo": {
-         "autolinking": {
-            "nativeModulesDir": "../../modules"
-         }
-      }
-    }
-    ```
+   ```json
+   // apps/MyApp/package.json
+   {
+     // point to the new entry file
+     "main": "index.js",
+     // ...
+     // import the module(s) you want to use
+     "dependencies": {
+       // ...other dependencies
+       "@infinitered/react-native-mlkit-image-labeling": "*",
+       "@infinitered/react-native-mlkit-object-detection": "*",
+       "@infinitered/react-native-mlkit-face-detection": "*"
+     },
+     // ...
+     // tell expo where to find the native modules
+     "expo": {
+       "autolinking": {
+         "nativeModulesDir": "../../modules"
+       }
+     }
+   }
+   ```
 
 5. Install the dependencies with `yarn install`
 6. Run your app with `npx expo run:ios -d` or `npx expo run:android -d`
 
-Note: The iOS modules are only compatible with arm64 devices, so they cannot be run on a simulator. 
+Note: The iOS modules are only compatible with arm64 devices, so they cannot be run on a simulator.
