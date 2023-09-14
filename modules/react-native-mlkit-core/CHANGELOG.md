@@ -1,5 +1,11 @@
 # @infinitered/react-native-mlkit-core
 
+## 0.4.0
+
+### Minor Changes
+
+- 81e8fe2: Fix URLs in package.json
+
 ## 0.3.0
 
 ### Minor Changes

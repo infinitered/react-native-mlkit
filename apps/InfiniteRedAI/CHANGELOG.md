@@ -1,5 +1,14 @@
 # @infinitered/infinite-red-ai
 
+## 0.1.1
+
+### Patch Changes
+
+- Updated dependencies [81e8fe2]
+  - @infinitered/react-native-mlkit-object-detection@0.3.0
+  - @infinitered/react-native-mlkit-face-detection@0.2.0
+  - @infinitered/react-native-mlkit-image-labeling@0.2.0
+
 ## 0.1.0
 
 ### Minor Changes

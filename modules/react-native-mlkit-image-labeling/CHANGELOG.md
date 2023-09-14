@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.2.0
+
+### Minor Changes
+
+- 81e8fe2: Fix URLs in package.json
+
+### Patch Changes
+
+- Updated dependencies [81e8fe2]
+  - @infinitered/react-native-mlkit-core@0.4.0
+
 ## 0.1.0
 
 ### Minor Changes
