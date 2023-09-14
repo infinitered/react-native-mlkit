@@ -3,11 +3,12 @@
   "scripts": {
     "build": "turbo run build --filter=!docusaurus",
     "build:docs": "turbo run build --filter=docusaurus",
+    "docs": "yarn workspace docusaurus start",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "clean": "turbo run clean",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "postinstall": "turbo run build --filter=docusaurus"
+    "postinstall": "turbo run prebuild --filter=!docusaurus"
   },
   "devDependencies": {
     "@turbo/gen": "^1.9.7",
@@ -23,5 +24,8 @@
     "packages/*"
   ],
   "packageManager": "yarn@3.6.1",
-  "repository": "https://www.github.com/infinitered/react-native-mlkit"
+  "repository": "https://www.github.com/infinitered/react-native-mlkit",
+  "dependencies": {
+    "@changesets/cli": "^2.26.2"
+  }
 }

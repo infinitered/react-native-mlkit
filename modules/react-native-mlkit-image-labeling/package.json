@@ -1,6 +1,6 @@
 {
   "name": "@infinitered/react-native-mlkit-image-labeling",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "My new module",
   "main": "build/index.js",
   "types": "build/index.d.ts",

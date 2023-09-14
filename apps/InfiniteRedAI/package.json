@@ -1,6 +1,6 @@
 {
   "name": "@infinitered/infinite-red-ai",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "scripts": {
     "start": "expo start --dev-client",
@@ -24,7 +24,8 @@
     "expo:start": "expo start",
     "expo:android": "expo start --android",
     "expo:ios": "expo start --ios",
-    "expo:web": "expo start --web"
+    "expo:web": "expo start --web",
+    "prebuild": "npx expo prebuild"
   },
   "overrides": {
     "react-error-overlay": "6.0.9"
@@ -33,9 +34,9 @@
     "@expo-google-fonts/space-grotesk": "^0.2.2",
     "@expo/metro-config": "^0.7.1",
     "@expo/webpack-config": "^18.0.1",
-    "@infinitered/react-native-mlkit-face-detection": "*",
-    "@infinitered/react-native-mlkit-image-labeling": "*",
-    "@infinitered/react-native-mlkit-object-detection": "*",
+    "@infinitered/react-native-mlkit-face-detection": "^0.0.1",
+    "@infinitered/react-native-mlkit-image-labeling": "^0.0.1",
+    "@infinitered/react-native-mlkit-object-detection": "^0.1.0",
     "@react-native-async-storage/async-storage": "1.18.2",
     "@react-native/metro-config": "^0.72.9",
     "@react-navigation/bottom-tabs": "^6.3.2",
