@@ -1,5 +1,11 @@
 # @infinitered/react-native-mlkit-core
 
+## 0.3.0
+
+### Minor Changes
+
+- 74e343a: remove dummy vars
+
 ## 0.2.0
 
 ### Minor Changes
