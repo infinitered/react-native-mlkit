@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.4.0
+
+### Minor Changes
+
+- 1dd30dc: Fixing build scripts
+
+### Patch Changes
+
+- 8d53eb0: add dummy tests
+- Updated dependencies [1dd30dc]
+- Updated dependencies [8d53eb0]
+  - @infinitered/react-native-mlkit-core@0.6.0
+
 ## 0.3.0
 
 ### Minor Changes

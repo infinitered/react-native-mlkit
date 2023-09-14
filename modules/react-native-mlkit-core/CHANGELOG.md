@@ -1,5 +1,15 @@
 # @infinitered/react-native-mlkit-core
 
+## 0.6.0
+
+### Minor Changes
+
+- 1dd30dc: Fixing build scripts
+
+### Patch Changes
+
+- 8d53eb0: add dummy tests
+
 ## 0.5.0
 
 ### Minor Changes
