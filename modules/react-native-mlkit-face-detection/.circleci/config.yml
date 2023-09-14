@@ -13,7 +13,7 @@ version: 2.1
 orbs: node:circleci/node@5.1.0
 
 jobs:
-  face-detection-tests:
+  face-detection-lint-and-tests:
     <<: *defaults
     resource_class: large
     steps:
@@ -31,28 +31,10 @@ jobs:
       - common-build-core
       - common-static-tests:
           working_directory: /mnt/ramdisk/repo/modules/react-native-mlkit-face-detection
-  face-detection-publish:
-    <<: *defaults
-    steps:
-      - checkout
-      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-      - common-install-deps
-      - common-build-core
-      - common-build:
-          working_directory: /mnt/ramdisk/repo/modules/react-native-mlkit-face-detection
-      # Run semantic-release after all the above is set.
-      - common-publish:
-          working_directory: /mnt/ramdisk/repo/modules/react-native-mlkit-face-detection
 
 workflows:
   version: 2
-  face-detection-test_and_release:
+  face-detection-test:
     jobs:
-      - face-detection-tests
-      - face-detection-publish:
-          context: infinitered-npm-package
-          requires:
-            - face-detection-tests
-          filters:
-            branches:
-              only: main
+      - face-detection-lint-and-tests
+

@@ -49,19 +49,8 @@ commands:
       - run:
           working_directory: << parameters.working_directory >>
           name: Run static tests
-          command: yarn ci:lint && yarn ci:test
+          command: yarn lint && yarn test
           no_output_timeout: 5m
-  common-publish:
-    parameters:
-      working_directory:
-        description: Path to the directory where the tests are run
-        type: string
-        default: .
-    steps:
-      - run:
-          working_directory: << parameters.working_directory >>
-          name: Publish to NPM
-          command: yarn ci:publish
   common-build-core:
     steps:
       - run:
@@ -77,17 +66,9 @@ commands:
     steps:
       - run:
           working_directory: << parameters.working_directory >>
-          name: Publish to NPM
+          name: Build package
           command: yarn build
 
-# Common jobs for the main workflows
-jobs:
-  common-pre:
-    docker:
-      - image: alpine
-    steps:
-      - common-say-hello
-      - run: echo 'Jobs with `common-` prefix are intended to be shared among modules'
 
 workflows:
   # The setup workflow
