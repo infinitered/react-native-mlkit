@@ -22,9 +22,7 @@
     "prebuild": {},
     "postinstall": {
       "dependsOn": [
-        "^postinstall",
-        "prebuild",
-        "build"
+        "^build"
       ]
     }
   }
