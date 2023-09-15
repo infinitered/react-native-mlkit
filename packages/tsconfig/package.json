@@ -1,6 +1,10 @@
 {
-  "name": "tsconfig",
-  "version": "0.0.0",
+  "name": "@infinitered/tsconfig",
+  "version": "0.0.1",
   "private": true,
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@tsconfig/react-native": "^3.0.2",
+    "expo": "^49.0.0"
+  }
 }

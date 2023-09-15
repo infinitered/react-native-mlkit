@@ -17,7 +17,7 @@
     "@changesets/cli": "^2.26.2",
     "@turbo/gen": "^1.9.7",
     "eslint": "^8.0.0",
-    "eslint-config-react-native-mlkit": "*",
+    "eslint-config-react-native-mlkit": "0.0.1",
     "prettier": "^2.5.1",
     "turbo": "latest"
   },

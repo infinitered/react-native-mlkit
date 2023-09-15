@@ -41,13 +41,18 @@ const config = {
         docs: {
           routeBasePath:"/",
           sidebarPath: require.resolve('./sidebars.js'),
+          remarkPlugins: [
+            [require('@docusaurus/remark-plugin-npm2yarn'), {sync: true, converters: ['yarn', 'pnpm']}],
+          ],
         },
         theme: {
             customCss: require.resolve('./src/css/custom.css'),
-        }
+        },
+
       }),
     ],
   ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({

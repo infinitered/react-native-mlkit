@@ -9,7 +9,7 @@ import { DemoListItem } from "./components/DemoListItem"
 import { useTypedNavigation } from "../../navigators/useTypedNavigation"
 import { colors } from "../../theme"
 
-interface HomeScreenProps extends NativeStackScreenProps<AppStackScreenProps<"Home">> {}
+type HomeScreenProps = NativeStackScreenProps<AppStackScreenProps<"Home">>
 
 export const HomeScreen: FC<HomeScreenProps> = observer(function HomeScreen() {
   // Pull in one of our MST stores

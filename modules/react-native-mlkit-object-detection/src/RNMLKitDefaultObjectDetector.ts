@@ -29,8 +29,8 @@ export class RNMLKitDefaultObjectDetector implements RNMLKitObjectDetector {
 
     try {
       return RNMLKitObjectDetectionModule.detectObjects("default", imagePath);
-    } catch (err) {
-      throw new Error(`Failed to detect objects: ${err.message}`);
+    } catch (err: any) {
+      throw new Error(`Failed to detect objects: ${err?.message}`);
     }
   }
 

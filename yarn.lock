@@ -2641,6 +2641,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@docusaurus/remark-plugin-npm2yarn@npm:^2.4.1":
+  version: 2.4.1
+  resolution: "@docusaurus/remark-plugin-npm2yarn@npm:2.4.1"
+  dependencies:
+    npm-to-yarn: ^2.0.0
+    tslib: ^2.4.1
+    unist-util-visit: ^2.0.3
+  checksum: ec82f121b2627165dfdac1ac265f590e62e6528580a619b56fe9a1e13e1ad84cb3f1231dfa8b0a0523030ae009fdb31b5a378b5d1c4d582da32e1302eefa2704
+  languageName: node
+  linkType: hard
+
 "@docusaurus/theme-classic@npm:2.4.1":
   version: 2.4.1
   resolution: "@docusaurus/theme-classic@npm:2.4.1"
@@ -3522,6 +3533,7 @@ __metadata:
     "@infinitered/react-native-mlkit-face-detection": ^0.3.0
     "@infinitered/react-native-mlkit-image-labeling": ^0.3.0
     "@infinitered/react-native-mlkit-object-detection": ^0.4.0
+    "@infinitered/tsconfig": 0.0.1
     "@react-native-async-storage/async-storage": 1.18.2
     "@react-native-community/cli-platform-ios": ^8.0.2
     "@react-native/metro-config": ^0.72.9
@@ -3604,6 +3616,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@infinitered/react-native-mlkit-core@workspace:modules/react-native-mlkit-core"
   dependencies:
+    "@infinitered/tsconfig": 0.0.1
     "@testing-library/jest-native": ^5.4.3
     "@testing-library/react-hooks": ^8.0.1
     "@testing-library/react-native": ^12.3.0
@@ -3661,6 +3674,15 @@ __metadata:
     expo: "*"
     react: "*"
     react-native: "*"
+  languageName: unknown
+  linkType: soft
+
+"@infinitered/tsconfig@0.0.1, @infinitered/tsconfig@workspace:packages/tsconfig":
+  version: 0.0.0-use.local
+  resolution: "@infinitered/tsconfig@workspace:packages/tsconfig"
+  dependencies:
+    "@tsconfig/react-native": ^3.0.2
+    expo: ^49.0.0
   languageName: unknown
   linkType: soft
 
@@ -5083,6 +5105,13 @@ __metadata:
   version: 1.0.4
   resolution: "@tsconfig/node16@npm:1.0.4"
   checksum: 202319785901f942a6e1e476b872d421baec20cf09f4b266a1854060efbf78cde16a4d256e8bc949d31e6cd9a90f1e8ef8fb06af96a65e98338a2b6b0de0a0ff
+  languageName: node
+  linkType: hard
+
+"@tsconfig/react-native@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "@tsconfig/react-native@npm:3.0.2"
+  checksum: 792146b5e249614cc03786ee861297a32188358ba760ef8f2881ea5261021f3757a9c8d75e84814c9a0e22920468939ebc617a66c37f0128f2d817e5eb9d224f
   languageName: node
   linkType: hard
 
@@ -9601,6 +9630,7 @@ __metadata:
     "@docusaurus/core": 2.4.1
     "@docusaurus/module-type-aliases": 2.4.1
     "@docusaurus/preset-classic": 2.4.1
+    "@docusaurus/remark-plugin-npm2yarn": ^2.4.1
     "@mdx-js/react": ^1.6.22
     "@tsconfig/docusaurus": ^1.0.5
     clsx: ^1.2.1
@@ -10161,7 +10191,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-react-native-mlkit@*, eslint-config-react-native-mlkit@workspace:packages/eslint-config-react-native-mlkit":
+"eslint-config-react-native-mlkit@0.0.1, eslint-config-react-native-mlkit@workspace:packages/eslint-config-react-native-mlkit":
   version: 0.0.0-use.local
   resolution: "eslint-config-react-native-mlkit@workspace:packages/eslint-config-react-native-mlkit"
   dependencies:
@@ -17574,6 +17604,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"npm-to-yarn@npm:^2.0.0":
+  version: 2.1.0
+  resolution: "npm-to-yarn@npm:2.1.0"
+  checksum: 0e5ed46d9c1bbacc93a83c8ebe347578188b58b5bcb3bc727f7c582aa9144121f981b604778dad10c46dbb2e927da8f0943fd5ca7c2ef26824bdaac317d1d47e
+  languageName: node
+  linkType: hard
+
 "npmlog@npm:^6.0.0":
   version: 6.0.2
   resolution: "npmlog@npm:6.0.2"
@@ -19642,7 +19679,7 @@ __metadata:
     "@changesets/cli": ^2.26.2
     "@turbo/gen": ^1.9.7
     eslint: ^8.0.0
-    eslint-config-react-native-mlkit: "*"
+    eslint-config-react-native-mlkit: 0.0.1
     prettier: ^2.5.1
     turbo: latest
   languageName: unknown
@@ -22568,12 +22605,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsconfig@workspace:packages/tsconfig":
-  version: 0.0.0-use.local
-  resolution: "tsconfig@workspace:packages/tsconfig"
-  languageName: unknown
-  linkType: soft
-
 "tslib@npm:^1.8.1, tslib@npm:^1.9.0":
   version: 1.14.1
   resolution: "tslib@npm:1.14.1"
@@ -22581,7 +22612,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.0.1, tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.4.0, tslib@npm:^2.5.0, tslib@npm:^2.6.0":
+"tslib@npm:^2.0.1, tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.4.0, tslib@npm:^2.4.1, tslib@npm:^2.5.0, tslib@npm:^2.6.0":
   version: 2.6.2
   resolution: "tslib@npm:2.6.2"
   checksum: 329ea56123005922f39642318e3d1f0f8265d1e7fcb92c633e0809521da75eeaca28d2cf96d7248229deb40e5c19adf408259f4b9640afd20d13aecc1430f3ad

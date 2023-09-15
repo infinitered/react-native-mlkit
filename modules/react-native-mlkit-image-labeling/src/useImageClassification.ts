@@ -73,7 +73,7 @@ export function useImageClassification<T extends ModelAssets>(
           setResult(classification);
           setStatus("success");
         }
-      } catch (err) {
+      } catch (err: any) {
         setError(err);
         setStatus("error");
       }
