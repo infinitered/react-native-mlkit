@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "start": "expo start --dev-client",
-    "ios": "react-native run-ios",
-    "android": "react-native run-android --active-arch-only",
+    "ios": "expo run:ios",
+    "android": "expo run:android",
     "compile": "tsc --noEmit -p . --pretty",
     "format": "prettier --write \"app/**/*.{js,jsx,json,md,ts,tsx}\"",
     "lint": "eslint index.js App.js app test --fix --ext .js,.ts,.tsx && npm run format",
@@ -22,10 +22,7 @@
     "clean": "rm -rf node_modulesios /build ios android && watchman watch-del-all",
     "clean-all": "npx react-native clean-project-auto",
     "expo:start": "expo start",
-    "expo:android": "expo start --android",
-    "expo:ios": "expo start --ios",
-    "expo:web": "expo start --web",
-    "prebuild": "npx expo prebuild"
+    "prebuild": "expo prebuild"
   },
   "overrides": {
     "react-error-overlay": "6.0.9"

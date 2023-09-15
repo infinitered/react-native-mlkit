@@ -1,80 +1,106 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
+/*!***/
+/* * Any CSS included here will be global. The classic template*/
+/* * bundles Infima by default. Infima is a CSS framework designed to*/
+/* * work well for content-centric websites.*/
+/* *!*/
 
-/* You can override the default Infima variables here. */
+
+
+
 :root {
+
+  --ir-background-primary: #ffffff;
+  --ir-background-bold: #272728;
+  --ir-background-dim: #f8f7f7;
+
+  --ifm-background-color: #ffffff;
+  --ifm-surface-background-color: #f8f7f7;
+  --ifm-card-background-color: #ffffff;
+
   --ifm-color-primary: #e73536;
-  --ifm-color-primary-dark: #d62c2d;
-  --ifm-color-primary-darker: #b42122;
-  --ifm-color-primary-darkest: #7c2021;
-  --ifm-color-primary-light: #f47576;
-  --ifm-color-primary-lighter: #f9a8a8;
-  --ifm-color-primary-lightest: #fccccc;
+  --ifm-color-secondary: rgb(221, 206, 230);
+  --ifm-color-success: #00a400;
+  --ifm-color-info: #54c7ec;
+  --ifm-color-warning: #ffba00;
+  --ifm-color-danger: #fa383e;
+  --ifm-color-primary-dark: #be1718;
+  --ifm-color-primary-darker: #7f0f10;
+  --ifm-color-primary-darkest: #3f0808;
+  --ifm-color-primary-light: #ed6868;
+  --ifm-color-primary-lighter: #f39a9a;
+  --ifm-color-primary-lightest: #f9cccd;
+  --ifm-color-primary-contrast-background: #f9cccd;
+  --ifm-color-primary-contrast-foreground: #3f0808;
+  --ifm-color-secondary-dark: rgb(171, 134, 193);
+  --ifm-color-secondary-darker: rgb(118, 74, 144);
+  --ifm-color-secondary-darkest: rgb(59, 37, 72);
+  --ifm-color-secondary-light: rgb(230, 218, 236);
+  --ifm-color-secondary-lighter: rgb(238, 230, 243);
+  --ifm-color-secondary-lightest: rgb(247, 243, 249);
+  --ifm-color-secondary-contrast-background: rgb(247, 243, 249);
+  --ifm-color-secondary-contrast-foreground: rgb(59, 37, 72);
+  --ifm-color-success-dark: rgb(0, 148, 0);
+  --ifm-color-success-darker: rgb(0, 139, 0);
+  --ifm-color-success-darkest: rgb(0, 115, 0);
+  --ifm-color-success-light: rgb(38, 178, 38);
+  --ifm-color-success-lighter: rgb(77, 191, 77);
+  --ifm-color-success-lightest: rgb(128, 210, 128);
+  --ifm-color-success-contrast-background: rgb(230, 246, 230);
+  --ifm-color-success-contrast-foreground: rgb(0, 49, 0);
+  --ifm-color-info-dark: rgb(76, 179, 212);
+  --ifm-color-info-darker: rgb(71, 169, 201);
+  --ifm-color-info-darkest: rgb(59, 139, 165);
+  --ifm-color-info-light: rgb(110, 207, 239);
+  --ifm-color-info-lighter: rgb(135, 216, 242);
+  --ifm-color-info-lightest: rgb(170, 227, 246);
+  --ifm-color-info-contrast-background: rgb(238, 249, 253);
+  --ifm-color-info-contrast-foreground: rgb(25, 60, 71);
+  --ifm-color-warning-dark: rgb(230, 167, 0);
+  --ifm-color-warning-darker: rgb(217, 158, 0);
+  --ifm-color-warning-darkest: rgb(179, 130, 0);
+  --ifm-color-warning-light: rgb(255, 196, 38);
+  --ifm-color-warning-lighter: rgb(255, 207, 77);
+  --ifm-color-warning-lightest: rgb(255, 221, 128);
+  --ifm-color-warning-contrast-background: rgb(255, 248, 230);
+  --ifm-color-warning-contrast-foreground: rgb(77, 56, 0);
+  --ifm-color-danger-dark: rgb(225, 50, 56);
+  --ifm-color-danger-darker: rgb(213, 48, 53);
+  --ifm-color-danger-darkest: rgb(175, 39, 43);
+  --ifm-color-danger-light: rgb(251, 86, 91);
+  --ifm-color-danger-lighter: rgb(251, 116, 120);
+  --ifm-color-danger-lightest: rgb(253, 156, 159);
+  --ifm-color-danger-contrast-background: rgb(255, 235, 236);
+  --ifm-color-danger-contrast-foreground: rgb(75, 17, 19);
+  --ifm-color-white: #fff;
+  --ifm-color-black: #000;
+  --ifm-color-gray-0: var(--ifm-color-white);
+  --ifm-color-gray-100: rgb(255, 255, 255);
+  --ifm-color-gray-200: rgb(207, 207, 208);
+  --ifm-color-gray-300: rgb(182, 182, 184);
+  --ifm-color-gray-400: rgb(158, 158, 160);
+  --ifm-color-gray-500: rgb(134, 134, 137);
+  --ifm-color-gray-600: rgb(110, 110, 113);
+  --ifm-color-gray-700: rgb(86, 86, 88);
+  --ifm-color-gray-800: rgb(63, 63, 64);
+  --ifm-color-gray-900: rgb(20, 20, 20);
+  --ifm-color-gray-1000: var(--ifm-color-black);
 
-  --ifm-navbar-link-color: #fff;
+  --ifm-color-emphasis-0: var(--ifm-color-gray-0);
+  --ifm-color-emphasis-100: var(--ifm-color-gray-100);
+  --ifm-color-emphasis-200: var(--ifm-color-gray-200);
+  --ifm-color-emphasis-300: var(--ifm-color-gray-300);
+  --ifm-color-emphasis-400: var(--ifm-color-gray-400);
+  --ifm-color-emphasis-500: var(--ifm-color-gray-500);
+  --ifm-color-emphasis-600: var(--ifm-color-gray-600);
+  --ifm-color-emphasis-700: var(--ifm-color-gray-700);
+  --ifm-color-emphasis-800: var(--ifm-color-gray-800);
+  --ifm-color-emphasis-900: var(--ifm-color-gray-900);
+  --ifm-color-emphasis-1000: var(--ifm-color-gray-1000);
+}
 
-  --ir-dark: #081828;
-
-  --ifm-code-font-size: 95%;
-
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-
+.footer {
+  background-color: var(--ir-background-dim);
 }
 
 
-.footer--dark {
-  background-color: #081828;
-}
 
-.buttons {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.button--secondary {
-  color: #081828;
-}
-
-.navbar {
-  background-color: #081828;
-  color: #fff;
-}
-
-html[data-theme='dark'] {
-  background-color: #081828;
-}
-
-/* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
-  --ifm-heading-color: #F7CB15;
-
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-
-  .hero__title {
-    color: #F7CB15;
-  }
-
-  .footer--dark {
-    background-color: #e73536;
-  }
-
-  .navbar {
-    background-color: #081828;
-    color: #fff;
-  }
-
-}
-
-
-[data-theme='dark']:root {
-  --ifm-background-color: #081828;
-  --ifm-surface-background-color: #0e223a;
-  --ifm-card-background-color: #0e223a;
-}
-
-.footer__link-item:hover {
-  color: var(--ifm-heading-color);
-}
