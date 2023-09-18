@@ -1,6 +1,6 @@
 ---
 sidebar_position: 99
-slug: /face-detection
+slug: /template-section
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

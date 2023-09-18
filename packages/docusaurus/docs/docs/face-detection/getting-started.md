@@ -10,6 +10,10 @@ import TabItem from '@theme/TabItem';
 
 ## Installation
 
-```bash npm2yarn
-npm i @infinitered/react-native-mlkit-face-detection
+Install the package using
+
+```bash
+yarn add @infitered/react-native-mlkit-face-detection
 ```
+
+##  
