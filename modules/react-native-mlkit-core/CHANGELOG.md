@@ -1,5 +1,19 @@
 # @infinitered/react-native-mlkit-core
 
+## 0.6.0
+
+### Minor Changes
+
+- 799515e: Bumping version after rebase for safety.
+- 1dd30dc: Fixing build scripts
+- b70bbc0: Canges to typescript and eslint configs. Improved docs.
+- 3a7d3a8: Create and import shared typescript configs
+
+### Patch Changes
+
+- 877cffb: docs changes and refactoring
+- 8d53eb0: add dummy tests
+
 ## 0.5.0
 
 ### Minor Changes
