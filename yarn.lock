@@ -3642,7 +3642,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@infinitered/react-native-mlkit-core@*, @infinitered/react-native-mlkit-core@workspace:modules/react-native-mlkit-core":
+"@infinitered/react-native-mlkit-core@0.6.0, @infinitered/react-native-mlkit-core@workspace:modules/react-native-mlkit-core":
   version: 0.0.0-use.local
   resolution: "@infinitered/react-native-mlkit-core@workspace:modules/react-native-mlkit-core"
   dependencies:
@@ -3668,7 +3668,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@infinitered/react-native-mlkit-face-detection@workspace:modules/react-native-mlkit-face-detection"
   dependencies:
-    "@infinitered/react-native-mlkit-core": "*"
+    "@infinitered/react-native-mlkit-core": 0.6.0
     "@types/react": ^18.0.25
     expo-module-scripts: ^3.0.11
     expo-modules-core: ^1.5.10
@@ -3683,7 +3683,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@infinitered/react-native-mlkit-image-labeling@workspace:modules/react-native-mlkit-image-labeling"
   dependencies:
-    "@infinitered/react-native-mlkit-core": "*"
+    "@infinitered/react-native-mlkit-core": 0.6.0
     "@types/react": ^18.0.25
     expo-module-scripts: ^3.0.11
     expo-modules-core: ^1.5.10
@@ -3698,10 +3698,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@infinitered/react-native-mlkit-object-detection@workspace:modules/react-native-mlkit-object-detection"
   dependencies:
-    "@infinitered/react-native-mlkit-core": "*"
+    "@infinitered/react-native-mlkit-core": 0.6.0
     "@types/react": ^18.0.25
     expo-module-scripts: ^3.0.0
     expo-modules-core: ^1.5.7
+    typescript: ^5.0.0
   peerDependencies:
     expo: "*"
     react: "*"

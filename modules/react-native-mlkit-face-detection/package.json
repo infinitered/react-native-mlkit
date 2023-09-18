@@ -27,7 +27,7 @@
   "license": "MIT",
   "homepage": "https://github.com/infinitered/react-native-mlkit#readme",
   "dependencies": {
-    "@infinitered/react-native-mlkit-core": "*"
+    "@infinitered/react-native-mlkit-core": "0.6.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.25",
