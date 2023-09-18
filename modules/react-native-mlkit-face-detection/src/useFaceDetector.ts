@@ -1,6 +1,6 @@
-import * as RNMLKitFaceDetection from "@infinitered/react-native-mlkit-face-detection";
 import { useState, useEffect, useCallback } from "react";
 
+import RNMLKitFaceDetector from "./RNMLKitFaceDetector";
 import { RNMLKitFace, RNMLKitFaceDetectorOptions } from "./types";
 
 export type FaceDetectionState =
@@ -37,7 +37,7 @@ export function useFaceDetector(
     async function loadModel() {
       setState("modelLoading");
       try {
-        await RNMLKitFaceDetection.initialize(
+        await RNMLKitFaceDetector.initialize(
           options ?? { performanceMode: "accurate" }
         );
       } catch (e: unknown) {
@@ -63,7 +63,7 @@ export function useFaceDetector(
       setError(undefined);
       setState("detecting");
       // Detect Faces
-      const detectedFaces = await RNMLKitFaceDetection.detectFaces(imageUri);
+      const detectedFaces = await RNMLKitFaceDetector.detectFaces(imageUri);
       // Update state
       setFaces(detectedFaces?.faces ?? []);
       setState("done");
