@@ -3,13 +3,29 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "~/*": ["./app/*"],
-      "images/*": ["./assets/images/*"],
-      "assets/*": ["./assets/*"]
+      "app/*": [
+        "./app/*"
+      ],
+      "~/*": [
+        "./app/*"
+      ],
+      "images/*": [
+        "./assets/images/*"
+      ],
+      "assets/*": [
+        "./assets/*"
+      ]
     }
   },
   "exclude": [
     "node_modules"
   ],
-  "include": ["index.js", "App.js", "app", "test", "*.js", "assets"]
+  "include": [
+    "index.js",
+    "App.js",
+    "app",
+    "test",
+    "*.js",
+    "assets"
+  ]
 }

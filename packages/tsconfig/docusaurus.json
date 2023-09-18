@@ -11,13 +11,8 @@
       "DOM"
     ],
     "module": "esnext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "nodenext",
     "noEmit": true,
-    "types": [
-      "node",
-      "@docusaurus/module-type-aliases",
-      "@docusaurus/theme-classic"
-    ],
     "skipLibCheck": true
   }
 }
