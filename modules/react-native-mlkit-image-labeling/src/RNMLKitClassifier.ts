@@ -31,7 +31,7 @@ export class RNMLKitClassifier {
         this.modelSpec.modelName,
         imagePath
       );
-    } catch (err) {
+    } catch (err: any) {
       // Handle specific errors as needed, or rethrow them
       throw new Error(`Failed to classify image: ${err.message}`);
     }

@@ -77,7 +77,7 @@ export type FaceContourType =
   | "leftCheekCenter"
   | "rightCheekCenter";
 
-export interface RNMLKitFaceDetectorOptionsRecord {
+export interface RNMLKitFaceDetectorOptions {
   performanceMode: string;
   landmarkMode?: boolean | null;
   contourMode?: boolean | null;

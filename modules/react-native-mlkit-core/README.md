@@ -97,3 +97,4 @@ Several hooks are included to assist with layout and scaling:
 - `useBoundingBoxStyle`: Calculates the style object for a bounding box.
 - `useImageScale`: Calculates the image scale based on the provided parameters.
 - `useLayout`: Handles layout change events.
+

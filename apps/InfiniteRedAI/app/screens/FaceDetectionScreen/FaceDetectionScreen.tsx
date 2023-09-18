@@ -1,20 +1,14 @@
-import React, { FC, useState, useEffect } from "react"
+import React, { FC, useEffect, useMemo } from "react"
 import { observer } from "mobx-react-lite"
 import { ViewStyle, View, TextStyle, ActivityIndicator } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { AppStackScreenProps } from "../../navigators"
 import { Screen, Text, Button, RNMLKitImageView, ScreenTitle } from "../../components"
 import { useTypedNavigation } from "../../navigators/useTypedNavigation"
-import * as RNMLKitFaceDetection from "@infinitered/react-native-mlkit-face-detection"
-import {
-  RNMLKitFace,
-  RNMLKitFaceDetectorOptionsRecord,
-} from "@infinitered/react-native-mlkit-face-detection"
-
-import { BoundingBox } from "@infinitered/react-native-mlkit-core"
 import { colors } from "../../theme"
-import { UseExampleImageStatus, useExampleImage } from "../../utils/useExampleImage"
+import { useExampleImage } from "../../utils/useExampleImage"
 import { BOX_COLORS } from "./boxColors"
+import { useFaceDetector } from "@infinitered/react-native-mlkit-face-detection"
 
 interface FaceDetectionScreenProps
   extends NativeStackScreenProps<AppStackScreenProps<"FaceDetection">> {}
@@ -38,7 +32,7 @@ const $photoButton: ViewStyle = {
   justifyContent: "space-around",
 }
 
-const FACE_DETECTOR_OPTIONS: RNMLKitFaceDetectorOptionsRecord = {
+const FACE_DETECTOR_OPTIONS = {
   classificationMode: true,
   contourMode: true,
   isTrackingEnabled: true,
@@ -46,66 +40,59 @@ const FACE_DETECTOR_OPTIONS: RNMLKitFaceDetectorOptionsRecord = {
   minFaceSize: 0.001,
   performanceMode: "accurate",
 }
+
 export const FaceDetectionScreen: FC<FaceDetectionScreenProps> = observer(
   function FaceDetectionScreen() {
     const navigation = useTypedNavigation<"FaceDetection">()
 
-    const [status, setStatus] = useState<"detecting" | "done" | UseExampleImageStatus>("init")
-    const [boxes, setBoxes] = useState<BoundingBox[]>([])
-    const facesDetected = React.useMemo(() => boxes.length, [boxes])
-
     const { image, clearPhoto, takePhoto, selectPhoto, nextPhoto, categories } = useExampleImage(
-      setStatus,
+      undefined,
       {
         groupBy: "face",
       },
     )
 
-    useEffect(() => {
-      ;(async () => {
-        await RNMLKitFaceDetection.initialize(FACE_DETECTOR_OPTIONS)
-      })()
-    }, [])
+    const {
+      clearFaces,
+      detectFaces,
+      error,
+      state: faceDetectionState,
+      faces,
+    } = useFaceDetector(FACE_DETECTOR_OPTIONS)
 
     useEffect(() => {
-      ;(async () => {
-        if (!image?.uri) return
-        setStatus("detecting")
-        const faces = await RNMLKitFaceDetection.detectFaces(image?.uri ?? "")
-        const boxes = faces?.faces?.map((face: RNMLKitFace, index: number) => ({
-          ...face?.frame,
-          width: 2,
-          color: BOX_COLORS[index % BOX_COLORS.length],
-        }))
-        setBoxes(boxes ?? [])
-        setStatus("done")
-      })()
+      if (image?.uri) {
+        detectFaces(image.uri)
+      }
     }, [image?.uri])
 
-    const statusMessage = React.useMemo(() => {
-      const initMessage = "Take a photo or select one from your camera roll"
+    const boxes = useMemo(
+      () =>
+        faces.map((face, index) => ({
+          ...face.frame,
+          width: 2,
+          color: BOX_COLORS[index % BOX_COLORS.length],
+        })),
+      [faces],
+    )
 
-      if (!image && status !== "init") {
-        setStatus("init")
-        return initMessage
-      }
-      switch (status) {
+    const statusMessage = useMemo(() => {
+      switch (faceDetectionState) {
         case "init":
-          return initMessage
-        case "noPermissions":
-          return "You need to grant camera permissions to take a photo"
-        case "takingPhoto":
-          return "Taking photo..."
-        case "selectingPhoto":
-          return "Selecting photo..."
-        case "done":
-          return `Found ${facesDetected} faces`
+        case "modelLoading":
+          return "Initializing..."
+        case "ready":
+          return "Take a photo or select one from your camera roll"
         case "detecting":
           return "Detecting faces..."
+        case "done":
+          return `Found ${faces.length} faces`
+        case "error":
+          return error || "An error occurred"
         default:
           throw new Error("Invalid status")
       }
-    }, [image, status, facesDetected])
+    }, [faceDetectionState, faces.length, error])
 
     return (
       <Screen style={$root} preset="scroll" safeAreaEdges={["top", "bottom"]}>
@@ -136,7 +123,7 @@ export const FaceDetectionScreen: FC<FaceDetectionScreenProps> = observer(
               text={category}
               onPress={() => {
                 clearPhoto()
-                setBoxes([])
+                clearFaces()
                 nextPhoto(category)
               }}
               style={[$button, $rowButton]}

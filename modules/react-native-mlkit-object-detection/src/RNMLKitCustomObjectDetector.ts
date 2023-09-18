@@ -50,7 +50,7 @@ export class RNMLKitCustomObjectDetector implements RNMLKitObjectDetector {
         this.modelName,
         imagePath
       );
-    } catch (err) {
+    } catch (err: any) {
       throw new Error(`Failed to detect objects: ${err.message}`);
     }
   }

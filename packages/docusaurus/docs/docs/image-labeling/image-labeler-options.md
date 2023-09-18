@@ -2,7 +2,7 @@
 sidebar_position: 99
 ---
 
-# Options.md
+# Image Labeler Options
 
 ### RNMLKitCustomImageLabelerOptions
 

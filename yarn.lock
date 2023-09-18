@@ -2641,6 +2641,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@docusaurus/remark-plugin-npm2yarn@npm:^2.4.1":
+  version: 2.4.1
+  resolution: "@docusaurus/remark-plugin-npm2yarn@npm:2.4.1"
+  dependencies:
+    npm-to-yarn: ^2.0.0
+    tslib: ^2.4.1
+    unist-util-visit: ^2.0.3
+  checksum: ec82f121b2627165dfdac1ac265f590e62e6528580a619b56fe9a1e13e1ad84cb3f1231dfa8b0a0523030ae009fdb31b5a378b5d1c4d582da32e1302eefa2704
+  languageName: node
+  linkType: hard
+
 "@docusaurus/theme-classic@npm:2.4.1":
   version: 2.4.1
   resolution: "@docusaurus/theme-classic@npm:2.4.1"
@@ -3522,6 +3533,7 @@ __metadata:
     "@infinitered/react-native-mlkit-face-detection": ^0.3.0
     "@infinitered/react-native-mlkit-image-labeling": ^0.3.0
     "@infinitered/react-native-mlkit-object-detection": ^0.4.0
+    "@infinitered/tsconfig": 0.0.1
     "@react-native-async-storage/async-storage": 1.18.2
     "@react-native-community/cli-platform-ios": ^8.0.2
     "@react-native/metro-config": ^0.72.9
@@ -3604,14 +3616,17 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@infinitered/react-native-mlkit-core@workspace:modules/react-native-mlkit-core"
   dependencies:
+    "@infinitered/tsconfig": 0.0.1
     "@testing-library/jest-native": ^5.4.3
     "@testing-library/react-hooks": ^8.0.1
     "@testing-library/react-native": ^12.3.0
+    "@types/jest": ^29.5.5
     expo-module-scripts: ^3.0.11
     expo-modules-core: ^1.5.10
     jest: ^29.7.0
     jest-expo: ^48.0.0
     ts-jest: ^29.1.1
+    typescript: ^5.0.0
   peerDependencies:
     expo: "*"
     react: "*"
@@ -3661,6 +3676,15 @@ __metadata:
     expo: "*"
     react: "*"
     react-native: "*"
+  languageName: unknown
+  linkType: soft
+
+"@infinitered/tsconfig@0.0.1, @infinitered/tsconfig@workspace:packages/tsconfig":
+  version: 0.0.0-use.local
+  resolution: "@infinitered/tsconfig@workspace:packages/tsconfig"
+  dependencies:
+    "@tsconfig/react-native": ^3.0.2
+    expo: ^49.0.0
   languageName: unknown
   linkType: soft
 
@@ -5086,6 +5110,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tsconfig/react-native@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "@tsconfig/react-native@npm:3.0.2"
+  checksum: 792146b5e249614cc03786ee861297a32188358ba760ef8f2881ea5261021f3757a9c8d75e84814c9a0e22920468939ebc617a66c37f0128f2d817e5eb9d224f
+  languageName: node
+  linkType: hard
+
 "@turbo/gen@npm:^1.9.7":
   version: 1.10.13
   resolution: "@turbo/gen@npm:1.10.13"
@@ -5382,6 +5413,16 @@ __metadata:
     expect: ^29.0.0
     pretty-format: ^29.0.0
   checksum: 38ed5942f44336452efd0f071eab60aaa57cd8d46530348d0a3aa5a691dcbf1366c4ca8f6ee8364efb45b4413bfefae443e5d4f469246a472a03b21ac11cd4ed
+  languageName: node
+  linkType: hard
+
+"@types/jest@npm:^29.5.5":
+  version: 29.5.5
+  resolution: "@types/jest@npm:29.5.5"
+  dependencies:
+    expect: ^29.0.0
+    pretty-format: ^29.0.0
+  checksum: 56e55cde9949bcc0ee2fa34ce5b7c32c2bfb20e53424aa4ff3a210859eeaaa3fdf6f42f81a3f655238039cdaaaf108b054b7a8602f394e6c52b903659338d8c6
   languageName: node
   linkType: hard
 
@@ -9601,6 +9642,7 @@ __metadata:
     "@docusaurus/core": 2.4.1
     "@docusaurus/module-type-aliases": 2.4.1
     "@docusaurus/preset-classic": 2.4.1
+    "@docusaurus/remark-plugin-npm2yarn": ^2.4.1
     "@mdx-js/react": ^1.6.22
     "@tsconfig/docusaurus": ^1.0.5
     clsx: ^1.2.1
@@ -10161,7 +10203,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-react-native-mlkit@*, eslint-config-react-native-mlkit@workspace:packages/eslint-config-react-native-mlkit":
+"eslint-config-react-native-mlkit@0.0.1, eslint-config-react-native-mlkit@workspace:packages/eslint-config-react-native-mlkit":
   version: 0.0.0-use.local
   resolution: "eslint-config-react-native-mlkit@workspace:packages/eslint-config-react-native-mlkit"
   dependencies:
@@ -16314,6 +16356,55 @@ __metadata:
   languageName: node
   linkType: hard
 
+"metro-react-native-babel-preset@npm:^0.77.0":
+  version: 0.77.0
+  resolution: "metro-react-native-babel-preset@npm:0.77.0"
+  dependencies:
+    "@babel/core": ^7.20.0
+    "@babel/plugin-proposal-async-generator-functions": ^7.0.0
+    "@babel/plugin-proposal-class-properties": ^7.18.0
+    "@babel/plugin-proposal-export-default-from": ^7.0.0
+    "@babel/plugin-proposal-nullish-coalescing-operator": ^7.18.0
+    "@babel/plugin-proposal-numeric-separator": ^7.0.0
+    "@babel/plugin-proposal-object-rest-spread": ^7.20.0
+    "@babel/plugin-proposal-optional-catch-binding": ^7.0.0
+    "@babel/plugin-proposal-optional-chaining": ^7.20.0
+    "@babel/plugin-syntax-dynamic-import": ^7.8.0
+    "@babel/plugin-syntax-export-default-from": ^7.0.0
+    "@babel/plugin-syntax-flow": ^7.18.0
+    "@babel/plugin-syntax-nullish-coalescing-operator": ^7.0.0
+    "@babel/plugin-syntax-optional-chaining": ^7.0.0
+    "@babel/plugin-transform-arrow-functions": ^7.0.0
+    "@babel/plugin-transform-async-to-generator": ^7.20.0
+    "@babel/plugin-transform-block-scoping": ^7.0.0
+    "@babel/plugin-transform-classes": ^7.0.0
+    "@babel/plugin-transform-computed-properties": ^7.0.0
+    "@babel/plugin-transform-destructuring": ^7.20.0
+    "@babel/plugin-transform-flow-strip-types": ^7.20.0
+    "@babel/plugin-transform-function-name": ^7.0.0
+    "@babel/plugin-transform-literals": ^7.0.0
+    "@babel/plugin-transform-modules-commonjs": ^7.0.0
+    "@babel/plugin-transform-named-capturing-groups-regex": ^7.0.0
+    "@babel/plugin-transform-parameters": ^7.0.0
+    "@babel/plugin-transform-react-display-name": ^7.0.0
+    "@babel/plugin-transform-react-jsx": ^7.0.0
+    "@babel/plugin-transform-react-jsx-self": ^7.0.0
+    "@babel/plugin-transform-react-jsx-source": ^7.0.0
+    "@babel/plugin-transform-runtime": ^7.0.0
+    "@babel/plugin-transform-shorthand-properties": ^7.0.0
+    "@babel/plugin-transform-spread": ^7.0.0
+    "@babel/plugin-transform-sticky-regex": ^7.0.0
+    "@babel/plugin-transform-typescript": ^7.5.0
+    "@babel/plugin-transform-unicode-regex": ^7.0.0
+    "@babel/template": ^7.0.0
+    babel-plugin-transform-flow-enums: ^0.0.2
+    react-refresh: ^0.4.0
+  peerDependencies:
+    "@babel/core": "*"
+  checksum: 09fb64735d4517f62cb0cbd386bdfa64d0de5a4f8c85b54c36b5799b242e897295d58c9d18e124033233841d8fcd33a109dda3dd9f1e5554e516f689eef14a0d
+  languageName: node
+  linkType: hard
+
 "metro-react-native-babel-transformer@npm:0.76.7":
   version: 0.76.7
   resolution: "metro-react-native-babel-transformer@npm:0.76.7"
@@ -17571,6 +17662,13 @@ __metadata:
   dependencies:
     path-key: ^4.0.0
   checksum: dc184eb5ec239d6a2b990b43236845332ef12f4e0beaa9701de724aa797fe40b6bbd0157fb7639d24d3ab13f5d5cf22d223a19c6300846b8126f335f788bee66
+  languageName: node
+  linkType: hard
+
+"npm-to-yarn@npm:^2.0.0":
+  version: 2.1.0
+  resolution: "npm-to-yarn@npm:2.1.0"
+  checksum: 0e5ed46d9c1bbacc93a83c8ebe347578188b58b5bcb3bc727f7c582aa9144121f981b604778dad10c46dbb2e927da8f0943fd5ca7c2ef26824bdaac317d1d47e
   languageName: node
   linkType: hard
 
@@ -19641,10 +19739,15 @@ __metadata:
   dependencies:
     "@changesets/cli": ^2.26.2
     "@turbo/gen": ^1.9.7
+    "@types/jest": ^29.5.5
     eslint: ^8.0.0
-    eslint-config-react-native-mlkit: "*"
+    eslint-config-react-native-mlkit: 0.0.1
+    jest: ^29.7.0
+    metro-react-native-babel-preset: ^0.77.0
     prettier: ^2.5.1
+    ts-jest: ^29.1.1
     turbo: latest
+    typescript: ^5.2.2
   languageName: unknown
   linkType: soft
 
@@ -22568,12 +22671,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsconfig@workspace:packages/tsconfig":
-  version: 0.0.0-use.local
-  resolution: "tsconfig@workspace:packages/tsconfig"
-  languageName: unknown
-  linkType: soft
-
 "tslib@npm:^1.8.1, tslib@npm:^1.9.0":
   version: 1.14.1
   resolution: "tslib@npm:1.14.1"
@@ -22581,7 +22678,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.0.1, tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.4.0, tslib@npm:^2.5.0, tslib@npm:^2.6.0":
+"tslib@npm:^2.0.1, tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.4.0, tslib@npm:^2.4.1, tslib@npm:^2.5.0, tslib@npm:^2.6.0":
   version: 2.6.2
   resolution: "tslib@npm:2.6.2"
   checksum: 329ea56123005922f39642318e3d1f0f8265d1e7fcb92c633e0809521da75eeaca28d2cf96d7248229deb40e5c19adf408259f4b9640afd20d13aecc1430f3ad
@@ -22865,7 +22962,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^5.1.3":
+"typescript@npm:^5.0.0, typescript@npm:^5.1.3, typescript@npm:^5.2.2":
   version: 5.2.2
   resolution: "typescript@npm:5.2.2"
   bin:
@@ -22885,7 +22982,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^5.1.3#~builtin<compat/typescript>":
+"typescript@patch:typescript@^5.0.0#~builtin<compat/typescript>, typescript@patch:typescript@^5.1.3#~builtin<compat/typescript>, typescript@patch:typescript@^5.2.2#~builtin<compat/typescript>":
   version: 5.2.2
   resolution: "typescript@patch:typescript@npm%3A5.2.2#~builtin<compat/typescript>::version=5.2.2&hash=14eedb"
   bin:

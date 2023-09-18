@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig.json",
+  "extends": [
+    "./base",
+    "expo/tsconfig.base"
+  ],
+  "compilerOptions": {
+    "moduleResolution": "Node16",
+    "module": "Node16",
+    "isolatedModules": false,
+    "noImplicitAny": false,
+    "strict": true
+  }
+}

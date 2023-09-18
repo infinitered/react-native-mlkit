@@ -7,13 +7,13 @@ import HomepageFeatures from "../components/HomepageFeatures";
 
 import styles from "./index.module.css";
 
-const LogoHorizontal = require("@site/static/img/irHorizontal.svg").default;
-const LogoHorizontalReversed =
-  require("@site/static/img/irHorizontal--reversed.svg").default;
-const LogoVerticalReversed =
-  require("@site/static/img/irVertical--reversed.svg").default;
-const LogoVerticalDark =
-  require("@site/static/img/irVertical--dark.svg").default;
+// const LogoHorizontal = require("@site/static/img/irHorizontal.svg").default;
+// const LogoHorizontalReversed =
+//   require("@site/static/img/irHorizontal--reversed.svg").default;
+// const LogoVerticalReversed =
+//   require("@site/static/img/irVertical--reversed.svg").default;
+// const LogoVerticalDark =
+//   require("@site/static/img/irVertical--dark.svg").default;
 const LogoVerticalRed = require("@site/static/img/irVertical--red.svg").default;
 
 function HomepageHeader() {

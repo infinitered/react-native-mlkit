@@ -91,9 +91,9 @@ export function useExampleImage(
         .reduce((prev, current) => {
           const key = groupBy(current) ?? current.label
           if (key in prev) {
-            prev[key].push(current)
+            prev[key].push(current as ZippedImage)
           } else {
-            prev[key] = [current]
+            prev[key] = [current as ZippedImage]
           }
           return prev
         }, {} as Record<string, ZippedImage[]>),

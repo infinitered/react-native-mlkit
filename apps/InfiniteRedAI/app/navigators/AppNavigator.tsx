@@ -30,10 +30,10 @@ import { colors } from "app/theme"
 export type AppStackParamList = {
   Welcome: undefined
   // 🔥 Your screens go here
-  Home: undefined
-  FaceDetection: undefined
-  ImageLabeling: undefined
-  ObjectDetection: undefined
+  Home: Record<string, never>
+  FaceDetection: Record<string, never>
+  ImageLabeling: Record<string, never>
+  ObjectDetection: Record<string, never>
   // IGNITE_GENERATOR_ANCHOR_APP_STACK_PARAM_LIST
 }
 

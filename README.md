@@ -2,9 +2,11 @@
 
 RNMLKit provides Expo modules that allow developers to use MLKit native libraries in their Expo apps.
 
-- [Face Detection](https://github.com/infinitered/react-native-mlkit/tree/main/modules/react-native-mlkit-face-detection)
+- [Face Detection](https://https://infinitered.github.io/react-native-mlkit/face-detection/getting-started/)
 - [Image Labeling](https://github.com/infinitered/react-native-mlkit/tree/main/modules/react-native-mlkit-image-labeling)
 - [Object Detection](https://github.com/infinitered/react-native-mlkit/tree/main/modules/react-native-mlkit-object-detection)
+
+
 
 ## Quickstart: Running the example app
 

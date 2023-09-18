@@ -4,7 +4,7 @@ slug: /object-detection/getting-started
 title: Getting Started
 ---
 
-# react-native-mlkit-object-detection
+# Object Detection
 
 ## Getting Started
 
