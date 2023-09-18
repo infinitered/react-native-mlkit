@@ -8,6 +8,7 @@
       "esnext",
       "dom"
     ],
+    "declaration": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
