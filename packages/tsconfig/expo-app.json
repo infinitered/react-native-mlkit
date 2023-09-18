@@ -6,6 +6,7 @@
   ],
   "compilerOptions": {
     "moduleResolution": "Node16",
+    "jsx": "react-native",
     "module": "Node16",
     "isolatedModules": false,
     "strict": true

@@ -1,7 +1,8 @@
 // we always make sure 'react-native' gets included first
-import * as ReactNative from "react-native"
-import mockFile from "./mockFile"
-global.__DEV__ = true;
+import * as ReactNative from "react-native";
+import mockFile from "./mockFile";
+// @ts-ignore
+global.__DEV__ = true
 
 // libraries to mock
 jest.doMock("react-native", () => {
