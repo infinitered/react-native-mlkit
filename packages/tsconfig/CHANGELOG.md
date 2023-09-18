@@ -1,5 +1,11 @@
 # @infinitered/tsconfig
 
+## 0.1.1
+
+### Patch Changes
+
+- 83b1640: add missing declarations line
+
 ## 0.1.0
 
 ### Minor Changes
