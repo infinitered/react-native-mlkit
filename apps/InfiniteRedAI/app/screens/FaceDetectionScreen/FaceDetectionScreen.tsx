@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo } from "react"
+import React, { FC, useMemo } from "react"
 import { observer } from "mobx-react-lite"
 import { ViewStyle, View, TextStyle, ActivityIndicator } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
@@ -8,7 +8,11 @@ import { useTypedNavigation } from "../../navigators/useTypedNavigation"
 import { colors } from "../../theme"
 import { useExampleImage } from "../../utils/useExampleImage"
 import { BOX_COLORS } from "./boxColors"
-import { useFaceDetector } from "@infinitered/react-native-mlkit-face-detection"
+import { BoundingBox } from "@infinitered/react-native-mlkit-core"
+import {
+  useFacesInPhoto,
+  RNMLKitFaceDetectionContextProvider,
+} from "@infinitered/react-native-mlkit-face-detection"
 
 interface FaceDetectionScreenProps
   extends NativeStackScreenProps<AppStackScreenProps<"FaceDetection">> {}
@@ -32,55 +36,44 @@ const $photoButton: ViewStyle = {
   justifyContent: "space-around",
 }
 
-const FACE_DETECTOR_OPTIONS = {
-  classificationMode: true,
-  contourMode: true,
-  isTrackingEnabled: true,
-  landmarkMode: true,
-  minFaceSize: 0.001,
-  performanceMode: "accurate",
-}
-
-export const FaceDetectionScreen: FC<FaceDetectionScreenProps> = observer(
+const FaceDetectionScreenComponent: FC<FaceDetectionScreenProps> = observer(
   function FaceDetectionScreen() {
     const navigation = useTypedNavigation<"FaceDetection">()
 
-    const { image, clearPhoto, takePhoto, selectPhoto, nextPhoto, categories } = useExampleImage(
-      undefined,
-      {
-        groupBy: "face",
-      },
-    )
+    const {
+      image,
+      clearPhoto,
+      takePhoto,
+      selectPhoto,
+      nextPhoto,
+      categories,
+      // status: imageStatus,
+    } = useExampleImage({
+      groupBy: "face",
+    })
 
     const {
-      clearFaces,
-      detectFaces,
-      error,
-      state: faceDetectionState,
       faces,
-    } = useFaceDetector(FACE_DETECTOR_OPTIONS)
+      clearFaces,
+      status: faceDetectorStatus,
+      error: faceDetectorError,
+    } = useFacesInPhoto(image?.uri)
 
-    useEffect(() => {
-      if (image?.uri) {
-        detectFaces(image.uri)
-      }
-    }, [image?.uri])
-
-    const boxes = useMemo(
-      () =>
-        faces.map((face, index) => ({
+    const boxes = useMemo(() => {
+      return faces.map((face, index) => {
+        return {
           ...face.frame,
-          width: 2,
           color: BOX_COLORS[index % BOX_COLORS.length],
-        })),
-      [faces],
-    )
+          width: 2,
+        } as BoundingBox
+      })
+    }, [faces])
 
     const statusMessage = useMemo(() => {
-      switch (faceDetectionState) {
+      switch (faceDetectorStatus) {
         case "init":
         case "modelLoading":
-          return "Initializing..."
+          return "Initializing Face Detection Model..."
         case "ready":
           return "Take a photo or select one from your camera roll"
         case "detecting":
@@ -88,11 +81,11 @@ export const FaceDetectionScreen: FC<FaceDetectionScreenProps> = observer(
         case "done":
           return `Found ${faces.length} faces`
         case "error":
-          return error || "An error occurred"
+          return faceDetectorError || "An error occurred"
         default:
           throw new Error("Invalid status")
       }
-    }, [faceDetectionState, faces.length, error])
+    }, [faceDetectorStatus, faces.length, faceDetectorError])
 
     return (
       <Screen style={$root} preset="scroll" safeAreaEdges={["top", "bottom"]}>
@@ -105,7 +98,7 @@ export const FaceDetectionScreen: FC<FaceDetectionScreenProps> = observer(
         />
         <RNMLKitImageView image={image} onPress={image ? clearPhoto : takePhoto} boxes={boxes} />
         <View style={$status}>
-          {status === "detecting" ? (
+          {faceDetectorStatus === "detecting" ? (
             <ActivityIndicator />
           ) : (
             <Text style={$statusMessage}>{statusMessage}</Text>
@@ -134,6 +127,23 @@ export const FaceDetectionScreen: FC<FaceDetectionScreenProps> = observer(
     )
   },
 )
+
+const FACE_DETECTOR_OPTIONS = {
+  classificationMode: true,
+  contourMode: true,
+  isTrackingEnabled: true,
+  landmarkMode: false,
+  minFaceSize: 0.001,
+  performanceMode: "accurate",
+}
+
+export function FaceDetectionScreen(props: FaceDetectionScreenProps) {
+  return (
+    <RNMLKitFaceDetectionContextProvider options={FACE_DETECTOR_OPTIONS}>
+      <FaceDetectionScreenComponent {...props} />
+    </RNMLKitFaceDetectionContextProvider>
+  )
+}
 
 const $root: ViewStyle = {
   flex: 1,
