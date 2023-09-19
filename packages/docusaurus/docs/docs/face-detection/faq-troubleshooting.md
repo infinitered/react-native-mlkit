@@ -26,7 +26,7 @@ prevent the face detector from detecting faces:
 ### Minimum Size
 
 Faces need to be a certain minimum size for the algorithm to detect them. This is configurable using the `minFaceSize`
-option. (See [Options](/docs/face-detection/options) for more details.)
+option. (See [Options](/face-detection/options) for more details.)
 
 That said, there is still a minimum size/resolution required. If you're having trouble, try a higher-resolution photo
 and see if that works.
