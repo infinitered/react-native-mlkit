@@ -1,5 +1,19 @@
 # @infinitered/infinite-red-ai
 
+## 0.2.1
+
+### Patch Changes
+
+- 62486bb: Fix dependencies and bump version on all packages for safety
+- 5eb60a9: Introduce hook- and context-based API for face detection and document
+- c592f22: Add publish action for docs, and bump versions of packages to test.
+- Updated dependencies [62486bb]
+- Updated dependencies [5eb60a9]
+- Updated dependencies [c592f22]
+  - @infinitered/react-native-mlkit-object-detection@0.5.1
+  - @infinitered/react-native-mlkit-face-detection@0.5.0
+  - @infinitered/react-native-mlkit-image-labeling@0.4.1
+
 ## 0.2.0
 
 ### Minor Changes
