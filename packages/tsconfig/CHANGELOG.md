@@ -1,5 +1,11 @@
 # @infinitered/tsconfig
 
+## 0.1.4
+
+### Patch Changes
+
+- 6cbb6fc: Bump to test release script
+
 ## 0.1.3
 
 ### Patch Changes
