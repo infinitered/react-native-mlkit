@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.5
+
+### Patch Changes
+
+- 68a9bec: Bump
+- Updated dependencies [68a9bec]
+  - @infinitered/react-native-mlkit-core@0.6.5
+
 ## 0.4.4
 
 ### Patch Changes
