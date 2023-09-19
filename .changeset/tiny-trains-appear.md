@@ -1,0 +1,12 @@
+---
+"@infinitered/react-native-mlkit-face-detection": patch
+"docusaurus": patch
+"@infinitered/infinite-red-ai": patch
+"@infinitered/react-native-mlkit-core": patch
+"@infinitered/react-native-mlkit-image-labeling": patch
+"@infinitered/react-native-mlkit-object-detection": patch
+"@infinitered/eslint-config-react-native-mlkit": patch
+"@infinitered/tsconfig": patch
+---
+
+Add publish action for docs, and bump versions of packages to test.
