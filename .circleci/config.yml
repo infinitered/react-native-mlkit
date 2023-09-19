@@ -13,6 +13,9 @@ jobs:
     steps:
       - checkout
       # Restore Yarn cache (Yarn 3 uses .yarn/cache directory)
+      - run:
+          name: Use local Yarn version
+          command: echo "export PATH=$(pwd)/.yarn/releases:$PATH" >> $BASH_ENV
       - restore_cache:
           name: Restore Yarn Cache
           keys:
