@@ -1,5 +1,11 @@
 # @infinitered/tsconfig
 
+## 0.1.6
+
+### Patch Changes
+
+- 68a9bec: Bump
+
 ## 0.1.5
 
 ### Patch Changes

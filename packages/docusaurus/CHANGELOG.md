@@ -1,5 +1,11 @@
 # docusaurus
 
+## 0.2.5
+
+### Patch Changes
+
+- 68a9bec: Bump
+
 ## 0.2.4
 
 ### Patch Changes
