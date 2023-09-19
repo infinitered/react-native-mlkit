@@ -2,7 +2,10 @@
   "$schema": "https://unpkg.com/@changesets/config@2.3.1/schema.json",
   "changelog": "@changesets/cli/changelog",
   "commit": [
-    "./scripts/commit.js"
+    "@changesets/cli/commit",
+    {
+      "skipCI": false
+    }
   ],
   "fixed": [],
   "linked": [],
