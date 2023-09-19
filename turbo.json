@@ -11,7 +11,8 @@
       "outputs": [
         "dist/**",
         "build/**"
-      ]
+      ],
+      "cache": true
     },
     "clean": {},
     "lint": {
