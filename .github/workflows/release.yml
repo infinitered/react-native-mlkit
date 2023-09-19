@@ -21,7 +21,7 @@ jobs:
           node-version: 18.x
 
       - name: Install Dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
 
       - name: Version Packages or Publish to npm
         id: changesets
@@ -38,10 +38,11 @@ jobs:
         id: check-publish
         run: |
           if [[ -n "$(cat ./yarn-release.log | grep '${{ github.run_id }}')" ]]; then
-            echo "::set-output name=published::true"
+            echo "published=true" >> $GITHUB_OUTPUT
           else
-            echo "::set-output name=published::false"
+            echo "published=false" >> $GITHUB_OUTPUT
           fi
+
   deploy_docs:
     name: Deploy Docusaurus to GitHub Pages
     runs-on: ubuntu-latest
@@ -74,6 +75,6 @@ jobs:
           # You can swap them out with your own user credentials.
           user_name: github-actions[bot]
           user_email: 41898282+github-actions[bot]@users.noreply.github.com
-      - name: Cleanup old success log
+      - name: Cleanup old release log
         run: |
-          rm -f ./success.log
+          rm -f ./yarn-release.log
