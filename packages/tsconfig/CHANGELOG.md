@@ -1,5 +1,11 @@
 # @infinitered/tsconfig
 
+## 0.1.5
+
+### Patch Changes
+
+- 5ed9f17: Bump for testing
+
 ## 0.1.4
 
 ### Patch Changes

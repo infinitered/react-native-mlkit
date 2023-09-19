@@ -1,5 +1,11 @@
 # @infinitered/eslint-config-react-native-mlkit
 
+## 0.0.5
+
+### Patch Changes
+
+- 5ed9f17: Bump for testing
+
 ## 0.0.4
 
 ### Patch Changes
