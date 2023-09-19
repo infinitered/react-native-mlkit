@@ -1,5 +1,11 @@
 # @infinitered/tsconfig
 
+## 0.1.3
+
+### Patch Changes
+
+- 3d7866a: Remove skip-ci flag from version PRs
+
 ## 0.1.2
 
 ### Patch Changes

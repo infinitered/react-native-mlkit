@@ -1,5 +1,13 @@
 # docusaurus
 
+## 0.2.2
+
+### Patch Changes
+
+- 2152fd2: Fix test issues and broken links.
+- 3d7866a: Remove skip-ci flag from version PRs
+- 3efff75: Testing changesets
+
 ## 0.2.1
 
 ### Patch Changes
