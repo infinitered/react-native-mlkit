@@ -10,8 +10,12 @@
     "clean": "turbo run clean",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "setup": "./scripts/setup.sh",
-    "release": "turbo run build && changeset publish",
-    "version": "changeset version && yarn install --mode update-lockfile"
+    "version": "changeset version && yarn install --mode update-lockfile",
+    "ci:build": "turbo run build",
+    "ci:publish": "changeset publish",
+    "ci:log": "[ ! -z \"$GITHUB_RUN_ID\" ] && echo 'Successfully published changeset: $GITHUB_RUN_ID' > ./yarn-release.log",
+    "ci:push-tags": "git push --follow-tags",
+    "release": "yarn ci:build && yarn ci:publish && yarn ci:log && yarn ci:push-tags"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.2",
