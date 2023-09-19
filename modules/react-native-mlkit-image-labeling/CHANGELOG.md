@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.4
+
+### Patch Changes
+
+- 5ed9f17: Bump for testing
+- Updated dependencies [5ed9f17]
+  - @infinitered/react-native-mlkit-core@0.6.4
+
 ## 0.4.3
 
 ### Patch Changes

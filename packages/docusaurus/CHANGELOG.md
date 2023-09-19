@@ -1,5 +1,11 @@
 # docusaurus
 
+## 0.2.4
+
+### Patch Changes
+
+- 5ed9f17: Bump for testing
+
 ## 0.2.3
 
 ### Patch Changes
