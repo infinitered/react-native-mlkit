@@ -1,5 +1,13 @@
 # docusaurus
 
+## 0.2.1
+
+### Patch Changes
+
+- 62486bb: Fix dependencies and bump version on all packages for safety
+- 5eb60a9: Introduce hook- and context-based API for face detection and document
+- c592f22: Add publish action for docs, and bump versions of packages to test.
+
 ## 0.2.0
 
 ### Minor Changes

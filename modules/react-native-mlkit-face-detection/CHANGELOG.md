@@ -1,5 +1,19 @@
 # @infinitered/react-native-mlkit-face-detection
 
+## 0.5.0
+
+### Minor Changes
+
+- 5eb60a9: Introduce hook- and context-based API for face detection and document
+
+### Patch Changes
+
+- 62486bb: Fix dependencies and bump version on all packages for safety
+- c592f22: Add publish action for docs, and bump versions of packages to test.
+- Updated dependencies [62486bb]
+- Updated dependencies [c592f22]
+  - @infinitered/react-native-mlkit-core@0.6.1
+
 ## 0.4.0
 
 ### Minor Changes
