@@ -1,5 +1,11 @@
 # @infinitered/react-native-mlkit-core
 
+## 0.6.2
+
+### Patch Changes
+
+- 3d7866a: Remove skip-ci flag from version PRs
+
 ## 0.6.1
 
 ### Patch Changes

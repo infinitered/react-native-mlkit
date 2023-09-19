@@ -1,5 +1,16 @@
 # @infinitered/infinite-red-ai
 
+## 0.2.2
+
+### Patch Changes
+
+- 2152fd2: Fix test issues and broken links.
+- 3d7866a: Remove skip-ci flag from version PRs
+- Updated dependencies [3d7866a]
+  - @infinitered/react-native-mlkit-object-detection@0.5.2
+  - @infinitered/react-native-mlkit-face-detection@0.5.1
+  - @infinitered/react-native-mlkit-image-labeling@0.4.2
+
 ## 0.2.1
 
 ### Patch Changes
