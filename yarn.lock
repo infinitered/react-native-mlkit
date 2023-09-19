@@ -3538,7 +3538,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@infinitered/eslint-config-react-native-mlkit@0.0.1, @infinitered/eslint-config-react-native-mlkit@workspace:packages/eslint-config-react-native-mlkit":
+"@infinitered/eslint-config-react-native-mlkit@workspace:packages/eslint-config-react-native-mlkit":
   version: 0.0.0-use.local
   resolution: "@infinitered/eslint-config-react-native-mlkit@workspace:packages/eslint-config-react-native-mlkit"
   dependencies:
@@ -19759,7 +19759,6 @@ __metadata:
   resolution: "react-native-mlkit@workspace:."
   dependencies:
     "@changesets/cli": ^2.26.2
-    "@infinitered/eslint-config-react-native-mlkit": 0.0.1
     "@turbo/gen": ^1.9.7
     "@types/jest": ^29.5.5
     eslint: ^8.0.0
