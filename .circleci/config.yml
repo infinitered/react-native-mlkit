@@ -8,7 +8,7 @@ defaults: &defaults
 
 # Jobs
 jobs:
-  install-deps:
+  test_and_build:
     <<: *defaults
     steps:
       - checkout
@@ -29,16 +29,6 @@ jobs:
           key: yarn-cache-{{ checksum "yarn.lock" }}
           paths:
             - .yarn/cache
-
-  lint-test-and-build:
-    <<: *defaults
-    steps:
-      - checkout
-      # Restore Yarn cache
-      - restore_cache:
-          name: Restore Yarn Cache
-          keys:
-            - yarn-cache-{{ checksum "yarn.lock" }}
       - run:
           name: Lint code
           command: yarn lint
@@ -54,5 +44,4 @@ workflows:
   version: 2
   build-and-test:
     jobs:
-      - install-deps
-      - lint-test-and-build
+      - test_and_build
