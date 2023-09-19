@@ -1,5 +1,6 @@
 ---
 sidebar_position: 400
+slug:  /face-detection/types
 ---
 
 # Types.md

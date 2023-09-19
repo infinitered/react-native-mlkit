@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-slug: /object-detection/getting-started
+slug: /object-detection
 title: Getting Started
 ---
 
