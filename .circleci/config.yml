@@ -12,27 +12,33 @@ jobs:
     <<: *defaults
     steps:
       - checkout
+      # Restore Yarn cache (Yarn 3 uses .yarn/cache directory)
       - restore_cache:
-          name: Restore Yarn Package Cache
+          name: Restore Yarn Cache
           keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
+            - yarn-cache-{{ checksum "yarn.lock" }}
+      - run:
+          name: Set Yarn version
+          command: yarn set version berry
       - run:
           name: Install Dependencies
           command: yarn install --immutable
+      # Save Yarn cache
       - save_cache:
-          name: Save Yarn Package Cache
-          key: yarn-packages-{{ checksum "yarn.lock" }}
+          name: Save Yarn Cache
+          key: yarn-cache-{{ checksum "yarn.lock" }}
           paths:
             - .yarn/cache
-            - .yarn/unplugged
+
   lint-test-and-build:
     <<: *defaults
     steps:
       - checkout
+      # Restore Yarn cache
       - restore_cache:
-          name: Restore Yarn Package Cache
+          name: Restore Yarn Cache
           keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
+            - yarn-cache-{{ checksum "yarn.lock" }}
       - run:
           name: Lint code
           command: yarn lint
