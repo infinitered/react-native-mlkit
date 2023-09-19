@@ -1,5 +1,13 @@
 # @infinitered/react-native-mlkit-face-detection
 
+## 0.5.2
+
+### Patch Changes
+
+- 6cbb6fc: Bump to test release script
+- Updated dependencies [6cbb6fc]
+  - @infinitered/react-native-mlkit-core@0.6.3
+
 ## 0.5.1
 
 ### Patch Changes

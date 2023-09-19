@@ -1,5 +1,11 @@
 # docusaurus
 
+## 0.2.3
+
+### Patch Changes
+
+- 6cbb6fc: Bump to test release script
+
 ## 0.2.2
 
 ### Patch Changes

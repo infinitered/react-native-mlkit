@@ -1,5 +1,11 @@
 # @infinitered/react-native-mlkit-core
 
+## 0.6.3
+
+### Patch Changes
+
+- 6cbb6fc: Bump to test release script
+
 ## 0.6.2
 
 ### Patch Changes
