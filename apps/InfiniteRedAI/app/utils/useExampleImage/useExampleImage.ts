@@ -41,6 +41,7 @@ interface UseExpoCameraImageReturnType {
   randomPhoto?: (category: string) => void
   nextPhoto?: (category: string) => void
   categories?: string[]
+  status: UseExampleImageStatus
 }
 
 export interface RandomImage {
@@ -60,13 +61,11 @@ const IMAGE_PICKER_OPTIONS: ImagePickerOptions = {
   quality: 0.5,
 }
 
-export function useExampleImage(
-  setStatus: (status: UseExampleImageStatus) => void,
-  predicates?: {
-    filter?: ImageFilter
-    groupBy?: ImageGrouper
-  },
-): UseExpoCameraImageReturnType {
+export function useExampleImage(predicates?: {
+  filter?: ImageFilter
+  groupBy?: ImageGrouper
+}): UseExpoCameraImageReturnType {
+  const [status, setStatus] = useState<UseExampleImageStatus>("init")
   const [cameraPermission, requestCameraPermission] = useCameraPermissions()
   const [image, setImage] = useState<SelectedImage | undefined>(undefined)
 
@@ -178,7 +177,8 @@ export function useExampleImage(
       takePhoto,
       nextPhoto,
       categories,
+      status,
     }),
-    [image, clearPhoto, selectPhoto, takePhoto, nextPhoto, categories],
+    [image, clearPhoto, selectPhoto, takePhoto, nextPhoto, categories, status],
   )
 }

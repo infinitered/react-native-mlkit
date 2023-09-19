@@ -7,10 +7,14 @@ export interface RNMLKitFaceDetectionResultRecord {
 
 export interface RNMLKitFace {
   frame: {
-    x: number;
-    y: number;
-    width: number;
-    height: number;
+    origin: {
+      x: number;
+      y: number;
+    };
+    size: {
+      x: number;
+      y: number;
+    };
   };
   landmarks: RNMLKitFaceLandmark[];
   contours: RNMLKitFaceContour[];
