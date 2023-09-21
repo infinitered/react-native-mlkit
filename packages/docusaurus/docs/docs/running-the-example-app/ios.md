@@ -49,12 +49,15 @@ yarn ios -d
 
 #### Via XCode
 
-1. Run `expo prebuild` to create the `android` and `ios` native project folders
+1. From inside the app package, Run `expo prebuild` to create the `android` and `ios` native project folders
 
     ```bash
     cd apps/InfiniteRedAI
    
+   # creates both android and ios native project folders
     yarn prebuild
+   # creates only the ios native project folder
+    yarn prebuild --platform ios
     ```
 
 2. Open `~/apps/InfiniteRedAI/ios/InfiniteRedAI.xcworkspace` in XCode

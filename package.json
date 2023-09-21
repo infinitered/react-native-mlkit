@@ -38,5 +38,6 @@
     "packages/*"
   ],
   "packageManager": "yarn@3.6.1",
-  "repository": "https://www.github.com/infinitered/react-native-mlkit"
+  "repository": "https://www.github.com/infinitered/react-native-mlkit",
+  "homepage": "https://infinitered.github.io/react-native-mlkit"
 }
