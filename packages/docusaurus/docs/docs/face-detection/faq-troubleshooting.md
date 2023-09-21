@@ -1,5 +1,6 @@
 ---
 sidebar_position: 600
+slug: /face-detection/faq-troubleshooting
 ---
 
 # FAQ / Troubleshooting

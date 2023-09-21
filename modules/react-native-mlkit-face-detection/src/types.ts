@@ -1,4 +1,4 @@
-export interface RNMLKitFaceDetectionResultRecord {
+export interface RNMLKitFaceDetectionResult {
   faces: RNMLKitFace[];
   success: boolean;
   error: string | null;

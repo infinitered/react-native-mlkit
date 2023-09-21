@@ -35,19 +35,19 @@ function HomepageHeader() {
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
           <Link
-            className="button button--secondary button--lg homePageButton"
+            className="button button--primary button--lg homePageButton"
             to="/category/face-detection"
           >
             Face Detection
           </Link>
           <Link
-            className="button button--secondary button--lg homePageButton"
+            className="button button--primary button--lg homePageButton"
             to="/category/image-labeling"
           >
             Image Labeling
           </Link>
           <Link
-            className="button button--secondary button--lg homePageButton"
+            className="button button--primary button--lg homePageButton"
             to="/category/object-detection"
           >
             Object Detection

@@ -1,7 +1,7 @@
 import RNMLKitFaceDetectionModule from "./RNMLKitFaceDetectionModule";
 import {
   RNMLKitFaceDetectorOptions,
-  RNMLKitFaceDetectionResultRecord,
+  RNMLKitFaceDetectionResult,
 } from "../types";
 
 async function initialize(options?: RNMLKitFaceDetectorOptions) {
@@ -42,7 +42,7 @@ export class RNMLKitFaceDetector {
     try {
       const result = await RNMLKitFaceDetectionModule.detectFaces(imageUri);
       this.status = "done";
-      return result as RNMLKitFaceDetectionResultRecord;
+      return result as RNMLKitFaceDetectionResult;
     } catch (e: unknown) {
       this.status = "error";
       console.error(

@@ -1,6 +1,6 @@
 {
   "label": "Object Detection",
-  "position": 2,
+  "position":400,
   "link": {
     "type": "generated-index",
     "description": "Detect Object"

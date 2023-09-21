@@ -1,8 +1,8 @@
 {
-  "label": "Section",
-  "position": 1,
+  "label": "Template Section",
+  "position": 999,
   "link": {
     "type": "generated-index",
-    "description": "Template Section"
+    "description": "Copy to make a new section"
   }
 }

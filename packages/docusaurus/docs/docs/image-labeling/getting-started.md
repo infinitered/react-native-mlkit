@@ -73,6 +73,6 @@ const MODELS: AssetRecord = {
     - `text`: Label of the classification.
     - `confidence`: A decimal value between 0 and 1 indicating the confidence level of the classification.
 
-## Important Notes
 
-Ensure that the model you want to use is correctly added to your assets and is imported in your component.
+
+ 
