@@ -1,5 +1,11 @@
 # @infinitered/tsconfig
 
+## 0.1.7
+
+### Patch Changes
+
+- 0465390: style docs and fix deploy scripts
+
 ## 0.1.6
 
 ### Patch Changes

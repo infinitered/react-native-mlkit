@@ -1,5 +1,15 @@
 # @infinitered/infinite-red-ai
 
+## 0.2.6
+
+### Patch Changes
+
+- 0465390: style docs and fix deploy scripts
+- Updated dependencies [0465390]
+  - @infinitered/react-native-mlkit-object-detection@0.5.6
+  - @infinitered/react-native-mlkit-face-detection@0.5.5
+  - @infinitered/react-native-mlkit-image-labeling@0.4.6
+
 ## 0.2.5
 
 ### Patch Changes

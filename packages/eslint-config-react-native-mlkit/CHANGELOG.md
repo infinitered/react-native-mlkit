@@ -1,5 +1,11 @@
 # @infinitered/eslint-config-react-native-mlkit
 
+## 0.0.7
+
+### Patch Changes
+
+- 0465390: style docs and fix deploy scripts
+
 ## 0.0.6
 
 ### Patch Changes

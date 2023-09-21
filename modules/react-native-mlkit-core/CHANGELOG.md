@@ -1,5 +1,11 @@
 # @infinitered/react-native-mlkit-core
 
+## 0.6.6
+
+### Patch Changes
+
+- 0465390: style docs and fix deploy scripts
+
 ## 0.6.5
 
 ### Patch Changes
