@@ -24,6 +24,9 @@ jobs:
       - name: Install Dependencies
         run: yarn install --immutable
 
+      - name: Build packages
+        run: yarn build:core
+
       - name: Version Packages or Publish to npm
         id: changesets
         uses: changesets/action@v1

@@ -11,7 +11,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "setup": "./scripts/setup.sh",
     "version": "changeset version && yarn install --mode update-lockfile",
-    "ci:build": "turbo run build",
+    "ci:build": "turbo run build --filter=@infinitered/react-native-mlkit-core && turbo run build",
     "ci:publish": "changeset publish",
     "ci:deploy:docs": "yarn workspace docusaurus deploy",
     "ci:push-tags": "git push --follow-tags",
