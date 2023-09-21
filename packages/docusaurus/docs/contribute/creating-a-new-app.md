@@ -11,7 +11,11 @@ instructions. These instructions are only for creating apps _within this repo_ f
 an a normal app and follow the installation instructions for the module(s) you wish to use.
 :::
 
-Creating a new app inside the monorepo requires a little extra config.
+## Working inside the monorepo
+
+React native does not play well with monorepos out of the box. Creating a new app inside the monorepo requires a little extra config.
+
+### Create a new app
 
 1. **From the project root** create the new app:
 
