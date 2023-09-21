@@ -1,5 +1,11 @@
 # docusaurus
 
+## 0.2.6
+
+### Patch Changes
+
+- 0465390: style docs and fix deploy scripts
+
 ## 0.2.5
 
 ### Patch Changes

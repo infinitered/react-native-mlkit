@@ -1,5 +1,13 @@
 # @infinitered/react-native-mlkit-face-detection
 
+## 0.5.5
+
+### Patch Changes
+
+- 0465390: style docs and fix deploy scripts
+- Updated dependencies [0465390]
+  - @infinitered/react-native-mlkit-core@0.6.6
+
 ## 0.5.4
 
 ### Patch Changes
