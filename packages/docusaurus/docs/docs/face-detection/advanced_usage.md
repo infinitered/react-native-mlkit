@@ -86,3 +86,4 @@ Ensure that it's initialized before trying to detect faces with it.
 :::
 
 That's it for the advanced usage! Dive deep, and feel free to ask any questions in the community forums.
+

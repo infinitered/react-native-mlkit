@@ -1,8 +1,8 @@
 ---
-sidebar_position: 0
+sidebar_position: 1
 ---
 
-# Introduction.md
+# Introduction
 
 `react-native-mlkit` is an native module for Expo and React Native that lets you use
 the [MLKit](https://developers.google.com/ml-kit) library in your Expo app.

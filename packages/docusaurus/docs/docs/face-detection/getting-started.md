@@ -22,8 +22,9 @@ both the Managed and Bare workflows.
 
 To use the module, you'll need to install and configure the `expo` package. See the [expo docs](https://docs.expo.dev/bare/installing-expo-modules/) for instructions.
 
+## Basic Usage
 
-## 1. Installation
+### 1. Installation
 
 Add the package to your project using your favorite package manager:
 
@@ -31,7 +32,7 @@ Add the package to your project using your favorite package manager:
 yarn add @infinitered/react-native-mlkit-face-detection
 ```
 
-## 2. Setting Up the Context
+### 2. Setting Up the Context
 
 Wrap your app with the `RNMLKitFaceDetectionContextProvider` component.
 
@@ -62,7 +63,7 @@ You can set custom options for the face detector by passing them to the `options
 the [Options](./options) page.
 :::
 
-## Basic Usage: Detecting Faces in Photos
+### 3. Detecting Faces in Photos
 
 Once the provider is in place, use the `useFacesInPhoto` hook. This hook will allow you to detect faces in any photo by
 simply passing the image's URI.
@@ -87,5 +88,5 @@ function FaceDetectionComponent() {
 }
 ```
 
-Now, you're set to incorporate face detection into your application! If you're looking for more control or advanced
-features, check out our [Advanced Usage](./advanced-usage) guide.
+Now, you're set to incorporate face detection into your application! Check out our [Advanced Usage](./advanced-usage) guide
+for more information.

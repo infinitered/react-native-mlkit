@@ -1,106 +1,328 @@
-/*!***/
-/* * Any CSS included here will be global. The classic template*/
-/* * bundles Infima by default. Infima is a CSS framework designed to*/
-/* * work well for content-centric websites.*/
-/* *!*/
-
-
+/*Any CSS included here will be global. The classic template*/
+/*bundles Infima by default. Infima is a CSS framework designed to*/
+/*work well for content-centric websites.*/
 
 
 :root {
+    /*BRAND*/
+    --ir-brand-rgb: 231, 53, 54;
+    --ir-brand-100: #FFDBD3;
+    --ir-brand-200: #FFB9AA;
+    --ir-brand-300: #FC948E;
+    --ir-brand-400: #FE6060;
+    --ir-brand-500: #E73536;
+    --ir-brand-600: #D13939;
+    --ir-brand-700: #B22525;
+    --ir-brand-800: #971111;
 
-  --ir-background-primary: #ffffff;
-  --ir-background-bold: #272728;
-  --ir-background-dim: #f8f7f7;
+    /*ERROR*/
+    --ir-danger-rgb: 159, 57, 57;
+    --ir-danger-100: #F2D3D3;
+    --ir-danger-200: #EAAEAE;
+    --ir-danger-300: #D08989;
+    --ir-danger-400: #B55757;
+    --ir-danger-500: #9F3939;
+    --ir-danger-600: #6F2828;
+    --ir-danger-700: #5F2222;
+    --ir-danger-800: #571F1F;
 
-  --ifm-background-color: #ffffff;
-  --ifm-surface-background-color: #f8f7f7;
-  --ifm-card-background-color: #ffffff;
+    /*INFO*/
+    --ir-info-rgb: 115, 184, 215;
+    --ir-info-100: #DCEDF5;
+    --ir-info-200: #C0DFED;
+    --ir-info-300: #B2D8E9;
+    --ir-info-400: #96CAE1;
+    --ir-info-500: #73B8D7;
+    --ir-info-600: #65A2BD;
+    --ir-info-700: #568AA1;
+    --ir-info-800: #456E81;
 
-  --ifm-color-primary: #e73536;
-  --ifm-color-secondary: rgb(221, 206, 230);
-  --ifm-color-success: #00a400;
-  --ifm-color-info: #54c7ec;
-  --ifm-color-warning: #ffba00;
-  --ifm-color-danger: #fa383e;
-  --ifm-color-primary-dark: #be1718;
-  --ifm-color-primary-darker: #7f0f10;
-  --ifm-color-primary-darkest: #3f0808;
-  --ifm-color-primary-light: #ed6868;
-  --ifm-color-primary-lighter: #f39a9a;
-  --ifm-color-primary-lightest: #f9cccd;
-  --ifm-color-primary-contrast-background: #f9cccd;
-  --ifm-color-primary-contrast-foreground: #3f0808;
-  --ifm-color-secondary-dark: rgb(171, 134, 193);
-  --ifm-color-secondary-darker: rgb(118, 74, 144);
-  --ifm-color-secondary-darkest: rgb(59, 37, 72);
-  --ifm-color-secondary-light: rgb(230, 218, 236);
-  --ifm-color-secondary-lighter: rgb(238, 230, 243);
-  --ifm-color-secondary-lightest: rgb(247, 243, 249);
-  --ifm-color-secondary-contrast-background: rgb(247, 243, 249);
-  --ifm-color-secondary-contrast-foreground: rgb(59, 37, 72);
-  --ifm-color-success-dark: rgb(0, 148, 0);
-  --ifm-color-success-darker: rgb(0, 139, 0);
-  --ifm-color-success-darkest: rgb(0, 115, 0);
-  --ifm-color-success-light: rgb(38, 178, 38);
-  --ifm-color-success-lighter: rgb(77, 191, 77);
-  --ifm-color-success-lightest: rgb(128, 210, 128);
-  --ifm-color-success-contrast-background: rgb(230, 246, 230);
-  --ifm-color-success-contrast-foreground: rgb(0, 49, 0);
-  --ifm-color-info-dark: rgb(76, 179, 212);
-  --ifm-color-info-darker: rgb(71, 169, 201);
-  --ifm-color-info-darkest: rgb(59, 139, 165);
-  --ifm-color-info-light: rgb(110, 207, 239);
-  --ifm-color-info-lighter: rgb(135, 216, 242);
-  --ifm-color-info-lightest: rgb(170, 227, 246);
-  --ifm-color-info-contrast-background: rgb(238, 249, 253);
-  --ifm-color-info-contrast-foreground: rgb(25, 60, 71);
-  --ifm-color-warning-dark: rgb(230, 167, 0);
-  --ifm-color-warning-darker: rgb(217, 158, 0);
-  --ifm-color-warning-darkest: rgb(179, 130, 0);
-  --ifm-color-warning-light: rgb(255, 196, 38);
-  --ifm-color-warning-lighter: rgb(255, 207, 77);
-  --ifm-color-warning-lightest: rgb(255, 221, 128);
-  --ifm-color-warning-contrast-background: rgb(255, 248, 230);
-  --ifm-color-warning-contrast-foreground: rgb(77, 56, 0);
-  --ifm-color-danger-dark: rgb(225, 50, 56);
-  --ifm-color-danger-darker: rgb(213, 48, 53);
-  --ifm-color-danger-darkest: rgb(175, 39, 43);
-  --ifm-color-danger-light: rgb(251, 86, 91);
-  --ifm-color-danger-lighter: rgb(251, 116, 120);
-  --ifm-color-danger-lightest: rgb(253, 156, 159);
-  --ifm-color-danger-contrast-background: rgb(255, 235, 236);
-  --ifm-color-danger-contrast-foreground: rgb(75, 17, 19);
-  --ifm-color-white: #fff;
-  --ifm-color-black: #000;
-  --ifm-color-gray-0: var(--ifm-color-white);
-  --ifm-color-gray-100: rgb(255, 255, 255);
-  --ifm-color-gray-200: rgb(207, 207, 208);
-  --ifm-color-gray-300: rgb(182, 182, 184);
-  --ifm-color-gray-400: rgb(158, 158, 160);
-  --ifm-color-gray-500: rgb(134, 134, 137);
-  --ifm-color-gray-600: rgb(110, 110, 113);
-  --ifm-color-gray-700: rgb(86, 86, 88);
-  --ifm-color-gray-800: rgb(63, 63, 64);
-  --ifm-color-gray-900: rgb(20, 20, 20);
-  --ifm-color-gray-1000: var(--ifm-color-black);
+    /*NEUTRAL*/
+    --ir-neutral-rgb: 20, 20, 21;
+    --ir-neutral-100: #FFFFFF;
+    --ir-neutral-200: #F8F7F7;
+    --ir-neutral-300: #E0E0E1;
+    --ir-neutral-400: #83838A;
+    --ir-neutral-500: #5D5D60;
+    --ir-neutral-600: #3B3B3E;
+    --ir-neutral-700: #333337;
+    --ir-neutral-800: #272728;
+    --ir-neutral-900: #141415;
 
-  --ifm-color-emphasis-0: var(--ifm-color-gray-0);
-  --ifm-color-emphasis-100: var(--ifm-color-gray-100);
-  --ifm-color-emphasis-200: var(--ifm-color-gray-200);
-  --ifm-color-emphasis-300: var(--ifm-color-gray-300);
-  --ifm-color-emphasis-400: var(--ifm-color-gray-400);
-  --ifm-color-emphasis-500: var(--ifm-color-gray-500);
-  --ifm-color-emphasis-600: var(--ifm-color-gray-600);
-  --ifm-color-emphasis-700: var(--ifm-color-gray-700);
-  --ifm-color-emphasis-800: var(--ifm-color-gray-800);
-  --ifm-color-emphasis-900: var(--ifm-color-gray-900);
-  --ifm-color-emphasis-1000: var(--ifm-color-gray-1000);
+    /*SECONDARY*/
+    --ir-secondary-rgb: 76, 62, 84;
+    --ir-secondary-100: #DBD8DD;
+    --ir-secondary-200: #B7B2BB;
+    --ir-secondary-300: #827887;
+    --ir-secondary-400: #695D6F;
+    --ir-secondary-500: #4C3E54;
+    --ir-secondary-600: #3D3044;
+    --ir-secondary-700: #322838;
+    --ir-secondary-800: #211925;
+
+    /*SUCCESS*/
+    --ir-success-rgb: 150, 133, 183;
+    --ir-success-100: #E5E1ED;
+    --ir-success-200: #D5CEE2;
+    --ir-success-300: #CBC2DB;
+    --ir-success-400: #B6AACD;
+    --ir-success-500: #9685B7;
+    --ir-success-600: #786A92;
+    --ir-success-700: #695D80;
+    --ir-success-800: #4B435C;
+
+    /*WARNING*/
+    --ir-warning-rgb: 243, 182, 103;
+    --ir-warning-100: #FCEDD9;
+    --ir-warning-200: #FAE2C2;
+    --ir-warning-300: #F9DBB3;
+    --ir-warning-400: #F7CC95;
+    --ir-warning-500: #F3B667;
+    --ir-warning-600: #E0A75F;
+    --ir-warning-700: #C3893B;
+    --ir-warning-800: #9D6317;
+
+    --ir-background-primary: #ffffff;
+    --ir-background-bold: #272728;
+    --ir-background-dim: #f8f7f7;
+
+
+    /* INFIMA THEME VARS*/
+
+    --ifm-background-color: #ffffff;
+    --ifm-surface-background-color: #f8f7f7;
+    --ifm-card-background-color: #ffffff;
+
+    --ifm-color-primary: var(--ir-brand-500);
+    --ifm-color-primary-dark: var(--ir-brand-600);
+    --ifm-color-primary-darker: var(--ir-brand-700);
+    --ifm-color-primary-darkest: var(--ir-brand-800);
+    --ifm-color-primary-light: var(--ir-brand-400);
+    --ifm-color-primary-lighter: var(--ir-brand-300);
+    --ifm-color-primary-lightest: var(--ir-brand-100);
+    --ifm-color-primary-contrast-background: var(--ir-brand-100);
+    --ifm-color-primary-contrast-foreground: var(--ir-brand-800);
+    --ifm-color-primary-highlight: rgba(var(--ir-brand-rgb), 0.15);
+
+
+    --ifm-color-secondary: var(--ir-secondary-400);
+    --ifm-color-secondary-dark: var(--ir-secondary-500);
+    --ifm-color-secondary-darker: var(--ir-secondary-700);
+    --ifm-color-secondary-darkest: var(--ir-secondary-800);
+    --ifm-color-secondary-light: var(--ir-secondary-300);
+    --ifm-color-secondary-lighter: var(--ir-secondary-200);
+    --ifm-color-secondary-lightest: var(--ir-secondary-100);
+    --ifm-color-secondary-contrast-background: var(--ir-secondary-100);
+    --ifm-color-secondary-contrast-foreground: var(--ir-secondary-800);
+    --ifm-color-secondary-highlight: rgba(var(--ir-secondary-rgb), 0.15);
+
+    --ifm-color-success: var(--ir-success-500);
+    --ifm-color-success-dark: var(--ir-success-600);
+    --ifm-color-success-darker: var(--ir-success-700);
+    --ifm-color-success-darkest: var(--ir-success-800);
+    --ifm-color-success-light: var(--ir-success-400);
+    --ifm-color-success-lighter: var(--ir-success-300);
+    --ifm-color-success-lightest: var(--ir-success-100);
+    --ifm-color-success-contrast-background: var(--ir-success-100);
+    --ifm-color-success-contrast-foreground: var(--ir-success-800);
+    --ifm-color-success-highlight: rgba(var(--ir-success-rgb), 0.15);
+
+    --ifm-color-info: var(--ir-info-500);
+    --ifm-color-info-dark: var(--ir-info-600);
+    --ifm-color-info-darker: var(--ir-info-700);
+    --ifm-color-info-darkest: var(--ir-info-800);
+    --ifm-color-info-light: var(--ir-info-400);
+    --ifm-color-info-lighter: var(--ir-info-300);
+    --ifm-color-info-lightest: var(--ir-info-100);
+    --ifm-color-info-contrast-background: var(--ir-info-100);
+    --ifm-color-info-contrast-foreground: var(--ir-info-800);
+    --ifm-color-info-highlight: rgba(var(--ir-info-rgb), 0.15);
+
+    --ifm-color-warning: var(--ir-warning-500);
+    --ifm-color-warning-dark: var(--ir-warning-600);
+    --ifm-color-warning-darker: var(--ir-warning-700);
+    --ifm-color-warning-darkest: var(--ir-warning-800);
+    --ifm-color-warning-light: var(--ir-warning-400);
+    --ifm-color-warning-lighter: var(--ir-warning-300);
+    --ifm-color-warning-lightest: var(--ir-warning-100);
+    --ifm-color-warning-contrast-background: var(--ir-warning-100);
+    --ifm-color-warning-contrast-foreground: var(--ir-warning-800);
+    --ifm-color-warning-highlight: rgba(var(--ir-warning-rgb), 0.15);
+
+    --ifm-color-danger: var(--ir-danger-500);
+    --ifm-color-danger-dark: var(--ir-danger-600);
+    --ifm-color-danger-darker: var(--ir-danger-700);
+    --ifm-color-danger-darkest: var(--ir-danger-800);
+    --ifm-color-danger-light: var(--ir-danger-400);
+    --ifm-color-danger-lighter: var(--ir-danger-300);
+    --ifm-color-danger-lightest: var(--ir-danger-100);
+    --ifm-color-danger-contrast-background: var(--ir-danger-100);
+    --ifm-color-danger-contrast-foreground: var(--ir-danger-800);
+    --ifm-color-danger-highlight: rgba(var(--ir-danger-rgb), 0.15);
+
+    --ifm-color-white: #fff;
+    --ifm-color-black: #000;
+    --ifm-color-gray-0: var(--ifm-color-white);
+    --ifm-color-gray-100: var(--ir-neutral-100);
+    --ifm-color-gray-200: var(--ir-neutral-200);
+    --ifm-color-gray-300: var(--ir-neutral-300);
+    --ifm-color-gray-400: var(--ir-neutral-400);
+    --ifm-color-gray-500: var(--ir-neutral-500);
+    --ifm-color-gray-600: var(--ir-neutral-600);
+    --ifm-color-gray-700: var(--ir-neutral-700);
+    --ifm-color-gray-800: var(--ir-neutral-800);
+    --ifm-color-gray-900: var(--ir-neutral-900);
+    --ifm-color-gray-1000: var(--ifm-color-black);
+
+    --ifm-color-emphasis-0: var(--ifm-color-gray-0);
+    --ifm-color-emphasis-100: var(--ifm-color-gray-100);
+    --ifm-color-emphasis-200: var(--ifm-color-gray-200);
+    --ifm-color-emphasis-300: var(--ifm-color-gray-300);
+    --ifm-color-emphasis-400: var(--ifm-color-gray-400);
+    --ifm-color-emphasis-500: var(--ifm-color-gray-500);
+    --ifm-color-emphasis-600: var(--ifm-color-gray-600);
+    --ifm-color-emphasis-700: var(--ifm-color-gray-700);
+    --ifm-color-emphasis-800: var(--ifm-color-gray-800);
+    --ifm-color-emphasis-900: var(--ifm-color-gray-900);
+    --ifm-color-emphasis-1000: var(--ifm-color-gray-1000);
 }
 
-.footer {
-  background-color: var(--ir-background-dim);
+html[data-theme='dark'] {
+    --ifm-card-background-color: var(--ifm-color-emphasis-500);
+}
+
+[data-theme='dark'] :root {
+    --ifm-color-primary-contrast-background: var(--ir-brand-800);
+    --ifm-color-primary-contrast-foreground: var(--ir-brand-100);
+    --ifm-color-secondary-contrast-background: var(--ifm-color-secondary-dark);
+    --ifm-color-secondary-contrast-foreground: var(--ifm-color-white);
+    --ifm-color-info-contrast-background: var(--ifm-color-info-darkest);
+    --ifm-color-info-contrast-foreground: var(--ifm-color-white);
+    --ifm-color-warning-contrast-background: var(--ifm-color-warning-darkest);
+    --ifm-color-warning-contrast-foreground: var(--ifm-color-white);
+    --ifm-color-danger-contrast-background: var(--ifm-color-danger-darkest);
+    --ifm-color-danger-contrast-foreground: var(--ifm-color-white);
+    --ifm-color-success-contrast-background: var(--ifm-color-success-dark);
+    --ifm-color-success-contrast-foreground: var(--ifm-color-white);
+    --ifm-card-background-color: var(--ifm-color-emphasis-500);
 }
 
 
+[data-theme='dark'] .button.button--primary {
+    color: var(--ifm-color-white);
+}
+
+[data-theme='dark'] .button.button--success {
+    color: var(--ifm-color-white);
+}
+
+[data-theme='dark'] .button.button--warning {
+    color: var(--ifm-color-black);
+}
+
+[data-theme='dark'] .button.button--danger {
+    color: var(--ifm-color-white);
+}
+
+[data-theme='dark'] .pagination-nav__link {
+    background-color: var(--ifm-color-emphasis-100);
+}
+
+.button.button--secondary {
+    color: var(--ifm-color-white);
+}
+
+
+.alert {
+    --ifm-alert-background-color-highlight: var(rgba(0, 0, 0, 0.15));
+    --ifm-alert-background-color: var(--ir-secondary-200);
+    --ifm-alert-border-color: var(--ir-secondary-600);
+    --ifm-alert-foreground-color: var(--ifm-color-white);
+}
+
+ .alert.alert--success {
+    --ifm-alert-background-color-highlight: var(--ifm-color-success-highlight);
+    --ifm-alert-background-color: var(--ir-success-100);
+    --ifm-alert-border-color: var(--ir-success-500);
+     --ifm-alert-foreground-color: var(--ir-success-800);
+}
+
+.alert--warning {
+    --ifm-alert-background-color-highlight: var(--ifm-color-warning-highlight);
+    --ifm-alert-background-color: var(--ir-warning-100);
+    --ifm-alert-border-color: var(--ir-warning-500);
+    --ifm-alert-foreground-color: var(--ir-warning-800);
+}
+
+.alert--danger {
+    --ifm-alert-background-color-highlight: var(--ifm-color-danger-highlight);
+    --ifm-alert-background-color: var(--ir-danger-100);
+    --ifm-alert-border-color: var(--ir-danger-400);
+    --ifm-alert-foreground-color: var(--ir-danger-800);
+}
+
+.alert--info {
+    --ifm-alert-background-color-highlight: var(--ifm-color-info-highlight);
+    --ifm-alert-background-color: var(--ir-info-100);
+    --ifm-alert-border-color: var(--ir-info-400);
+    --ifm-alert-foreground-color: var(--ir-info-800);
+}
+
+.alert--secondary {
+    --ifm-alert-background-color-highlight: var(--ifm-color-secondary-highlight);
+    --ifm-alert-background-color: var(--ir-secondary-100);
+    --ifm-alert-border-color: var(--ir-secondary-400);
+    --ifm-alert-foreground-color: var(--ifm-color-secondary-contrast-foreground);
+}
+
+
+[data-theme="dark"] .alert {
+    --ifm-alert-background-color-highlight: var(rgba(255,255,255,0.15));
+    --ifm-alert-background-color: var(--ir-neutral-700);
+    --ifm-alert-border-color: var(--ir-neutral-400);
+    --ifm-alert-foreground-color: var(--ifm-color-white);
+}
+
+
+[data-theme="dark"] .alert.alert--success {
+    --ifm-alert-background-color-highlight:  var(--ifm-color-success-highlight);
+    --ifm-alert-background-color: var(--ir-success-700);
+    --ifm-alert-border-color: var(--ir-success-400);
+    --ifm-alert-foreground-color: var(--ifm-color-white);
+}
+
+[data-theme="dark"] .alert--warning {
+    --ifm-alert-background-color-highlight: var(--ifm-color-warning-highlight);
+    --ifm-alert-background-color: var(--ir-warning-700);
+    --ifm-alert-border-color: var(--ir-warning-400);
+    --ifm-alert-foreground-color: var(--ifm-color-white);
+}
+
+[data-theme="dark"] .alert--danger {
+    --ifm-alert-background-color-highlight: var(--ifm-color-danger-highlight);
+    --ifm-alert-background-color: var(--ir-danger-700);
+    --ifm-alert-border-color: var(--ir-danger-400);
+    --ifm-alert-foreground-color: var(--ifm-color-white);
+}
+
+[data-theme="dark"] .alert--info {
+    --ifm-alert-background-color-highlight: var(--ifm-color-info-highlight);
+    --ifm-alert-background-color: var(--ir-info-800);
+    --ifm-alert-border-color: var(--ir-info-400);
+    --ifm-alert-foreground-color: var(--ifm-color-white);
+}
+
+[data-theme="dark"] .alert--secondary {
+    --ifm-alert-background-color-highlight: var(--ifm-color-secondary-highlight);
+    --ifm-alert-background-color: var(--ir-secondary-700);
+    --ifm-alert-border-color: var(--ir-secondary-400);
+}
+
+.testing-buttons a {
+    margin: 0.5rem 0.5rem;
+}
+
+.navbar__link--active {
+    color: var(--ifm-color-primary);
+}
 

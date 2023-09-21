@@ -41,9 +41,6 @@ const config = {
         docs: {
           routeBasePath:"/",
           sidebarPath: require.resolve('./sidebars.js'),
-          remarkPlugins: [
-            [require('@docusaurus/remark-plugin-npm2yarn'), {sync: true, converters: ['yarn', 'pnpm']}],
-          ],
         },
         theme: {
             customCss: require.resolve('./src/css/custom.css'),
@@ -65,7 +62,6 @@ const config = {
           src: 'img/logo.svg',
         },
         items: [
-          {to: '/', label: 'Home', position: 'left'},
             {
             type: 'docSidebar',
             sidebarId: 'docs',

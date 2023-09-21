@@ -13,9 +13,9 @@
     "version": "changeset version && yarn install --mode update-lockfile",
     "ci:build": "turbo run build",
     "ci:publish": "changeset publish",
-    "ci:log": "[ ! -z \"$GITHUB_RUN_ID\" ] && echo 'Successfully published changeset: $GITHUB_RUN_ID' > ./yarn-release.log",
+    "ci:deploy:docs": "yarn workspace docusaurus deploy",
     "ci:push-tags": "git push --follow-tags",
-    "release": "node scripts/release.mjs"
+    "release": "yarn ci:build && yarn ci:publish && yarn ci:push-tags && yarn ci:deploy:docs "
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.2",

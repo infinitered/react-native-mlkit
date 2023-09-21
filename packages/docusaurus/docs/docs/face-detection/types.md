@@ -5,7 +5,7 @@ slug:  /face-detection/types
 
 # Types.md
 
-## `RNMLKitFaceDetectionResultRecord`
+## `RNMLKitFaceDetectionResult`
 
 Represents the result of the face detection process, containing an array of detected faces, a success flag, any
 potential errors, and the path to the image.
@@ -104,7 +104,7 @@ Types of contours that can be detected on a face.
 | `leftCheekCenter`    |
 | `rightCheekCenter`   |
 
-## `RNMLKitFaceDetectorOptionsRecord`
+## `RNMLKitFaceDetectorOptions`
 
 Options for the face detector.
 
