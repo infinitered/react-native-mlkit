@@ -1,16 +1,15 @@
 ---
 sidebar_position: 3
+slug: /object-detection/using-a-custom-model
 ---
 
 # Using a custom model
 
-## Compatible Models
-
-Your custom model needs to be compatible with MLKit.
-
-Refer to [Custom Models with MLKit](https://developers.google.com/ml-kit/custom-models) for general information on
+:::tip
+Your custom model needs to be compatible with MLKit.  Refer to [Custom Models with MLKit](https://developers.google.com/ml-kit/custom-models) for general information on
 MLKit model compatibility, and specifically the section
 on [TensorFlow Lite model compatibility](https://developers.google.com/ml-kit/custom-models#model-compatibility).
+:::
 
 ## 1. Add your model to the project
 
@@ -20,9 +19,13 @@ Place your model somewhere that makes sense in your project. For example, you mi
 cp ~/my-custom-model.tflite ./assets/models/my-custom-model.tflite
 ```
 
-## 2. Configure Metro to bundle your model
+## 2. Configure Metro to bundle TFLite files
 
-Update your metro config so Metro knows to bundle TFLite files. You do this in your `./metro.config.js` file.
+Metro usually ignores unknown file types when bundling the app. 
+
+Update your metro config so Metro knows to include `.tflite` files in the app bundle. 
+
+To do this, create / edit your `./metro.config.js` file:
 
 ```js
 // metro.config.js
@@ -38,12 +41,20 @@ config.resolver.assetExts.push(
 module.exports = config;
 ```
 
-See the [Expo Docs](https://docs.expo.dev/guides/customizing-metro/#adding-more-file-extensions-to-assetexts) for
-detailed instructions on [customizing metro](https://docs.expo.dev/guides/customizing-metro).
+See the [Expo Docs](https://docs.expo.dev/guides/customizing-metro/#adding-more-file-extensions-to-assetexts) for detailed instructions on [customizing metro](https://docs.expo.dev/guides/customizing-metro).
 
 ## 3. Set up the model context provider
 
-First define an AssetRecord object with the details of your model, and your desired options.
+First define an `AssetRecord` object with the details of your model. An asset record is a map of model names to model details. 
+
+```ts
+type ModelInfo = {
+  model: number;
+  options?: RNMLKitCustomObjectDetectorOptions;
+};
+```
+
+For a list of options for the default models, see the [Options](./options) page.
 
 ```js
 // App.tsx
@@ -87,12 +98,10 @@ function App() {
 
 ```tsx
 // MyComponent.tsx
-
 import {
   useObjectDetector,
   RNMLKitDetectedObject,
 } from "@infinitered/react-native-mlkit-object-detection";
-import { useEffect } from "react";
 
 function MyComponent() {
   // fetch the model from the hook, if you don't pass a model name it will fetch the default MLKit Object Detection model
@@ -102,7 +111,7 @@ function MyComponent() {
 
   // Models must be loaded before they can be used. This can be slow, and consume
   // a lot of resources so consider carefully where and when to load the model
-  useEffect(() => {
+  React.useEffect(() => {
     // Loading models is done asynchronously, so in a useEffect we need to wrap it in an async function
     async function loadModel() {
       if (!model || modelIsLoaded) return;
