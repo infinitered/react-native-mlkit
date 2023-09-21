@@ -27,6 +27,11 @@ jobs:
       - name: Build packages
         run: yarn ci:build
 
+      - name: Set git user
+        run: |
+          git config --global user.name "${{secrets.GIT_USERNAME}}"
+          git config --global user.email "${{secrets.GIT_EMAIL}}"
+
       - name: Version Packages or Publish to npm
         id: changesets
         uses: changesets/action@v1
