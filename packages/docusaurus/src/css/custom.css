@@ -39,16 +39,17 @@
 
     /*NEUTRAL*/
     --ir-neutral-rgb: 20, 20, 21;
-    --ir-neutral-100: #FFFFFF;
-    --ir-neutral-200: #F8F7F7;
-    --ir-neutral-300: #E0E0E1;
-    --ir-neutral-400: #83838A;
-    --ir-neutral-500: #5D5D60;
-    --ir-neutral-600: #3B3B3E;
-    --ir-neutral-700: #333337;
-    --ir-neutral-800: #272728;
-    --ir-neutral-900: #141415;
-
+    --ir-neutral-000: #FFFFFF;
+    --ir-neutral-100: #F8F7F7;
+    --ir-neutral-200: #E0E0E1;
+    --ir-neutral-300: #83838A;
+    --ir-neutral-400: #5D5D60;
+    --ir-neutral-500: #3B3B3E;
+    --ir-neutral-600: #333337;
+    --ir-neutral-700: #272728;
+    --ir-neutral-800: #141415;
+    --ir-neutral-900: #0C0C0D;
+    
     /*SECONDARY*/
     --ir-secondary-rgb: 76, 62, 84;
     --ir-secondary-100: #DBD8DD;
@@ -105,16 +106,16 @@
     --ifm-color-primary-highlight: rgba(var(--ir-brand-rgb), 0.15);
 
 
-    --ifm-color-secondary: var(--ir-secondary-400);
-    --ifm-color-secondary-dark: var(--ir-secondary-500);
-    --ifm-color-secondary-darker: var(--ir-secondary-700);
-    --ifm-color-secondary-darkest: var(--ir-secondary-800);
-    --ifm-color-secondary-light: var(--ir-secondary-300);
-    --ifm-color-secondary-lighter: var(--ir-secondary-200);
-    --ifm-color-secondary-lightest: var(--ir-secondary-100);
-    --ifm-color-secondary-contrast-background: var(--ir-secondary-100);
-    --ifm-color-secondary-contrast-foreground: var(--ir-secondary-800);
-    --ifm-color-secondary-highlight: rgba(var(--ir-secondary-rgb), 0.15);
+    --ifm-color-secondary: var(--ir-neutral-400);
+    --ifm-color-secondary-dark: var(--ir-neutral-500);
+    --ifm-color-secondary-darker: var(--ir-neutral-700);
+    --ifm-color-secondary-darkest: var(--ir-neutral-800);
+    --ifm-color-secondary-light: var(--ir-neutral-300);
+    --ifm-color-secondary-lighter: var(--ir-neutral-200);
+    --ifm-color-secondary-lightest: var(--ir-neutral-100);
+    --ifm-color-secondary-contrast-background: var(--ir-neutral-100);
+    --ifm-color-secondary-contrast-foreground: var(--ir-neutral-800);
+    --ifm-color-secondary-highlight: rgba(var(--ir-neutral-rgb), 0.15);
 
     --ifm-color-success: var(--ir-success-500);
     --ifm-color-success-dark: var(--ir-success-600);
