@@ -25,7 +25,7 @@ jobs:
         run: yarn install --immutable
 
       - name: Build packages
-        run: yarn build:core
+        run: yarn ci:build
 
       - name: Version Packages or Publish to npm
         id: changesets
