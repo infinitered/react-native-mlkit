@@ -215,52 +215,30 @@ html[data-theme='dark'] {
     color: var(--ifm-color-white);
 }
 
+
+
 [data-theme='dark'] .button.button--success {
     color: var(--ifm-color-white);
 }
 
 .button.button--warning {
-    background-color: var(--ifm-color-warning);
-    border-color: var(--ifm-color-warning);
-    color: var(--ifm-color-white);
-}
-
-[data-theme='dark'] .button.button--warning {
-    background-color: var(--ifm-color-warning);
-    border-color: var(--ifm-color-warning);
-    color: var(--ifm-color-white);
-}
-.alt-divider {
- width:2px;
-    background-color: var(--ifm-alert-background-color-highlight);
-    border: 1px solid var(--ifm-card-background-color);
-    margin: 0 2rem;
-
-
-}
-.button.button--warning.warning-alt {
     background-color: var(--ifm-color-warning-darker);
     border-color: var(--ifm-color-warning-darker);
     color: var(--ifm-color-white);
 }
 
-[data-theme='dark'] .button.button--warning.warning-alt {
-    background-color: var(--ifm-color-warning-darker);
-    border-color: var(--ifm-color-warning-darker);
-    color: var(--ifm-color-white);
-}
+/*[data-theme='dark'] .button.button--warning {*/
+/*    background-color: var(--ifm-color-warning-darker);*/
+/*    border-color: var(--ifm-color-warning-darker);*/
+/*    color: var(--ifm-color-white);*/
+/*}*/
 
-.button.button--warning.warning-alt-2 {
+:where(.button--warning):not(.button--outline):hover {
     background-color: var(--ifm-color-warning-darkest);
     border-color: var(--ifm-color-warning-darkest);
     color: var(--ifm-color-white);
 }
 
-[data-theme='dark'] .button.button--warning.warning-alt-2 {
-    background-color: var(--ifm-color-warning-darkest);
-    border-color: var(--ifm-color-warning-darkest);
-    color: var(--ifm-color-white);
-}
 
 [data-theme='dark'] .button.button--danger {
     color: var(--ifm-color-white);
