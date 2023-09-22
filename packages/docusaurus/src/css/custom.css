@@ -190,9 +190,6 @@
 
 html[data-theme='dark'] {
     --ifm-card-background-color: var(--ifm-color-emphasis-500);
-}
-
-[data-theme='dark'] :root {
     --ifm-color-primary-contrast-background: var(--ir-brand-800);
     --ifm-color-primary-contrast-foreground: var(--ir-brand-100);
     --ifm-color-secondary-contrast-background: var(--ifm-color-secondary-dark);
@@ -205,16 +202,16 @@ html[data-theme='dark'] {
     --ifm-color-danger-contrast-foreground: var(--ifm-color-white);
     --ifm-color-success-contrast-background: var(--ifm-color-success-dark);
     --ifm-color-success-contrast-foreground: var(--ifm-color-white);
-    --ifm-card-background-color: var(--ifm-color-emphasis-500);
 }
 
-
+[data-theme='dark'] :root {
+    --ifm-card-background-color: var(--ifm-color-emphasis-500);
+}
 
 
 [data-theme='dark'] .button.button--primary {
     color: var(--ifm-color-white);
 }
-
 
 
 [data-theme='dark'] .button.button--success {
@@ -260,11 +257,11 @@ html[data-theme='dark'] {
     --ifm-alert-foreground-color: var(--ifm-color-white);
 }
 
- .alert.alert--success {
+.alert.alert--success {
     --ifm-alert-background-color-highlight: var(--ifm-color-success-highlight);
     --ifm-alert-background-color: var(--ir-success-100);
     --ifm-alert-border-color: var(--ir-success-500);
-     --ifm-alert-foreground-color: var(--ir-success-800);
+    --ifm-alert-foreground-color: var(--ir-success-800);
 }
 
 .alert--warning {
@@ -297,7 +294,7 @@ html[data-theme='dark'] {
 
 
 [data-theme="dark"] .alert {
-    --ifm-alert-background-color-highlight: var(rgba(255,255,255,0.15));
+    --ifm-alert-background-color-highlight: var(rgba(255, 255, 255, 0.15));
     --ifm-alert-background-color: var(--ir-neutral-700);
     --ifm-alert-border-color: var(--ir-neutral-400);
     --ifm-alert-foreground-color: var(--ifm-color-white);
@@ -305,7 +302,7 @@ html[data-theme='dark'] {
 
 
 [data-theme="dark"] .alert.alert--success {
-    --ifm-alert-background-color-highlight:  var(--ifm-color-success-highlight);
+    --ifm-alert-background-color-highlight: var(--ifm-color-success-highlight);
     --ifm-alert-background-color: var(--ir-success-700);
     --ifm-alert-border-color: var(--ir-success-400);
     --ifm-alert-foreground-color: var(--ifm-color-white);
