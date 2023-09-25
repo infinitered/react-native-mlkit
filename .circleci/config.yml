@@ -1,5 +1,161 @@
 version: 2.1
 
+orbs:
+  ir-docs-publish:
+    commands:
+      install_git:
+        description: "Installs Git on the CI environment."
+        steps:
+          - run:
+              name: Install Git
+              command: |
+                sudo apt-get update
+                sudo apt-get install -y git
+
+      setup_git:
+        description: "Configures Git for commit and push operations."
+        steps:
+          - run:
+              name: Setup Git
+              command: |
+                git config --global user.name "$GIT_USER"
+                git config --global user.email "$GIT_EMAIL"
+
+      clone_ir_docs:
+        description: "Clone the target documentation repository."
+        parameters:
+          target_repo:
+            type: string
+            description: "The GitHub repository URL where the documentation resides."
+        steps:
+          - run:
+              name: Clone target repository
+              command: git clone << parameters.target_repo >> ~/ir-docs
+
+      copy_docs:
+        description: "Copies documentation and static content to the ir-docs repository."
+        parameters:
+          package_name:
+            type: string
+            default: ""
+            description: "The name of the package. Defaults to the repository name if empty."
+          docs_path:
+            type: string
+            default: "./ir-docs"
+            description: "The path to the ir-docs folder in the repository. Defaults to './ir-docs'."
+          label:
+            type: string
+            default: ""
+            description: "The label that will appear in the sidebar."
+          description:
+            type: string
+            default: ""
+            description: "The description for the documentation."
+        steps:
+          - run:
+              name: Extract package name
+              command: |
+                if [ -z "<< parameters.package_name >>" ]; then
+                  PACKAGE_NAME=$(basename -s .git `git config --get remote.origin.url`)
+                else
+                  PACKAGE_NAME="<< parameters.package_name >>"
+                fi
+                echo "export PACKAGE_NAME=$PACKAGE_NAME" >> $BASH_ENV
+          - run:
+              name: Check if docs exist
+              command: |
+                if [ ! "$(ls -A << parameters.docs_path >>/docs)" ]; then
+                  echo "Error: No files found in docs directory."
+                  exit 1
+                fi
+          - run:
+              name: Copy docs to ir-docs repository
+              command: |
+                cp -R << parameters.docs_path >>/docs ~/ir-docs/docs/$PACKAGE_NAME
+          - run:
+              name: Copy static content to ir-docs repository
+              command: |
+                if [ "$(ls -A << parameters.docs_path >>/static)" ]; then
+                  mkdir -p ~/ir-docs/static/$PACKAGE_NAME
+                  cp -R << parameters.docs_path >>/static/* ~/ir-docs/static/$PACKAGE_NAME/
+                else
+                  echo "No static files to copy."
+                fi
+          - run:
+              name: Create _category_.json
+              command: >
+                echo '{
+                  "label": "<< parameters.label >>",
+                  "link": {
+                    "type": "generated-index",
+                    "description": "<< parameters.description >>"
+                  }
+                }' > ~/ir-docs/docs/$PACKAGE_NAME/_category_.json
+
+      commit_and_push:
+        description: "Commits and pushes the updated documentation to the ir-docs repository."
+        steps:
+          - run:
+              name: Parse commit message and PR number
+              command: |
+                COMMIT_MESSAGE=$(git log -1 --pretty=%B)
+                PR_NUMBER=$(echo $COMMIT_MESSAGE | grep -oP "(#\K\d+)")
+                if [ ! -z "$PR_NUMBER" ]; then
+                  REPO_URL=$(git config --get remote.origin.url)
+                  REPO_NAME=$(basename -s .git $REPO_URL)
+                  PR_LINK="https://github.com/infinitered/$REPO_NAME/pull/$PR_NUMBER"
+                  FINAL_COMMIT_MESSAGE="$REPO_NAME -- $COMMIT_MESSAGE -- $PR_LINK"
+                else
+                  FINAL_COMMIT_MESSAGE="$COMMIT_MESSAGE"
+                fi
+                echo "export FINAL_COMMIT_MESSAGE=\"$FINAL_COMMIT_MESSAGE\"" >> $BASH_ENV
+          - run:
+              name: Commit and push to ir-docs repository
+              command: |
+                cd ~/ir-docs
+                git add .
+                git commit -m "$FINAL_COMMIT_MESSAGE"
+                git push origin main
+
+    jobs:
+      publish_docs:
+        description: "The main job that orchestrates the documentation update process."
+        docker:
+          - image: cimg/node:16.13
+        parameters:
+          package_name:
+            type: string
+            default: ""
+            description: "The name of the package. Defaults to the repository name if empty."
+          docs_path:
+            type: string
+            default: "./ir-docs"
+            description: "The path to the ir-docs folder in the repository. Defaults to './ir-docs'."
+          label:
+            type: string
+            default: ""
+            description: "The label for this section that will appear in the sidebar."
+          description:
+            type: string
+            default: ""
+            description: "The description of the category that this documentation where these docs will live in the sidebar."
+          target_repo:
+            type: string
+            default: ""
+        steps:
+          - checkout
+          - install_git
+          - setup_git
+          - clone_ir_docs:
+              target_repo: <<parameters.target_repo>>
+
+          - copy_docs:
+              package_name: << parameters.package_name >>
+              docs_path: << parameters.docs_path >>
+              label: << parameters.label >>
+              description: << parameters.description >>
+          - commit_and_push
+
 # Docker defaults
 defaults: &defaults
   docker:
@@ -45,3 +201,12 @@ workflows:
   build-and-test:
     jobs:
       - test_and_build
+  publish-docs:
+    jobs:
+      - ir-docs-publish/publish_docs:
+          target_repo: git@github.com:infinitered/ir-docs.git
+          label: "React Native MLKit"
+          description: "Expo Native modules for MLKit"
+          package_name: "react-native-mlkit"
+          docs_path: "./packages/ir-docs"
+
