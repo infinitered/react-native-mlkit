@@ -1,5 +1,6 @@
-import React from "react";
 import clsx from "clsx";
+import React from "react";
+
 import styles from "./styles.module.css";
 
 type FeatureItem = {
@@ -10,32 +11,38 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: "Easy to Use",
-    Svg: require("@site/static/img/undraw_docusaurus_mountain.svg").default,
+    title: "Native Inference",
+    Svg: require("@site/static/img/front-page/api-interface-svgrepo-com.svg")
+      .default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Native libraries mean native speed. Models are run using code optimized
+        for your device&apos;s CPU, and GPU. Get results in milliseconds... or
+        less.
       </>
     ),
   },
   {
-    title: "Focus on What Matters",
-    Svg: require("@site/static/img/undraw_docusaurus_tree.svg").default,
+    title: "On-Device Not In Cloud",
+    Svg: require("@site/static/img/front-page/mobile-app-svgrepo-com.svg")
+      .default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Running models on-device means no network latency, no privacy concerns,
+        and perhaps most importantly no surprise usage bills at the end of the
+        month.
       </>
     ),
   },
   {
-    title: "Powered by React",
-    Svg: require("@site/static/img/undraw_docusaurus_react.svg").default,
+    title: "Use MLKit Models, or Bring Your Own",
+    Svg: require("@site/static/img/front-page/machine-vision-svgrepo-com.svg")
+      .default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Experiment with the built-in MLKit models, or use our simple API to load
+        your own custom TFLite models for tasks like image&#x2011;labeling and
+        object&#x2011;detection.
       </>
     ),
   },
@@ -59,7 +66,7 @@ export default function HomepageFeatures(): JSX.Element {
   return (
     <section className={styles.features}>
       <div className="container">
-        <div className="row">
+        <div className={clsx("row", "center-vert")}>
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}

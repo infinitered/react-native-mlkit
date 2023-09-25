@@ -9,3 +9,9 @@
   height: 200px;
   width: 200px;
 }
+
+.center-vert {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

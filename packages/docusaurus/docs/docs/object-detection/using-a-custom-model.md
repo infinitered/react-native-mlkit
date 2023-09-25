@@ -6,7 +6,8 @@ slug: /object-detection/using-a-custom-model
 # Using a custom model
 
 :::tip
-Your custom model needs to be compatible with MLKit.  Refer to [Custom Models with MLKit](https://developers.google.com/ml-kit/custom-models) for general information on
+Your custom model needs to be compatible with MLKit. Refer
+to [Custom Models with MLKit](https://developers.google.com/ml-kit/custom-models) for general information on
 MLKit model compatibility, and specifically the section
 on [TensorFlow Lite model compatibility](https://developers.google.com/ml-kit/custom-models#model-compatibility).
 :::
@@ -21,9 +22,9 @@ cp ~/my-custom-model.tflite ./assets/models/my-custom-model.tflite
 
 ## 2. Configure Metro to bundle TFLite files
 
-Metro usually ignores unknown file types when bundling the app. 
+Metro usually ignores unknown file types when bundling the app.
 
-Update your metro config so Metro knows to include `.tflite` files in the app bundle. 
+Update your metro config so Metro knows to include `.tflite` files in the app bundle.
 
 To do this, create / edit your `./metro.config.js` file:
 
@@ -41,11 +42,13 @@ config.resolver.assetExts.push(
 module.exports = config;
 ```
 
-See the [Expo Docs](https://docs.expo.dev/guides/customizing-metro/#adding-more-file-extensions-to-assetexts) for detailed instructions on [customizing metro](https://docs.expo.dev/guides/customizing-metro).
+See the [Expo Docs](https://docs.expo.dev/guides/customizing-metro/#adding-more-file-extensions-to-assetexts) for
+detailed instructions on [customizing metro](https://docs.expo.dev/guides/customizing-metro).
 
 ## 3. Set up the model context provider
 
-First define an `AssetRecord` object with the details of your model. An asset record is a map of model names to model details. 
+First define an `AssetRecord` object with the details of your model. An asset record is a map of model names to model
+details.
 
 ```ts
 type ModelInfo = {
@@ -54,7 +57,7 @@ type ModelInfo = {
 };
 ```
 
-For a list of options for the default models, see the [Options](./options) page.
+For a list of options for the default models, see the [Options](/object-detection/options) page.
 
 ```js
 // App.tsx

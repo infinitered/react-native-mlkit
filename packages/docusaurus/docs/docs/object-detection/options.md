@@ -1,6 +1,7 @@
 ---
 sidebar_position: 99
 title: Options
+slug: /object-detection/options
 ---
 
 # Object Detector Options
@@ -17,7 +18,8 @@ the detector.
 | `shouldEnableMultipleObjects` | `boolean`                     | Yes      | Enables or disables the detection of multiple objects. |
 | `detectorMode`                | `'singleImage'` \| `'stream'` | Yes      | Sets the mode of the detector.                         |                        |
 
-For more information on these options see [the MLKit Docs](https://developers.google.com/ml-kit/vision/object-detection/ios#1.-configure-the-object-detector)
+For more information on these options
+see [the MLKit Docs](https://developers.google.com/ml-kit/vision/object-detection/ios#1.-configure-the-object-detector)
 
 ### Example Usage
 
