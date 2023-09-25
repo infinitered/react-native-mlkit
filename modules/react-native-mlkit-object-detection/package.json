@@ -1,6 +1,6 @@
 {
   "name": "@infinitered/react-native-mlkit-object-detection",
-  "version": "0.5.6",
+  "version": "0.5.7",
   "description": "Expo module for MLKit Object Detection",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -27,7 +27,7 @@
   "license": "MIT",
   "homepage": "https://infinitered.github.io/react-native-mlkit/object-detection",
   "dependencies": {
-    "@infinitered/react-native-mlkit-core": "0.6.6",
+    "@infinitered/react-native-mlkit-core": "0.6.7",
     "expo-modules-core": "^1.5.7"
   },
   "devDependencies": {

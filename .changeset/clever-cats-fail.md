@@ -1,5 +1,0 @@
----
-"docusaurus": patch
----
-
-create variations

@@ -1,5 +1,17 @@
 # @infinitered/infinite-red-ai
 
+## 0.2.7
+
+### Patch Changes
+
+- d52d34f: Bump to set version tags
+- Updated dependencies [d52d34f]
+- Updated dependencies [f6d6c99]
+- Updated dependencies [6348c5e]
+  - @infinitered/react-native-mlkit-face-detection@0.5.6
+  - @infinitered/react-native-mlkit-image-labeling@0.4.7
+  - @infinitered/react-native-mlkit-object-detection@0.5.7
+
 ## 0.2.6
 
 ### Patch Changes

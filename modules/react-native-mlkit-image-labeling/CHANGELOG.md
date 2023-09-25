@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.4.7
+
+### Patch Changes
+
+- d52d34f: Bump to set version tags
+- f6d6c99: Update some docs
+- 6348c5e: Contributing docs updates and showing changesets Jamon
+- Updated dependencies [d52d34f]
+  - @infinitered/react-native-mlkit-core@0.6.7
+
 ## 0.4.6
 
 ### Patch Changes
