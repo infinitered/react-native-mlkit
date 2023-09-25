@@ -1,5 +1,11 @@
 # @infinitered/tsconfig
 
+## 0.1.8
+
+### Patch Changes
+
+- d52d34f: Bump to set version tags
+
 ## 0.1.7
 
 ### Patch Changes

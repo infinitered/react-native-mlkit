@@ -1,5 +1,11 @@
 # @infinitered/eslint-config-react-native-mlkit
 
+## 0.0.8
+
+### Patch Changes
+
+- d52d34f: Bump to set version tags
+
 ## 0.0.7
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @infinitered/react-native-mlkit-core
 
+## 0.6.7
+
+### Patch Changes
+
+- d52d34f: Bump to set version tags
+
 ## 0.6.6
 
 ### Patch Changes

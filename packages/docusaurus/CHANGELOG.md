@@ -1,5 +1,20 @@
 # docusaurus
 
+## 0.3.0
+
+### Minor Changes
+
+- a26e892: Improve contributing docs
+- 402a4d3: Update homepage copy
+
+### Patch Changes
+
+- dfab4c6: create variations
+- d52d34f: Bump to set version tags
+- 760f9e2: docs(face-detection): fix Types title
+- f6d6c99: Update some docs
+- 6348c5e: Contributing docs updates and showing changesets Jamon
+
 ## 0.2.6
 
 ### Patch Changes
