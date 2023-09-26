@@ -45,12 +45,3 @@ workflows:
   build-and-test:
     jobs:
       - test_and_build
-  publish-docs:
-    jobs:
-      - ir-docs-publish/publish_docs:
-          target_repo: "https://github.com/infinitered/ir-docs.git"
-          label: "React Native MLKit"
-          description: "Expo Native modules for MLKit"
-          package_name: "react-native-mlkit"
-          docs_path: "./packages/ir-docs"
-
