@@ -43,14 +43,14 @@ jobs:
       - run:
           name: Build everything including docs
           command: yarn ci:build
-      - publish-docs/build_docs:
-          project_name: 'react-native-mlkit'
-          source_docs_dir: packages/docusaurus/docs/docs
-          label: "React Native MLKit"
-          description: "Use MLKit Models in React Native apps"
-          target_repo: "git@github.com:infinitered/orb-publish-docs.git"
-          git_username: "Infinite Red CI"
-          git_email: "ci@infinite.red"
+  publish-docs/build_docs:
+    project_name: 'react-native-mlkit'
+    source_docs_dir: packages/docusaurus/docs/docs
+    label: "React Native MLKit"
+    description: "Use MLKit Models in React Native apps"
+    target_repo: "git@github.com:infinitered/orb-publish-docs.git"
+    git_username: "Infinite Red CI"
+    git_email: "ci@infinite.red"
 # Workflows
 workflows:
   version: 2
