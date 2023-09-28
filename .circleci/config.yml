@@ -43,7 +43,7 @@ jobs:
       - run:
           name: Build everything including docs
           command: yarn ci:build
-      - publish-docs/build-docs:
+      - publish-docs/build_docs:
           project_name: 'react-native-mlkit'
           source_docs_dir: packages/docusaurus/docs/docs
           label: "React Native MLKit"
