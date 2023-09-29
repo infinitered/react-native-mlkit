@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.6.0
+
+### Minor Changes
+
+- 8a3770d: bump for testing
+
+### Patch Changes
+
+- 8a3770d: change prepare to postinstall
+- Updated dependencies [8a3770d]
+- Updated dependencies [8a3770d]
+  - @infinitered/react-native-mlkit-core@0.7.0
+
 ## 0.5.9
 
 ### Patch Changes

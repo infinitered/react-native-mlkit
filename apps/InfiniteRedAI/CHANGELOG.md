@@ -1,5 +1,20 @@
 # @infinitered/infinite-red-ai
 
+## 0.3.0
+
+### Minor Changes
+
+- 8a3770d: bump for testing
+
+### Patch Changes
+
+- 8a3770d: change prepare to postinstall
+- Updated dependencies [8a3770d]
+- Updated dependencies [8a3770d]
+  - @infinitered/react-native-mlkit-object-detection@0.6.0
+  - @infinitered/react-native-mlkit-face-detection@0.6.0
+  - @infinitered/react-native-mlkit-image-labeling@0.5.0
+
 ## 0.2.9
 
 ### Patch Changes
