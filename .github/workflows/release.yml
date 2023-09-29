@@ -1,3 +1,4 @@
+---
 name: Version or Release
 
 on:
@@ -9,8 +10,17 @@ on:
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
-  release:
-    name: Release
+  version_or_release:
+    # This job checks whether any changesets are present in './changesets'
+    #
+    #  - If changesets are present, it will run 'yarn version' which updates the
+    #    Version Packages PR (removing the changesets)
+    #
+    # -  If no changesets are present then it will run 'yarn release' which will
+    #    publish the packages to npm, add version tags, trigger a docs publish
+    #    etc.
+    #
+    name: "Changesets version or release"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
