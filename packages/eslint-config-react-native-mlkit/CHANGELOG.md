@@ -1,5 +1,11 @@
 # @infinitered/eslint-config-react-native-mlkit
 
+## 0.0.10
+
+### Patch Changes
+
+- e84624c: bump to test CI
+
 ## 0.0.9
 
 ### Patch Changes

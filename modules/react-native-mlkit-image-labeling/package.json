@@ -1,6 +1,6 @@
 {
   "name": "@infinitered/react-native-mlkit-image-labeling",
-  "version": "0.4.8",
+  "version": "0.4.9",
   "description": "My new module",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -27,7 +27,7 @@
   "license": "MIT",
   "homepage": "https://infinitered.github.io/react-native-mlkit/image-labeling",
   "dependencies": {
-    "@infinitered/react-native-mlkit-core": "0.6.8"
+    "@infinitered/react-native-mlkit-core": "0.6.9"
   },
   "devDependencies": {
     "@types/react": "^18.0.25",
