@@ -1,5 +1,12 @@
 # @infinitered/tsconfig
 
+## 0.1.9
+
+### Patch Changes
+
+- 473c8df: test bump
+- b74c44b: Build script update
+
 ## 0.1.8
 
 ### Patch Changes
