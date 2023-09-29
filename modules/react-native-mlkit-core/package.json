@@ -3,24 +3,7 @@
   "version": "0.6.9",
   "description": "Shared Library for RNMLKit",
   "main": "build/index.js",
-  "typesVersions": {
-    "*": {
-      "*": [
-        "src/*",
-        "src/*/index"
-      ]
-    }
-  },
-  "publishConfig": {
-    "typesVersions": {
-      "*": {
-        "*": [
-          "build/*.d.ts",
-          "build/*/index.d.ts"
-        ]
-      }
-    }
-  },
+  "types": "build/index.d.ts",
   "scripts": {
     "build": "expo-module build",
     "clean": "expo-module clean",
