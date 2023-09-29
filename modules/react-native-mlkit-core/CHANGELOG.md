@@ -1,5 +1,15 @@
 # @infinitered/react-native-mlkit-core
 
+## 0.7.0
+
+### Minor Changes
+
+- 8a3770d: bump for testing
+
+### Patch Changes
+
+- 8a3770d: change prepare to postinstall
+
 ## 0.6.9
 
 ### Patch Changes
