@@ -8,7 +8,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/okaidia");
 const config = {
   title: "react-native-mlkit",
   tagline: "Run MLKit and TFLite Models on-device for fast, low-cost inference",
-  favicon: "img/favicon.svg",
+  favicon: "/img/favicon.ico",
 
   // Set the production url of your site here
   url: "https://your-docusaurus-test-site.com",
