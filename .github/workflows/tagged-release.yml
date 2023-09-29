@@ -16,3 +16,4 @@ jobs:
           prerelease: false
           files: |
             LICENSE.txt
+
