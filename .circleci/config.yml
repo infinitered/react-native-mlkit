@@ -54,11 +54,11 @@ jobs:
           name: Lint code
           command: yarn lint
       - run:
+          name: Build modules and packages
+          command: yarn ci:build
+      - run:
           name: Run tests
           command: yarn test
-      - run:
-          name: Build everything including docs
-          command: yarn ci:build
 
 # Workflows
 workflows:
