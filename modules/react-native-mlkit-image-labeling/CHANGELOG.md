@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.9
+
+### Patch Changes
+
+- e84624c: bump to test CI
+- Updated dependencies [e84624c]
+  - @infinitered/react-native-mlkit-core@0.6.9
+
 ## 0.4.8
 
 ### Patch Changes

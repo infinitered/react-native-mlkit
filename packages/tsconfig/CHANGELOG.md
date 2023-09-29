@@ -1,5 +1,11 @@
 # @infinitered/tsconfig
 
+## 0.1.10
+
+### Patch Changes
+
+- e84624c: bump to test CI
+
 ## 0.1.9
 
 ### Patch Changes

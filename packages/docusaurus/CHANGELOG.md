@@ -1,5 +1,11 @@
 # docusaurus
 
+## 0.4.1
+
+### Patch Changes
+
+- e84624c: bump to test CI
+
 ## 0.4.0
 
 ### Minor Changes

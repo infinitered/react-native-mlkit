@@ -1,6 +1,6 @@
 {
   "name": "@infinitered/react-native-mlkit-face-detection",
-  "version": "0.5.7",
+  "version": "0.5.8",
   "description": "MLKit Face Detection for Expo",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -27,7 +27,7 @@
   "license": "MIT",
   "homepage": "https://infinitered.github.io/react-native-mlkit/face-detection",
   "dependencies": {
-    "@infinitered/react-native-mlkit-core": "0.6.8"
+    "@infinitered/react-native-mlkit-core": "0.6.9"
   },
   "devDependencies": {
     "@types/react": "^18.0.25",
