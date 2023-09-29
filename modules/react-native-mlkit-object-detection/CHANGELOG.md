@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.5.8
+
+### Patch Changes
+
+- 473c8df: test bump
+- b74c44b: Build script update
+- Updated dependencies [473c8df]
+- Updated dependencies [b74c44b]
+  - @infinitered/react-native-mlkit-core@0.6.8
+
 ## 0.5.7
 
 ### Patch Changes

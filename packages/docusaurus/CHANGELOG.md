@@ -1,5 +1,16 @@
 # docusaurus
 
+## 0.4.0
+
+### Minor Changes
+
+- b74c44b: Update homepage copy
+
+### Patch Changes
+
+- 473c8df: test bump
+- b74c44b: Build script update
+
 ## 0.3.0
 
 ### Minor Changes
