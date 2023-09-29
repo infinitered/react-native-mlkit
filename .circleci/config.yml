@@ -82,7 +82,7 @@ workflows:
     when:
       equal: ["release", << pipeline.parameters.GHA_Event >>]
     jobs:
-      - publish-docs/publish-docs:
+      - publish-docs/publish_docs:
           project_name: 'react-native-mlkit'
           source_docs_dir: packages/docusaurus/docs/docs
           label: "React Native MLKit"
