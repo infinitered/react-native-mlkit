@@ -16,7 +16,7 @@
     "version": "changeset version && yarn install --mode update-lockfile",
     "ci:build": "turbo run build --filter=@infinitered/react-native-mlkit-core --no-cache && turbo run build --filter=!@infinitered/react-native-mlkit-core --no-cache",
     "ci:publish": "changeset publish",
-    "ci:deploy:docs": "yarn workspace docusaurus deploy",
+    "ci:deploy:docs": "yarn workspace @infinitered/react-native-mlkit-docs deploy",
     "ci:push-tags": "git push --follow-tags",
     "release": "yarn ci:build && yarn ci:publish && yarn ci:push-tags && yarn ci:deploy:docs "
   },
