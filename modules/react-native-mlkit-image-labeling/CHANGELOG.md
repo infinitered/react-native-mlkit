@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.5.1
+
+### Patch Changes
+
+- 5d3b30d: bump to test CI
+- d1c784c: bump
+- Updated dependencies [5d3b30d]
+- Updated dependencies [d1c784c]
+  - @infinitered/react-native-mlkit-core@0.7.1
+
 ## 0.5.0
 
 ### Minor Changes
