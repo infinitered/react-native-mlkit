@@ -1,5 +1,8 @@
 # @infinitered/react-native-mlkit
 
+### [Check the friendly docs here! 📖](https://infinitered.github.io/react-native-mlkit/)
+
+
 RNMLKit provides Expo modules that allow developers to use MLKit native libraries in their Expo apps.
 
 - [Face Detection](https://https://infinitered.github.io/react-native-mlkit/face-detection/getting-started/)
