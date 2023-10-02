@@ -1,5 +1,13 @@
 # docusaurus
 
+## 0.5.1
+
+### Patch Changes
+
+- 5e1ce53: bump
+- c9cd36e: add favicon to docs
+- 313d3e0: bump
+
 ## 0.5.0
 
 ### Minor Changes
