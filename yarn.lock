@@ -3664,6 +3664,25 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@infinitered/react-native-mlkit-docs@workspace:packages/docusaurus":
+  version: 0.0.0-use.local
+  resolution: "@infinitered/react-native-mlkit-docs@workspace:packages/docusaurus"
+  dependencies:
+    "@docusaurus/core": 2.4.1
+    "@docusaurus/module-type-aliases": 2.4.1
+    "@docusaurus/preset-classic": 2.4.1
+    "@docusaurus/remark-plugin-npm2yarn": ^2.4.1
+    "@mdx-js/react": ^1.6.22
+    "@tsconfig/docusaurus": ^1.0.5
+    clsx: ^1.2.1
+    eslint: ^8.0.0
+    prism-react-renderer: ^1.3.5
+    react: 18.2.0
+    react-dom: ^18.2.0
+    typescript: ^4.7.4
+  languageName: unknown
+  linkType: soft
+
 "@infinitered/react-native-mlkit-face-detection@^0.6.0, @infinitered/react-native-mlkit-face-detection@workspace:modules/react-native-mlkit-face-detection":
   version: 0.0.0-use.local
   resolution: "@infinitered/react-native-mlkit-face-detection@workspace:modules/react-native-mlkit-face-detection"
@@ -9667,25 +9686,6 @@ __metadata:
   checksum: fd7673ca77fe26cd5cba38d816bc72d641f500f1f9b25b83e8ce28827fe2da7ad583a8da26ab6af85f834138cf8dae9f69b0cd6ab925f52ddab1754db44d99ce
   languageName: node
   linkType: hard
-
-"docusaurus@workspace:packages/docusaurus":
-  version: 0.0.0-use.local
-  resolution: "docusaurus@workspace:packages/docusaurus"
-  dependencies:
-    "@docusaurus/core": 2.4.1
-    "@docusaurus/module-type-aliases": 2.4.1
-    "@docusaurus/preset-classic": 2.4.1
-    "@docusaurus/remark-plugin-npm2yarn": ^2.4.1
-    "@mdx-js/react": ^1.6.22
-    "@tsconfig/docusaurus": ^1.0.5
-    clsx: ^1.2.1
-    eslint: ^8.0.0
-    prism-react-renderer: ^1.3.5
-    react: 18.2.0
-    react-dom: ^18.2.0
-    typescript: ^4.7.4
-  languageName: unknown
-  linkType: soft
 
 "dom-converter@npm:^0.2.0":
   version: 0.2.0
