@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocusaurus=self.webpackChunkdocusaurus||[]).push([[6830],{1509:a=>{a.exports=JSON.parse('{"label":"facebook","permalink":"/react-native-mlkit/blog/tags/facebook","allTagsPath":"/react-native-mlkit/blog/tags","count":1}')}}]);

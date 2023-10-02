@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_infinitered_react_native_mlkit_docs=self.webpackChunk_infinitered_react_native_mlkit_docs||[]).push([[9317],{1457:e=>{e.exports=JSON.parse('{"permalink":"/react-native-mlkit/blog/tags/facebook","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);

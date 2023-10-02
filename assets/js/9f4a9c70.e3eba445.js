@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_infinitered_react_native_mlkit_docs=self.webpackChunk_infinitered_react_native_mlkit_docs||[]).push([[2739],{3242:e=>{e.exports=JSON.parse('{"label":"hello","permalink":"/react-native-mlkit/blog/tags/hello","allTagsPath":"/react-native-mlkit/blog/tags","count":2}')}}]);
