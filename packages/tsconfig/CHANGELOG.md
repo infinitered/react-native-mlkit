@@ -1,5 +1,12 @@
 # @infinitered/tsconfig
 
+## 0.2.1
+
+### Patch Changes
+
+- 5d3b30d: bump to test CI
+- d1c784c: bump
+
 ## 0.2.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # docusaurus
 
+## 0.5.2
+
+### Patch Changes
+
+- 5d3b30d: rename package
+
 ## 0.5.1
 
 ### Patch Changes
