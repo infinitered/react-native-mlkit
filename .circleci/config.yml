@@ -19,7 +19,7 @@ parameters:
     default: ""
 
 orbs:
-  publish-docs: infinitered/publish-docs@dev:alpha
+  publish-docs: infinitered/publish-docs@dev:jq
 
 # Docker defaults
 defaults: &defaults
