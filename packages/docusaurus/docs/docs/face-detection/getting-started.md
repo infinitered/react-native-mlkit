@@ -55,13 +55,13 @@ function App() {
 
 :::tip
 By default, the face detection is automatically initialized and loaded into memory when created, which can have a
-significant impact on the performance of your app. The [Advanced Usage](./advanced-usage/#2-deferred-initialization)
+significant impact on the performance of your app. The [Advanced Usage](../advanced-usage/#2-deferred-initialization)
 guide has instructions on how to defer this initialization.
 :::
 
 :::tip
 You can set custom options for the face detector by passing them to the `options` prop. More info available on
-the [Options](./options) page.
+the [Options](../options) page.
 :::
 
 ### 3. Detecting Faces in Photos
@@ -89,6 +89,6 @@ function FaceDetectionComponent() {
 }
 ```
 
-Now, you're set to incorporate face detection into your application! Check out our [Advanced Usage](./advanced-usage)
+Now, you're set to incorporate face detection into your application! Check out our [Advanced Usage](../advanced-usage)
 guide
 for more information.

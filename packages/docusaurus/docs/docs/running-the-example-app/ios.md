@@ -1,6 +1,5 @@
 ---
 sidebar_position: 1
-slug: /running-the-example/ios
 title: iOS
 ---
 
@@ -9,9 +8,11 @@ title: iOS
 An example app is provided that demonstrates the correct use of the modules in a react-native app.
 
 :::info
-The iOS MLKit Libraries currently only support `arm64` architectures, so they currently will not work on the iOS simulator (which always runs in `x86_64`). 
+The iOS MLKit Libraries currently only support `arm64` architectures, so they currently will not work on the iOS
+simulator (which always runs in `x86_64`).
 
-This is a [known issue](https://issuetracker.google.com/issues/178965151?pli=1) with the MLKit Swift API, and we are waiting either for a fix from Google, or for Apple to release a native `arm64` simulator.
+This is a [known issue](https://issuetracker.google.com/issues/178965151?pli=1) with the MLKit Swift API, and we are
+waiting either for a fix from Google, or for Apple to release a native `arm64` simulator.
 :::
 
 ## 1. Clone the project
@@ -37,10 +38,10 @@ yarn build
 
 ## 5. Build and run the app
 
-
 #### Via Terminal
 
 1. Launch the app using the `ios` script
+
 ```bash
 cd apps/InfiniteRedAI
 

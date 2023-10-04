@@ -1,6 +1,5 @@
 ---
 sidebar_position: 3
-slug: /object-detection/using-a-custom-model
 ---
 
 # Using a custom model
@@ -57,7 +56,7 @@ type ModelInfo = {
 };
 ```
 
-For a list of options for the default models, see the [Options](./options) page.
+For a list of options for the default models, see the [Options](../options) page.
 
 ```js
 // App.tsx

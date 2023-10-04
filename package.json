@@ -4,9 +4,9 @@
     "CI scripts are all --no-cache because we aren't using Vercel's remote cache and the caches aren't working. It may be possible to cache dependencies in the future, but for now caching breaks the build."
   ],
   "scripts": {
-    "build": "turbo run build --filter=!docusaurus",
-    "build:docs": "turbo run build --filter=docusaurus",
-    "docs": "yarn workspace docusaurus start",
+    "build": "turbo run build --filter=!@infinitered/react-native-mlkit-docs",
+    "build:docs": "turbo run build --filter=@infinitered/react-native-mlkit-docs",
+    "docs": "yarn workspace @infinitered/react-native-mlkit-docs start",
     "test": "turbo run test",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
@@ -42,5 +42,6 @@
   ],
   "packageManager": "yarn@3.6.1",
   "repository": "https://www.github.com/infinitered/react-native-mlkit",
-  "homepage": "https://infinitered.github.io/react-native-mlkit"
+  "homepage": "https://infinitered.github.io/react-native-mlkit",
+  "x": "http://localhost:3000/react-native-mlkit/face-detection/options/"
 }

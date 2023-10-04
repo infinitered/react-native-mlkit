@@ -1,6 +1,5 @@
 ---
 sidebar_position: 300
-slug: /face-detection/options
 ---
 
 # Options
@@ -37,7 +36,9 @@ Options for the face detector.
 
 | Property | Description | Type | Default |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ | ---------- | ------ |
-| `performanceMode`    | The performance mode for the detector. Determines the trade-off between speed and accuracy. Use `'fast'` for real-time applications where speed is critical, and `'accurate'` for applications where higher accuracy is desired at the expense of speed. | `'fast'` \| `'accurate'` | `accurate` |
+| `performanceMode`    | The performance mode for the detector. Determines the trade-off between speed and accuracy.
+Use `'fast'` for real-time applications where speed is critical, and `'accurate'` for applications where higher accuracy
+is desired at the expense of speed. | `'fast'` \| `'accurate'` | `accurate` |
 | `landmarkMode`       | Indicates if landmark detection should be enabled. | `boolean | null`      | `null` |
 | `contourMode`        | Indicates if contour detection should be enabled. | `boolean | null`      | `null` |
 | `classificationMode` | Indicates if classification mode should be enabled. | `boolean | null`      | `null` |
