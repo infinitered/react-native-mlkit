@@ -1,6 +1,5 @@
 ---
 sidebar_position: 100
-slug: /face-detection
 title: Getting Started
 ---
 
@@ -16,11 +15,13 @@ both the Managed and Bare workflows.
 
 ### Managed Workflow
 
-`react-native-mlkit-face-detection` is compatible with the Expo Managed Workflow out of the box. No additional setup is required!
+`react-native-mlkit-face-detection` is compatible with the Expo Managed Workflow out of the box. No additional setup is
+required!
 
 ### Workflow
 
-To use the module, you'll need to install and configure the `expo` package. See the [expo docs](https://docs.expo.dev/bare/installing-expo-modules/) for instructions.
+To use the module, you'll need to install and configure the `expo` package. See
+the [expo docs](https://docs.expo.dev/bare/installing-expo-modules/) for instructions.
 
 ## Basic Usage
 
@@ -54,13 +55,13 @@ function App() {
 
 :::tip
 By default, the face detection is automatically initialized and loaded into memory when created, which can have a
-significant impact on the performance of your app. The [Advanced Usage](./advanced-usage/#2-deferred-initialization)
+significant impact on the performance of your app. The [Advanced Usage](../advanced-usage/#2-deferred-initialization)
 guide has instructions on how to defer this initialization.
 :::
 
 :::tip
 You can set custom options for the face detector by passing them to the `options` prop. More info available on
-the [Options](./options) page.
+the [Options](../options) page.
 :::
 
 ### 3. Detecting Faces in Photos
@@ -88,5 +89,6 @@ function FaceDetectionComponent() {
 }
 ```
 
-Now, you're set to incorporate face detection into your application! Check out our [Advanced Usage](./advanced-usage) guide
+Now, you're set to incorporate face detection into your application! Check out our [Advanced Usage](../advanced-usage)
+guide
 for more information.

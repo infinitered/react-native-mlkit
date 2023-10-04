@@ -1,13 +1,11 @@
 ---
 sidebar_position: 1
-slug: /running-the-example/android
 title: Android
 ---
 
 # Running the Example App on Android
 
 An example app is provided that demonstrates the correct use of the modules in a react-native app.
-
 
 ## 1. Clone the project
 
@@ -30,15 +28,15 @@ yarn build
 
 ##
 
-## 5. Build and run the app 
+## 5. Build and run the app
 
-From `~app/InfiniteRedAI` use the included script to run the app in the android emulator. 
+From `~app/InfiniteRedAI` use the included script to run the app in the android emulator.
 
 ```bash
 yarn android
 ```
 
-Add `-d` to run on a hardware device. 
+Add `-d` to run on a hardware device.
 
 ```bash
 yarn android [-d]

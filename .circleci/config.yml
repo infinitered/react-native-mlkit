@@ -19,7 +19,7 @@ parameters:
     default: ""
 
 orbs:
-  publish-docs: infinitered/publish-docs@0.2
+  publish-docs: infinitered/publish-docs@0.3
 
 # Docker defaults
 defaults: &defaults
@@ -68,12 +68,13 @@ workflows:
       - test_and_build
       - publish-docs/build_docs:
           project_name: 'react-native-mlkit'
-          source_docs_dir: packages/docusaurus/docs/docs
+          source_docs_dir: docs
           label: "React Native MLKit"
           description: "Use MLKit Models in React Native apps"
           target_repo: "git@github.com:infinitered/ir-docs.git"
           git_username: "Infinite Red CI"
           git_email: "ci@infinite.red"
+
   # publishes docs to the IR-Docs repo
   #  - Triggered from a GitHub Action, because the changeset release action is
   #    not available in CircleCI yet.
@@ -84,7 +85,7 @@ workflows:
     jobs:
       - publish-docs/publish_docs:
           project_name: 'react-native-mlkit'
-          source_docs_dir: packages/docusaurus/docs/docs
+          source_docs_dir: docs
           label: "React Native MLKit"
           description: "Use MLKit Models in React Native apps"
           target_repo: "git@github.com:infinitered/ir-docs.git"

@@ -11,9 +11,9 @@ the [MLKit](https://developers.google.com/ml-kit) library in your Expo app.
 
 Currently the following modules are available:
 
-- [Face Detection](/face-detection)
-- [Object Detection](/object-detection)
-- [Image Labeling](/image-labeling)
+- [Face Detection](../face-detection)
+- [Object Detection](../object-detection)
+- [Image Labeling](../image-labeling)
 
 We will be adding more modules in the future, and especially welcome PRs that add support for new MLKit libraries! Check
 out the contributing guide for more information on how to contribute.
@@ -23,9 +23,9 @@ out the contributing guide for more information on how to contribute.
 Each module is published as a separate npm package. For specific installation instructions for a particular module check
 the followig pages:
 
-- [Face Detection](/face-detection)
-- [Object Detection](/object-detection)
-- [Image Labeling](/image-labeling)
+- [Face Detection](../face-detection)
+- [Object Detection](../object-detection)
+- [Image Labeling](../image-labeling)
 
 ## FAQ
 

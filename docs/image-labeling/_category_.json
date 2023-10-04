@@ -1,0 +1,8 @@
+{
+  "label": "Image Labeling",
+  "position": 200,
+  "link": {
+    "type": "generated-index",
+    "description": "Label images with TFLite Models"
+  }
+}
