@@ -2,13 +2,14 @@
 sidebar_position: 99
 slug: /template-section
 ---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
 
 # Getting Started
 
 ## About
+
 Short description of the package, and what it's for
 
 ## Running the example App
@@ -19,9 +20,10 @@ Short description of the package, and what it's for
 npm i @infinitered/react-native-mlkit-face-detection
 ```
 
-
 ## Usage
 
 ```tsx
 
 ```
+
+## Conclusion
