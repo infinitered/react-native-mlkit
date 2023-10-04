@@ -1,5 +1,11 @@
 # docusaurus
 
+## 0.5.3
+
+### Patch Changes
+
+- f86b718: Bump
+
 ## 0.5.2
 
 ### Patch Changes
