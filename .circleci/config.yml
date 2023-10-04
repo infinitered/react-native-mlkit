@@ -19,7 +19,7 @@ parameters:
     default: ""
 
 orbs:
-  publish-docs: infinitered/publish-docs@dev:artifacts-3
+  publish-docs: infinitered/publish-docs@dev:artifacts-4
 
 # Docker defaults
 defaults: &defaults
