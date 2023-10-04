@@ -1,7 +1,6 @@
 ---
 sidebar_position: 99
 title: Options
-slug: /object-detection/options
 ---
 
 # Object Detector Options

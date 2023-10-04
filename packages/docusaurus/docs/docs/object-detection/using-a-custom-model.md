@@ -57,7 +57,7 @@ type ModelInfo = {
 };
 ```
 
-For a list of options for the default models, see the [Options](/object-detection/options) page.
+For a list of options for the default models, see the [Options](./options) page.
 
 ```js
 // App.tsx

@@ -1,6 +1,5 @@
 ---
 sidebar_position: 200
-slug: /face-detection/advanced-usage
 ---
 
 # Advanced Usage

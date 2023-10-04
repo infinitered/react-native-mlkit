@@ -1,6 +1,5 @@
 ---
 sidebar_position: 1
-slug: /image-labeling
 title: Getting Started
 ---
 
@@ -65,13 +64,13 @@ const MODELS: AssetRecord = {
 
 - **useImageLabeler(modelName: string)**
 
-  - Returns an instance of the image labeler for the specified model.
-  - `modelName`: The name of the model as defined in your `MODELS` object.
+    - Returns an instance of the image labeler for the specified model.
+    - `modelName`: The name of the model as defined in your `MODELS` object.
 
 - **ClassificationResult**
-  - Type definition for the result of the image classification. It includes:
-    - `text`: Label of the classification.
-    - `confidence`: A decimal value between 0 and 1 indicating the confidence level of the classification.
+    - Type definition for the result of the image classification. It includes:
+        - `text`: Label of the classification.
+        - `confidence`: A decimal value between 0 and 1 indicating the confidence level of the classification.
 
 
 

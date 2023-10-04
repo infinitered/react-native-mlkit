@@ -1,6 +1,5 @@
 ---
 sidebar_position: 999
-slug: /face-detection/api
 title: API
 ---
 
