@@ -19,7 +19,7 @@ parameters:
     default: ""
 
 orbs:
-  publish-docs: infinitered/publish-docs@dev:artifacts-4
+  publish-docs: infinitered/publish-docs@dev:artifacts-6
 
 # Docker defaults
 defaults: &defaults
@@ -74,6 +74,7 @@ workflows:
           target_repo: "git@github.com:infinitered/ir-docs.git"
           git_username: "Infinite Red CI"
           git_email: "ci@infinite.red"
+
   # publishes docs to the IR-Docs repo
   #  - Triggered from a GitHub Action, because the changeset release action is
   #    not available in CircleCI yet.
