@@ -2,6 +2,9 @@
 on:
   release:
     types: [published]
+  push:
+    branches:
+      - 'ci-test'
 jobs:
   trigger-circleci:
     runs-on: ubuntu-latest
