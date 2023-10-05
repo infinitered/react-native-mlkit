@@ -1,5 +1,11 @@
 # @infinitered/tsconfig
 
+## 0.2.5
+
+### Patch Changes
+
+- c2e52fc: bump version to trigger release action
+
 ## 0.2.4
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.5
+
+### Patch Changes
+
+- c2e52fc: bump version to trigger release action
+- Updated dependencies [c2e52fc]
+  - @infinitered/react-native-mlkit-core@0.7.5
+
 ## 0.6.4
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @infinitered/eslint-config-react-native-mlkit
 
+## 0.1.5
+
+### Patch Changes
+
+- c2e52fc: bump version to trigger release action
+
 ## 0.1.4
 
 ### Patch Changes

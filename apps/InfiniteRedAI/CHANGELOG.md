@@ -1,5 +1,15 @@
 # @infinitered/infinite-red-ai
 
+## 0.3.5
+
+### Patch Changes
+
+- c2e52fc: bump version to trigger release action
+- Updated dependencies [c2e52fc]
+  - @infinitered/react-native-mlkit-face-detection@0.6.5
+  - @infinitered/react-native-mlkit-image-labeling@0.5.5
+  - @infinitered/react-native-mlkit-object-detection@0.6.5
+
 ## 0.3.4
 
 ### Patch Changes
