@@ -1,5 +1,11 @@
 # @infinitered/eslint-config-react-native-mlkit
 
+## 0.1.6
+
+### Patch Changes
+
+- f595da2: bump to trigger ci
+
 ## 0.1.5
 
 ### Patch Changes

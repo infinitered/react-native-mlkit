@@ -1,5 +1,11 @@
 # @infinitered/tsconfig
 
+## 0.2.6
+
+### Patch Changes
+
+- f595da2: bump to trigger ci
+
 ## 0.2.5
 
 ### Patch Changes

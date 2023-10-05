@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.6
+
+### Patch Changes
+
+- f595da2: bump to trigger ci
+- Updated dependencies [f595da2]
+  - @infinitered/react-native-mlkit-core@0.7.6
+
 ## 0.6.5
 
 ### Patch Changes

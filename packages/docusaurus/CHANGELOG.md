@@ -1,5 +1,11 @@
 # docusaurus
 
+## 0.5.10
+
+### Patch Changes
+
+- f595da2: bump to trigger ci
+
 ## 0.5.9
 
 ### Patch Changes
