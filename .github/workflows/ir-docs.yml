@@ -11,6 +11,6 @@ jobs:
     steps:
       - name: "Trigger CircleCI publish-docs pipeline"
         id: react-native-mlkit-publish-docs
-        uses: circleci/trigger_circleci_pipeline@v1.0
+        uses: CircleCI-Public/trigger-circleci-pipeline-action@v1.0
         env:
           CCI_TOKEN: ${{ secrets.CCI_TOKEN }}
