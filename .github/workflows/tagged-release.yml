@@ -1,4 +1,4 @@
-name: Main
+name: Create Release(s) from Version Tags
 on:
   push:
     tags:
