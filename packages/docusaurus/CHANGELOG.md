@@ -1,5 +1,12 @@
 # docusaurus
 
+## 0.5.5
+
+### Patch Changes
+
+- 7356b4f: bump
+- b9e2bf3: reverting previous
+
 ## 0.5.4
 
 ### Patch Changes
