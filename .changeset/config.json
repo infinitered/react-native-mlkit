@@ -4,7 +4,7 @@
   "commit": [
     "@changesets/cli/commit",
     {
-      "skipCI": "version"
+      "skipCI": false
     }
   ],
   "fixed": [],
