@@ -1,16 +1,17 @@
 ---
-# This circleCI script lives at the root of the gh-pages branch, and is here to
-# prevent CircleCI from running on the gh-pages branch.
-# It should never be run, so throws an error if it is.
+# Place this config in the static folder. It will be included at the root of the
+# gh-pages branch. The filter should prevent CircleCI from running on the
+# so the job throws an error if it is run at all.
+
 jobs:
-  deploy_github_pages:
+  should_not_run:
     docker:
-      - image: circleci/python:3.7
+      - image: cimg/base:2021.04
     steps:
       - checkout
       - run:
           name: Notify Deployment
-          command: echo "This should not be running" | exit 1
+          command: echo "This should not be running" &&  exit 1
 
 workflows:
   version: 2
@@ -20,3 +21,4 @@ workflows:
           filters:
           branches:
             ignore: gh-pages
+      - should_not_run
