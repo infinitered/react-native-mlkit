@@ -1,5 +1,15 @@
 # @infinitered/infinite-red-ai
 
+## 0.3.4
+
+### Patch Changes
+
+- 09bea9d: bump to trigger docs deployment
+- Updated dependencies [09bea9d]
+  - @infinitered/react-native-mlkit-face-detection@0.6.4
+  - @infinitered/react-native-mlkit-image-labeling@0.5.4
+  - @infinitered/react-native-mlkit-object-detection@0.6.4
+
 ## 0.3.3
 
 ### Patch Changes
