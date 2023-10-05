@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.4
+
+### Patch Changes
+
+- 09bea9d: bump to trigger docs deployment
+- Updated dependencies [09bea9d]
+  - @infinitered/react-native-mlkit-core@0.7.4
+
 ## 0.5.3
 
 ### Patch Changes
