@@ -1,5 +1,11 @@
 # @infinitered/tsconfig
 
+## 0.2.2
+
+### Patch Changes
+
+- ebe42ad: bump to trigger docs deployment
+
 ## 0.2.1
 
 ### Patch Changes
