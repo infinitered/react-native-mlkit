@@ -29,7 +29,7 @@ defaults: &defaults
 
 # Jobs
 jobs:
-  publish_docs:
+  publish_docs_job:
     <<: *defaults
     steps:
       - publish-docs/publish_docs:
@@ -40,7 +40,7 @@ jobs:
           target_repo: "git@github.com:infinitered/ir-docs.git"
           git_username: "Infinite Red CI"
           git_email: "ci@infinite.red"
-  build_docs:
+  build_docs_job:
     <<: *defaults
     steps:
       - publish-docs/build_docs:
@@ -88,10 +88,10 @@ workflows:
   build-and-test:
     jobs:
       - test_and_build
-      - build_docs
+      - build_docs_job
   release-docs:
     jobs:
-      - publish_docs:
+      - publish_docs_job:
           filters:
             branches:
               only:
