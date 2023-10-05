@@ -1,5 +1,11 @@
 # @infinitered/eslint-config-react-native-mlkit
 
+## 0.1.2
+
+### Patch Changes
+
+- ebe42ad: bump to trigger docs deployment
+
 ## 0.1.1
 
 ### Patch Changes
