@@ -1,5 +1,11 @@
 # @infinitered/react-native-mlkit-core
 
+## 0.7.3
+
+### Patch Changes
+
+- 90d6e74: bump to trigger docs deployment
+
 ## 0.7.2
 
 ### Patch Changes
