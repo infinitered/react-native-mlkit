@@ -74,14 +74,7 @@ workflows:
           target_repo: "git@github.com:infinitered/ir-docs.git"
           git_username: "Infinite Red CI"
           git_email: "ci@infinite.red"
-
-  # publishes docs to the IR-Docs repo
-  #  - Triggered from a GitHub Action, because the changeset release action is
-  #    not available in CircleCI yet.
-  #  - See:
   release-docs:
-    when:
-      equal: ["release", << pipeline.parameters.GHA_Event >>]
     jobs:
       - publish-docs/publish_docs:
           project_name: 'react-native-mlkit'
@@ -91,3 +84,10 @@ workflows:
           target_repo: "git@github.com:infinitered/ir-docs.git"
           git_username: "Infinite Red CI"
           git_email: "ci@infinite.red"
+          filters:
+            branches:
+              only:
+                - main
+            tags:
+              only:
+                - '*react-native-mlkit-*[0-9]+\.[0-9]+\.[0-9]+'
