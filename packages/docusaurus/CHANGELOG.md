@@ -1,5 +1,11 @@
 # docusaurus
 
+## 0.5.9
+
+### Patch Changes
+
+- c2e52fc: bump version to trigger release action
+
 ## 0.5.8
 
 ### Patch Changes
