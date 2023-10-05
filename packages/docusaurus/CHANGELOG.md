@@ -1,5 +1,17 @@
 # docusaurus
 
+## 0.5.7
+
+### Patch Changes
+
+- 90d6e74: bump to trigger docs deployment
+
+## 0.5.6
+
+### Patch Changes
+
+- ebe42ad: bump to trigger docs deployment
+
 ## 0.5.5
 
 ### Patch Changes

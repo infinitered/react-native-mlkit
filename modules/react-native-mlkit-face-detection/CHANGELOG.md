@@ -1,5 +1,21 @@
 # @infinitered/react-native-mlkit-face-detection
 
+## 0.6.3
+
+### Patch Changes
+
+- 90d6e74: bump to trigger docs deployment
+- Updated dependencies [90d6e74]
+  - @infinitered/react-native-mlkit-core@0.7.3
+
+## 0.6.2
+
+### Patch Changes
+
+- ebe42ad: bump to trigger docs deployment
+- Updated dependencies [ebe42ad]
+  - @infinitered/react-native-mlkit-core@0.7.2
+
 ## 0.6.1
 
 ### Patch Changes
