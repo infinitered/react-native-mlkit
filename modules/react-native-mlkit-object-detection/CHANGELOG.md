@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.6.7
+
+### Patch Changes
+
+- 190d017: bump
+- 55ba468: bump for ci test
+- 7eb5434: Bump for CI
+- fd2c513: bump for CI purposes
+- Updated dependencies [190d017]
+- Updated dependencies [55ba468]
+- Updated dependencies [7eb5434]
+- Updated dependencies [fd2c513]
+  - @infinitered/react-native-mlkit-core@0.7.7
+
 ## 0.6.6
 
 ### Patch Changes

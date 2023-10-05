@@ -1,5 +1,14 @@
 # @infinitered/tsconfig
 
+## 0.2.7
+
+### Patch Changes
+
+- 190d017: bump
+- 55ba468: bump for ci test
+- 7eb5434: Bump for CI
+- fd2c513: bump for CI purposes
+
 ## 0.2.6
 
 ### Patch Changes
