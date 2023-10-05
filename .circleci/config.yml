@@ -29,28 +29,6 @@ defaults: &defaults
 
 # Jobs
 jobs:
-  publish_docs_job:
-    <<: *defaults
-    steps:
-      - publish-docs/publish_docs:
-          project_name: 'react-native-mlkit'
-          source_docs_dir: docs
-          label: "React Native MLKit"
-          description: "Use MLKit Models in React Native apps"
-          target_repo: "git@github.com:infinitered/ir-docs.git"
-          git_username: "Infinite Red CI"
-          git_email: "ci@infinite.red"
-  build_docs_job:
-    <<: *defaults
-    steps:
-      - publish-docs/build_docs:
-          project_name: 'react-native-mlkit'
-          source_docs_dir: docs
-          label: "React Native MLKit"
-          description: "Use MLKit Models in React Native apps"
-          target_repo: "git@github.com:infinitered/ir-docs.git"
-          git_username: "Infinite Red CI"
-          git_email: "ci@infinite.red"
   test_and_build:
     <<: *defaults
     steps:
@@ -88,10 +66,24 @@ workflows:
   build-and-test:
     jobs:
       - test_and_build
-      - build_docs_job
+      - publish-docs/build_docs:
+          project_name: 'react-native-mlkit'
+          source_docs_dir: docs
+          label: "React Native MLKit"
+          description: "Use MLKit Models in React Native apps"
+          target_repo: "git@github.com:infinitered/ir-docs.git"
+          git_username: "Infinite Red CI"
+          git_email: "ci@infinite.red"
   release-docs:
     jobs:
-      - publish_docs_job:
+      - publish-docs/publish_docs:
+          project_name: 'react-native-mlkit'
+          source_docs_dir: docs
+          label: "React Native MLKit"
+          description: "Use MLKit Models in React Native apps"
+          target_repo: "git@github.com:infinitered/ir-docs.git"
+          git_username: "Infinite Red CI"
+          git_email: "ci@infinite.red"
           filters:
             branches:
               only:
