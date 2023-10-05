@@ -86,6 +86,7 @@ workflows:
           label: "React Native MLKit"
           project_name: 'react-native-mlkit'
           source_docs_dir: docs
+          source_repo_directory: "source"
           target_docs_dir: "docs"
           target_repo: "git@github.com:infinitered/ir-docs.git"
           target_repo_directory: "target"
