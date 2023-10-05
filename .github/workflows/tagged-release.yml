@@ -1,20 +1,17 @@
----
-name: "tagged-release"
+name: Main
+
 on:
   push:
     branches:
       - "main"
     tags:
       - '*react-native-mlkit-*[0-9]+\.[0-9]+\.[0-9]+'
-jobs:
-  tagged-release:
-    name: "Tagged Release"
-    runs-on: "ubuntu-latest"
 
+jobs:
+  build:
+    runs-on: ubuntu-latest
     steps:
-      - uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          prerelease: false
-          files: |
-            LICENSE.txt
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Release
+        uses: softprops/action-gh-release@v1
