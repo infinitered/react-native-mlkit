@@ -1,5 +1,11 @@
 # docusaurus
 
+## 0.5.4
+
+### Patch Changes
+
+- 015460d: Add no-op circleci config to static
+
 ## 0.5.3
 
 ### Patch Changes
