@@ -3,20 +3,9 @@
 version: 2.1
 
 parameters:
-  # GHA Params are set when the orb is called from a GitHub Action
-  # see: https://circleci.com/blog/trigger-circleci-pipeline-github-action/
-  GHA_Event:
-    type: string
-    default: ""
-  GHA_Actor:
-    type: string
-    default: ""
-  GHA_Action:
-    type: string
-    default: ""
-  GHA_Meta:
-    type: string
-    default: ""
+  "release-docs":
+    type: boolean
+    default: false
 
 orbs:
   publish-docs: infinitered/publish-docs@0.3
@@ -97,3 +86,4 @@ workflows:
             tags:
               only:
                 - '*react-native-mlkit-*[0-9]+\.[0-9]+\.[0-9]+'
+          unless: << pipeline.parameters.release-docs >>
