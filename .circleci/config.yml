@@ -3,20 +3,9 @@
 version: 2.1
 
 parameters:
-  # GHA Params are set when the orb is called from a GitHub Action
-  # see: https://circleci.com/blog/trigger-circleci-pipeline-github-action/
-  GHA_Event:
-    type: string
-    default: ""
-  GHA_Actor:
-    type: string
-    default: ""
-  GHA_Action:
-    type: string
-    default: ""
-  GHA_Meta:
-    type: string
-    default: ""
+  "force-release-docs":
+    type: boolean
+    default: false
 
 orbs:
   publish-docs: infinitered/publish-docs@0.3
@@ -78,6 +67,10 @@ workflows:
           target_repo: "git@github.com:infinitered/ir-docs.git"
           target_repo_directory: "target"
   release-docs:
+    when:
+      and:
+        - not: << pipeline.parameters.force-release-docs >>
+        - true  # Placeholder for correct YAML structure
     jobs:
       - publish-docs/publish_docs:
           description: "Use MLKit Models in React Native apps"
@@ -97,3 +90,18 @@ workflows:
             tags:
               only:
                 - '*react-native-mlkit-*[0-9]+\.[0-9]+\.[0-9]+'
+  force-release-docs:
+    when: << pipeline.parameters.force-release-docs >>
+    jobs:
+      - publish-docs/publish_docs:
+          description: "Use MLKit Models in React Native apps"
+          git_email: "ci@infinite.red"
+          git_username: "Infinite Red CI"
+          label: "React Native MLKit"
+          project_name: 'react-native-mlkit'
+          source_docs_dir: docs
+          source_repo_directory: "source"
+          target_docs_dir: "docs"
+          target_repo: "git@github.com:infinitered/ir-docs.git"
+          target_repo_directory: "target"
+
