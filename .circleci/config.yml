@@ -83,6 +83,13 @@ workflows:
           target_docs_dir: "docs"
           target_repo: "git@github.com:infinitered/ir-docs.git"
           target_repo_directory: "target"
+          filters:
+            branches:
+              only:
+                - main
+            tags:
+              only:
+                - '*react-native-mlkit-*[0-9]+\.[0-9]+\.[0-9]+'
   force-release-docs:
     when: << pipeline.parameters.force-release-docs >>
     jobs:
@@ -97,10 +104,4 @@ workflows:
           target_docs_dir: "docs"
           target_repo: "git@github.com:infinitered/ir-docs.git"
           target_repo_directory: "target"
-          filters:
-            branches:
-              only:
-                - main
-            tags:
-              only:
-                - '*react-native-mlkit-*[0-9]+\.[0-9]+\.[0-9]+'
+
