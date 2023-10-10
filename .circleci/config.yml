@@ -20,10 +20,6 @@ defaults: &defaults
 jobs:
   test_and_build:
     <<: *defaults
-    filters:
-      branches:
-        ignore:
-          - main
     steps:
       - checkout
       # Restore Yarn cache (Yarn 3 uses .yarn/cache directory)
@@ -53,6 +49,19 @@ jobs:
           name: Run tests
           command: yarn test
 
+# Publishing docs details
+publish-details: &publish-details
+  description: "Use MLKit Models in React Native apps"
+  git_email: "ci@infinite.red"
+  git_username: "Infinite Red CI"
+  label: "React Native MLKit"
+  project_name: 'react-native-mlkit'
+  source_docs_dir: docs
+  source_repo_directory: "source"
+  target_docs_dir: "docs"
+  target_repo: "git@github.com:infinitered/ir-docs.git"
+  target_repo_directory: "target"
+
 # Workflows
 workflows:
   version: 2
@@ -60,16 +69,7 @@ workflows:
     jobs:
       - test_and_build
       - publish-docs/build_docs:
-          description: "Use MLKit Models in React Native apps"
-          git_email: "ci@infinite.red"
-          git_username: "Infinite Red CI"
-          label: "React Native MLKit"
-          project_name: 'react-native-mlkit'
-          source_docs_dir: docs
-          source_repo_directory: "source"
-          target_docs_dir: "docs"
-          target_repo: "git@github.com:infinitered/ir-docs.git"
-          target_repo_directory: "target"
+          <<: *publish-details
           filters:
             branches:
               ignore:
@@ -81,16 +81,7 @@ workflows:
         - true  # Placeholder for correct YAML structure
     jobs:
       - publish-docs/publish_docs:
-          description: "Use MLKit Models in React Native apps"
-          git_email: "ci@infinite.red"
-          git_username: "Infinite Red CI"
-          label: "React Native MLKit"
-          project_name: 'react-native-mlkit'
-          source_docs_dir: docs
-          source_repo_directory: "source"
-          target_docs_dir: "docs"
-          target_repo: "git@github.com:infinitered/ir-docs.git"
-          target_repo_directory: "target"
+          <<: *publish-details
           filters:
             branches:
               only:
@@ -102,14 +93,4 @@ workflows:
     when: << pipeline.parameters.force-release-docs >>
     jobs:
       - publish-docs/publish_docs:
-          description: "Use MLKit Models in React Native apps"
-          git_email: "ci@infinite.red"
-          git_username: "Infinite Red CI"
-          label: "React Native MLKit"
-          project_name: 'react-native-mlkit'
-          source_docs_dir: docs
-          source_repo_directory: "source"
-          target_docs_dir: "docs"
-          target_repo: "git@github.com:infinitered/ir-docs.git"
-          target_repo_directory: "target"
-
+          <<: *publish-details
