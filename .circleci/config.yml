@@ -8,7 +8,7 @@ parameters:
     default: false
 
 orbs:
-  publish-docs: infinitered/publish-docs@0.3
+  publish-docs: infinitered/publish-docs@0.4
 
 # Docker defaults
 defaults: &defaults
@@ -20,6 +20,10 @@ defaults: &defaults
 jobs:
   test_and_build:
     <<: *defaults
+    filters:
+      branches:
+        ignore:
+          - main
     steps:
       - checkout
       # Restore Yarn cache (Yarn 3 uses .yarn/cache directory)
@@ -66,6 +70,10 @@ workflows:
           target_docs_dir: "docs"
           target_repo: "git@github.com:infinitered/ir-docs.git"
           target_repo_directory: "target"
+          filters:
+            branches:
+              ignore:
+                - main
   release-docs:
     when:
       and:
