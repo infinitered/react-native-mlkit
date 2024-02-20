@@ -49,7 +49,8 @@ jobs:
           name: Run tests
           command: yarn test
 
-# Publishing docs details
+# Publishing docs details -- These are the same for all jobs so we can use YAML
+# anchors to share them
 publish-details: &publish-details
   description: "Use MLKit Models in React Native apps"
   git_email: "ci@infinite.red"
