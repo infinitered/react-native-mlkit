@@ -30,4 +30,10 @@ export const DEMO_LIST: DemoInfo[] = [
     screen: "ImageLabeling",
     image: FACE_HOLDER,
   },
+  {
+    title: "Document Scanner",
+    description: "Quickly and easily digitize paper documents on Android",
+    screen: "DocumentScanner",
+    image: FACE_HOLDER,
+  },
 ]

@@ -11,7 +11,7 @@ class RNMLKitDocumentScannerModule : Module() {
     // Sets the name of the module that JavaScript code will use to refer to the module. Takes a string as an argument.
     // Can be inferred from module's class name, but it's recommended to set it explicitly for clarity.
     // The module will be accessible from `requireNativeModule('RNMLKitDocumentScannerModule')` in JavaScript.
-    Name("RNMLKitDocumentScannerModule")
+    Name("RNMLKitDocumentScanner")
 
     // Sets constant properties on the module. Can take a dictionary or a closure that returns a dictionary.
     Constants(
@@ -33,15 +33,6 @@ class RNMLKitDocumentScannerModule : Module() {
       sendEvent("onChange", mapOf(
         "value" to value
       ))
-    }
-
-    // Enables the module to be used as a native view. Definition components that are accepted as part of
-    // the view definition: Prop, Events.
-    View(RNMLKitDocumentScannerModuleView::class) {
-      // Defines a setter for the `name` prop.
-      Prop("name") { view: RNMLKitDocumentScannerModuleView, prop: String ->
-        println(prop)
-      }
     }
   }
 }

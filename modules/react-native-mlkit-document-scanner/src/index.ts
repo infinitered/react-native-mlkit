@@ -7,11 +7,7 @@ import {
 // Import the native module. On web, it will be resolved to RNMLKitDocumentScannerModule.web.ts
 // and on native platforms to RNMLKitDocumentScannerModule.ts
 import RNMLKitDocumentScannerModule from "./module/RNMLKitDocumentScannerModule";
-import {
-  ChangeEventPayload,
-  RNMLKitDocumentScannerModuleViewProps,
-} from "./module/RNMLKitDocumentScannerModule.types";
-import RNMLKitDocumentScannerModuleView from "./module/RNMLKitDocumentScannerModuleView";
+import { ChangeEventPayload } from "./module/RNMLKitDocumentScannerModule.types";
 
 // Get the native constant value.
 export const PI = RNMLKitDocumentScannerModule.PI;
@@ -35,8 +31,4 @@ export function addChangeListener(
   return emitter.addListener<ChangeEventPayload>("onChange", listener);
 }
 
-export {
-  RNMLKitDocumentScannerModuleView,
-  type RNMLKitDocumentScannerModuleViewProps,
-  type ChangeEventPayload,
-};
+export { type ChangeEventPayload };
