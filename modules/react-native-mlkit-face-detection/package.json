@@ -24,7 +24,7 @@
   },
   "author": "Trevor Coleman <trevor@infinitered.com> (https://github.com/trevor-coleman)",
   "license": "MIT",
-  "homepage": "https://infinitered.github.io/react-native-mlkit/face-detection",
+  "homepage": "https://docs.infinite.red/category/face-detection/",
   "dependencies": {
     "@infinitered/react-native-mlkit-core": "0.7.7"
   },

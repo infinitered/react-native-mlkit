@@ -24,7 +24,7 @@
   },
   "author": "Trevor Coleman <trevor@infinite.red> (https://www.github.com/trevor-coleman)",
   "license": "MIT",
-  "homepage": "https://infinitered.github.io/react-native-mlkit/image-labeling",
+  "homepage": "https://docs.infinite.red/category/image-labeling/",
   "dependencies": {
     "@infinitered/react-native-mlkit-core": "0.7.7"
   },
