@@ -88,5 +88,6 @@ repositories {
 
 dependencies {
   implementation project(':expo-modules-core')
+  implementation 'com.google.android.gms:play-services-mlkit-document-scanner:16.0.0-beta1'
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${getKotlinVersion()}"
 }
