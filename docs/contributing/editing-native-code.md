@@ -8,8 +8,7 @@ If you just open one of the native files in the modules directly, you'll probabl
 because the native code is written in Kotlin and Swift, and they depend on other native modules.
 
 To edit these modules with the full git context of the project, you'll need to open the example app in Xcode and/or
-Android
-Studio, then open the native files from there.
+Android gitStudio, then open the native files from there.
 
 This will allow the IDE to understand the full context of the project, which in turn enables proper syntax highlighting,
 autocompletion, and linting.
