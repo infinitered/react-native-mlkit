@@ -4,7 +4,7 @@ sidebar_position: 99
 
 # Editing Native Code
 
-If you just open on of the native files in the modules directly, you'll probably see a lot of red squiggles. This is
+If you just open one of the native files in the modules directly, you'll probably see a lot of red squiggles. This is
 because the native code is written in Kotlin and Swift, and they depend on other native modules.
 
 To edit these modules with the fullgit context of the project, you'll need to open the example app in Xcode and/or
