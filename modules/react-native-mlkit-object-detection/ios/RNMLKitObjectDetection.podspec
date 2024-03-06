@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.homepage       = package['homepage']
   s.platform       = :ios, '13.0'
   s.swift_version  = '5.4'
-  s.source         = { git: 'https://github.com/trevor-coleman/react-native-mlkit-object-detection' }
+  s.source         = { git: 'http://github.com/infinitered/react-native-mlkit' }
   s.static_framework = true
 
   s.dependency 'ExpoModulesCore'
