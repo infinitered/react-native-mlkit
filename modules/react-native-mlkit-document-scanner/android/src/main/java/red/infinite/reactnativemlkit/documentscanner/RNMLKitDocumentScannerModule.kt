@@ -1,38 +1,110 @@
 package red.infinite.reactnativemlkit.documentscanner
 
+import android.util.Log
+import android.net.Uri
+import android.os.OperationCanceledException
+import expo.modules.kotlin.activityresult.AppContextActivityResultLauncher
+import expo.modules.kotlin.exception.CodedException
+import expo.modules.kotlin.functions.Coroutine
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
+import expo.modules.kotlin.Promise
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlinx.coroutines.withContext
+
+
+import red.infinite.reactnativemlkit.documentscanner.contracts.DocumentScannerContract
+import red.infinite.reactnativemlkit.documentscanner.contracts.DocumentScannerContractOptions
+import red.infinite.reactnativemlkit.documentscanner.contracts.DocumentScannerContractResult
+
+import android.app.Activity
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.IntentSenderRequest
+import androidx.activity.result.contract.ActivityResultContracts.StartIntentSenderForResult
+
+import com.google.mlkit.vision.documentscanner.GmsDocumentScanner
+import com.google.mlkit.vision.documentscanner.GmsDocumentScannerOptions
+import com.google.mlkit.vision.documentscanner.GmsDocumentScanning
+import com.google.mlkit.vision.documentscanner.GmsDocumentScanningResult
 
 class RNMLKitDocumentScannerModule : Module() {
-  // Each module class must implement the definition function. The definition consists of components
-  // that describes the module's functionality and behavior.
-  // See https://docs.expo.dev/modules/module-api for more details about available components.
-  override fun definition() = ModuleDefinition {
-    // Sets the name of the module that JavaScript code will use to refer to the module. Takes a string as an argument.
-    // Can be inferred from module's class name, but it's recommended to set it explicitly for clarity.
-    // The module will be accessible from `requireNativeModule('RNMLKitDocumentScannerModule')` in JavaScript.
-    Name("RNMLKitDocumentScanner")
+      override fun definition() = ModuleDefinition {
+        Name("RNMLKitDocumentScanner")
 
-    // Sets constant properties on the module. Can take a dictionary or a closure that returns a dictionary.
-    Constants(
-      "PI" to Math.PI
-    )
+        // region JS API
 
-    // Defines event names that the module can send to JavaScript.
-    Events("onChange")
+        AsyncFunction("launchScanDocumentAsync") Coroutine { options: RNMLKitDocumentScannerOptions -> 
+            Log.d("RNMLKitDocScan", "launchScanDocumentAsync - options '${options.pageLimit}'")
+            val contractOptions = options.toDocumentScannerContractOptions()
+            launchContract({ scannerLauncher.launch(contractOptions) }, options)
+        }
 
-    // Defines a JavaScript synchronous function that runs the native code on the JavaScript thread.
-    Function("hello") {
-      "Hello world! 👋"
+        // endregion
+
+
+        RegisterActivityContracts {
+            scannerLauncher = registerForActivityResult(
+                DocumentScannerContract(this@RNMLKitDocumentScannerModule)
+            ) { input, result -> handleResultUponActivityDestruction(result, input.options) }
+        }
     }
 
-    // Defines a JavaScript function that always returns a Promise and whose native code
-    // is by default dispatched on the different thread than the JavaScript runtime runs on.
-    AsyncFunction("setValueAsync") { value: String ->
-      // Send an event to JavaScript.
-      sendEvent("onChange", mapOf(
-        "value" to value
-      ))
+    private lateinit var scannerLauncher: AppContextActivityResultLauncher<DocumentScannerContractOptions, DocumentScannerContractResult>
+    private var pendingDocumentScannerResult: PendingDocumentScannerResult? = null
+
+
+    private fun handleException(promise: Promise, e: Throwable? = null, message: String? = null) {
+        val errorMessage = message ?: "RNMLKitDocScan - Error: ${e?.message}"
+        Log.e("RNMLKitDocScan", "Error: $errorMessage", e)
+        promise.reject(CodedException(errorMessage, e))
     }
-  }
+
+    /**
+     * Calls [scannerLauncher] and handles the result.
+     */
+    private suspend fun launchContract(
+        scannerLauncher: suspend () -> DocumentScannerContractResult,
+        options: RNMLKitDocumentScannerOptions
+    ): Any {
+        return try {
+        var result = launchScanner(scannerLauncher)
+        Log.d("RNMLKitDocScan", "launchContract - result '${result.data}'")
+        } catch (cause: OperationCanceledException) {
+        return RNMLKitDocumentScannerResponse(canceled = true)
+        }
+    }
+
+    /**
+     * Function that would store the results coming from 3-rd party Activity in case Android decides to
+     * destroy the launching application that is backgrounded.
+     */
+    private fun handleResultUponActivityDestruction(result: DocumentScannerContractResult, options: RNMLKitDocumentScannerOptions) {
+        if (result is DocumentScannerContractResult.Success) {
+            pendingDocumentScannerResult = PendingDocumentScannerResult(result.data, options)
+        }
+    }
+
+    /**
+   * Launches document scanner
+   */
+    private suspend fun launchScanner(
+        scannerLauncher: suspend () -> DocumentScannerContractResult
+    ): DocumentScannerContractResult.Success = withContext(Dispatchers.IO) {
+        when (val scannerResult = scannerLauncher()) {
+        is DocumentScannerContractResult.Success -> scannerResult
+        is DocumentScannerContractResult.Cancelled -> throw OperationCanceledException()
+        is DocumentScannerContractResult.Error -> throw FailedToScanDocumentException()
+        }
+    }
 }
+
+/**
+ * Simple data structure to hold the data that has to be preserved after the Activity is destroyed.
+ */
+internal data class PendingDocumentScannerResult(
+    val data: List<Uri>,
+    val options: RNMLKitDocumentScannerOptions
+)
