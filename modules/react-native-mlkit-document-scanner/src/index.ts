@@ -12,16 +12,16 @@ export async function scan() {
   return await RNMLKitDocumentScannerModule.scan();
 }
 
-export async function launchScanDocumentAsync(
+export async function launchDocumentScannerAsync(
   options?: DocumentScannerOptions
 ): Promise<DocumentScannerResult> {
-  if (!RNMLKitDocumentScannerModule.launchScanDocumentAsync) {
+  if (!RNMLKitDocumentScannerModule.launchDocumentScannerAsync) {
     throw new UnavailabilityError(
       "RNMLKitDocumentScanner",
-      "launchScanDocumentAsync"
+      "launchDocumentScannerAsync"
     );
   }
-  return await RNMLKitDocumentScannerModule.launchScanDocumentAsync(
+  return await RNMLKitDocumentScannerModule.launchDocumentScannerAsync(
     options ?? {}
   );
 }

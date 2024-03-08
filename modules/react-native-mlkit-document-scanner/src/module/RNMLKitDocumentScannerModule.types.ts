@@ -1,5 +1,57 @@
+export enum ResultFormatOptions {
+  /**
+   * PDF and JPEGs.
+   */
+  All = "all",
+  /**
+   * Only videos.
+   */
+  PDF = "pdf",
+  /**
+   * Only images.
+   */
+  JPEG = "jpeg",
+}
+
+export enum ScannerModeOptions {
+  /**
+   * Full.
+   */
+  FULL = "full",
+  /**
+   * Base with filter.
+   */
+  BASE_WITH_FILTER = "base_with_filter",
+  /**
+   * Base.
+   */
+  BASE = "base",
+}
+
 export type DocumentScannerOptions = {
+  /**
+   * The maximum number of pages that can be scanned.
+   *
+   * @default 1
+   */
   pageLimit?: number;
+  /**
+   * Can allow the user to choose images from gallery or force new photograph.
+   *
+   * @default true
+   */
+  galleryImportAllowed?: boolean;
+  /**
+   * The mode of the scanner.
+   *
+   * @default RNMLKitDocumentScanner.ScannerModeOptions.FULL
+   */
+  scannerMode?: ScannerModeOptions;
+  /**
+   * The desired result formats of the scanned documents.
+   * @default RNMLKitDocumentScanner.ResultFormatOptions.JPEG
+   */
+  resultFormats?: ResultFormatOptions;
 };
 
 /**

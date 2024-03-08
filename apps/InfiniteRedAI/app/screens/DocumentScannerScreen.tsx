@@ -5,7 +5,8 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { AppStackScreenProps } from "../navigators"
 import { Screen, Text, Icon, Button } from "../components"
 import { useTypedNavigation } from "../navigators/useTypedNavigation"
-import { launchScanDocumentAsync } from "@infinitered/react-native-mlkit-document-scanner"
+import { launchDocumentScannerAsync } from "@infinitered/react-native-mlkit-document-scanner"
+import { ResultFormatOptions } from "@infinitered/react-native-mlkit-document-scanner/build/module/RNMLKitDocumentScannerModule.types"
 
 interface DocumentScannerScreenProps
   extends NativeStackScreenProps<AppStackScreenProps<"DocumentScanner">> {}
@@ -13,6 +14,7 @@ interface DocumentScannerScreenProps
 export const DocumentScannerScreen: FC<DocumentScannerScreenProps> = observer(
   function DocumentScannerScreen() {
     const navigation = useTypedNavigation<"ImageLabeling">()
+    const [result, setResult] = React.useState<string>("")
 
     return (
       <Screen style={$root} preset="scroll" safeAreaEdges={["top", "bottom"]}>
@@ -23,12 +25,18 @@ export const DocumentScannerScreen: FC<DocumentScannerScreenProps> = observer(
 
           <Button
             onPress={async () => {
-              const result = await launchScanDocumentAsync({ pageLimit: 1 })
-              console.log(result)
+              const result = await launchDocumentScannerAsync({
+                pageLimit: 1,
+                galleryImportAllowed: false,
+                resultFormats: ResultFormatOptions.PDF,
+              })
+              setResult(JSON.stringify(result))
             }}
             text="Scan Document"
           />
         </View>
+
+        <Text style={$description}>Result: {result}</Text>
       </Screen>
     )
   },

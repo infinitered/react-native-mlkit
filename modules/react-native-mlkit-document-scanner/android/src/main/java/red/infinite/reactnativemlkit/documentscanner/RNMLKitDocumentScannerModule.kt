@@ -36,8 +36,8 @@ class RNMLKitDocumentScannerModule : Module() {
 
         // region JS API
 
-        AsyncFunction("launchScanDocumentAsync") Coroutine { options: RNMLKitDocumentScannerOptions -> 
-            Log.d("RNMLKitDocScan", "launchScanDocumentAsync - options '${options.pageLimit}'")
+        AsyncFunction("launchDocumentScannerAsync") Coroutine { options: RNMLKitDocumentScannerOptions -> 
+            Log.d("RNMLKitDocScan", "launchDocumentScannerAsync - options '${options.pageLimit}'")
             val contractOptions = options.toDocumentScannerContractOptions()
             launchContract({ scannerLauncher.launch(contractOptions) }, options)
         }

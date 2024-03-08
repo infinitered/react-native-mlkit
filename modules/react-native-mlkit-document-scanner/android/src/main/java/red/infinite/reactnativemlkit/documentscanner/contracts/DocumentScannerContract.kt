@@ -4,6 +4,8 @@ import expo.modules.kotlin.activityresult.AppContextActivityResultContract
 
 import red.infinite.reactnativemlkit.documentscanner.RNMLKitDocumentScannerOptions
 import red.infinite.reactnativemlkit.documentscanner.MissingCurrentActivityException
+import red.infinite.reactnativemlkit.documentscanner.ScannerMode
+import red.infinite.reactnativemlkit.documentscanner.ResultFormats
 
 import android.app.Activity
 import android.util.Log
@@ -37,13 +39,45 @@ internal class DocumentScannerContract(
       ?: throw MissingCurrentActivityException()
 
   override fun createIntent(context: Context, input: DocumentScannerContractOptions): Intent {
+    Log.d("RNMLKitDocScan", "galleryImportAllowed - '${input.options.galleryImportAllowed}'")
+    Log.d("RNMLKitDocScan", "resultFormats - '${input.options.resultFormats}'")
     val options = GmsDocumentScannerOptions.Builder()
-      .setGalleryImportAllowed(false)
-      .setPageLimit(2)
-      .setResultFormats(GmsDocumentScannerOptions.RESULT_FORMAT_JPEG, GmsDocumentScannerOptions.RESULT_FORMAT_PDF)
-      .setScannerMode(GmsDocumentScannerOptions.SCANNER_MODE_FULL)
-      .build()
-    val scanner = GmsDocumentScanning.getClient(options)
+      .setGalleryImportAllowed(input.options.galleryImportAllowed ?: true)
+      .setPageLimit(input.options.pageLimit ?: 1)
+      .setResultFormats(
+        when (input.options.resultFormats) {
+          ResultFormats.JPEG -> { 
+            GmsDocumentScannerOptions.RESULT_FORMAT_JPEG
+          }
+
+          ResultFormats.PDF -> {
+            GmsDocumentScannerOptions.RESULT_FORMAT_PDF
+          }
+
+          else -> {
+            // TODO this needs to return both types
+            //(GmsDocumentScannerOptions.RESULT_FORMAT_JPEG, GmsDocumentScannerOptions.RESULT_FORMAT_PDF)
+            GmsDocumentScannerOptions.RESULT_FORMAT_JPEG
+          }
+        }
+      )
+      .setScannerMode(
+        when (input.options.scannerMode) {
+          ScannerMode.BASE -> {
+            GmsDocumentScannerOptions.SCANNER_MODE_BASE
+          }
+
+          ScannerMode.BASE_WITH_FILTER -> {
+            GmsDocumentScannerOptions.SCANNER_MODE_BASE_WITH_FILTER
+          }
+
+          else -> { 
+            GmsDocumentScannerOptions.SCANNER_MODE_FULL
+          }
+        }
+      )
+
+    val scanner = GmsDocumentScanning.getClient(options.build())
     val intentSender = Tasks.await(scanner.getStartScanIntent(currentActivity))
     val request = IntentSenderRequest.Builder(intentSender).build()
       
