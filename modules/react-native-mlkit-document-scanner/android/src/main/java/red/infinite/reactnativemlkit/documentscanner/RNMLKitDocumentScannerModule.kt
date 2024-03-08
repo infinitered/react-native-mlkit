@@ -37,7 +37,6 @@ class RNMLKitDocumentScannerModule : Module() {
         // region JS API
 
         AsyncFunction("launchDocumentScannerAsync") Coroutine { options: RNMLKitDocumentScannerOptions -> 
-            Log.d("RNMLKitDocScan", "launchDocumentScannerAsync - options '${options.pageLimit}'")
             val contractOptions = options.toDocumentScannerContractOptions()
             launchContract({ scannerLauncher.launch(contractOptions) }, options)
         }
@@ -70,10 +69,11 @@ class RNMLKitDocumentScannerModule : Module() {
         options: RNMLKitDocumentScannerOptions
     ): Any {
         return try {
-        var result = launchScanner(scannerLauncher)
-        Log.d("RNMLKitDocScan", "launchContract - result '${result.data}'")
+            var result = launchScanner(scannerLauncher)
+            Log.d("RNMLKitDocScan", "launchContract - result '${result.data}'")
+            return result.data
         } catch (cause: OperationCanceledException) {
-        return RNMLKitDocumentScannerResponse(canceled = true)
+            return RNMLKitDocumentScannerResponse(canceled = true)
         }
     }
 
@@ -105,6 +105,6 @@ class RNMLKitDocumentScannerModule : Module() {
  * Simple data structure to hold the data that has to be preserved after the Activity is destroyed.
  */
 internal data class PendingDocumentScannerResult(
-    val data: List<Uri>,
+    val data: List<String>,
     val options: RNMLKitDocumentScannerOptions
 )

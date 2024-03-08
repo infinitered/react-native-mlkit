@@ -2,7 +2,7 @@ export enum ResultFormatOptions {
   /**
    * PDF and JPEGs.
    */
-  All = "all",
+  ALL = "all",
   /**
    * Only videos.
    */

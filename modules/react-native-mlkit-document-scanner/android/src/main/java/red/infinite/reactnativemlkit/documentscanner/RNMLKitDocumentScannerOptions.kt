@@ -13,16 +13,16 @@ import red.infinite.reactnativemlkit.documentscanner.contracts.DocumentScannerCo
  */ 
 internal class RNMLKitDocumentScannerOptions : Record, Serializable {
     @Field
-    var pageLimit: Int? = 1
+    var pageLimit: Int = 1
 
     @Field
-    var galleryImportAllowed: Boolean? = true
+    var galleryImportAllowed: Boolean = true
 
     @Field
-    var scannerMode: ScannerMode? = ScannerMode.FULL
+    var scannerMode: ScannerMode = ScannerMode.FULL
 
     @Field
-    var resultFormats: ResultFormats? = ResultFormats.JPEG
+    var resultFormats: ResultFormats = ResultFormats.JPEG
 
     fun toDocumentScannerContractOptions() = DocumentScannerContractOptions(this)
 }

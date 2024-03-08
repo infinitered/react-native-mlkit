@@ -39,28 +39,9 @@ internal class DocumentScannerContract(
       ?: throw MissingCurrentActivityException()
 
   override fun createIntent(context: Context, input: DocumentScannerContractOptions): Intent {
-    Log.d("RNMLKitDocScan", "galleryImportAllowed - '${input.options.galleryImportAllowed}'")
-    Log.d("RNMLKitDocScan", "resultFormats - '${input.options.resultFormats}'")
     val options = GmsDocumentScannerOptions.Builder()
-      .setGalleryImportAllowed(input.options.galleryImportAllowed ?: true)
-      .setPageLimit(input.options.pageLimit ?: 1)
-      .setResultFormats(
-        when (input.options.resultFormats) {
-          ResultFormats.JPEG -> { 
-            GmsDocumentScannerOptions.RESULT_FORMAT_JPEG
-          }
-
-          ResultFormats.PDF -> {
-            GmsDocumentScannerOptions.RESULT_FORMAT_PDF
-          }
-
-          else -> {
-            // TODO this needs to return both types
-            //(GmsDocumentScannerOptions.RESULT_FORMAT_JPEG, GmsDocumentScannerOptions.RESULT_FORMAT_PDF)
-            GmsDocumentScannerOptions.RESULT_FORMAT_JPEG
-          }
-        }
-      )
+      .setGalleryImportAllowed(input.options.galleryImportAllowed)
+      .setPageLimit(input.options.pageLimit)
       .setScannerMode(
         when (input.options.scannerMode) {
           ScannerMode.BASE -> {
@@ -77,6 +58,14 @@ internal class DocumentScannerContract(
         }
       )
 
+    if (input.options.resultFormats == ResultFormats.PDF) {
+      options.setResultFormats(GmsDocumentScannerOptions.RESULT_FORMAT_PDF)
+    } else if (input.options.resultFormats == ResultFormats.JPEG) {
+      options.setResultFormats(GmsDocumentScannerOptions.RESULT_FORMAT_JPEG)
+    } else {
+      options.setResultFormats(GmsDocumentScannerOptions.RESULT_FORMAT_JPEG, GmsDocumentScannerOptions.RESULT_FORMAT_PDF)
+    }
+
     val scanner = GmsDocumentScanning.getClient(options.build())
     val intentSender = Tasks.await(scanner.getStartScanIntent(currentActivity))
     val request = IntentSenderRequest.Builder(intentSender).build()
@@ -92,7 +81,7 @@ internal class DocumentScannerContract(
         val result = GmsDocumentScanningResult.fromActivityResultIntent(intent)
         // TODO parse the GmsDocumentScanningResult, pages (JPEGs), pdfs, etc
         Log.d("RNMLKitDocScan", "parseResult - '${result}'")
-        DocumentScannerContractResult.Success(listOf(Uri.parse("file://test")))
+        DocumentScannerContractResult.Success(listOf("file://test.jpeg"))
       } else {
         DocumentScannerContractResult.Error
       }

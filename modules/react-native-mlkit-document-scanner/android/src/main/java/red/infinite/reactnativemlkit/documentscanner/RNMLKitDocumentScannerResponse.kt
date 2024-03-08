@@ -6,6 +6,6 @@ import com.google.mlkit.vision.documentscanner.GmsDocumentScanningResult
 
 internal class RNMLKitDocumentScannerResponse(
     @Field val canceled: Boolean = false,
-    @Field var pages: List<GmsDocumentScanningResult.Page>? = null,
-    @Field var pdf: GmsDocumentScanningResult.Pdf? = null
+    @Field var pages: List<String>? = null,
+    @Field var pdf: String? = null
 ) : Record
