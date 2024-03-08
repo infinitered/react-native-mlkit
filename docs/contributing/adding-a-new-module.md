@@ -9,7 +9,7 @@ process.
 
 ## 1. Create a new module
 
-Either copy and paste an existing module and rename it, or create a new directory in the `modules` directory, and add
+Either copy and paste an existing module and rename it, or create a module by running `npx create-expo-module module-name --local` in the  `modules` directory, and add
 the files required. See the Expo Modules API documentation for more information.
 
 ## 2. Add the module to the example app
