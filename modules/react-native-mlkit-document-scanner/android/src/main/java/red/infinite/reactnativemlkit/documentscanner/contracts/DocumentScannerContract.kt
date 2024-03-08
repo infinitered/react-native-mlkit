@@ -79,14 +79,17 @@ internal class DocumentScannerContract(
     } else {
       if (resultCode == Activity.RESULT_OK) {
         val result = GmsDocumentScanningResult.fromActivityResultIntent(intent)
-        // TODO parse the GmsDocumentScanningResult, pages (JPEGs), pdfs, etc
-        Log.d("RNMLKitDocScan", "parseResult - '${result}'")
+
         DocumentScannerContractResult.Success(
-          pages = listOf("file://test.jpeg"),
-          pdf = PdfInfo(
-            uri = "file://test.pdf",
-            pageCount = 1
-          )
+          pages = result?.getPages()?.map { page -> 
+            page.getImageUri().toString()
+          },
+          pdf = result?.getPdf()?.let { pdf -> 
+            PdfInfo(
+              uri = pdf.getUri().toString(),
+              pageCount = pdf.getPageCount()
+            )
+          }
         )
       } else {
         DocumentScannerContractResult.Error
