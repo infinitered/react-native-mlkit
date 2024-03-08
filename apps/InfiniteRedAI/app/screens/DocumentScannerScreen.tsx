@@ -28,7 +28,7 @@ export const DocumentScannerScreen: FC<DocumentScannerScreenProps> = observer(
               const result = await launchDocumentScannerAsync({
                 pageLimit: 1,
                 galleryImportAllowed: false,
-                resultFormats: ResultFormatOptions.ALL,
+                resultFormats: ResultFormatOptions.PDF,
               })
               setResult(JSON.stringify(result))
             }}

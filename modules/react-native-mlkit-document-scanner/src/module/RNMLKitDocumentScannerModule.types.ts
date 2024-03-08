@@ -73,7 +73,7 @@ export type DocumentScannerSuccessResult = {
   /**
    * Page scan result.
    */
-  pages: DocumentScannerPage[] | null;
+  pages: string[] | null;
 };
 
 /**
@@ -99,6 +99,6 @@ export type DocumentScannerPdf = {
   pageCount: number;
 };
 
-export type DocumentScannerPage = {
-  uri: string;
-};
+// export type DocumentScannerPage = {
+//   uri: string;
+// };

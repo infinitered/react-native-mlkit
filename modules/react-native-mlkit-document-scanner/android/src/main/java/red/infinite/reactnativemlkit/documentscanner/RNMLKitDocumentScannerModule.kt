@@ -18,6 +18,7 @@ import kotlinx.coroutines.withContext
 import red.infinite.reactnativemlkit.documentscanner.contracts.DocumentScannerContract
 import red.infinite.reactnativemlkit.documentscanner.contracts.DocumentScannerContractOptions
 import red.infinite.reactnativemlkit.documentscanner.contracts.DocumentScannerContractResult
+import red.infinite.reactnativemlkit.documentscanner.contracts.PdfInfo
 
 import android.app.Activity
 import androidx.activity.result.ActivityResult
@@ -70,8 +71,12 @@ class RNMLKitDocumentScannerModule : Module() {
     ): Any {
         return try {
             var result = launchScanner(scannerLauncher)
-            Log.d("RNMLKitDocScan", "launchContract - result '${result.data}'")
-            return result.data
+            Log.d("RNMLKitDocScan", "launchContract - result '${result.pages}'")
+            return RNMLKitDocumentScannerResponse(
+                canceled = false,
+                pages = result.pages,
+                pdf = result.pdf
+            )
         } catch (cause: OperationCanceledException) {
             return RNMLKitDocumentScannerResponse(canceled = true)
         }
@@ -83,7 +88,7 @@ class RNMLKitDocumentScannerModule : Module() {
      */
     private fun handleResultUponActivityDestruction(result: DocumentScannerContractResult, options: RNMLKitDocumentScannerOptions) {
         if (result is DocumentScannerContractResult.Success) {
-            pendingDocumentScannerResult = PendingDocumentScannerResult(result.data, options)
+            pendingDocumentScannerResult = PendingDocumentScannerResult(result.pages, result.pdf, options)
         }
     }
 
@@ -105,6 +110,7 @@ class RNMLKitDocumentScannerModule : Module() {
  * Simple data structure to hold the data that has to be preserved after the Activity is destroyed.
  */
 internal data class PendingDocumentScannerResult(
-    val data: List<String>,
+    val pages: List<String>? = null,
+    val pdf: PdfInfo? = null,
     val options: RNMLKitDocumentScannerOptions
 )
