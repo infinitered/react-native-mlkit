@@ -14,8 +14,10 @@ the files required. See the Expo Modules API documentation for more information.
 
 ## 2. Add the module to the example app
 
-Add your module as a dependency to the example app in `apps/InfinteRedAI`, run `yarn install` in the example app, and
-then run `yarn prebuild` to generate the native code.
+1. Add your module as a dependency to the example app in `apps/InfinteRedAI/package.json`
+2. run `yarn install` to install the new module
+3. run `npx pod-install` to install the new module in the iOS example app
+4. run `yarn prebuild` to generate the native code for the new app.
 
 ## 3. Add the module to the documentation
 
