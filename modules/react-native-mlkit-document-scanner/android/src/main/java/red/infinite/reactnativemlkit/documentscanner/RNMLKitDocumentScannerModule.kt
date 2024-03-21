@@ -1,7 +1,6 @@
 package red.infinite.reactnativemlkit.documentscanner
 
 import android.util.Log
-import android.net.Uri
 import android.os.OperationCanceledException
 import expo.modules.kotlin.activityresult.AppContextActivityResultLauncher
 import expo.modules.kotlin.exception.CodedException
@@ -9,9 +8,7 @@ import expo.modules.kotlin.functions.Coroutine
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
 import expo.modules.kotlin.Promise
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
 
 
@@ -21,15 +18,6 @@ import red.infinite.reactnativemlkit.documentscanner.contracts.DocumentScannerCo
 import red.infinite.reactnativemlkit.documentscanner.contracts.PdfInfo
 
 import android.app.Activity
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.IntentSenderRequest
-import androidx.activity.result.contract.ActivityResultContracts.StartIntentSenderForResult
-
-import com.google.mlkit.vision.documentscanner.GmsDocumentScanner
-import com.google.mlkit.vision.documentscanner.GmsDocumentScannerOptions
-import com.google.mlkit.vision.documentscanner.GmsDocumentScanning
-import com.google.mlkit.vision.documentscanner.GmsDocumentScanningResult
 
 class RNMLKitDocumentScannerModule : Module() {
       override fun definition() = ModuleDefinition {
@@ -71,7 +59,6 @@ class RNMLKitDocumentScannerModule : Module() {
     ): Any {
         return try {
             var result = launchScanner(scannerLauncher)
-            Log.d("RNMLKitDocScan", "launchContract - result '${result.pages}'")
             return RNMLKitDocumentScannerResponse(
                 canceled = false,
                 pages = result.pages,
