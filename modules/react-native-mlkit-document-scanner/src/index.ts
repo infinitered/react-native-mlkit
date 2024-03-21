@@ -7,6 +7,7 @@ import {
   DocumentScannerOptions,
   DocumentScannerResult,
 } from "./module/RNMLKitDocumentScannerModule.types";
+export * from "./module/RNMLKitDocumentScannerModule.types";
 
 export async function scan() {
   return await RNMLKitDocumentScannerModule.scan();

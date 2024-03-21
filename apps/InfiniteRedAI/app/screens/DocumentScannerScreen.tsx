@@ -5,11 +5,11 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { AppStackScreenProps } from "../navigators"
 import { Screen, Text, Icon, Button, ListItem, TextField, Toggle } from "../components"
 import { useTypedNavigation } from "../navigators/useTypedNavigation"
-import { launchDocumentScannerAsync } from "@infinitered/react-native-mlkit-document-scanner"
 import {
-  ResultFormatOptions,
-  ScannerModeOptions,
-} from "@infinitered/react-native-mlkit-document-scanner/build/module/RNMLKitDocumentScannerModule.types"
+  type ResultFormatOptions,
+  type ScannerModeOptions,
+  launchDocumentScannerAsync,
+} from "@infinitered/react-native-mlkit-document-scanner"
 import { spacing } from "app/theme"
 
 interface DocumentScannerScreenProps
