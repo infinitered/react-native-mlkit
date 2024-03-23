@@ -6,8 +6,8 @@ import { AppStackScreenProps } from "../navigators"
 import { Screen, Text, Icon, Button, ListItem, TextField, Toggle } from "../components"
 import { useTypedNavigation } from "../navigators/useTypedNavigation"
 import {
-  type ResultFormatOptions,
-  type ScannerModeOptions,
+  ResultFormatOptions,
+  ScannerModeOptions,
   launchDocumentScannerAsync,
 } from "@infinitered/react-native-mlkit-document-scanner"
 import { spacing } from "app/theme"
