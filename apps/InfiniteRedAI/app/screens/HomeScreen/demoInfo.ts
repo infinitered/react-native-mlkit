@@ -1,3 +1,4 @@
+import { DimensionValue, Platform } from "react-native"
 import { AppStackParamList } from "../../navigators"
 
 export interface DemoInfo {
@@ -9,6 +10,21 @@ export interface DemoInfo {
 
 const FACE_DETECTION = require("../../../assets/images/face-detection.jpg")
 const FACE_HOLDER = require("../../../assets/images/welcome-face.png")
+const DOCUMENT_SCANNER = require("../../../assets/images/doc-scanner.png")
+
+const ANDROID_ONLY_DEMOS: DemoInfo[] = [
+  {
+    title: "Document Scanner",
+    description: "Quickly and easily digitize paper documents on Android",
+    screen: "DocumentScanner",
+    image: DOCUMENT_SCANNER,
+  },
+]
+
+const PLATFORM_SPECIFIC_DEMOS: DemoInfo[] = Platform.select({
+  android: ANDROID_ONLY_DEMOS,
+  default: [],
+})
 
 // List of available demos as a typescript object
 export const DEMO_LIST: DemoInfo[] = [
@@ -30,10 +46,5 @@ export const DEMO_LIST: DemoInfo[] = [
     screen: "ImageLabeling",
     image: FACE_HOLDER,
   },
-  {
-    title: "Document Scanner",
-    description: "Quickly and easily digitize paper documents on Android",
-    screen: "DocumentScanner",
-    image: FACE_HOLDER,
-  },
+  ...PLATFORM_SPECIFIC_DEMOS,
 ]
