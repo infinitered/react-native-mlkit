@@ -17,7 +17,7 @@ A `DocumentScannerOptions` object is used to configure the behavior of the docum
 
 
 For more information on these options
-see [the MLKit Docs](https://developers.google.com/ml-kit/vision/object-detection/ios#1.-configure-the-object-detector)
+see [the MLKit Docs](https://developers.google.com/ml-kit/vision/doc-scanner/android)
 
 ### Example Usage
 
