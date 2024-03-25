@@ -1,0 +1,38 @@
+{
+  "name": "@infinitered/react-native-mlkit-document-scanner",
+  "version": "0.1.0",
+  "description": "MLKit Document Scanner for Expo",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "scripts": {
+    "build": "expo-module build",
+    "clean": "expo-module clean",
+    "lint": "expo-module lint",
+    "test": "expo-module test",
+    "prepublishOnly": "expo-module prepublishOnly",
+    "expo-module": "expo-module"
+  },
+  "keywords": [
+    "react-native",
+    "expo",
+    "react-native-mlkit-document-scanner",
+    "RNMLKitDocumentScanner"
+  ],
+  "repository": "https://github.com/infinitered/react-native-mlkit",
+  "bugs": {
+    "url": "https://github.com/infinitered/react-native-mlkit/issues"
+  },
+  "author": "Frank Calise <frank@infinitered.com> (https://github.com/frankcalise)",
+  "license": "MIT",
+  "homepage": "https://docs.infinite.red/category/document-scanner/",
+  "devDependencies": {
+    "@types/react": "^18.0.25",
+    "expo-module-scripts": "^3.0.11",
+    "expo-modules-core": "^1.5.10"
+  },
+  "peerDependencies": {
+    "expo": "*",
+    "react": "*",
+    "react-native": "*"
+  }
+}

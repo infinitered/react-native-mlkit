@@ -1,0 +1,8 @@
+{
+  "platforms": ["ios", "android"],
+  "android": {
+    "modules": [
+      "red.infinite.reactnativemlkit.documentscanner.RNMLKitDocumentScannerModule"
+    ]
+  }
+}

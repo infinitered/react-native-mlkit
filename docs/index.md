@@ -14,6 +14,7 @@ Currently the following modules are available:
 - [Face Detection](./face-detection)
 - [Object Detection](./object-detection)
 - [Image Labeling](./image-labeling)
+- [Document Scanner](./document-scanner)
 
 We will be adding more modules in the future, and especially welcome PRs that add support for new MLKit libraries! Check
 out the contributing guide for more information on how to contribute.
@@ -21,11 +22,12 @@ out the contributing guide for more information on how to contribute.
 ## Installation
 
 Each module is published as a separate npm package. For specific installation instructions for a particular module check
-the followig pages:
+the following pages:
 
 - [Face Detection](./face-detection)
 - [Object Detection](./object-detection)
 - [Image Labeling](./image-labeling)
+- [Document Scanner](./document-scanner)
 
 ## FAQ
 
