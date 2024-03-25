@@ -1,4 +1,4 @@
-import { DimensionValue, Platform } from "react-native"
+import { Platform } from "react-native"
 import { AppStackParamList } from "../../navigators"
 
 export interface DemoInfo {
