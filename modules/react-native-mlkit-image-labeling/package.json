@@ -1,6 +1,6 @@
 {
   "name": "@infinitered/react-native-mlkit-image-labeling",
-  "version": "0.5.7",
+  "version": "0.5.8",
   "description": "MLKit Image Labeling for React Native with Expo",
   "main": "build/index.js",
   "types": "build/index.d.ts",
