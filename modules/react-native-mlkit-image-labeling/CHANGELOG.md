@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.8
+
+### Patch Changes
+
+- c7bced0: Fix description in package.json
+
 ## 0.5.7
 
 ### Patch Changes
