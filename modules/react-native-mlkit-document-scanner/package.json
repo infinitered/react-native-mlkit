@@ -1,6 +1,6 @@
 {
   "name": "@infinitered/react-native-mlkit-document-scanner",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "MLKit Document Scanner for Expo",
   "main": "build/index.js",
   "types": "build/index.d.ts",
