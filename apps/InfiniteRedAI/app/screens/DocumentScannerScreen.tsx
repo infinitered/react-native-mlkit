@@ -12,7 +12,7 @@ interface DocumentScannerScreenProps
 
 export const DocumentScannerScreen: FC<DocumentScannerScreenProps> = observer(
   function DocumentScannerScreen() {
-    const navigation = useTypedNavigation<"ImageLabeling">()
+    const navigation = useTypedNavigation<"DocumentScanner">()
 
     return (
       <Screen

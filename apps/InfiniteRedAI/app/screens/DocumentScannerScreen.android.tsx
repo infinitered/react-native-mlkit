@@ -17,7 +17,7 @@ interface DocumentScannerScreenProps
 
 export const DocumentScannerScreen: FC<DocumentScannerScreenProps> = observer(
   function DocumentScannerScreen() {
-    const navigation = useTypedNavigation<"ImageLabeling">()
+    const navigation = useTypedNavigation<"DocumentScanner">()
     const [result, setResult] = React.useState<string>("")
     const [allowGallery, setAllowGallery] = React.useState<boolean>(false)
     const [mode, setMode] = React.useState<ScannerModeOptions>(ScannerModeOptions.FULL)
