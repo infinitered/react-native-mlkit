@@ -15,7 +15,7 @@ apps. It allows for the classification of images to determine their content, suc
 
 ## Installation
 
-```
+```shell
 npm install @infinitered/react-native-mlkit-image-labeling
 ```
 
