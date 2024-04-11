@@ -1,5 +1,11 @@
 # @infinitered/infinite-red-ai
 
+## 0.3.8
+
+### Patch Changes
+
+- da4cbdb: isolating document scanner to only android (fixes iOS crash)
+
 ## 0.3.7
 
 ### Patch Changes
