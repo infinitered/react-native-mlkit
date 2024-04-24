@@ -26,9 +26,8 @@
   "license": "MIT",
   "homepage": "https://docs.infinite.red/category/document-scanner/",
   "devDependencies": {
-    "@types/react": "^18.0.25",
-    "expo-module-scripts": "^3.0.11",
-    "expo-modules-core": "^1.5.10"
+    "@types/react": "~18.2.45",
+    "expo-modules-core": "^1.11.13"
   },
   "peerDependencies": {
     "expo": "*",
