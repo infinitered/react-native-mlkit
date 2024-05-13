@@ -1,5 +1,11 @@
 # docusaurus
 
+## 0.5.12
+
+### Patch Changes
+
+- 4048d34: Updated modules to be compatible with Expo 50
+
 ## 0.5.11
 
 ### Patch Changes

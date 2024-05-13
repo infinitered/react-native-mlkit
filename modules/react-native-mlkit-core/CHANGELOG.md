@@ -1,5 +1,16 @@
 # @infinitered/react-native-mlkit-core
 
+## 1.0.0
+
+### Major Changes
+
+- 4048d34: Updated modules to be compatible with Expo 50
+
+### Minor Changes
+
+- 4048d34: Upgrade expo and related deps to v50.
+- 4048d34: Bump expo to v50
+
 ## 0.7.7
 
 ### Patch Changes
