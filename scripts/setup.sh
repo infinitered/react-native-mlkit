@@ -26,8 +26,8 @@ yarn build
 
 # Prebuild the RN App}
 heading "Prebuilding the RN App"
-cd apps/InfiniteRedAI || error "Can't find apps/InfiniteRedAI"
-npx expo prebuild
+cd apps/ExampleApp || error "Can't find apps/ExampleApp"
+npx expo prebuild --clean
 
 cd ../..
 

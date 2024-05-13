@@ -2,7 +2,7 @@
 
 # Apps
 
-- **InfiniteRedAI** - demo application showcasing the various RNMLKit options
+- **ExampleApp** - demo application showcasing the various RNMLKit options
 
 
 

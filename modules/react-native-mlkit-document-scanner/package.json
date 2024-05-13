@@ -25,14 +25,22 @@
   "author": "Frank Calise <frank@infinitered.com> (https://github.com/frankcalise)",
   "license": "MIT",
   "homepage": "https://docs.infinite.red/category/document-scanner/",
+  "dependencies": {
+    "@infinitered/react-native-mlkit-core": "0.7.7"
+  },
   "devDependencies": {
-    "@types/react": "^18.0.25",
-    "expo-module-scripts": "^3.0.11",
-    "expo-modules-core": "^1.5.10"
+    "@types/react": "~18.2.45",
+    "expo-module-scripts": "^3.4.1",
+    "expo-modules-core": "^1.11.13"
   },
   "peerDependencies": {
     "expo": "*",
     "react": "*",
     "react-native": "*"
+  },
+  "expo": {
+    "autolinking": {
+      "nativeModulesDir": "../../modules"
+    }
   }
 }
