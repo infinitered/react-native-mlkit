@@ -24,13 +24,13 @@ git clone git@github.com:infinitered/react-native-mlkit.git
 ## 2. Install dependencies
 
 ```bash
-cd react-native-mlkit 
+cd react-native-mlkit
 yarn install
 ```
 
 ## 3. Build native modules
 
-```bash 
+```bash
 yarn build
 ```
 
@@ -43,29 +43,25 @@ yarn build
 1. Launch the app using the `ios` script
 
 ```bash
-cd apps/InfiniteRedAI
+cd apps/ExampleApp
 
-yarn ios -d  
+yarn ios -d
 ```
 
 #### Via XCode
 
 1. From inside the app package, Run `expo prebuild` to create the `android` and `ios` native project folders
 
-    ```bash
-    cd apps/InfiniteRedAI
-   
-   # creates both android and ios native project folders
-    yarn prebuild
-   # creates only the ios native project folder
-    yarn prebuild --platform ios
-    ```
+   ```bash
+   cd apps/ExampleApp
 
-2. Open `~/apps/InfiniteRedAI/ios/InfiniteRedAI.xcworkspace` in XCode
-3. Select the `InfiniteRedAI` target, and select a Team on the "Signing & Capabilities" tab
+   # creates both android and ios native project folders
+   yarn prebuild
+   # creates only the ios native project folder
+   yarn prebuild --platform ios
+   ```
+
+2. Open `~/apps/ExampleApp/ios/ExampleApp.xcworkspace` in XCode
+3. Select the `ExampleApp` target, and select a Team on the "Signing & Capabilities" tab
 4. Select the hardware device you want to run the app on (MLKit is not supported in the simulator at this time)
 5. Click the play button to build the app
-
-
-
-

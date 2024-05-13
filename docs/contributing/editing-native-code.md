@@ -17,10 +17,10 @@ autocompletion, and linting.
 
 1. If you haven't already, run the `prebuild` script to create the ios example app
    ```shell
-   cd apps/InfiniteRedAI
+   cd apps/ExampleApp
    yarn prebuild
    ```
-2. Open Xcode and open the `./apps/InfiniteRedAI/ios` directory.
+2. Open Xcode and open the `./apps/ExampleApp/ios` directory.
 3. In the project navigator, find the module you want to edit. It will be
    under `Pods` > `Development Pods` > `react-native-mlkit-[module name]`.
 4. Open the `.swift` file you want to edit, and make your changes there.
@@ -29,13 +29,12 @@ autocompletion, and linting.
 
 1. If you haven't already, run the `prebuild` script to create the android example app
    ```shell
-   cd apps/InfiniteRedAI
+   cd apps/ExampleApp
    yarn prebuild
    ```
-2. Open Android Studio and open the `./apps/InfiniteRedAI/android` directory.
+2. Open Android Studio and open the `./apps/ExampleApp/android` directory.
 3. In the project navigator, find the module you want to edit.
-    - In the 'Project' view, it will be
-      under `infiniteRedAI` >  `[android] [infinitered-react-native-mlkit-[module name]]`
-    - In the `Android` view, it will be under `infinitered-react-native-mlkit-[module name]`
+   - In the 'Project' view, it will be
+     under `exampleApp` > `[android] [infinitered-react-native-mlkit-[module name]]`
+   - In the `Android` view, it will be under `infinitered-react-native-mlkit-[module name]`
 4. Browse to the `.kt` file you want to edit, and make your changes there.
-
