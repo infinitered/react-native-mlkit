@@ -1,6 +1,6 @@
 {
   "name": "@infinitered/react-native-mlkit-core",
-  "version": "0.7.7",
+  "version": "1.0.0",
   "description": "Shared Library for RNMLKit",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -26,7 +26,7 @@
   "license": "MIT",
   "homepage": "https://infinitered.github.io/react-native-mlkit",
   "devDependencies": {
-    "@infinitered/tsconfig": "0.2.7",
+    "@infinitered/tsconfig": "0.3.0",
     "@testing-library/react-native": "^12.3.0",
     "expo-image": "^1.10.6",
     "expo-module-scripts": "^3.4.1",

@@ -1,4 +1,4 @@
-# @infinitered/react-native-mlkit-document-scanner
+# example-app
 
 ## 1.0.0
 
@@ -16,10 +16,7 @@
 - Updated dependencies [4048d34]
 - Updated dependencies [4048d34]
 - Updated dependencies [4048d34]
-  - @infinitered/react-native-mlkit-core@1.0.0
-
-## 0.1.1
-
-### Patch Changes
-
-- d7bf6ff: Create MLKit document scanner
+  - @infinitered/react-native-mlkit-document-scanner@1.0.0
+  - @infinitered/react-native-mlkit-object-detection@1.0.0
+  - @infinitered/react-native-mlkit-face-detection@1.0.0
+  - @infinitered/react-native-mlkit-image-labeling@1.0.0

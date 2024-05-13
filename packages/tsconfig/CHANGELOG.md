@@ -1,5 +1,12 @@
 # @infinitered/tsconfig
 
+## 0.3.0
+
+### Minor Changes
+
+- 4048d34: Upgrade expo and related deps to v50.
+- 4048d34: Bump expo to v50
+
 ## 0.2.7
 
 ### Patch Changes

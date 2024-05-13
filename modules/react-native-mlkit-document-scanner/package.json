@@ -1,6 +1,6 @@
 {
   "name": "@infinitered/react-native-mlkit-document-scanner",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "MLKit Document Scanner for Expo",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -26,7 +26,7 @@
   "license": "MIT",
   "homepage": "https://docs.infinite.red/category/document-scanner/",
   "dependencies": {
-    "@infinitered/react-native-mlkit-core": "0.7.7"
+    "@infinitered/react-native-mlkit-core": "1.0.0"
   },
   "devDependencies": {
     "@types/react": "~18.2.45",
