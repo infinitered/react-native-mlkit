@@ -58,17 +58,17 @@ const Stack = createNativeStackNavigator<AppStackParamList>()
 const AppStack = observer(function AppStack() {
   return (
     <Stack.Navigator
-      screenOptions={ { headerShown: false, navigationBarColor: colors.background } }
-      initialRouteName={ "Home" }
+      screenOptions={{ headerShown: false, navigationBarColor: colors.background }}
+      initialRouteName={"Home"}
     >
-      <Stack.Screen name="Welcome" component={ Screens.WelcomeScreen }/>
-      {/** 🔥 Your screens go here */ }
-      <Stack.Screen name="Home" component={ Screens.HomeScreen }/>
-      <Stack.Screen name="FaceDetection" component={ Screens.FaceDetectionScreen }/>
-      <Stack.Screen name="ImageLabeling" component={ Screens.ImageLabelingScreen }/>
-      <Stack.Screen name="ObjectDetection" component={ Screens.ObjectDetectionScreen }/>
-      <Stack.Screen name="DocumentScanner" component={ Screens.DocumentScannerScreen }/>
-      {/* IGNITE_GENERATOR_ANCHOR_APP_STACK_SCREENS */ }
+      <Stack.Screen name="Welcome" component={Screens.WelcomeScreen} />
+      {/** 🔥 Your screens go here */}
+      <Stack.Screen name="Home" component={Screens.HomeScreen} />
+      <Stack.Screen name="FaceDetection" component={Screens.FaceDetectionScreen} />
+      <Stack.Screen name="ImageLabeling" component={Screens.ImageLabelingScreen} />
+      <Stack.Screen name="ObjectDetection" component={Screens.ObjectDetectionScreen} />
+      <Stack.Screen name="DocumentScanner" component={Screens.DocumentScannerScreen} />
+      {/* IGNITE_GENERATOR_ANCHOR_APP_STACK_SCREENS */}
     </Stack.Navigator>
   )
 })
@@ -83,11 +83,11 @@ export const AppNavigator = observer(function AppNavigator(props: NavigationProp
 
   return (
     <NavigationContainer
-      ref={ navigationRef }
-      theme={ colorScheme === "dark" ? DarkTheme : DefaultTheme }
-      { ...props }
+      ref={navigationRef}
+      theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}
+      {...props}
     >
-      <AppStack/>
+      <AppStack />
     </NavigationContainer>
   )
 })

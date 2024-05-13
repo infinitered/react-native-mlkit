@@ -2,15 +2,12 @@
 
 ### [Check the friendly docs here! 📖](https://docs.infinite.red/react-native-mlkit/)
 
-
 RNMLKit provides Expo modules that allow developers to use MLKit native libraries in their Expo apps.
 
 - [Document Scanner](https://https://infinitered.github.io/react-native-mlkit/document-scanner/getting-started/)
 - [Face Detection](https://https://infinitered.github.io/react-native-mlkit/face-detection/getting-started/)
 - [Image Labeling](https://github.com/infinitered/react-native-mlkit/tree/main/modules/react-native-mlkit-image-labeling)
 - [Object Detection](https://github.com/infinitered/react-native-mlkit/tree/main/modules/react-native-mlkit-object-detection)
-
-
 
 ## Quickstart: Running the example app
 
@@ -44,7 +41,7 @@ _Note: MLKit is not supported in the iOS simulator. You will need to use a hardw
 ##### Via Terminal
 
 ```bash
-cd apps/InfiniteRedAI
+cd apps/ExampleApp
 
 npx expo run:ios -d
 ```
@@ -59,8 +56,8 @@ cd apps/InderfiniteRedAI
 npx expo prebuild
 ```
 
-2. Open `apps/InfiniteRedAI/ios/InfiniteRedAI.xcworkspace` in XCode
-3. Select the `InfiniteRedAI` target, and select a Team on the "Signing & Capabilities" tab
+2. Open `apps/ExampleApp/ios/ExampleApp.xcworkspace` in XCode
+3. Select the `ExampleApp` target, and select a Team on the "Signing & Capabilities" tab
 4. Select your target hardware device (MLKit is not supported in the simulator at this time)
 5. Click the play button to build the app
 
@@ -69,7 +66,7 @@ npx expo prebuild
 _Note: Android support is currently under active development, some modules may not function as intended_
 
 ```bash
-cd apps/InfiniteRedAI
+cd apps/ExampleApp
 
 # run on hardware device
 npx expo run:android -d
@@ -79,7 +76,7 @@ npx expo run:android -d
 
 The monorepo is organized into the following sections:
 
-- **Apps** -- holds the example app (`InfiniteRedAI`) that demonstrates how to use the modules.
+- **Apps** -- holds the example app (`ExampleApp`) that demonstrates how to use the modules.
 - **Modules** -- holds the modules themselves. Each module is a separate npm package, and they are published to npm
   under the name `@infinitered/[module name]`.
 - **Packages** -- holds internal packages that are only used by the modules and are not published to npm. Things like
@@ -99,3 +96,10 @@ changes before other modules to be able to see the changes. (The packages have a
 code.)
 
 Running `yarn build` inside of an expo module workspace will start watch mode for files inside of that module.
+
+# Compatibility
+
+| Expo SDK | MLKit    |
+| -------- | -------- |
+| ^49.0.0  | <= 0.7.7 |
+| ^50.0.0  | ^1.0.0   |

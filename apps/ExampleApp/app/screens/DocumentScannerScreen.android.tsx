@@ -3,7 +3,16 @@ import { observer } from "mobx-react-lite"
 import { ViewStyle, View, ImageStyle, TextStyle } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { AppStackScreenProps } from "../navigators"
-import { Screen, Text, Icon, Button, ListItem, TextField, Toggle } from "../components"
+import {
+  Screen,
+  Text,
+  Icon,
+  Button,
+  ListItem,
+  TextField,
+  Toggle,
+  RNMLKitImageView,
+} from "../components"
 import { useTypedNavigation } from "../navigators/useTypedNavigation"
 import {
   ResultFormatOptions,
@@ -19,6 +28,7 @@ export const DocumentScannerScreen: FC<DocumentScannerScreenProps> = observer(
   function DocumentScannerScreen() {
     const navigation = useTypedNavigation<"DocumentScanner">()
     const [result, setResult] = React.useState<string>("")
+    const [imageToShow, setImageToShow] = React.useState<string>("")
     const [allowGallery, setAllowGallery] = React.useState<boolean>(false)
     const [mode, setMode] = React.useState<ScannerModeOptions>(ScannerModeOptions.FULL)
     const [resultFormat, setResultFormat] = React.useState<ResultFormatOptions>(
@@ -131,6 +141,9 @@ export const DocumentScannerScreen: FC<DocumentScannerScreenProps> = observer(
                   scannerMode: mode,
                 })
                 setResult(JSON.stringify(result))
+                if (result.pages !== undefined && result.pages.length > 0) {
+                  setImageToShow(result.pages[0])
+                }
               }}
               text="Scan Document"
             />
@@ -138,6 +151,8 @@ export const DocumentScannerScreen: FC<DocumentScannerScreenProps> = observer(
         </View>
 
         <Text style={$description}>Result: {result}</Text>
+
+        {imageToShow !== "" && <RNMLKitImageView image={{ uri: imageToShow }} />}
       </Screen>
     )
   },
