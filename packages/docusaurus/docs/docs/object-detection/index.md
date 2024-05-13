@@ -16,10 +16,10 @@ Install like any other npm package:
 
 ```bash
 #yarn
-yarn add react-native-mlkit-object-detection
+yarn add @infinitered/react-native-mlkit-object-detection
 
 #npm
-npm install react-native-mlkit-object-detection
+npm install @infinitered/react-native-mlkit-object-detection
 ```
 
 ## Basic Usage
@@ -35,7 +35,7 @@ available via React context.
 import {
   AssetRecord,
   useObjectDetectionModels,
-} from "react-native-mlkit-object-detection";
+} from "@infinitered/react-native-mlkit-object-detection";
 
 // For descriptions of options for default models see link below this snipped.
 function App() {

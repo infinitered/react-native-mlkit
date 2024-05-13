@@ -20,7 +20,7 @@ continuing.
 ### Add the package to your npm dependencies
 
 ```
-npm install react-native-mlkit-document-scanner
+npm install @infinitered/react-native-mlkit-document-scanner
 ```
 
 ### Configure for iOS

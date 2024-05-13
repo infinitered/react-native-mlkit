@@ -16,10 +16,10 @@ Install like any other npm package:
 
 ```bash
 #yarn
-yarn add react-native-mlkit-document-scanner
+yarn add @infinitered/react-native-mlkit-document-scanner
 
 #npm
-npm install react-native-mlkit-document-scanner
+npm install @infinitered/react-native-mlkit-document-scanner
 ```
 
 ## Basic Usage
@@ -31,7 +31,7 @@ Use the `launchDocumentScannerAsync` method to initiate the document scanner mod
 ```tsx
 // App.tsx
 import { View, Button } from "react-native";
-import { launchDocumentScannerAsync } from "react-native-mlkit-document-scanner";
+import { launchDocumentScannerAsync } from "@infinitered/react-native-mlkit-document-scanner";
 
 function App() {
   return (

@@ -31,10 +31,10 @@ Install like any other npm package:
 
 ```bash
 #yarn
-yarn add react-native-mlkit-object-detection
+yarn add @infinitered/react-native-mlkit-object-detection
 
 #npm
-npm install react-native-mlkit-object-detection
+npm install @infinitered/react-native-mlkit-object-detection
 ```
 
 ## Basic Usage with Default Model
@@ -50,7 +50,7 @@ available via React context.
 import {
   AssetRecord,
   useObjectDetectionModels,
-} from "react-native-mlkit-object-detection";
+} from "@infinitered/react-native-mlkit-object-detection";
 
 // For descriptions of options for default models see link below this snipped.
 function App() {
@@ -173,7 +173,7 @@ First define an AssetRecord object with the details of your model, and your desi
 import {
   AssetRecord,
   useObjectDetectionModels,
-} from "react-native-mlkit-object-detection";
+} from "@infinitered/react-native-mlkit-object-detection";
 
 const MODELS: AssetRecord = {
   // the name you'll use to refer to the model

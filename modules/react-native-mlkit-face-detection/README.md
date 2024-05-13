@@ -20,7 +20,7 @@ continuing.
 ### Add the package to your npm dependencies
 
 ```
-npm install react-native-mlkit-face-detection
+npm install @infinitered/react-native-mlkit-face-detection
 ```
 
 ### Configure for iOS
