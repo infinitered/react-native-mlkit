@@ -96,3 +96,10 @@ changes before other modules to be able to see the changes. (The packages have a
 code.)
 
 Running `yarn build` inside of an expo module workspace will start watch mode for files inside of that module.
+
+# Compatibility
+
+| Expo SDK | MLKit    |
+| -------- | -------- |
+| ^49.0.0  | <= 0.7.7 |
+| ^50.0.0  | ^1.0.0   |
