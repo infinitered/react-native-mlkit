@@ -1,3 +1,4 @@
+import React from "react"
 import { Text } from "~/components"
 import { DemoInfo } from "../demoInfo"
 import { ViewStyle, Pressable, View, ImageStyle, TextStyle } from "react-native"
