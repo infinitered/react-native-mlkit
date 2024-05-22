@@ -16,10 +16,10 @@ Install like any other npm package:
 
 ```bash
 #yarn
-yarn add @infinitered/@infinitered/react-native-mlkit-core react-native-mlkit-document-scanner
+yarn add @infinitered/react-native-mlkit-core react-native-mlkit-document-scanner
 
 #npm
-npm install @infinitered/@infinitered/react-native-mlkit-core react-native-mlkit-document-scanner
+npm install @infinitered/react-native-mlkit-core react-native-mlkit-document-scanner
 ```
 
 ## Basic Usage
