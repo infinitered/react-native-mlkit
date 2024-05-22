@@ -30,7 +30,7 @@ the [expo docs](https://docs.expo.dev/bare/installing-expo-modules/) for instruc
 Add the package to your project using your favorite package manager:
 
 ```bash
-yarn add @infinitered/react-native-mlkit-face-detection
+yarn add @infinitered/react-native-mlkit-core @infinitered/react-native-mlkit-face-detection
 ```
 
 ### 2. Setting Up the Context
@@ -40,9 +40,7 @@ Wrap your app with the `RNMLKitFaceDetectionContextProvider` component.
 ```tsx
 // App.tsx
 
-import {
-  RNMLKitFaceDetectionContextProvider,
-} from "@infinitered/react-native-mlkit-face-detection";
+import { RNMLKitFaceDetectionContextProvider } from "@infinitered/react-native-mlkit-face-detection";
 
 function App() {
   return (
@@ -73,19 +71,23 @@ simply passing the image's URI.
 import { useFacesInPhoto } from "@infinitered/react-native-mlkit-face-detection";
 
 function FaceDetectionComponent() {
-  const { faces, error, status } = useFacesInPhoto('local_uri_of_your_image_uri');
+  const { faces, error, status } = useFacesInPhoto(
+    "local_uri_of_your_image_uri"
+  );
 
   if (error) {
     return <Text>Error: {error}</Text>;
   }
 
-  return (<View>
-    {faces.map((face) => (
-      <View key={face.trackingId}>
-        <Text>{JSON.stringify(face)}</Text>
-      </View>
-    ))}
-  </View>)
+  return (
+    <View>
+      {faces.map((face) => (
+        <View key={face.trackingId}>
+          <Text>{JSON.stringify(face)}</Text>
+        </View>
+      ))}
+    </View>
+  );
 }
 ```
 

@@ -16,10 +16,10 @@ Install like any other npm package:
 
 ```bash
 #yarn
-yarn add @infinitered/react-native-mlkit-object-detection
+yarn add @infinitered/react-native-mlkit-core @infinitered/react-native-mlkit-object-detection
 
 #npm
-npm install @infinitered/react-native-mlkit-object-detection
+npm install @infinitered/react-native-mlkit-core @infinitered/react-native-mlkit-object-detection
 ```
 
 ## Basic Usage
