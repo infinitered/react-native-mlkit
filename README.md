@@ -1,4 +1,9 @@
-# @infinitered/react-native-mlkit
+<p align="center">
+  <img src="./_art/ir_mlkit_logo.png" alt="IR MLKit Logo" width="400" />
+  <h2 align="center">RN MLKit Wrapper for Expo</h2>
+</p>
+
+[![All Contributors](https://img.shields.io/github/all-contributors/infinitered/react-native-mlkit?style=flat-square)](#contributors)
 
 ### [Check the friendly docs here! 📖](https://docs.infinite.red/react-native-mlkit/)
 
@@ -51,7 +56,7 @@ npx expo run:ios -d
 1. Create the native project folders
 
 ```bash
-cd apps/InderfiniteRedAI
+cd apps/ExampleApp
 
 npx expo prebuild
 ```
@@ -89,7 +94,7 @@ For usage instructions see the readme in each module's directory.
 - [react-native-mlkit-core](./modules/react-native-mlkit-core/README.md)
 - [react-native-mlkit-face-detection](./modules/react-native-mlkit-face-detection/README.md)
 
-# Building
+## Building
 
 Use `yarn build` at the root level to compile typescript in all workspaces. You will need to do this when you make
 changes before other modules to be able to see the changes. (The packages have a main field that points to the compiled
@@ -97,9 +102,23 @@ code.)
 
 Running `yarn build` inside of an expo module workspace will start watch mode for files inside of that module.
 
-# Compatibility
+## Compatibility
 
 | Expo SDK | MLKit    |
 | -------- | -------- |
 | ^49.0.0  | <= 0.7.7 |
 | ^50.0.0  | ^1.0.0   |
+| ^51.0.0  | ^1.0.0   |
+
+## Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
