@@ -2,6 +2,11 @@
 sidebar_position: 1
 ---
 
+<p align="center">
+  <img src="../_art/ir_mlkit_logo.png" alt="IR MLKit Logo" width="400" />
+  <h2 align="center">RN MLKit Wrapper for Expo</h2>
+</p>
+
 # Introduction
 
 `react-native-mlkit` is an native module for Expo and React Native that lets you use
