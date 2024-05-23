@@ -3,7 +3,7 @@ sidebar_position: 1
 ---
 
 <p align="center">
-  <img src="../_art/ir_mlkit_logo.png" alt="IR MLKit Logo" width="400" />
+  <img src="https://raw.githubusercontent.com/infinitered/react-native-mlkit/main/_art/ir_mlkit_logo.png" alt="IR MLKit Logo" width="400" />
   <h2 align="center">RN MLKit Wrapper for Expo</h2>
 </p>
 
