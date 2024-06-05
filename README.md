@@ -25,7 +25,6 @@ git clone git@github.com:infinitered/react-native-mlkit.git
 ### 2. Install dependencies
 
 ```bash
-cd react-native-mlkit
 yarn
 ```
 
@@ -35,9 +34,7 @@ yarn
 yarn build
 ```
 
-###
-
-### 5. Create a development build of the app
+### 4. Create a development build of the app
 
 #### iOS
 

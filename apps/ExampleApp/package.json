@@ -10,7 +10,6 @@
     "patch": "patch-package",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:maestro": "maestro test .maestro/FavoritePodcast.yaml",
     "adb": "adb reverse tcp:9090 tcp:9090 && adb reverse tcp:3000 tcp:3000 && adb reverse tcp:9001 tcp:9001 && adb reverse tcp:8081 tcp:8081",
     "postinstall": "patch-package",
     "bundle:visualize": "npx react-native-bundle-visualizer",
