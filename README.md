@@ -14,6 +14,12 @@ RNMLKit provides Expo modules that allow developers to use MLKit native librarie
 - [Image Labeling](https://docs.infinite.red/react-native-mlkit/image-labeling/)
 - [Object Detection](https://docs.infinite.red/react-native-mlkit/object-detection/)
 
+Here are some previews in action:
+
+| Face Detection | Object Detection    |
+| -------- | -------- |
+| <img src="./_art/face-720.gif" alt="IR MLKit Face Detection Preview" height="520" />  | <img src="./_art/object-720.gif" alt="IR MLKit Face Object Detection" height="520" /> |
+
 ## Quickstart: Running the example app
 
 ### 1. Clone the project
