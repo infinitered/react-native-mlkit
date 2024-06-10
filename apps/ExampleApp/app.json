@@ -65,7 +65,8 @@
             "deploymentTarget": "13.4"
           },
           "android": {
-            "newArchEnabled": false
+            "newArchEnabled": false,
+            "compileSdkVersion": 31
           }
         }
       ],
