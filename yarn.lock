@@ -3651,7 +3651,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@infinitered/react-native-mlkit-core@1.0.0, @infinitered/react-native-mlkit-core@workspace:modules/react-native-mlkit-core":
+"@infinitered/react-native-mlkit-core@2.0.0, @infinitered/react-native-mlkit-core@workspace:modules/react-native-mlkit-core":
   version: 0.0.0-use.local
   resolution: "@infinitered/react-native-mlkit-core@workspace:modules/react-native-mlkit-core"
   dependencies:
@@ -3695,11 +3695,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@infinitered/react-native-mlkit-document-scanner@^1.0.0, @infinitered/react-native-mlkit-document-scanner@workspace:modules/react-native-mlkit-document-scanner":
+"@infinitered/react-native-mlkit-document-scanner@^2.0.0, @infinitered/react-native-mlkit-document-scanner@workspace:modules/react-native-mlkit-document-scanner":
   version: 0.0.0-use.local
   resolution: "@infinitered/react-native-mlkit-document-scanner@workspace:modules/react-native-mlkit-document-scanner"
   dependencies:
-    "@infinitered/react-native-mlkit-core": 1.0.0
+    "@infinitered/react-native-mlkit-core": 2.0.0
     "@types/react": ~18.2.45
     expo-module-scripts: ^3.4.1
     expo-modules-core: ^1.12.14
@@ -3710,11 +3710,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@infinitered/react-native-mlkit-face-detection@^1.0.0, @infinitered/react-native-mlkit-face-detection@workspace:modules/react-native-mlkit-face-detection":
+"@infinitered/react-native-mlkit-face-detection@^2.0.0, @infinitered/react-native-mlkit-face-detection@workspace:modules/react-native-mlkit-face-detection":
   version: 0.0.0-use.local
   resolution: "@infinitered/react-native-mlkit-face-detection@workspace:modules/react-native-mlkit-face-detection"
   dependencies:
-    "@infinitered/react-native-mlkit-core": 1.0.0
+    "@infinitered/react-native-mlkit-core": 2.0.0
     "@types/react": ~18.2.45
     expo-module-scripts: ^3.4.1
     expo-modules-core: ^1.12.14
@@ -3725,11 +3725,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@infinitered/react-native-mlkit-image-labeling@^1.0.0, @infinitered/react-native-mlkit-image-labeling@workspace:modules/react-native-mlkit-image-labeling":
+"@infinitered/react-native-mlkit-image-labeling@^2.0.0, @infinitered/react-native-mlkit-image-labeling@workspace:modules/react-native-mlkit-image-labeling":
   version: 0.0.0-use.local
   resolution: "@infinitered/react-native-mlkit-image-labeling@workspace:modules/react-native-mlkit-image-labeling"
   dependencies:
-    "@infinitered/react-native-mlkit-core": 1.0.0
+    "@infinitered/react-native-mlkit-core": 2.0.0
     "@types/react": ~18.2.45
     expo-module-scripts: ^3.4.1
     expo-modules-core: ^1.12.14
@@ -3740,11 +3740,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@infinitered/react-native-mlkit-object-detection@^1.0.0, @infinitered/react-native-mlkit-object-detection@workspace:modules/react-native-mlkit-object-detection":
+"@infinitered/react-native-mlkit-object-detection@^2.0.0, @infinitered/react-native-mlkit-object-detection@workspace:modules/react-native-mlkit-object-detection":
   version: 0.0.0-use.local
   resolution: "@infinitered/react-native-mlkit-object-detection@workspace:modules/react-native-mlkit-object-detection"
   dependencies:
-    "@infinitered/react-native-mlkit-core": 1.0.0
+    "@infinitered/react-native-mlkit-core": 2.0.0
     "@types/react": ~18.2.45
     expo-module-scripts: ^3.4.1
     expo-modules-core: ^1.12.14
@@ -10482,10 +10482,10 @@ __metadata:
     "@babel/runtime": ^7.20.0
     "@expo-google-fonts/space-grotesk": ^0.2.2
     "@expo/metro-runtime": ~3.2.1
-    "@infinitered/react-native-mlkit-document-scanner": ^1.0.0
-    "@infinitered/react-native-mlkit-face-detection": ^1.0.0
-    "@infinitered/react-native-mlkit-image-labeling": ^1.0.0
-    "@infinitered/react-native-mlkit-object-detection": ^1.0.0
+    "@infinitered/react-native-mlkit-document-scanner": ^2.0.0
+    "@infinitered/react-native-mlkit-face-detection": ^2.0.0
+    "@infinitered/react-native-mlkit-image-labeling": ^2.0.0
+    "@infinitered/react-native-mlkit-object-detection": ^2.0.0
     "@infinitered/tsconfig": 0.3.0
     "@react-native-async-storage/async-storage": 1.23.1
     "@react-navigation/native": ^6.0.2
