@@ -89,7 +89,7 @@ repositories {
 dependencies {
   implementation project(':expo-modules-core')
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${getKotlinVersion()}"
-  
+
   implementation 'com.google.android.gms:play-services-mlkit-document-scanner:16.0.0-beta1'
   implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.3"
   implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.3"
