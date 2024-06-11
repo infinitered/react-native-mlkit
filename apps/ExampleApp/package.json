@@ -1,6 +1,6 @@
 {
   "name": "example-app",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "main": "./index.js",
   "scripts": {
@@ -31,10 +31,10 @@
   "dependencies": {
     "@expo-google-fonts/space-grotesk": "^0.2.2",
     "@expo/metro-runtime": "~3.2.1",
-    "@infinitered/react-native-mlkit-document-scanner": "^1.0.0",
-    "@infinitered/react-native-mlkit-face-detection": "^1.0.0",
-    "@infinitered/react-native-mlkit-image-labeling": "^1.0.0",
-    "@infinitered/react-native-mlkit-object-detection": "^1.0.0",
+    "@infinitered/react-native-mlkit-document-scanner": "^2.0.0",
+    "@infinitered/react-native-mlkit-face-detection": "^2.0.0",
+    "@infinitered/react-native-mlkit-image-labeling": "^2.0.0",
+    "@infinitered/react-native-mlkit-object-detection": "^2.0.0",
     "@react-native-async-storage/async-storage": "1.23.1",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.0.2",

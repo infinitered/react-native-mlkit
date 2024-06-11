@@ -1,5 +1,29 @@
 # @infinitered/react-native-mlkit-core
 
+## 2.0.0
+
+### Major Changes
+
+- 1e282e0: Update modules and example app to be compatible with Expo v51. Increases minimum deployment target to 13.4.
+
+  To ensure that your app will be compatible, make sure your minimum deployment version is set higher than 13.4 by
+  using the `expo-build-properties` plugin in your `app.json`.
+
+  ```json
+  {
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "deploymentTarget": "13.4"
+          }
+        }
+      ]
+    ]
+  }
+  ```
+
 ## 1.0.0
 
 ### Major Changes
