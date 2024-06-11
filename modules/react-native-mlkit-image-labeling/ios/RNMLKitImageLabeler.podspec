@@ -17,8 +17,8 @@ Pod::Spec.new do |s|
 
   s.dependency 'ExpoModulesCore'
   s.dependency 'RNMLKitCore'
-  s.dependency 'MLKitImageLabeling', '~> 5.0'
-  s.dependency 'GoogleMLKit/ImageLabelingCustom', '~> 5.0'
+  s.dependency 'MLKitImageLabeling'
+  s.dependency 'GoogleMLKit/ImageLabelingCustom'
 
 
   # Swift/Objective-C compatibility

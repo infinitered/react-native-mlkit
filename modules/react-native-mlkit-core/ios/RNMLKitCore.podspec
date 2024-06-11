@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.swift_version  = '5.4'
   s.source         = { git: 'http://github.com/infinitered/react-native-mlkit' }
 
-  s.dependency 'MLKitVision','~> 7.0'
+  s.dependency 'MLKitVision'
   s.dependency 'ExpoModulesCore'
 
   # Swift/Objective-C compatibility
