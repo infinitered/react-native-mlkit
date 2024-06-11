@@ -11,7 +11,7 @@
     "splash": {
       "image": "./assets/images/splash-logo-all.png",
       "resizeMode": "contain",
-      "backgroundColor": "#191015"
+      "backgroundColor": "#F4F2F1"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -25,12 +25,13 @@
       "package": "red.infinite.reactnativemlkit.example",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/app-icon-android-adaptive-foreground.png",
-        "backgroundImage": "./assets/images/app-icon-android-adaptive-background.png"
+        "backgroundImage": "./assets/images/app-icon-android-adaptive-background.png",
+        "backgroundColor": "#F4F2F1"
       },
       "splash": {
         "image": "./assets/images/splash-logo-android-universal.png",
         "resizeMode": "contain",
-        "backgroundColor": "#191015"
+        "backgroundColor": "#F4F2F1"
       }
     },
     "ios": {
@@ -41,16 +42,15 @@
         "image": "./assets/images/splash-logo-ios-mobile.png",
         "tabletImage": "./assets/images/splash-logo-ios-tablet.png",
         "resizeMode": "contain",
-        "backgroundColor": "#191015"
-      },
-      "minimumOSVersion": "13.4"
+        "backgroundColor": "#F4F2F1"
+      }
     },
     "web": {
       "favicon": "./assets/images/app-icon-web-favicon.png",
       "splash": {
         "image": "./assets/images/splash-logo-web.png",
         "resizeMode": "contain",
-        "backgroundColor": "#191015"
+        "backgroundColor": "#F4F2F1"
       },
       "bundler": "metro"
     },
