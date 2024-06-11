@@ -5,7 +5,8 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
-    "build": "../../scripts/build-module.sh",
+    "build": "expo-module build",
+    "ci:build": "tsc",
     "clean": "expo-module clean",
     "lint": "expo-module lint",
     "test": "../../scripts/test-module.sh",

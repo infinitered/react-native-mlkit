@@ -3,9 +3,9 @@
     "**/.env.*local"
   ],
   "tasks": {
-    "build": {
+    "ci:build": {
       "dependsOn": [
-        "^build"
+        "^ci:build"
       ],
       "outputs": [
         "dist/**",
@@ -13,6 +13,16 @@
       ],
       "cache": true,
       "interactive": false
+    },
+    "build": {
+      "dependsOn": [
+        "@infinitered/react-native-mlkit-core#ci:build",
+        "^ci:build"
+      ],
+      "outputs": [
+        "dist/**",
+        "build/**"
+      ]
     },
     "clean": {},
     "lint": {

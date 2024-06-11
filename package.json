@@ -4,7 +4,7 @@
     "CI scripts are all --no-cache because we aren't using Vercel's remote cache and the caches aren't working. It may be possible to cache dependencies in the future, but for now caching breaks the build."
   ],
   "scripts": {
-    "build": "turbo run build --filter=!@infinitered/react-native-mlkit-docs",
+    "build": "turbo run ci:build --filter=@infinitered/react-native-mlkit-core && turbo run build --filter=!@infinitered/react-native-mlkit-docs",
     "build:docs": "turbo run build --filter=@infinitered/react-native-mlkit-docs",
     "docs": "yarn workspace @infinitered/react-native-mlkit-docs start",
     "test": "turbo run test -- --run-in-band",
@@ -14,7 +14,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "setup": "./scripts/setup.sh",
     "version": "changeset version && yarn install --mode update-lockfile",
-    "ci:build": "turbo run build --filter=@infinitered/react-native-mlkit-core --no-cache && turbo run build --filter=!@infinitered/react-native-mlkit-core --no-cache",
+    "ci:build": "turbo run ci:build --filter=@infinitered/react-native-mlkit-core --no-cache && turbo run ci:build --filter=!@infinitered/react-native-mlkit-core --no-cache",
     "ci:publish": "changeset publish",
     "ci:push-tags": "git push --follow-tags",
     "ci:trust": "./scripts/git-push-fork-to-upstream-repo.sh",
