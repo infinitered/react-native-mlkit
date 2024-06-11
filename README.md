@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./_art/ir_mlkit_logo.png" alt="IR MLKit Logo" width="400" />
+  <img src="./_art/ir_mlkit_logo.png" alt="IR MLKit Logo" />
   <h2 align="center">RN MLKit Wrapper for Expo</h2>
 </p>
 
