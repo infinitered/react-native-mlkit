@@ -1,4 +1,10 @@
 {
+  "globalEnv": [
+    "CI",
+    "GIT_EMAIL",
+    "GIT_USER",
+    "TURBO_UI"
+  ],
   "globalDependencies": [
     "**/.env.*local"
   ],
