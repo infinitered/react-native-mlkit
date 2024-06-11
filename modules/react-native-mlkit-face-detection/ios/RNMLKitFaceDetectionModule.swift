@@ -26,7 +26,7 @@ public class RNMLKitFaceDetectionModule: Module {
         }
 
         AsyncFunction("detectFaces") { (imagePath: String, promise: Promise) in
-            let logger = Logger()
+            let logger = Logger(logHandlers: [createOSLogHandler(category: Logger.EXPO_LOG_CATEGORY)])
 
             Task {
                 do {

@@ -14,7 +14,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "setup": "./scripts/setup.sh",
     "version": "changeset version && yarn install --mode update-lockfile",
-    "ci:build": "turbo run build --filter=@infinitered/react-native-mlkit-core --no-cache && turbo run build --filter=!@infinitered/react-native-mlkit-core --no-cache",
+    "ci:build": "turbo run ci:build --filter=@infinitered/react-native-mlkit-core --no-cache && turbo run ci:build --filter=!@infinitered/react-native-mlkit-core --no-cache",
     "ci:publish": "changeset publish",
     "ci:push-tags": "git push --follow-tags",
     "ci:trust": "./scripts/git-push-fork-to-upstream-repo.sh",

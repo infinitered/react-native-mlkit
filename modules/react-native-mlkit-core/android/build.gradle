@@ -87,5 +87,5 @@ repositories {
 dependencies {
   implementation project(':expo-modules-core')
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${getKotlinVersion()}"
-  implementation "com.google.mlkit:vision-common:17.0.0"
+  implementation "com.google.mlkit:vision-common:17.+"
 }

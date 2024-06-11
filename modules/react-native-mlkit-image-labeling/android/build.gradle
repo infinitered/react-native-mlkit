@@ -88,6 +88,6 @@ dependencies {
   implementation project(':expo-modules-core')
   implementation project(path: ':infinitered-react-native-mlkit-core')
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${getKotlinVersion()}"
-  implementation 'com.google.mlkit:image-labeling:17.0.7'
-  implementation 'com.google.mlkit:image-labeling-custom:17.0.1'
+  implementation 'com.google.mlkit:image-labeling:17.+'
+  implementation 'com.google.mlkit:image-labeling-custom:17.+'
 }

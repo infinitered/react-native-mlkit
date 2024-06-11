@@ -6,9 +6,10 @@
   "types": "build/index.d.ts",
   "scripts": {
     "build": "expo-module build",
+    "ci:build": "tsc",
     "clean": "expo-module clean",
     "lint": "expo-module lint",
-    "test": "expo-module test",
+    "test": "../../scripts/test-module.sh",
     "prepublishOnly": "expo-module prepublishOnly",
     "expo-module": "expo-module"
   },
@@ -31,7 +32,7 @@
   "devDependencies": {
     "@types/react": "~18.2.45",
     "expo-module-scripts": "^3.4.1",
-    "expo-modules-core": "^1.11.13"
+    "expo-modules-core": "^1.12.14"
   },
   "peerDependencies": {
     "expo": "*",

@@ -5,11 +5,10 @@
 //  Created by Trevor Coleman on 2023-07-28.
 //
 
-import Foundation
 import ExpoModulesCore
+import Foundation
 import MLKitFaceDetection
 import MLKitVision
-
 
 // Record struct to hold the raw data
 struct RNMLKitFaceDetectionResultRecord: Record {
@@ -30,7 +29,6 @@ public class RNMLKitFaceDetectionResult {
     }
 
     var record: RNMLKitFaceDetectionResultRecord {
-        let logger = Logger()
         let record = RNMLKitFaceDetectionResultRecord()
         let faces = self.faces.map { face in
             let expoFace = RNMLKitFace()
@@ -41,8 +39,7 @@ public class RNMLKitFaceDetectionResult {
             expoFace.headEulerAngleY = CGFloat(face.headEulerAngleY)
             expoFace.headEulerAngleZ = CGFloat(face.headEulerAngleZ)
             expoFace.trackingID = face.trackingID
-            
-            
+
             expoFace.frame = RNMLKitRect.fromCGRect(rect: face.frame)
 
             for landmark in face.landmarks {
@@ -60,18 +57,18 @@ public class RNMLKitFaceDetectionResult {
                 expoFace.contours.append(expoContour)
             }
 
-            return expoFace}
-        
-        record.faces = faces;
+            return expoFace
+        }
+
+        record.faces = faces
         record.imagePath = self.imagePath
         return record
     }
 }
 
-
 struct RNMLKitFace: Record {
     @Field
-    var frame: RNMLKitRect = RNMLKitRect()
+    var frame: RNMLKitRect = .init()
     @Field
     var landmarks: [RNMLKitFaceLandmark] = []
     @Field
@@ -93,33 +90,32 @@ struct RNMLKitFace: Record {
 }
 
 struct RNMLKitFaceLandmark: Record {
-    
     @Field
-    var type: String = ""  // Use Enum to represent FaceLandmarkType
-    
+    var type: String = "" // Use Enum to represent FaceLandmarkType
+
     @Field
-    var position: RNMLKitPoint = RNMLKitPoint()
-    
+    var position: RNMLKitPoint = .init()
 }
 
-struct RNMLKitFaceContour:Record {
+struct RNMLKitFaceContour: Record {
     @Field
     var type: String = ""
     @Field
     var points: [RNMLKitPoint] = []
 }
 
-struct RNMLKitPoint:Record {
+struct RNMLKitPoint: Record {
     @Field
     var x: CGFloat = 0
     @Field
     var y: CGFloat = 0
-    
-    static func fromVisionPoint(p:VisionPoint) -> RNMLKitPoint {
+
+    static func fromVisionPoint(p: VisionPoint) -> RNMLKitPoint {
         let point = RNMLKitPoint()
         point.x = p.x
         point.y = p.y
-        return point}
+        return point
+    }
 }
 
 struct RNMLKitRect: Record {
@@ -134,14 +130,14 @@ struct RNMLKitRect: Record {
         var origin = RNMLKitPoint()
         origin.x = rect.origin.x
         origin.y = rect.origin.y
-        
+
         var size = RNMLKitPoint()
         size.x = rect.width
         size.y = rect.height
-        
-        expoRect.origin = origin;
+
+        expoRect.origin = origin
         expoRect.size = size
-        
+
         return expoRect
     }
 }

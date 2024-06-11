@@ -42,9 +42,9 @@ struct RNMLKitImageLabelerSpec: Record {
 }
 
 public class RNMLKitImageLabelingModule: Module {
-    let ERROR_DOMAIN: String = "red.infinite.RNMLKit.RNMLKitImageLabelingModuleErrorDomain";
-    var labelers: [String:RNMLKitImageLabeler] = [:]
-    var specs: [String:RNMLKitImageLabelerSpec] = [:]
+    let ERROR_DOMAIN: String = "red.infinite.RNMLKit.RNMLKitImageLabelingModuleErrorDomain"
+    var labelers: [String: RNMLKitImageLabeler] = [:]
+    var specs: [String: RNMLKitImageLabelerSpec] = [:]
 
     var imageLabeler: RNMLKitImageLabeler?
 
@@ -52,9 +52,9 @@ public class RNMLKitImageLabelingModule: Module {
         Name("RNMLKitImageLabeling")
 
         AsyncFunction("addModel") { (spec: RNMLKitImageLabelerSpec, promise: Promise) in
-            let logger = Logger()
+            let logger = Logger(logHandlers: [createOSLogHandler(category: Logger.EXPO_LOG_CATEGORY)])
             let context = RNMLKitContext(logger: logger)
-            do{
+            do {
                 logger.debug("RNMLKit", "addModel: Loading model '\(spec.modelName)' from \(spec.modelPath)")
 
                 // trim "file://" if it's present at the start of the path
@@ -67,26 +67,23 @@ public class RNMLKitImageLabelingModule: Module {
                 )
 
                 let imageLabeler = try RNMLKitImageLabeler(context: context, modelPath: modelPath, options: expoMlKitLabelerOptions)
-                self.labelers[spec.modelName] = imageLabeler;
-                self.specs[spec.modelName] = spec;
+                self.labelers[spec.modelName] = imageLabeler
+                self.specs[spec.modelName] = spec
                 logger.info("RNMLKit", "addModel: model loaded successfully!")
                 promise.resolve(spec.modelName)
             } catch {
-                rejectPromiseWithMessage(promise: promise, message: "Error Loading Model \(error)" , domain: ERROR_DOMAIN)
+                rejectPromiseWithMessage(promise: promise, message: "Error Loading Model \(error)", domain: ERROR_DOMAIN)
             }
-
         }
 
-        AsyncFunction("classifyImage") { (modelName:String, imagePath:String, promise:Promise) in
-            let logger = Logger()
+        AsyncFunction("classifyImage") { (modelName: String, imagePath: String, promise: Promise) in
+            let logger = Logger(logHandlers: [createOSLogHandler(category: Logger.EXPO_LOG_CATEGORY)])
             logger.info("RNMLKit", "classify image: Classifying image: \(imagePath) ")
-            
 
             guard let imageLabeler = self.labelers[modelName] else {
                 logger.error("[classifyImage] Classification Failed: Cannot find model named '\(modelName). Has it been loaded?")
                 rejectPromiseWithMessage(promise: promise, message: "[RNMLKit.classifyImage] Cannot find model named '\(modelName). Has it been loaded?", domain: ERROR_DOMAIN)
                 return
-
             }
 
             Task {
@@ -100,11 +97,10 @@ public class RNMLKitImageLabelingModule: Module {
                     rejectPromiseWithMessage(promise: promise, message: "Error occurred: \(error)", domain: ERROR_DOMAIN)
                 }
             }
-
         }
 
-        AsyncFunction("updateOptionsAndReload") {(modelName:String, newOptions:RNMLKitImageLabelerOptionsRecord, promise:Promise) in
-            let logger = Logger()
+        AsyncFunction("updateOptionsAndReload") { (modelName: String, newOptions: RNMLKitImageLabelerOptionsRecord, promise: Promise) in
+            let logger = Logger(logHandlers: [createOSLogHandler(category: Logger.EXPO_LOG_CATEGORY)])
             let context = RNMLKitContext(logger: logger)
 
             do {
@@ -126,25 +122,19 @@ public class RNMLKitImageLabelingModule: Module {
                     maxResultCount: newOptions.maxResultCount
                 ))
 
-
-                self.labelers[spec.modelName] = imageLabeler;
-                self.specs[spec.modelName] = spec;
+                self.labelers[spec.modelName] = imageLabeler
+                self.specs[spec.modelName] = spec
 
                 promise.resolve(spec.modelName)
             } catch {
-                rejectPromiseWithMessage(promise: promise, message: "[RNMLKit.updateOptionsAndReload] Error Updating Options: \(error)" , domain: ERROR_DOMAIN)
+                rejectPromiseWithMessage(promise: promise, message: "[RNMLKit.updateOptionsAndReload] Error Updating Options: \(error)", domain: ERROR_DOMAIN)
             }
-
-
         }
 
-        Function("isLoaded") {(modelName:String) -> Bool in
+        Function("isLoaded") { (modelName: String) -> Bool in
             let labeler = self.labelers[modelName]
 
             return labeler != nil
         }
-
-
-
     }
 }

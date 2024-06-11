@@ -87,6 +87,6 @@ repositories {
 dependencies {
   implementation project(':expo-modules-core')
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${getKotlinVersion()}"
-  implementation 'com.google.mlkit:face-detection:16.1.5'
+  implementation 'com.google.mlkit:face-detection:16.+'
   implementation project(path: ':infinitered-react-native-mlkit-core')
 }

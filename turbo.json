@@ -1,18 +1,34 @@
 {
-  "$schema": "https://turbo.build/schema.json",
+  "globalEnv": [
+    "CI",
+    "GIT_EMAIL",
+    "GIT_USER",
+    "TURBO_UI"
+  ],
   "globalDependencies": [
     "**/.env.*local"
   ],
-  "pipeline": {
-    "build": {
+  "tasks": {
+    "ci:build": {
       "dependsOn": [
-        "^build"
+        "^ci:build"
       ],
       "outputs": [
         "dist/**",
         "build/**"
       ],
-      "cache": true
+      "cache": true,
+      "interactive": false
+    },
+    "build": {
+      "dependsOn": [
+        "@infinitered/react-native-mlkit-core#ci:build",
+        "^ci:build"
+      ],
+      "outputs": [
+        "dist/**",
+        "build/**"
+      ]
     },
     "clean": {},
     "lint": {

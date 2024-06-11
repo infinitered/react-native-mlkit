@@ -17,8 +17,8 @@ Pod::Spec.new do |s|
 
   s.dependency 'ExpoModulesCore'
   s.dependency 'RNMLKitCore'
-  s.dependency 'GoogleMLKit/ObjectDetection', '3.2.0'
-  s.dependency 'GoogleMLKit/ObjectDetectionCustom', '3.2.0'
+  s.dependency 'GoogleMLKit/ObjectDetection'
+  s.dependency 'GoogleMLKit/ObjectDetectionCustom'
 
   # Swift/Objective-C compatibility
   s.pod_target_xcconfig = {

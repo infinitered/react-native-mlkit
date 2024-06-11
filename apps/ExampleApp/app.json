@@ -61,10 +61,12 @@
         {
           "ios": {
             "newArchEnabled": false,
-            "flipper": false
+            "flipper": false,
+            "deploymentTarget": "13.4"
           },
           "android": {
-            "newArchEnabled": false
+            "newArchEnabled": false,
+            "compileSdkVersion": 34
           }
         }
       ],
