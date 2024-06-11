@@ -8,7 +8,7 @@
     "build": "../../scripts/build-module.sh",
     "clean": "expo-module clean",
     "lint": "expo-module lint",
-    "test": "jest",
+    "test": "../../scripts/test-module.sh",
     "prepublishOnly": "expo-module prepublishOnly",
     "expo-module": "expo-module"
   },
@@ -26,6 +26,7 @@
   "license": "MIT",
   "homepage": "https://infinitered.github.io/react-native-mlkit",
   "devDependencies": {
+    "@babel/plugin-transform-private-methods": "^7.24.7",
     "@infinitered/tsconfig": "0.3.0",
     "@testing-library/react-native": "^12.3.0",
     "expo-image": "^1.10.6",

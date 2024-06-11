@@ -3655,6 +3655,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@infinitered/react-native-mlkit-core@workspace:modules/react-native-mlkit-core"
   dependencies:
+    "@babel/plugin-transform-private-methods": ^7.24.7
     "@infinitered/tsconfig": 0.3.0
     "@testing-library/jest-native": ^5.4.3
     "@testing-library/react-hooks": ^8.0.1

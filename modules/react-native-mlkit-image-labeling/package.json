@@ -8,7 +8,7 @@
     "build": "../../scripts/build-module.sh",
     "clean": "expo-module clean",
     "lint": "expo-module lint",
-    "test": "expo-module test",
+    "test": "../../scripts/test-module.sh",
     "prepublishOnly": "expo-module prepublishOnly",
     "expo-module": "expo-module"
   },
