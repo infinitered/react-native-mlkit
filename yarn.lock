@@ -3676,6 +3676,22 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@infinitered/react-native-mlkit-core@npm:1.0.0":
+  version: 1.0.0
+  resolution: "@infinitered/react-native-mlkit-core@npm:1.0.0"
+  dependencies:
+    "@testing-library/jest-native": ^5.4.3
+    "@testing-library/react-hooks": ^8.0.1
+    "@types/jest": ^29.5.5
+  peerDependencies:
+    expo: "*"
+    expo-image: "*"
+    react: "*"
+    react-native: "*"
+  checksum: 045a92b4f7b56ed9c3e931e3acb2ce57fa015030c4cfc376580b2035f1feb27420d323931b10b15f4fde943f2e80d075a27b1e365d3af5a35cbb469febda692a
+  languageName: node
+  linkType: hard
+
 "@infinitered/react-native-mlkit-docs@workspace:packages/docusaurus":
   version: 0.0.0-use.local
   resolution: "@infinitered/react-native-mlkit-docs@workspace:packages/docusaurus"
@@ -3748,6 +3764,22 @@ __metadata:
     "@types/react": ~18.2.45
     expo-module-scripts: ^3.4.1
     expo-modules-core: ^1.12.14
+    typescript: ^5.3.0
+  peerDependencies:
+    expo: "*"
+    react: "*"
+    react-native: "*"
+  languageName: unknown
+  linkType: soft
+
+"@infinitered/react-native-mlkit-translation@^0.0.1, @infinitered/react-native-mlkit-translation@workspace:modules/react-native-mlkit-translation":
+  version: 0.0.0-use.local
+  resolution: "@infinitered/react-native-mlkit-translation@workspace:modules/react-native-mlkit-translation"
+  dependencies:
+    "@infinitered/react-native-mlkit-core": 1.0.0
+    "@types/react": ~18.2.45
+    expo-module-scripts: ^3.4.1
+    expo-modules-core: ^1.11.13
     typescript: ^5.3.0
   peerDependencies:
     expo: "*"
@@ -10486,6 +10518,7 @@ __metadata:
     "@infinitered/react-native-mlkit-face-detection": ^2.0.0
     "@infinitered/react-native-mlkit-image-labeling": ^2.0.0
     "@infinitered/react-native-mlkit-object-detection": ^2.0.0
+    "@infinitered/react-native-mlkit-translation": ^0.0.1
     "@infinitered/tsconfig": 0.3.0
     "@react-native-async-storage/async-storage": 1.23.1
     "@react-navigation/native": ^6.0.2
@@ -10856,7 +10889,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-modules-core@npm:1.12.14, expo-modules-core@npm:^1.12.14":
+"expo-modules-core@npm:1.12.14, expo-modules-core@npm:^1.11.13, expo-modules-core@npm:^1.12.14":
   version: 1.12.14
   resolution: "expo-modules-core@npm:1.12.14"
   dependencies:

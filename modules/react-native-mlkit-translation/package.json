@@ -1,0 +1,43 @@
+{
+  "name": "@infinitered/react-native-mlkit-translation",
+  "version": "0.0.1",
+  "description": "Expo module for MLKit Translation",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "scripts": {
+    "build": "expo-module build",
+    "clean": "expo-module clean",
+    "lint": "expo-module lint",
+    "test": "expo-module test",
+    "prepublishOnly": "expo-module prepublishOnly",
+    "expo-module": "expo-module"
+  },
+  "keywords": [
+    "react-native",
+    "expo",
+    "react-native-mlkit-translation",
+    "RNMLKitTranslation"
+  ],
+  "repository": "https://github.com/infinitered/react-native-mlkit",
+  "bugs": {
+    "url": "https://github.com/infinitered/react-native-mlkit/issues"
+  },
+  "author": "Frank Calise <frank@infinitered.com> (https://github.com/frankcalise)",
+  "license": "MIT",
+  "homepage": "https://docs.infinite.red/category/translation/",
+  "dependencies": {
+    "@infinitered/react-native-mlkit-core": "1.0.0"
+  },
+  "devDependencies": {
+    "@infinitered/react-native-mlkit-core": "1.0.0",
+    "@types/react": "~18.2.45",
+    "expo-module-scripts": "^3.4.1",
+    "expo-modules-core": "^1.11.13",
+    "typescript": "^5.3.0"
+  },
+  "peerDependencies": {
+    "expo": "*",
+    "react": "*",
+    "react-native": "*"
+  }
+}

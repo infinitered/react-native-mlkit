@@ -35,6 +35,7 @@ export type AppStackParamList = {
   ImageLabeling: Record<string, never>
   ObjectDetection: Record<string, never>
   DocumentScanner: Record<string, never>
+  Translation: Record<string, never>
   // IGNITE_GENERATOR_ANCHOR_APP_STACK_PARAM_LIST
 }
 
@@ -68,6 +69,7 @@ const AppStack = observer(function AppStack() {
       <Stack.Screen name="ImageLabeling" component={Screens.ImageLabelingScreen} />
       <Stack.Screen name="ObjectDetection" component={Screens.ObjectDetectionScreen} />
       <Stack.Screen name="DocumentScanner" component={Screens.DocumentScannerScreen} />
+      <Stack.Screen name="Translation" component={Screens.TranslationScreen} />
       {/* IGNITE_GENERATOR_ANCHOR_APP_STACK_SCREENS */}
     </Stack.Navigator>
   )

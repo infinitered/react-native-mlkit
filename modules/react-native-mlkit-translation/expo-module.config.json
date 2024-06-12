@@ -1,0 +1,11 @@
+{
+  "platforms": ["ios", "android"],
+  "ios": {
+    "modules": ["RNMLKitTranslationModule"]
+  },
+  "android": {
+    "modules": [
+      "red.infinite.reactnativemlkit.translation.RNMLKitTranslationModule"
+    ]
+  }
+}

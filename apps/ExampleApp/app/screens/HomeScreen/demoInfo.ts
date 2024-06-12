@@ -46,5 +46,11 @@ export const DEMO_LIST: DemoInfo[] = [
     screen: "ImageLabeling",
     image: FACE_HOLDER,
   },
+  {
+    title: "Translation",
+    description: "Translation",
+    screen: "Translation",
+    image: FACE_HOLDER,
+  },
   ...PLATFORM_SPECIFIC_DEMOS,
 ]
