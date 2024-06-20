@@ -3663,7 +3663,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@infinitered/react-native-mlkit-core@1.0.0, @infinitered/react-native-mlkit-core@workspace:modules/react-native-mlkit-core":
+"@infinitered/react-native-mlkit-core@2.0.0, @infinitered/react-native-mlkit-core@workspace:modules/react-native-mlkit-core":
   version: 0.0.0-use.local
   resolution: "@infinitered/react-native-mlkit-core@workspace:modules/react-native-mlkit-core"
   dependencies:
@@ -3711,7 +3711,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@infinitered/react-native-mlkit-document-scanner@workspace:modules/react-native-mlkit-document-scanner"
   dependencies:
-    "@infinitered/react-native-mlkit-core": 1.0.0
+    "@infinitered/react-native-mlkit-core": 2.0.0
     "@types/react": ~18.2.45
     expo-module-scripts: ^3.4.1
     expo-modules-core: ^1.12.14
@@ -3726,7 +3726,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@infinitered/react-native-mlkit-face-detection@workspace:modules/react-native-mlkit-face-detection"
   dependencies:
-    "@infinitered/react-native-mlkit-core": 1.0.0
+    "@infinitered/react-native-mlkit-core": 2.0.0
     "@types/react": ~18.2.45
     expo-module-scripts: ^3.4.1
     expo-modules-core: ^1.12.14
@@ -3741,7 +3741,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@infinitered/react-native-mlkit-image-labeling@workspace:modules/react-native-mlkit-image-labeling"
   dependencies:
-    "@infinitered/react-native-mlkit-core": 1.0.0
+    "@infinitered/react-native-mlkit-core": 2.0.0
     "@types/react": ~18.2.45
     expo-module-scripts: ^3.4.1
     expo-modules-core: ^1.12.14
@@ -3756,7 +3756,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@infinitered/react-native-mlkit-object-detection@workspace:modules/react-native-mlkit-object-detection"
   dependencies:
-    "@infinitered/react-native-mlkit-core": 1.0.0
+    "@infinitered/react-native-mlkit-core": 2.0.0
     "@types/react": ~18.2.45
     expo-module-scripts: ^3.4.1
     expo-modules-core: ^1.12.14
