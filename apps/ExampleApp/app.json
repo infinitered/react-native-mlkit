@@ -2,9 +2,15 @@
   "name": "ExampleApp",
   "displayName": "ExampleApp",
   "expo": {
-    "name": "ExampleApp",
-    "slug": "ExampleApp",
-    "scheme": "exampleapp",
+    "name": "React Native MLKit",
+    "slug": "react-native-mlkit",
+    "owner": "infinitered",
+    "extra": {
+      "eas": {
+        "projectId": "4faa9328-e941-4395-879c-f558bf07e678"
+      }
+    },
+    "scheme": "react-native-mlkit",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/app-icon-all.png",
