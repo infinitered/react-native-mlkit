@@ -74,11 +74,11 @@ export function useExampleImage(predicates?: {
 
   const filteredPhotos: ExampleImage[] = useMemo(() => exampleImages.filter(filter), [filter])
 
-  const allImages = useMemo(() => {
+  const allImageAssets = useMemo(() => {
     return exampleImages.map((image) => image.image)
   }, [])
 
-  const [assets] = useAssets(allImages) ?? []
+  const [assets] = useAssets(allImageAssets) ?? []
 
   const annotatedAssets: Record<string, ZippedImage[]> = useMemo(
     () =>
