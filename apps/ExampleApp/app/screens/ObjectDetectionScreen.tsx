@@ -38,7 +38,6 @@ export const ObjectDetectionScreenComponent: FC<ObjectDetectionScreenProps> = ob
     )
 
     const handleImageChange = useCallback((nextImage: SelectedImage) => {
-      console.log("handleImageChange", nextImage)
       setImage(nextImage)
     }, [])
 
@@ -47,8 +46,6 @@ export const ObjectDetectionScreenComponent: FC<ObjectDetectionScreenProps> = ob
     const detectLicensePlate = useCallback(async () => {
       if (!licensePlateModel?.isLoaded()) {
         await licensePlateModel?.load()
-      } else {
-        console.log("licensePlateModel is loaded")
       }
 
       if (!image?.uri) {

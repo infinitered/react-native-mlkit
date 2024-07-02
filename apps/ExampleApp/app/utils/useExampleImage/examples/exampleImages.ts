@@ -13,7 +13,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./face-detection/kevin_seibel_oo6XOGrSyX8_unsplash.jpg"),
     credit: "Photo by Kevin Seibel on Unsplash",
-    name: "kevin-seibel-oo6XOGrSyX8-unsplash",
+    name: "kevin_seibel_oo6XOGrSyX8_unsplash",
     expoAsset: "kevin_seibel_oo6XOGrSyX8_unsplash.jpg",
     label: "neutral",
     licensePlate: false,
@@ -22,7 +22,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./face-detection/neom_207NEuFvjlg_unsplash.jpg"),
     credit: "Photo by NEOM on Unsplash",
-    name: "neom-207NEuFvjlg-unsplash",
+    name: "neom_207NEuFvjlg_unsplash",
     expoAsset: "neom_207NEuFvjlg_unsplash.jpg",
     label: "neutral",
     licensePlate: false,
@@ -31,7 +31,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./face-detection/denis_kirichkov_PVQcdxcFxfQ_unsplash.jpg"),
     credit: "Photo by Denis Kirichkov on Unsplash",
-    name: "denis-kirichkov-PVQcdxcFxfQ-unsplash",
+    name: "denis_kirichkov_PVQcdxcFxfQ_unsplash",
     expoAsset: "denis_kirichkov_PVQcdxcFxfQ_unsplash.jpg",
     label: "neutral",
     licensePlate: false,
@@ -40,7 +40,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./face-detection/stas_ostrikov_bgprFTkBIyU_unsplash.jpg"),
     credit: "Photo by Stas Ostrikov on Unsplash",
-    name: "stas-ostrikov-bgprFTkBIyU-unsplash",
+    name: "stas_ostrikov_bgprFTkBIyU_unsplash",
     expoAsset: "stas_ostrikov_bgprFTkBIyU_unsplash.jpg",
     label: "neutral",
     licensePlate: false,
@@ -49,7 +49,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./face-detection/justus_menke_s2OisyY9YGU_unsplash.jpg"),
     credit: "Photo by Justus Menke on Unsplash",
-    name: "justus-menke-s2OisyY9YGU-unsplash",
+    name: "justus_menke_s2OisyY9YGU_unsplash",
     expoAsset: "justus_menke_s2OisyY9YGU_unsplash.jpg",
     label: "neutral",
     licensePlate: false,
@@ -58,7 +58,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./face-detection/boxed_water_is_better_WbpsINKjB9Y_unsplash.jpg"),
     credit: "Photo by Boxed Water Is Better on Unsplash",
-    name: "boxed-water-is-better-WbpsINKjB9Y-unsplash",
+    name: "boxed_water_is_better_WbpsINKjB9Y_unsplash",
     expoAsset: "boxed_water_is_better_WbpsINKjB9Y_unsplash.jpg",
     label: "neutral",
     licensePlate: false,
@@ -67,7 +67,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./face-detection/nicholas_green_nPz8akkUmDI_unsplash.jpg"),
     credit: "Photo by Nicholas Green on Unsplash",
-    name: "nicholas-green-nPz8akkUmDI-unsplash",
+    name: "nicholas_green_nPz8akkUmDI_unsplash",
     expoAsset: "nicholas_green_nPz8akkUmDI_unsplash.jpg",
     label: "neutral",
     licensePlate: false,
@@ -76,7 +76,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./face-detection/naassom_azevedo_Q_Sei_TqSlc_unsplash.jpg"),
     credit: "Photo by Naassom Azevedo on Unsplash",
-    name: "naassom-azevedo-Q_Sei-TqSlc-unsplash",
+    name: "naassom_azevedo_Q_Sei_TqSlc_unsplash",
     expoAsset: "naassom_azevedo_Q_Sei_TqSlc_unsplash.jpg",
     label: "neutral",
     licensePlate: false,
@@ -85,7 +85,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./image-labeling/neutral/hiki_app_eLbOPPiDehA_unsplash.jpg"),
     credit: "Hiki App on Unsplash",
-    name: "hiki-app-eLbOPPiDehA-unsplash",
+    name: "hiki_app_eLbOPPiDehA_unsplash",
     expoAsset: "hiki_app_eLbOPPiDehA_unsplash.jpg",
     label: "neutral",
     licensePlate: false,
@@ -94,7 +94,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./image-labeling/neutral/zo_razafindramamba_8FEkr9X631Q_unsplash.jpg"),
     credit: "Zo Razafindramamba on Unsplash",
-    name: "zo-razafindramamba-8FEkr9X631Q-unsplash",
+    name: "zo_razafindramamba_8FEkr9X631Q_unsplash",
     expoAsset: "zo_razafindramamba_8FEkr9X631Q_unsplash.jpg",
     label: "neutral",
     licensePlate: false,
@@ -103,7 +103,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./image-labeling/neutral/tian_dayong_uf_h_PC2lY0_unsplash.jpg"),
     credit: "Tian Dayong on Unsplash",
-    name: "tian-dayong-uf-h_PC2lY0-unsplash",
+    name: "tian_dayong_uf_h_PC2lY0_unsplash",
     expoAsset: "tian_dayong_uf_h_PC2lY0_unsplash.jpg",
     label: "neutral",
     licensePlate: false,
@@ -112,7 +112,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./image-labeling/neutral/filippo_H2eQ2JZc4ww_unsplash.jpg"),
     credit: "Filippo on Unsplash",
-    name: "filippo-H2eQ2JZc4ww-unsplash",
+    name: "filippo_H2eQ2JZc4ww_unsplash",
     expoAsset: "filippo_H2eQ2JZc4ww_unsplash.jpg",
     label: "neutral",
     licensePlate: false,
@@ -121,7 +121,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./image-labeling/neutral/mike_cox_fj0p1NDAQHA_unsplash.jpg"),
     credit: "Mike Cox on Unsplash",
-    name: "mike-cox-fj0p1NDAQHA-unsplash",
+    name: "mike_cox_fj0p1NDAQHA_unsplash",
     expoAsset: "mike_cox_fj0p1NDAQHA_unsplash.jpg",
     label: "neutral",
     licensePlate: false,
@@ -130,7 +130,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./image-labeling/neutral/mike_cox_fj0p1NDAQHA_unsplash.jpg"),
     credit: "Mike Cox on Unsplash",
-    name: "mike-cox-fj0p1NDAQHA-unsplash",
+    name: "mike_cox_fj0p1NDAQHA_unsplash",
     expoAsset: "mike_cox_fj0p1NDAQHA_unsplash.jpg",
     label: "neutral",
     licensePlate: false,
@@ -139,7 +139,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./image-labeling/borderline-sfw/giorgio_trovato_Mp_DSU6p8cA_unsplash.jpg"),
     credit: "Giorgio Trovata on Unsplash",
-    name: "giorgio-trovato-Mp_DSU6p8cA-unsplash",
+    name: "giorgio_trovato_Mp_DSU6p8cA_unsplash",
     expoAsset: "giorgio_trovato_Mp_DSU6p8cA_unsplash.jpg",
     label: "borderline-sfw",
     licensePlate: false,
@@ -148,7 +148,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./image-labeling/borderline-sfw/alora_griffiths_JNeYWQncbj8_unsplash.jpg"),
     credit: "Alora Griffiths on Unsplash",
-    name: "alora-griffiths-JNeYWQncbj8-unsplash",
+    name: "alora_griffiths_JNeYWQncbj8_unsplash",
     expoAsset: "alora_griffiths_JNeYWQncbj8_unsplash.jpg",
     label: "borderline-sfw",
     licensePlate: false,
@@ -157,7 +157,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./image-labeling/borderline-sfw/christopher_campbell_XrTIFBsZxaY_unsplash.jpg"),
     credit: "Christopher Campbell on Unsplash",
-    name: "christopher-campbell-XrTIFBsZxaY-unsplash",
+    name: "christopher_campbell_XrTIFBsZxaY_unsplash",
     expoAsset: "christopher_campbell_XrTIFBsZxaY_unsplash.jpg",
     label: "borderline-sfw",
     licensePlate: false,
@@ -166,7 +166,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./image-labeling/borderline-sfw/norbert_buduczki_qYn2Z55Glds_unsplash.jpg"),
     credit: "Norbert Buduczki on Unsplash",
-    name: "norbert-buduczki-qYn2Z55Glds-unsplash",
+    name: "norbert_buduczki_qYn2Z55Glds_unsplash",
     expoAsset: "norbert_buduczki_qYn2Z55Glds_unsplash.jpg",
     label: "borderline-sfw",
     licensePlate: false,
@@ -175,7 +175,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./image-labeling/borderline-sfw/alora_griffiths_TTrTW_pFxKw_unsplash.jpg"),
     credit: "Alora Griffiths on Unsplash",
-    name: "alora-griffiths-TTrTW-pFxKw-unsplash",
+    name: "alora_griffiths_TTrTW_pFxKw_unsplash",
     expoAsset: "alora_griffiths_TTrTW_pFxKw_unsplash.jpg",
     label: "borderline-sfw",
     licensePlate: false,
@@ -184,7 +184,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./image-labeling/borderline-sfw/lacey_williams_wVwONOBpUOk_unsplash.jpg"),
     credit: "Lacey Williams on Unsplash",
-    name: "lacey-williams-wVwONOBpUOk-unsplash",
+    name: "lacey_williams_wVwONOBpUOk_unsplash",
     expoAsset: "lacey_williams_wVwONOBpUOk_unsplash.jpg",
     label: "borderline-sfw",
     licensePlate: false,
@@ -193,7 +193,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./image-labeling/borderline-sfw/jernej_graj_uvQAdJEamgc_unsplash.jpg"),
     credit: "Jernej Graj on Unsplash",
-    name: "jernej-graj-uvQAdJEamgc-unsplash",
+    name: "jernej_graj_uvQAdJEamgc_unsplash",
     expoAsset: "jernej_graj_uvQAdJEamgc_unsplash.jpg",
     label: "borderline-sfw",
     licensePlate: false,
@@ -202,7 +202,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./image-labeling/drawing/astro_64d18f22bd4dfae30b7ea399.jpg"),
     credit: "Transhumans.xyz",
-    name: "64d18f22bd4dfae30b7ea399_astro",
+    name: "astro_64d18f22bd4dfae30b7ea399",
     expoAsset: "astro_64d18f22bd4dfae30b7ea399.jpg",
     label: "drawing",
     licensePlate: false,
@@ -229,7 +229,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./image-labeling/drawing/boston_public_library_6b2xPLPN6ag_unsplash.jpg"),
     credit: "Boston Public Library on Unsplash",
-    name: "boston-public-library-6b2xPLPN6ag-unsplash",
+    name: "boston_public_library_6b2xPLPN6ag_unsplash",
     expoAsset: "boston_public_library_6b2xPLPN6ag_unsplash.jpg",
     label: "drawing",
     licensePlate: false,
@@ -238,7 +238,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./image-labeling/drawing/boston_public_library_f9cP4_unmg_unsplash.jpg"),
     credit: "Boston Public Library on Unsplash",
-    name: "boston-public-library-_f9cP4_unmg-unsplash",
+    name: "boston_public_library_f9cP4_unmg_unsplash",
     expoAsset: "boston_public_library_f9cP4_unmg_unsplash.jpg",
     label: "drawing",
     licensePlate: false,
@@ -247,8 +247,8 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./image-labeling/drawing/europeana_MvR30qxn_MM_unsplash.jpg"),
     credit: "Europeana on Unsplash",
-    name: "europeana-MvR30qxn-MM-unsplash.jpg",
-    expoAsset: "europeana_MvR30qxn_MM_unsplash.jpg.jpg",
+    name: "europeana_MvR30qxn_MM_unsplash",
+    expoAsset: "europeana_MvR30qxn_MM_unsplash.jpg",
     label: "drawing",
     licensePlate: false,
     face: false,
@@ -256,7 +256,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./license-plate/bereczki_domokos_zqxrQ2_jFoo_unsplash.jpg"),
     credit: "Bereczki Domokos on Unsplash",
-    name: "bereczki-domokos-zqxrQ2-jFoo-unsplash",
+    name: "bereczki_domokos_zqxrQ2_jFoo_unsplash",
     expoAsset: "bereczki_domokos_zqxrQ2_jFoo_unsplash.jpg",
     label: "neutral",
     licensePlate: true,
@@ -265,7 +265,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./license-plate/campbell_3ZUsNJhi_Ik_unsplash.jpg"),
     credit: "Campbell on Unsplash",
-    name: "campbell-3ZUsNJhi_Ik-unsplash",
+    name: "campbell_3ZUsNJhi_Ik_unsplash",
     expoAsset: "campbell_3ZUsNJhi_Ik_unsplash.jpg",
     label: "neutral",
     licensePlate: true,
@@ -274,7 +274,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./license-plate/mick_haupt_elLAOzK9nqU_unsplash.jpg"),
     credit: "Mick Haupt on Unsplash",
-    name: "mick-haupt-elLAOzK9nqU-unsplash",
+    name: "mick_haupt_elLAOzK9nqU_unsplash",
     expoAsset: "mick_haupt_elLAOzK9nqU_unsplash.jpg",
     label: "neutral",
     licensePlate: true,
@@ -283,7 +283,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./license-plate/nicholas_byrne_yX_zbwhKWTs_unsplash.jpg"),
     credit: "Nicholas Byrne on Unsplash",
-    name: "nicholas-byrne-yX_zbwhKWTs-unsplash",
+    name: "nicholas_byrne_yX_zbwhKWTs_unsplash",
     expoAsset: "nicholas_byrne_yX_zbwhKWTs_unsplash.jpg",
     label: "neutral",
     licensePlate: true,
@@ -292,7 +292,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./license-plate/robert_locke_D199s7KvGvk_unsplash.jpg"),
     credit: "Robert Locke on Unsplash",
-    name: "robert-locke-D199s7KvGvk-unsplash",
+    name: "robert_locke_D199s7KvGvk_unsplash",
     expoAsset: "robert_locke_D199s7KvGvk_unsplash.jpg",
     label: "neutral",
     licensePlate: true,
@@ -301,7 +301,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./license-plate/samuel_foster_LY5eeEO4Mdg_unsplash.jpg"),
     credit: "Samuel Foster on Unsplash",
-    name: "samuel-foster-LY5eeEO4Mdg-unsplash",
+    name: "samuel_foster_LY5eeEO4Mdg_unsplash",
     expoAsset: "samuel_foster_LY5eeEO4Mdg_unsplash.jpg",
     label: "neutral",
     licensePlate: true,
@@ -309,7 +309,7 @@ export const exampleImages: ExampleImage[] = [
   },
   {
     image: require("./object-detection/nevada_plate.jpg"),
-    name: "nevada-plate",
+    name: "nevada_plate",
     expoAsset: "nevada_plate.jpg",
     label: "neutral",
     licensePlate: true,
@@ -318,7 +318,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./object-detection/arnel_hasanovic_MNd_Rka1o0Q_unsplash.jpg"),
     credit: "Photo by Arnel Hasanovic on Unsplash",
-    name: "arnel-hasanovic-MNd-Rka1o0Q-unsplash",
+    name: "arnel_hasanovic_MNd_Rka1o0Q_unsplash",
     expoAsset: "arnel_hasanovic_MNd_Rka1o0Q_unsplash.jpg",
     label: "neutral",
     licensePlate: false,
@@ -328,7 +328,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./object-detection/brooke_lark_HlNcigvUi4Q_unsplash.jpg"),
     credit: "Photo by Brooke Lark on Unsplash",
-    name: "brooke-lark-HlNcigvUi4Q-unsplash",
+    name: "brooke_lark_HlNcigvUi4Q_unsplash",
     expoAsset: "brooke_lark_HlNcigvUi4Q_unsplash.jpg",
     label: "neutral",
     licensePlate: false,
@@ -338,7 +338,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./object-detection/david_lezcano_NfZiOJzZgcg_unsplash.jpg"),
     credit: "Photo by David Lezcano on Unsplash",
-    name: "david-lezcano-NfZiOJzZgcg-unsplash",
+    name: "david_lezcano_NfZiOJzZgcg_unsplash",
     expoAsset: "david_lezcano_NfZiOJzZgcg_unsplash.jpg",
     label: "neutral",
     licensePlate: false,
@@ -348,7 +348,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./object-detection/grovemade_RvPDe41lYBA_unsplash.jpg"),
     credit: "Photo by Grovemade on Unsplash",
-    name: "grovemade-RvPDe41lYBA-unsplash",
+    name: "grovemade_RvPDe41lYBA_unsplash",
     expoAsset: "grovemade_RvPDe41lYBA_unsplash.jpg",
     label: "neutral",
     licensePlate: false,
@@ -359,7 +359,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./object-detection/jakub_kapusnak_4hgYULBzVEE_unsplash.jpg"),
     credit: "Photo by Jakub Kapusnak on Unsplash",
-    name: "jakub-kapusnak-4hgYULBzVEE-unsplash",
+    name: "jakub_kapusnak_4hgYULBzVEE_unsplash",
     expoAsset: "jakub_kapusnak_4hgYULBzVEE_unsplash.jpg",
     label: "neutral",
     licensePlate: false,
@@ -369,7 +369,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./object-detection/laurentiu_morariu_OHr6_savxDc_unsplash.jpg"),
     credit: "Photo by Laurentiu Morariu on Unsplash",
-    name: "laurentiu-morariu-OHr6-savxDc-unsplash",
+    name: "laurentiu_morariu_OHr6_savxDc_unsplash",
     expoAsset: "laurentiu_morariu_OHr6_savxDc_unsplash.jpg",
     label: "neutral",
     licensePlate: false,
@@ -379,7 +379,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./object-detection/marcin_nowak_iXqTqC_f6jI_unsplash.jpg"),
     credit: "Photo by Marcin Nowak on Unsplash",
-    name: "marcin-nowak-iXqTqC-f6jI-unsplash",
+    name: "marcin_nowak_iXqTqC_f6jI_unsplash",
     expoAsset: "marcin_nowak_iXqTqC_f6jI_unsplash.jpg",
     label: "neutral",
     licensePlate: false,
@@ -389,7 +389,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./object-detection/sidekix_media_l6u4GIKvxBs_unsplash.jpg"),
     credit: "Photo by Sidekix Media on Unsplash",
-    name: "sidekix-media-l6u4GIKvxBs-unsplash",
+    name: "sidekix_media_l6u4GIKvxBs_unsplash",
     expoAsset: "sidekix_media_l6u4GIKvxBs_unsplash.jpg",
     label: "neutral",
     licensePlate: false,
@@ -399,7 +399,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./object-detection/tu_tu_QZGQO3NvsLo_unsplash.jpg"),
     credit: "Photo by Tu Tu on Unsplash",
-    name: "tu-tu-QZGQO3NvsLo-unsplash",
+    name: "tu_tu_QZGQO3NvsLo_unsplash",
     expoAsset: "tu_tu_QZGQO3NvsLo_unsplash.jpg",
     label: "neutral",
     licensePlate: false,
@@ -409,7 +409,7 @@ export const exampleImages: ExampleImage[] = [
   {
     image: require("./object-detection/windows_YzLMmxDTrvI_unsplash.jpg"),
     credit: "Photo by Windows on Unsplash",
-    name: "windows-YzLMmxDTrvI-unsplash",
+    name: "windows_YzLMmxDTrvI_unsplash",
     expoAsset: "windows_YzLMmxDTrvI_unsplash.jpg",
     label: "neutral",
     licensePlate: false,
