@@ -50,14 +50,15 @@ const ImageLabelingScreenComponent: FC<ImageLabelingScreenProps> = observer(
       },
       [],
     )
+    const imageUri = image?.uri ?? image?.localUri ?? ""
 
     useEffect(() => {
       const classifyImage = async () => {
-        if (!image?.uri || !model) return
+        if (!imageUri || !model) return
         console.log("CLASSIFYING:", image.name)
         setStatus("classifying")
         try {
-          const classificationResult = await model.classifyImage(image.uri)
+          const classificationResult = await model.classifyImage(imageUri)
           setResult(classificationResult)
           setStatus("done")
         } catch (error) {

@@ -19,8 +19,6 @@ export function useImageClassification<T extends ModelAssets>(
   modelName: keyof T,
   image?: { uri?: string; localUri?: string }
 ): ClassifyImageHookResult {
-  console.log(`--> useImageClassification (${String(modelName)})`);
-
   const [result, setResult] = useState<ClassificationResult | undefined>(
     undefined
   );

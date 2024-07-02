@@ -53,7 +53,7 @@ export interface RNMLKitImageViewProps {
 const $takePhotoText: { color: string } = { color: "rgba(0,0,0,0.2)" }
 
 /**
- * Describe your component here
+ * A View that can display bounding boxes over an image.
  */
 export const RNMLKitImageView = observer(function RNMLKitImageView({
   image,
