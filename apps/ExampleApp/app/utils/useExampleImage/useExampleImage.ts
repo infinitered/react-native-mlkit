@@ -44,7 +44,7 @@ interface UseExpoCameraImageReturnType {
   status: UseExampleImageStatus
 }
 
-export interface RandomImage {
+export interface RandomImage extends ExampleImage {
   image: number
   credit?: string
   name: string
@@ -150,11 +150,13 @@ export function useExampleImage(predicates?: {
           [category]: nextIndex,
         }))
         const selectedImage: ZippedImage = categoryImages[currentCategoryIndex]
-        const asset = assets?.find((asset) => asset.name === selectedImage.name)
+        const asset = assets?.find(
+          (asset) => asset.name === selectedImage.name.replaceAll("-", "_"),
+        )
 
         setImage({
           ...asset,
-          uri: asset?.localUri,
+          uri: asset?.localUri ?? asset?.uri,
           caption: selectedImage?.credit,
         } as SelectedImage)
       } else {
