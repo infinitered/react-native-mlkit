@@ -34,13 +34,10 @@ export const ImageSelector = observer(function ImageSelector({
 }: ImageSelectorProps) {
   const [_status, _setStatus] = React.useState<UseExampleImageStatus>("init")
 
-  const { image, takePhoto, selectPhoto, nextPhoto, clearPhoto, categories } = useExampleImage(
-    _setStatus,
-    {
-      filter: images?.filter ?? "all",
-      groupBy: images?.groupBy ?? "none",
-    },
-  )
+  const { image, takePhoto, selectPhoto, nextPhoto, clearPhoto, categories } = useExampleImage({
+    filter: images?.filter ?? "all",
+    groupBy: images?.groupBy ?? "none",
+  })
 
   useEffect(() => {
     onStatusChange(_status)

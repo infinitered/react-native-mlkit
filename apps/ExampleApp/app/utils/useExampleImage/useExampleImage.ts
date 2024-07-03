@@ -31,6 +31,7 @@ export type UseExampleImageStatus =
 export interface SelectedImage extends ImagePickerAsset {
   caption?: string
   name?: string
+  localUri?: string
 }
 
 interface UseExpoCameraImageReturnType {
@@ -44,7 +45,7 @@ interface UseExpoCameraImageReturnType {
   status: UseExampleImageStatus
 }
 
-export interface RandomImage {
+export interface RandomImage extends ExampleImage {
   image: number
   credit?: string
   name: string
@@ -74,18 +75,25 @@ export function useExampleImage(predicates?: {
 
   const filteredPhotos: ExampleImage[] = useMemo(() => exampleImages.filter(filter), [filter])
 
-  const allImages = useMemo(() => {
+  const allImageAssets = useMemo(() => {
     return exampleImages.map((image) => image.image)
   }, [])
 
-  const [assets] = useAssets(allImages) ?? []
+  const [assets] = useAssets(allImageAssets) ?? []
 
   const annotatedAssets: Record<string, ZippedImage[]> = useMemo(
     () =>
       filteredPhotos
         .map((image) => ({
           ...image,
-          asset: assets?.find((asset) => asset.name === image.name) || undefined,
+          asset:
+            assets?.find((asset) => {
+              if (asset.name.includes("boston")) {
+                console.log("asset.name", asset.name)
+                console.log("image.name", image.name)
+              }
+              return asset.name === image.name
+            }) || undefined,
         }))
         .reduce((prev, current) => {
           const key = groupBy(current) ?? current.label
@@ -150,11 +158,13 @@ export function useExampleImage(predicates?: {
           [category]: nextIndex,
         }))
         const selectedImage: ZippedImage = categoryImages[currentCategoryIndex]
-        const asset = assets?.find((asset) => asset.name === selectedImage.name)
+        const asset = assets?.find(
+          (asset) => asset.name === selectedImage.name.replaceAll("-", "_"),
+        )
 
         setImage({
           ...asset,
-          uri: asset?.localUri,
+          uri: asset?.localUri ?? asset?.uri,
           caption: selectedImage?.credit,
         } as SelectedImage)
       } else {
