@@ -33,6 +33,13 @@ class RNMLKitFaceDetectionModule : RNMLKitModule("RNMLKitFaceDetection") {
         }
 
         AsyncFunction("detectFaces") { imagePath: String, promise: Promise ->
+
+            val assetManager = context.assets
+
+            assetManager.list("/")?.mapNotNull { asset ->
+                log.d(asset)
+            }
+
             val imageUri = Uri.parse(imagePath)
 
             runBlocking suspend@{
@@ -45,7 +52,7 @@ class RNMLKitFaceDetectionModule : RNMLKitModule("RNMLKitFaceDetection") {
                     var result =
                         faceDetector.detectFaces(imagePath, appContext).getOrElse {
                             handleException(promise, it)
-                            throw it
+                            return@suspend
                         }
                     promise.resolve(result.record)
                 } catch (e: Exception) {
