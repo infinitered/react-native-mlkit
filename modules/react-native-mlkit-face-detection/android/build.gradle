@@ -33,7 +33,7 @@ if (useManagedAndroidSdkVersions) {
 
 android {
   namespace "red.infinite.reactnativemlkit.facedetection"
-  
+
   defaultConfig {
     versionCode 1
     versionName "0.1.0"

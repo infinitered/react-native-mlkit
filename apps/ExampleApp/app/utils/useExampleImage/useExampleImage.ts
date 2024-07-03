@@ -86,14 +86,7 @@ export function useExampleImage(predicates?: {
       filteredPhotos
         .map((image) => ({
           ...image,
-          asset:
-            assets?.find((asset) => {
-              if (asset.name.includes("boston")) {
-                console.log("asset.name", asset.name)
-                console.log("image.name", image.name)
-              }
-              return asset.name === image.name
-            }) || undefined,
+          asset: assets?.find((asset) => asset.name === image.name),
         }))
         .reduce((prev, current) => {
           const key = groupBy(current) ?? current.label

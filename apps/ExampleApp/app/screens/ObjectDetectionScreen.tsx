@@ -29,6 +29,8 @@ export const ObjectDetectionScreenComponent: FC<ObjectDetectionScreenProps> = ob
       "init" | "noPermissions" | "done" | "error" | "loading" | UseExampleImageStatus
     >("init")
 
+    const localUri = image?.uri ?? image?.localUri
+
     const onStatusChange = React.useCallback(
       (status: "init" | "noPermissions" | "done" | "error" | "loading" | UseExampleImageStatus) => {
         console.log("status", status)
@@ -48,12 +50,12 @@ export const ObjectDetectionScreenComponent: FC<ObjectDetectionScreenProps> = ob
         await licensePlateModel?.load()
       }
 
-      if (!image?.uri) {
+      if (!localUri) {
         console.log("No Image or Image has no URI")
         return
       }
 
-      const result = await licensePlateModel?.detectObjects(image?.uri)
+      const result = await licensePlateModel?.detectObjects(localUri)
       console.log("result", result?.[0]?.frame)
       setResult(result)
       setBoxes(
