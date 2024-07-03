@@ -3,11 +3,11 @@
   "displayName": "ExampleApp",
   "expo": {
     "name": "React Native MLKit",
-    "slug": "react-native-mlkit",
-    "owner": "infinitered",
+    "slug": "ExampleApp",
+    "owner": "trevor-coleman",
     "extra": {
       "eas": {
-        "projectId": "4faa9328-e941-4395-879c-f558bf07e678"
+        "projectId": "22f8dc59-76b2-4777-809f-9e75a83c59de"
       }
     },
     "scheme": "react-native-mlkit",
