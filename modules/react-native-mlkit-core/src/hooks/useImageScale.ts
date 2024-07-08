@@ -6,14 +6,12 @@ export type ContentFit = "cover" | "contain" | "fill" | "none" | "scale-down";
 /**
  * Represents the scale of an image.
  */
-export type ImageScale =
-  | {
-      x: number;
-      y: number;
-      offsetX?: number;
-      offsetY?: number;
-    }
-  | number;
+export type ImageScale = {
+  x: number;
+  y: number;
+  offsetX?: number;
+  offsetY?: number;
+};
 
 type ImageSize = { width?: number | null; height?: number | null };
 
@@ -32,11 +30,16 @@ export function useImageScale(
   container: Pick<LayoutRectangle, "width" | "height">,
   image?: ImageSize
 ): ImageScale {
-  const [scale, setScale] = useState<ImageScale>(1);
+  const [scale, setScale] = useState<ImageScale>({
+    x: 1,
+    y: 1,
+    offsetX: 0,
+    offsetY: 0,
+  });
 
   useEffect(() => {
     if (!image?.width || !image?.height) {
-      setScale(1);
+      setScale({ x: 1, y: 1, offsetX: 0, offsetY: 0 });
       return;
     }
 
@@ -97,7 +100,7 @@ export function useImageScale(
         };
         break;
       default:
-        newScale = 1;
+        newScale = { x: 1, y: 1, offsetX: 0, offsetY: 0 };
     }
 
     setScale(newScale);

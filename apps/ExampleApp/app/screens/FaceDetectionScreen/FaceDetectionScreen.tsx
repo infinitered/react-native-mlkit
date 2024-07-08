@@ -41,6 +41,8 @@ const FaceDetectionScreenComponent: FC<FaceDetectionScreenProps> = observer(
       status: faceDetectorStatus,
       error: faceDetectorError,
     } = useFacesInPhoto(image?.uri)
+    console.log("><><")
+    console.log({ image })
 
     const boxes = useMemo(() => {
       return faces.map((face, index) => {
@@ -80,6 +82,7 @@ const FaceDetectionScreenComponent: FC<FaceDetectionScreenProps> = observer(
           }
         />
         <RNMLKitImageView image={image} onPress={image ? clearPhoto : takePhoto} boxes={boxes} />
+
         <View style={$status}>
           {faceDetectorStatus === "detecting" ? (
             <ActivityIndicator />

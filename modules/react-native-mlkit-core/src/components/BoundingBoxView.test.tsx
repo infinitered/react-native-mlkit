@@ -27,7 +27,11 @@ describe("BoundingBoxView component", () => {
     });
 
     const { queryByTestId } = render(
-      <BoundingBoxView box={mockBox} scale={1} testId="test" />
+      <BoundingBoxView
+        box={mockBox}
+        scale={{ x: 1, y: 1, offsetX: 0, offsetY: 0 }}
+        testId="test"
+      />
     );
 
     expect(queryByTestId(`test--boundingBox--x10y10-w100h50`)).toBeTruthy();
@@ -48,7 +52,11 @@ describe("BoundingBoxView component", () => {
     });
 
     const { getByTestId } = render(
-      <BoundingBoxView box={labelBox} scale={1} testId="test" />
+      <BoundingBoxView
+        box={labelBox}
+        scale={{ x: 1, y: 1, offsetX: 0, offsetY: 0 }}
+        testId="test"
+      />
     );
 
     expect(getByTestId(`test-text`).props.children).toBe("TestLabel");
@@ -68,7 +76,11 @@ describe("BoundingBoxView component", () => {
     });
 
     const { getByTestId } = render(
-      <BoundingBoxView box={labelBox} scale={2} testId="test" />
+      <BoundingBoxView
+        box={labelBox}
+        scale={{ x: 2, y: 2, offsetX: 0, offsetY: 0 }}
+        testId="test"
+      />
     );
 
     const boundingBox = getByTestId(`test--boundingBox--x10y10-w100h50`);
@@ -88,7 +100,11 @@ describe("BoundingBoxView component", () => {
     });
 
     const { getByTestId } = render(
-      <BoundingBoxView box={mockBox} scale={1} testId="test" />
+      <BoundingBoxView
+        box={mockBox}
+        scale={{ x: 1, y: 1, offsetX: 0, offsetY: 0 }}
+        testId="test"
+      />
     );
 
     const boundingBox = getByTestId(`test--boundingBox--x10y10-w100h50`);
