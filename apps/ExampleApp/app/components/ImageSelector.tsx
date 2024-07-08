@@ -34,13 +34,10 @@ export const ImageSelector = observer(function ImageSelector({
 }: ImageSelectorProps) {
   const [_status, _setStatus] = React.useState<UseExampleImageStatus>("init")
 
-  const { image, takePhoto, selectPhoto, nextPhoto, clearPhoto, categories } = useExampleImage(
-    _setStatus,
-    {
-      filter: images?.filter ?? "all",
-      groupBy: images?.groupBy ?? "none",
-    },
-  )
+  const { image, takePhoto, selectPhoto, clearPhoto } = useExampleImage({
+    filter: images?.filter ?? "all",
+    groupBy: images?.groupBy ?? "none",
+  })
 
   useEffect(() => {
     onStatusChange(_status)
@@ -84,20 +81,6 @@ export const ImageSelector = observer(function ImageSelector({
             disabled={isLoading}
           />
         )}
-        <View style={$randomImageButtons}>
-          {categories.map((type) => (
-            <Button
-              disabled={isLoading}
-              key={`${type}-button`}
-              text={type}
-              onPress={async () => {
-                clearPhoto()
-                nextPhoto(type)
-              }}
-              style={[$button, $rowButton]}
-            />
-          ))}
-        </View>
       </View>
     </View>
   )
@@ -132,10 +115,4 @@ const $status: ViewStyle = {
   alignItems: "center",
 }
 
-const $randomImageButtons: ViewStyle = {
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "space-around",
-}
 const $button: ViewStyle = { backgroundColor: colors.palette.accent300, marginVertical: 8 }
-const $rowButton: ViewStyle = { flexGrow: 1, marginHorizontal: 2 }
