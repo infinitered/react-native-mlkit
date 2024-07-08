@@ -42,6 +42,4 @@ android {
 dependencies {
   implementation project(':expo-modules-core')
   implementation 'com.google.android.gms:play-services-mlkit-document-scanner:16.0.0-beta1'
-  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.3"
-  implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.3"
 }

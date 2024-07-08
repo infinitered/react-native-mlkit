@@ -6,8 +6,6 @@ import RNMLKitFaceDetectorOptionsRecord
 import android.net.Uri
 
 import expo.modules.kotlin.Promise
-import expo.modules.kotlin.exception.CodedException
-import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
 import kotlinx.coroutines.runBlocking
 import red.infinite.reactnativemlkit.core.RNMLKitModule
