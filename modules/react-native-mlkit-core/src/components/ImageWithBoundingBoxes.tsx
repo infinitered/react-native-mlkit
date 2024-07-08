@@ -50,14 +50,7 @@ export function ImageWithBoundingBoxes({
   }, [image, scaleFactor]);
 
   return (
-    <View
-      style={[
-        { display: "flex", alignItems: "center", justifyContent: "center" },
-        style,
-      ]}
-      onLayout={onLayout}
-      testID={testId}
-    >
+    <View style={[$centered, style]} onLayout={onLayout} testID={testId}>
       <Image
         testID={`${testId}-image`}
         source={imageSource}
@@ -75,3 +68,9 @@ export function ImageWithBoundingBoxes({
     </View>
   );
 }
+
+const $centered: ViewStyle = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+};
