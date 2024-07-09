@@ -1,5 +1,5 @@
 import * as React from "react"
-import { useEffect } from "react"
+import { useEffect, useCallback } from "react"
 import { View, ViewStyle, ActivityIndicator, TextStyle } from "react-native"
 import { observer } from "mobx-react-lite"
 import { Text } from "app/components/Text"
@@ -12,6 +12,7 @@ import { BoundingBox } from "@infinitered/react-native-mlkit-core"
 
 export interface ImageSelectorProps {
   onImageChange(image: SelectedImage): void
+  onImageClear(): void
   onStatusChange(status: UseExampleImageStatus): void
   status: "init" | "noPermissions" | "done" | "error" | "loading" | UseExampleImageStatus
   statusMessage: string
@@ -26,6 +27,7 @@ export interface ImageSelectorProps {
 export const ImageSelector = observer(function ImageSelector({
   images,
   onImageChange,
+  onImageClear,
   onStatusChange,
   status,
   statusMessage,
@@ -46,6 +48,11 @@ export const ImageSelector = observer(function ImageSelector({
   useEffect(() => {
     onImageChange(image)
   }, [image, onImageChange])
+
+  const handleClearPhoto = useCallback(() => {
+    clearPhoto()
+    onImageClear()
+  }, [clearPhoto, onImageClear])
 
   return (
     <View style={$container}>
@@ -72,7 +79,12 @@ export const ImageSelector = observer(function ImageSelector({
       </View>
       <View>
         {image ? (
-          <Button text={"Clear Photo"} onPress={clearPhoto} style={$button} disabled={isLoading} />
+          <Button
+            text={"Clear Photo"}
+            onPress={handleClearPhoto}
+            style={$button}
+            disabled={isLoading}
+          />
         ) : (
           <Button
             text={"Select Photo"}

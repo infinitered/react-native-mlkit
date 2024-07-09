@@ -73,6 +73,10 @@ export const ObjectDetectionScreenComponent: FC<ObjectDetectionScreenProps> = ob
       detectLicensePlate()
     }, [licensePlateModel, image, image?.uri, detectLicensePlate])
 
+    const clearResult = useCallback(() => {
+      setResult([])
+    }, [])
+
     const statusMessage = React.useMemo(() => {
       if (!image && status !== "init") {
         setStatus("init")
@@ -109,6 +113,7 @@ export const ObjectDetectionScreenComponent: FC<ObjectDetectionScreenProps> = ob
         <ImageSelector
           boundingBoxes={boxes}
           onImageChange={handleImageChange}
+          onImageClear={clearResult}
           onStatusChange={onStatusChange}
           statusMessage={statusMessage}
           status={status}
