@@ -8,7 +8,7 @@ describe("useImageScale hook", () => {
     const { result } = renderHook(() =>
       useImageScale("cover", { width: 100, height: 100 })
     );
-    expect(result.current).toEqual(1);
+    expect(result.current).toEqual({ x: 1, y: 1, offsetX: 0, offsetY: 0 });
   });
 
   const testCases: {

@@ -24,7 +24,7 @@ export function ImageWithBoundingBoxes({
   boundingBoxes = [],
   style,
   imageStyle,
-  contentFit = "scale-down",
+  contentFit = "contain",
   testId,
 }: ImageWithBoundingBoxesProps) {
   const [containerLayout, onLayout] = useLayout();
@@ -40,12 +40,21 @@ export function ImageWithBoundingBoxes({
       : undefined;
   }, [localUri]);
 
+  const imageDimensions: ImageStyle = React.useMemo(() => {
+    return image?.width && image?.height
+      ? {
+          width: image.width * scaleFactor.x,
+          height: image.height * scaleFactor.y,
+        }
+      : { width: "100%", height: "100%" };
+  }, [image, scaleFactor]);
+
   return (
-    <View style={style} onLayout={onLayout} testID={testId}>
+    <View style={[$centered, style]} onLayout={onLayout} testID={testId}>
       <Image
         testID={`${testId}-image`}
         source={imageSource}
-        style={[{ width: "100%", height: "100%" }, imageStyle ?? {}]}
+        style={[imageDimensions, imageStyle ?? {}]}
         contentFit={contentFit}
       />
       {boundingBoxes.map((box, index) => (
@@ -59,3 +68,9 @@ export function ImageWithBoundingBoxes({
     </View>
   );
 }
+
+const $centered: ViewStyle = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+};
