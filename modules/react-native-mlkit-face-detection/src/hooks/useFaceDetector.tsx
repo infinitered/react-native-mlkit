@@ -8,7 +8,6 @@ import { ReactMLKitFaceDetectionContext } from "../context/ReactMLKitFaceDetecti
  */
 export function useFaceDetector() {
   const context = useContext(ReactMLKitFaceDetectionContext);
-  console.log("context", context);
   if (!context) {
     throw new Error(
       "useFaceDetector must be used within a ReactMLKitFaceDetectionContextProvider"
