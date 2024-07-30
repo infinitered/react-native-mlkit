@@ -82,7 +82,7 @@ function MyComponent() {
   useEffect(() => {
     // Loading models is done asynchronously, so in a useEffect we need to wrap it in an async function
     async function loadModel() {
-      if (!model || modelIsLoaded) return;
+      if (!model || modelLoaded) return;
       // load the model
       await model.load();
       // set the model loaded state to true
@@ -90,7 +90,7 @@ function MyComponent() {
     }
 
     loadModel();
-  }, [model, modelIsLoaded]);
+  }, [model, modelLoaded]);
 
   // the output of the model is an array of `RNMLKitDetectedObject` objects
   const [result, setResult] = useState<RNMLKitDetectedObject[]>([]);
