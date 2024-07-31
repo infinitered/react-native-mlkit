@@ -45,8 +45,6 @@ const expoMLKitImageLabeler = requireNativeModule(
 function loadModel(
   modelSpec: RNMLKitImageLabelerSpec
 ): Promise<string | undefined> {
-  console.log("Loading Model: ", modelSpec);
-
   try {
     return expoMLKitImageLabeler.addModel(modelSpec);
   } catch (error) {
