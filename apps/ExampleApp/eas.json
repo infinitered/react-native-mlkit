@@ -34,8 +34,7 @@
       "ios": { "simulator": false }
     },
     "production": {
-      "autoIncrement": true,
-      "android": { "buildType": "apk" }
+      "autoIncrement": true
     }
   },
   "submit": {
