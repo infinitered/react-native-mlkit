@@ -1,6 +1,6 @@
 {
   "name": "@infinitered/react-native-mlkit-image-labeling",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "MLKit Image Labeling for React Native with Expo",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -27,7 +27,7 @@
   "license": "MIT",
   "homepage": "https://docs.infinite.red/category/image-labeling/",
   "dependencies": {
-    "@infinitered/react-native-mlkit-core": "2.0.0"
+    "@infinitered/react-native-mlkit-core": "2.1.0"
   },
   "devDependencies": {
     "@types/react": "~18.2.45",

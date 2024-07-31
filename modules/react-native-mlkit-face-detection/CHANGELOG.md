@@ -1,5 +1,12 @@
 # @infinitered/react-native-mlkit-face-detection
 
+## 2.0.1
+
+### Patch Changes
+
+- Updated dependencies [70cd8da]
+  - @infinitered/react-native-mlkit-core@2.1.0
+
 ## 2.0.0
 
 ### Major Changes

@@ -1,5 +1,11 @@
 # @infinitered/react-native-mlkit-core
 
+## 2.1.0
+
+### Minor Changes
+
+- 70cd8da: RNMLKitImage will now scale image to fill container by default. scaleFactor no longer accepts numbers.
+
 ## 2.0.0
 
 ### Major Changes
