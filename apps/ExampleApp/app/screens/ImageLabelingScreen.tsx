@@ -129,9 +129,9 @@ const ImageLabelingScreenComponent: FC<ImageLabelingScreenProps> = observer(
           }}
         />
 
-        <View style={$resultContainer}>
-          {result &&
-            result.map((item) => {
+        {result && (
+          <View style={$resultContainer}>
+            {result.map((item) => {
               return (
                 <View key={item.text} style={$resultRow}>
                   <Text style={$resultText} text={item.text} />
@@ -142,7 +142,8 @@ const ImageLabelingScreenComponent: FC<ImageLabelingScreenProps> = observer(
                 </View>
               )
             })}
-        </View>
+          </View>
+        )}
       </Screen>
     )
   },
@@ -173,8 +174,8 @@ const $description: TextStyle = {
 
 const $resultContainer: ViewStyle = {
   width: "100%",
-  height: 200,
   borderWidth: 1,
+  marginVertical: 24,
 }
 const $resultRow: ViewStyle = {
   flexDirection: "row",

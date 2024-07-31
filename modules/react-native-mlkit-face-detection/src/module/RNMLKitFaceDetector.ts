@@ -55,7 +55,6 @@ export class RNMLKitFaceDetector {
   }
 
   async initialize(options?: RNMLKitFaceDetectorOptions) {
-    console.log("Initializing RNMLKitFaceDetector");
     try {
       if (options) {
         this.options = options;
