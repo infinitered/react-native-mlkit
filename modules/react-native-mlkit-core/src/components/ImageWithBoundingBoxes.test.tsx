@@ -72,7 +72,8 @@ describe("ImageWithBoundingBoxes component", () => {
     const { getByTestId } = render(
       <ImageWithBoundingBoxes style={style} testId="test" />
     );
-    expect(getByTestId("test").props.style).toMatchObject(style);
+    const styleProp = getByTestId("test").props.style;
+    expect(styleProp[styleProp.length - 1]).toMatchObject(style);
   });
 
   it("applies imageStyle to the image", () => {

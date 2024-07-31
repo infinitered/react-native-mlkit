@@ -18,7 +18,8 @@
     "ci:publish": "changeset publish",
     "ci:push-tags": "git push --follow-tags",
     "ci:trust": "./scripts/git-push-fork-to-upstream-repo.sh",
-    "release": "yarn ci:build && yarn ci:publish && yarn ci:push-tags"
+    "release": "yarn ci:build && yarn ci:publish && yarn ci:push-tags",
+    "postinstall": "turbo ci:build"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.2",

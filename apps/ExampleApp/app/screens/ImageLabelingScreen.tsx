@@ -105,6 +105,10 @@ const ImageLabelingScreenComponent: FC<ImageLabelingScreenProps> = observer(
       }
     }, [bestGuess, image, status])
 
+    const clearResults = useCallback(() => {
+      setResult(null)
+    }, [])
+
     return (
       <Screen style={$root} preset="scroll" safeAreaEdges={["top", "bottom"]}>
         <View>
@@ -114,6 +118,7 @@ const ImageLabelingScreenComponent: FC<ImageLabelingScreenProps> = observer(
         </View>
         <ImageSelector
           onImageChange={handleImageChange}
+          onImageClear={clearResults}
           onStatusChange={onStatusChange}
           statusMessage={statusMessage}
           status={status}

@@ -26,15 +26,16 @@
     "web": "npx expo start --web",
     "bundle:web": "npx expo export --platform web",
     "serve:web": "npx server dist",
-    "prebuild:clean": "npx expo prebuild --clean"
+    "prebuild:clean": "npx expo prebuild --clean",
+    "eas-build-post-install": "yarn -T run ci:build"
   },
   "dependencies": {
     "@expo-google-fonts/space-grotesk": "^0.2.2",
     "@expo/metro-runtime": "~3.2.1",
-    "@infinitered/react-native-mlkit-document-scanner": "^2.0.0",
-    "@infinitered/react-native-mlkit-face-detection": "^2.0.0",
-    "@infinitered/react-native-mlkit-image-labeling": "^2.0.0",
-    "@infinitered/react-native-mlkit-object-detection": "^2.0.0",
+    "@infinitered/react-native-mlkit-document-scanner": "workspace:^2.0.0",
+    "@infinitered/react-native-mlkit-face-detection": "workspace:^2.0.0",
+    "@infinitered/react-native-mlkit-image-labeling": "workspace:^2.0.0",
+    "@infinitered/react-native-mlkit-object-detection": "workspace:^2.0.0",
     "@react-native-async-storage/async-storage": "1.23.1",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.0.2",
@@ -91,6 +92,7 @@
     "eslint-plugin-react": "7.30.0",
     "eslint-plugin-react-native": "4.0.0",
     "eslint-plugin-reactotron": "^0.1.2",
+    "expo-atlas": "^0.3.0",
     "jest": "^29.2.1",
     "jest-expo": "~51.0.1",
     "patch-package": "6.4.7",
@@ -185,11 +187,6 @@
       "react/prop-types": 0,
       "space-before-function-paren": 0,
       "reactotron/no-tron-in-production": "error"
-    }
-  },
-  "expo": {
-    "autolinking": {
-      "nativeModulesDir": "../../modules"
     }
   }
 }

@@ -71,6 +71,7 @@ export const RNMLKitImageView = observer(function RNMLKitImageView({
             boundingBoxes={boxes}
             style={$image}
             imageStyle={imageStyle}
+            contentFit={"contain"}
           />
           <View style={$captionContainer}>
             <Icon icon={"camera"} size={10} color={"rgba(0,0,0,0.9)"} />

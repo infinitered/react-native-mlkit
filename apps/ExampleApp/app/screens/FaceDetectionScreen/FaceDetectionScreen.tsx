@@ -18,7 +18,6 @@ interface FaceDetectionScreenProps
   extends NativeStackScreenProps<AppStackScreenProps<"FaceDetection">> {}
 
 const $button: ViewStyle = { backgroundColor: colors.palette.accent300, marginVertical: 8 }
-const $rowButton: ViewStyle = { flexGrow: 1, marginHorizontal: 2 }
 
 const $statusMessage: TextStyle = {
   color: "rgba(0,0,0,0.6)",
@@ -30,27 +29,11 @@ const $status: ViewStyle = {
   alignItems: "center",
 }
 
-const $photoButton: ViewStyle = {
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "space-around",
-}
-
 const FaceDetectionScreenComponent: FC<FaceDetectionScreenProps> = observer(
   function FaceDetectionScreen() {
     const navigation = useTypedNavigation<"FaceDetection">()
 
-    const {
-      image,
-      clearPhoto,
-      takePhoto,
-      selectPhoto,
-      nextPhoto,
-      categories,
-      // status: imageStatus,
-    } = useExampleImage({
-      groupBy: "face",
-    })
+    const { image, clearPhoto, takePhoto, selectPhoto } = useExampleImage()
 
     const {
       faces,
@@ -58,7 +41,6 @@ const FaceDetectionScreenComponent: FC<FaceDetectionScreenProps> = observer(
       status: faceDetectorStatus,
       error: faceDetectorError,
     } = useFacesInPhoto(image?.uri)
-
     const boxes = useMemo(() => {
       return faces.map((face, index) => {
         return {
@@ -97,6 +79,7 @@ const FaceDetectionScreenComponent: FC<FaceDetectionScreenProps> = observer(
           }
         />
         <RNMLKitImageView image={image} onPress={image ? clearPhoto : takePhoto} boxes={boxes} />
+
         <View style={$status}>
           {faceDetectorStatus === "detecting" ? (
             <ActivityIndicator />
@@ -105,24 +88,17 @@ const FaceDetectionScreenComponent: FC<FaceDetectionScreenProps> = observer(
           )}
         </View>
         {image ? (
-          <Button text={"Clear Photo"} onPress={clearPhoto} style={$button} />
+          <Button
+            text={"Clear Photo"}
+            onPress={() => {
+              clearFaces()
+              clearPhoto()
+            }}
+            style={$button}
+          />
         ) : (
           <Button text={"Select Photo"} onPress={selectPhoto} style={$button} />
         )}
-        <View style={$photoButton}>
-          {categories.map((category) => (
-            <Button
-              key={category}
-              text={category}
-              onPress={() => {
-                clearPhoto()
-                clearFaces()
-                nextPhoto(category)
-              }}
-              style={[$button, $rowButton]}
-            />
-          ))}
-        </View>
       </Screen>
     )
   },
