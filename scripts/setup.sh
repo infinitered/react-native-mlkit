@@ -22,7 +22,7 @@ error() {
 
 # Build the project
 heading "Building the project"
-yarn build
+CI=true yarn build
 
 # Prebuild the RN App}
 heading "Prebuilding the RN App"
