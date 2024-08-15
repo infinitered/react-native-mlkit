@@ -67,13 +67,13 @@ app's lifecycle you load the model.
 
 import {
   useObjectDetector,
-  RNMLKitDetectedObject,
+  RNMLKitObjectDetectionObject,
 } from "@infinitered/react-native-mlkit-object-detection";
 import { useEffect } from "react";
 
 function MyComponent() {
   // fetch the model from the hook, if you don't pass a model name it will fetch the default MLKit Object Detection model
-  const { model } = useObjectDetector();
+  const model = useObjectDetector();
 
   const [modelLoaded, setModelLoaded] = useState(model?.isLoaded() ?? false);
 
@@ -92,8 +92,8 @@ function MyComponent() {
     loadModel();
   }, [model, modelLoaded]);
 
-  // the output of the model is an array of `RNMLKitDetectedObject` objects
-  const [result, setResult] = useState<RNMLKitDetectedObject[]>([]);
+  // the output of the model is an array of `RNMLKitObjectDetectionObject` objects
+  const [result, setResult] = useState<RNMLKitObjectDetectionObject[]>([]);
 
   useEffect(() => {
     if (!modelLoaded) return;
