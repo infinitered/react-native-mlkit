@@ -5,6 +5,7 @@
     "name": "React Native MLKit",
     "slug": "react-native-mlkit",
     "owner": "infinitered",
+    "newArchEnabled": false,
     "extra": {
       "eas": {
         "projectId": "4faa9328-e941-4395-879c-f558bf07e678"
@@ -68,12 +69,10 @@
         "expo-build-properties",
         {
           "ios": {
-            "newArchEnabled": false,
             "flipper": false,
-            "deploymentTarget": "13.4"
+            "deploymentTarget": "15.1"
           },
           "android": {
-            "newArchEnabled": false,
             "compileSdkVersion": 34
           }
         }
