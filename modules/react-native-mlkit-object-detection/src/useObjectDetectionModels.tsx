@@ -24,8 +24,10 @@ type Models<T extends Record<string, any>> = {
   [K in keyof T | "default"]: RNMLKitObjectDetector;
 };
 
+const assetsDefaultValue = {};
+
 export function useObjectDetectionModels<T extends AssetRecord>({
-  assets = {} as T,
+  assets = assetsDefaultValue as T,
   loadDefaultModel,
   defaultModelOptions,
 }: {
