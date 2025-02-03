@@ -29,6 +29,31 @@
         "doc",
         "review"
       ]
+    },
+    {
+      "login": "frankcalise",
+      "name": "Frank Calise",
+      "avatar_url": "https://avatars.githubusercontent.com/u/374022?v=4",
+      "profile": "https://github.com/frankcalise",
+      "contributions": [
+        "doc",
+        "maintenance",
+        "review"
+      ]
+    },
+    {
+      "login": "trevor-coleman",
+      "name": "Trevor Coleman",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22041394?v=4",
+      "profile": "https://github.com/trevor-coleman",
+      "contributions": [
+        "design",
+        "maintenance",
+        "code",
+        "test",
+        "ideas",
+        "doc"
+      ]
     }
   ]
 }
