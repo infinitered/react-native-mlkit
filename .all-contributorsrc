@@ -18,6 +18,17 @@
         "maintenance",
         "ideas"
       ]
+    },
+    {
+      "login": "cdanwards",
+      "name": "Daniel Edwards",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8878532?v=4",
+      "profile": "https://github.com/cdanwards",
+      "contributions": [
+        "design",
+        "doc",
+        "review"
+      ]
     }
   ]
 }
