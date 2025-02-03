@@ -7,6 +7,7 @@
   "commitType": "docs",
   "commitConvention": "angular",
   "contributorsPerLine": 7,
+  "imageSize": 100,
   "contributors": [
     {
       "login": "aiden-petersen",
@@ -87,10 +88,11 @@
       "contributions": [
         "design",
         "doc",
-        "review"
+        "review",
         "ideas"
-        ],
-    },{
+      ]
+    },
+    {
       "login": "GantMan",
       "name": "Gant Laborde",
       "avatar_url": "https://avatars.githubusercontent.com/u/997157?v=4",
