@@ -5,6 +5,6 @@
   "license": "MIT",
   "dependencies": {
     "@tsconfig/react-native": "^3.0.2",
-    "expo": "^51.0.0"
+    "expo": "^52.0.0"
   }
 }

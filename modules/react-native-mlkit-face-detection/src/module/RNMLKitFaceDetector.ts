@@ -4,10 +4,12 @@ import {
   RNMLKitFaceDetectionResult,
 } from "../types";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function initialize(options?: RNMLKitFaceDetectorOptions) {
   return await RNMLKitFaceDetectionModule.initialize(options);
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function detectFaces(imageUri: string) {
   return await RNMLKitFaceDetectionModule.detectFaces(imageUri);
 }

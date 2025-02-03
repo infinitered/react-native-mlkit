@@ -14,16 +14,13 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/app-icon-all.png",
-    "splash": {
-      "image": "./assets/images/splash-logo-all.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#F4F2F1"
-    },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
     "jsEngine": "hermes",
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "android": {
       "icon": "./assets/images/app-icon-android-legacy.png",
       "package": "red.infinite.reactnativemlkit.example",
@@ -31,35 +28,19 @@
         "foregroundImage": "./assets/images/app-icon-android-adaptive-foreground.png",
         "backgroundImage": "./assets/images/app-icon-android-adaptive-background.png",
         "backgroundColor": "#F4F2F1"
-      },
-      "splash": {
-        "image": "./assets/images/splash-logo-android-universal.png",
-        "resizeMode": "contain",
-        "backgroundColor": "#F4F2F1"
       }
     },
     "ios": {
       "icon": "./assets/images/app-icon-ios.png",
       "supportsTablet": true,
       "bundleIdentifier": "red.infinite.reactnativemlkit.example",
-      "splash": {
-        "image": "./assets/images/splash-logo-ios-mobile.png",
-        "tabletImage": "./assets/images/splash-logo-ios-tablet.png",
-        "resizeMode": "contain",
-        "backgroundColor": "#F4F2F1"
-      },
       "infoPlist": {
-        "NSCameraUsageDescription": "This app uses the camera to help with facial detection.",
+        "NSCameraUsageDescription": "This app uses the camera to take pictures to demo the machine learning algorithms. (Face detection, Object detection and Image Labelling).",
         "NSPhotoLibraryUsageDescription": "This app uses the photo library to select images for Machine Learning purposes. i.e. Object and Image detection."
       }
     },
     "web": {
       "favicon": "./assets/images/app-icon-web-favicon.png",
-      "splash": {
-        "image": "./assets/images/splash-logo-web.png",
-        "resizeMode": "contain",
-        "backgroundColor": "#F4F2F1"
-      },
       "bundler": "metro"
     },
     "plugins": [
@@ -70,15 +51,23 @@
           "ios": {
             "newArchEnabled": false,
             "flipper": false,
-            "deploymentTarget": "13.4"
+            "deploymentTarget": "15.1"
           },
           "android": {
             "newArchEnabled": false,
-            "compileSdkVersion": 34
+            "compileSdkVersion": 35
           }
         }
       ],
-      "expo-font"
+      "expo-font",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/splash-logo-android-universal.png",
+          "backgroundColor": "#F4F2F1",
+          "imageWidth": 250
+        }
+      ]
     ],
     "experiments": {
       "tsconfigPaths": true
