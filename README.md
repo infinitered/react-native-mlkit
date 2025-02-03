@@ -122,6 +122,7 @@ Running `yarn build` inside of an expo module workspace will start watch mode fo
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/aiden-petersen"><img src="https://avatars.githubusercontent.com/u/11483212?v=4?s=100" width="100px;" alt="Aiden Petersen"/><br /><sub><b>Aiden Petersen</b></sub></a><br /><a href="#code-aiden-petersen" title="Code">💻</a> <a href="#maintenance-aiden-petersen" title="Maintenance">🚧</a> <a href="#ideas-aiden-petersen" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/trevor-coleman"><img src="https://avatars.githubusercontent.com/u/22041394?v=4?s=100" width="100px;" alt="Trevor Coleman"/><br /><sub><b>Trevor Coleman</b></sub></a><br /><a href="#design-trevor-coleman" title="Design">🎨</a> <a href="#maintenance-trevor-coleman" title="Maintenance">🚧</a> <a href="#code-trevor-coleman" title="Code">💻</a> <a href="#test-trevor-coleman" title="Tests">⚠️</a> <a href="#ideas-trevor-coleman" title="Ideas, Planning, & Feedback">🤔</a> <a href="#doc-trevor-coleman" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
