@@ -122,7 +122,7 @@ Running `yarn build` inside of an expo module workspace will start watch mode fo
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/aiden-petersen"><img src="https://avatars.githubusercontent.com/u/11483212?v=4?s=100" width="100px;" alt="Aiden Petersen"/><br /><sub><b>Aiden Petersen</b></sub></a><br /><a href="#code-aiden-petersen" title="Code">💻</a> <a href="#maintenance-aiden-petersen" title="Maintenance">🚧</a> <a href="#ideas-aiden-petersen" title="Ideas, Planning, & Feedback">🤔</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/frankcalise"><img src="https://avatars.githubusercontent.com/u/374022?v=4?s=100" width="100px;" alt="Frank Calise"/><br /><sub><b>Frank Calise</b></sub></a><br /><a href="#doc-frankcalise" title="Documentation">📖</a> <a href="#maintenance-frankcalise" title="Maintenance">🚧</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/frankcalise"><img src="https://avatars.githubusercontent.com/u/374022?v=4?s=100" width="100px;" alt="Frank Calise"/><br /><sub><b>Frank Calise</b></sub></a><br /><a href="#doc-frankcalise" title="Documentation">📖</a> <a href="#maintenance-frankcalise" title="Maintenance">🚧</a> <a href="#review-frankcalise" title="Reviewed Pull Requests">👀</a></td>
     </tr>
   </tbody>
 </table>
