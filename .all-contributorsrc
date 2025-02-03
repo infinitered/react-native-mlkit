@@ -29,6 +29,20 @@
         "maintenance",
         "review"
       ]
+    },
+    {
+      "login": "trevor-coleman",
+      "name": "Trevor Coleman",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22041394?v=4",
+      "profile": "https://github.com/trevor-coleman",
+      "contributions": [
+        "design",
+        "maintenance",
+        "code",
+        "test",
+        "ideas",
+        "doc"
+      ]
     }
   ]
 }
