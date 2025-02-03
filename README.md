@@ -16,9 +16,9 @@ RNMLKit provides Expo modules that allow developers to use MLKit native librarie
 
 Here are some previews in action:
 
-| Face Detection | Object Detection    |
-| -------- | -------- |
-| <img src="./_art/face-720.gif" alt="IR MLKit Face Detection Preview" height="520" />  | <img src="./_art/object-720.gif" alt="IR MLKit Face Object Detection" height="520" /> |
+| Face Detection                                                                       | Object Detection                                                                      |
+|--------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
+| <img src="./_art/face-720.gif" alt="IR MLKit Face Detection Preview" height="520" /> | <img src="./_art/object-720.gif" alt="IR MLKit Face Object Detection" height="520" /> |
 
 ## Quickstart: Running the example app
 
@@ -108,7 +108,7 @@ Running `yarn build` inside of an expo module workspace will start watch mode fo
 ## Compatibility
 
 | Expo SDK | MLKit    |
-| -------- | -------- |
+|----------|----------|
 | ^49.0.0  | <= 0.7.7 |
 | ^50.0.0  | ^1.0.0   |
 | ^51.0.0  | ^1.0.0   |
@@ -128,6 +128,8 @@ Running `yarn build` inside of an expo module workspace will start watch mode fo
       <td align="center" valign="top" width="14.28%"><a href="http://infinite.red"><img src="https://avatars.githubusercontent.com/u/1775841?v=4?s=100" width="100px;" alt="Yulian Glukhenko"/><br /><sub><b>Yulian Glukhenko</b></sub></a><br /><a href="#code-yulolimum" title="Code">💻</a> <a href="#review-yulolimum" title="Reviewed Pull Requests">👀</a> <a href="#design-yulolimum" title="Design">🎨</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://davidl.fr"><img src="https://avatars.githubusercontent.com/u/360936?v=4?s=100" width="100px;" alt="David Leuliette"/><br /><sub><b>David Leuliette</b></sub></a><br /><a href="#doc-flexbox" title="Documentation">📖</a> <a href="#review-flexbox" title="Reviewed Pull Requests">👀</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/ellouzeskandercs"><img src="https://avatars.githubusercontent.com/u/51904486?v=4?s=100" width="100px;" alt="ellouzeskandercs"/><br /><sub><b>ellouzeskandercs</b></sub></a><br /><a href="#doc-ellouzeskandercs" title="Documentation">📖</a></td>
+    </tr>
+    <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/cdanwards"><img src="https://avatars.githubusercontent.com/u/8878532?v=4?s=100" width="100px;" alt="Daniel Edwards"/><br /><sub><b>Daniel Edwards</b></sub></a><br /><a href="#design-cdanwards" title="Design">🎨</a> <a href="#doc-cdanwards" title="Documentation">📖</a> <a href="#review-cdanwards" title="Reviewed Pull Requests">👀</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://gantlaborde.com/"><img src="https://avatars.githubusercontent.com/u/997157?v=4?s=100" width="100px;" alt="Gant Laborde"/><br /><sub><b>Gant Laborde</b></sub></a><br /><a href="#doc-GantMan" title="Documentation">📖</a> <a href="#ideas-GantMan" title="Ideas, Planning, & Feedback">🤔</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/frankcalise"><img src="https://avatars.githubusercontent.com/u/374022?v=4?s=100" width="100px;" alt="Frank Calise"/><br /><sub><b>Frank Calise</b></sub></a><br /><a href="#doc-frankcalise" title="Documentation">📖</a> <a href="#maintenance-frankcalise" title="Maintenance">🚧</a> <a href="#review-frankcalise" title="Reviewed Pull Requests">👀</a></td>
@@ -142,4 +144,5 @@ Running `yarn build` inside of an expo module workspace will start watch mode fo
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification.
+Contributions of any kind welcome!
