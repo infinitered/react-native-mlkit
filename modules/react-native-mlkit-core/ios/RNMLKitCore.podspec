@@ -24,5 +24,9 @@ Pod::Spec.new do |s|
     'SWIFT_COMPILATION_MODE' => 'wholemodule'
   }
 
+  def s.build_type
+    Pod::BuildType.static_library
+  end
+
   s.source_files = "**/*.{h,m,swift}"
 end
