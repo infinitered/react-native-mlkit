@@ -10,9 +10,10 @@ Pod::Spec.new do |s|
   s.license        = package['license']
   s.author         = package['author']
   s.homepage       = package['homepage']
-  s.platform       = :ios, '13.0'
+  s.platform       = :ios, '15.8.3'
   s.swift_version  = '5.4'
   s.source         = { git: 'http://github.com/infinitered/react-native-mlkit' }
+  s.static_framework = true
 
   s.dependency 'MLKitVision'
   s.dependency 'ExpoModulesCore'
@@ -22,6 +23,10 @@ Pod::Spec.new do |s|
     'DEFINES_MODULE' => 'YES',
     'SWIFT_COMPILATION_MODE' => 'wholemodule'
   }
+
+  def s.build_type
+    Pod::BuildType.static_library
+  end
 
   s.source_files = "**/*.{h,m,swift}"
 end
