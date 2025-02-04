@@ -1,3 +1,4 @@
+import { ModelInfo, AssetRecord } from "@infinitered/react-native-mlkit-core";
 import { useAssets } from "expo-asset";
 import React, { useState, useEffect, PropsWithChildren } from "react";
 
@@ -13,20 +14,19 @@ import {
   RNMLKitObjectDetectorOptions,
 } from "./types";
 
-export type ModelInfo = {
-  model: number;
-  options?: RNMLKitCustomObjectDetectorOptions;
-};
+export type ObjectDetectionModelInfo =
+  ModelInfo<RNMLKitCustomObjectDetectorOptions>;
 
-export type AssetRecord = Record<string, ModelInfo>;
+export type ObjectDetectionAssetRecord =
+  AssetRecord<RNMLKitCustomObjectDetectorOptions>;
 
-type Models<T extends Record<string, any>> = {
+type ObjectDetectionModels<T extends Record<string, any>> = {
   [K in keyof T | "default"]: RNMLKitObjectDetector;
 };
 
 const assetsDefaultValue = {};
 
-export function useObjectDetectionModels<T extends AssetRecord>({
+export function useObjectDetectionModels<T extends ObjectDetectionAssetRecord>({
   assets = assetsDefaultValue as T,
   loadDefaultModel,
   defaultModelOptions,
@@ -35,10 +35,12 @@ export function useObjectDetectionModels<T extends AssetRecord>({
   loadDefaultModel?: boolean;
   defaultModelOptions?: RNMLKitObjectDetectorOptions;
 }) {
-  const assetModels: number[] = Object.values(assets).map(({ model }) => model);
+  const assetModels = Object.values(assets).map((asset) => asset.model);
 
   const [assetObjects, assetsError] = useAssets(assetModels);
-  const [loadedModels, setLoadedModels] = useState<Partial<Models<T>>>({});
+  const [loadedModels, setLoadedModels] = useState<
+    Partial<ObjectDetectionModels<T>>
+  >({});
 
   useEffect(() => {
     async function loadModel(
@@ -77,12 +79,18 @@ export function useObjectDetectionModels<T extends AssetRecord>({
 
       const models = await Promise.all(modelPromises);
 
-      const newModels = Object.fromEntries(models) as Partial<Models<T>>;
+      const newModels = Object.fromEntries(models) as Partial<
+        ObjectDetectionModels<T>
+      >;
       setLoadedModels(newModels);
     }
 
     if ((assetObjects && !assetsError) || loadDefaultModel) {
-      loadModels();
+      loadModels()
+        .then(() => console.log("loaded models"))
+        .catch((error) => {
+          console.error("Failed to load models: ", error);
+        });
     }
   }, [assets, assetObjects, assetsError, loadDefaultModel]);
 
@@ -97,9 +105,9 @@ export function useObjectDetectionModels<T extends AssetRecord>({
 function ObjectDetectionModelProviderComponent<T extends ModelAssets>({
   children,
   models,
-}: React.PropsWithChildren<{ models: Partial<Models<T>> }>) {
+}: React.PropsWithChildren<{ models: Partial<ObjectDetectionModels<T>> }>) {
   return (
-    <RNMLKitObjectDetectionContext.Provider value={{ models }}>
+    <RNMLKitObjectDetectionContext.Provider value={{ ...models }}>
       {children}
     </RNMLKitObjectDetectionContext.Provider>
   );

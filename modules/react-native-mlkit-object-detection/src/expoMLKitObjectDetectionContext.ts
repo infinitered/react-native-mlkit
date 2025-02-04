@@ -1,4 +1,4 @@
-import { createContext, useContext, useMemo } from "react";
+import { createContext, useContext } from "react";
 
 import { RNMLKitObjectDetector } from "./types";
 
@@ -8,9 +8,8 @@ export type Models<T extends ModelAssets> = {
   [K in keyof T]?: RNMLKitObjectDetector;
 };
 
-export interface RNMLKitObjectDetectionContextValue<T extends ModelAssets> {
-  models: Models<T>;
-}
+export type RNMLKitObjectDetectionContextValue<T extends ModelAssets> =
+  Models<T>;
 
 export const RNMLKitObjectDetectionContext = createContext<
   RNMLKitObjectDetectionContextValue<ModelAssets> | undefined
@@ -24,12 +23,4 @@ export function useRNMLKitObjectDetectionContext<T extends ModelAssets>() {
     );
   }
   return context as RNMLKitObjectDetectionContextValue<T>;
-}
-
-export function useObjectDetector(name: string = "default") {
-  const { models } = useRNMLKitObjectDetectionContext<ModelAssets>();
-
-  return useMemo(() => {
-    return models[name];
-  }, [models, models[name]]);
 }

@@ -7,7 +7,7 @@ import { Screen, Text, Icon, ImageSelector } from "../components"
 import { useTypedNavigation } from "../navigators/useTypedNavigation"
 
 import {
-  useModels,
+  useImageLabellingModels,
   useImageLabeler,
   ClassificationResult,
 } from "@infinitered/react-native-mlkit-image-labeling"
@@ -66,7 +66,7 @@ const ImageLabelingScreenComponent: FC<ImageLabelingScreenProps> = observer(
         }
       }
 
-      classifyImage()
+      classifyImage().then(() => null)
     }, [image, model])
 
     const bestGuess = useMemo(() => {
@@ -150,12 +150,12 @@ const ImageLabelingScreenComponent: FC<ImageLabelingScreenProps> = observer(
 )
 
 export function ImageLabelingScreen(props: PropsWithChildren<ImageLabelingScreenProps>) {
-  const { ObjectDetectionModelContextProvider } = useModels(MODELS)
+  const { ImageLabelingContextProvider } = useImageLabellingModels(MODELS)
 
   return (
-    <ObjectDetectionModelContextProvider>
+    <ImageLabelingContextProvider>
       <ImageLabelingScreenComponent {...props} />
-    </ObjectDetectionModelContextProvider>
+    </ImageLabelingContextProvider>
   )
 }
 
@@ -183,7 +183,7 @@ const $resultRow: ViewStyle = {
   alignItems: "center",
   padding: 8,
 }
-const $resultText: ViewStyle = { flex: 1 }
+const $resultText: TextStyle = { flex: 1 }
 const $resultBarContainer: ViewStyle = {
   flex: 3,
   height: 20,

@@ -84,5 +84,26 @@ Remember that the face detector will not work until it's initialized.
 Ensure that it's initialized before trying to detect faces with it.
 :::
 
+## Error Handling
+
+The face detector includes built-in error handling that will update the detector's status to `'error'` and log error
+messages to the console. When using the detector directly, you should handle potential errors:
+
+```tsx
+const detectFaces = async () => {
+  try {
+    const result = await faceDetector.detectFaces(imageUri);
+    if (!result) {
+      // Handle undefined result case
+      return;
+    }
+    // Process result.faces
+  } catch (error) {
+    // Handle error case
+    console.error('Face detection failed:', error);
+  }
+};
+```
+
 That's it for the advanced usage! Dive deep, and feel free to ask any questions in the community forums.
 

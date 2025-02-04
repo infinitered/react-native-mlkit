@@ -36,7 +36,7 @@ export class RNMLKitFaceDetector {
     if (deferInitialization) {
       return;
     }
-    this.initialize(options);
+    this.initialize(options).catch((e) => console.error(e));
   }
 
   async detectFaces(imageUri: string) {

@@ -1,3 +1,8 @@
+import {
+  RNMLKitRect,
+  RNMLKitPoint,
+} from "@infinitered/react-native-mlkit-core";
+
 export interface RNMLKitFaceDetectionResult {
   faces: RNMLKitFace[];
   success: boolean;
@@ -6,16 +11,7 @@ export interface RNMLKitFaceDetectionResult {
 }
 
 export interface RNMLKitFace {
-  frame: {
-    origin: {
-      x: number;
-      y: number;
-    };
-    size: {
-      x: number;
-      y: number;
-    };
-  };
+  frame: RNMLKitRect;
   landmarks: RNMLKitFaceLandmark[];
   contours: RNMLKitFaceContour[];
   hasTrackingID: boolean;
@@ -50,18 +46,12 @@ export type FaceLandmarkType =
 
 export interface RNMLKitFaceLandmark {
   type: FaceLandmarkType | null;
-  position: {
-    x: number;
-    y: number;
-  } | null;
+  position: RNMLKitPoint | null;
 }
 
 export interface RNMLKitFaceContour {
   type: FaceContourType | null;
-  points: Array<{
-    x: number;
-    y: number;
-  }> | null;
+  points: Array<RNMLKitPoint> | null;
 }
 
 export type FaceContourType =
