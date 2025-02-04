@@ -12,7 +12,7 @@ import {
   RNMLKitImageLabelerContext,
 } from "./expoMLKitImageLabelerContext";
 
-export type AssetRecord = Record<
+export type ImageLabellingModelAssetRecord = Record<
   string,
   { model: number; options?: RNMLKitCustomImageLabelerOptions }
 >;
@@ -21,7 +21,7 @@ export type Models<T extends Record<string, any>> = {
   [K in keyof T]: RNMLKitClassifier;
 };
 
-export function useModels<T extends AssetRecord>(assets: T) {
+export function useModels<T extends ImageLabellingModelAssetRecord>(assets: T) {
   const assetNumbers = Object.values(assets).map(({ model }) => model);
   const [assetObjects, assetsError] = useAssets(assetNumbers);
   const [loadedModels, setLoadedModels] = useState<Partial<Models<T>>>({});
@@ -42,7 +42,7 @@ export function useModels<T extends AssetRecord>(assets: T) {
           const model = new RNMLKitClassifier(modelSpec);
           await model.load();
 
-          return [name, model];
+          return [name, model] as [string, RNMLKitClassifier | undefined];
         }
       );
 
@@ -53,19 +53,22 @@ export function useModels<T extends AssetRecord>(assets: T) {
     }
 
     if (assetObjects && !assetsError) {
-      loadModels();
+      loadModels().then();
     }
   }, [assets, assetObjects, assetsError]);
 
   return {
     models: loadedModels,
-    ObjectDetectionModelContextProvider: (props: PropsWithChildren<object>) => (
-      <ModelContextProviderComponent {...props} models={loadedModels} />
+    ImageLabelingContextProvider: (props: PropsWithChildren<object>) => (
+      <ImageLabellingModelContextProviderComponent
+        {...props}
+        models={loadedModels}
+      />
     ),
   };
 }
 
-function ModelContextProviderComponent<T extends ModelAssets>({
+function ImageLabellingModelContextProviderComponent<T extends ModelAssets>({
   children,
   models,
 }: React.PropsWithChildren<{ models: Partial<Models<T>> }>) {
