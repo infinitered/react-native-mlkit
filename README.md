@@ -112,6 +112,7 @@ Running `yarn build` inside of an expo module workspace will start watch mode fo
 | ^49.0.0  | <= 0.7.7 |
 | ^50.0.0  | ^1.0.0   |
 | ^51.0.0  | ^1.0.0   |
+| ^52.0.0  | ^2.0.0   |
 
 ## Contributors
 

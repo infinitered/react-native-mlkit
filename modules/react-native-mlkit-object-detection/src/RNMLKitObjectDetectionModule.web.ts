@@ -1,13 +1,28 @@
-import { EventEmitter } from "expo-modules-core";
+import {
+  RNMLKitDetectedObject,
+  RNMLKitObjectDetectionModule,
+  RNMLKitObjectDetectorOptions,
+  RNMLKitObjectDetectorSpec,
+} from "./RNMLKitObjectDetectionModule";
 
-const emitter = new EventEmitter({} as any);
+const webError = new Error(
+  "RNMLKitObjectDetectionModule is not supported on web"
+);
 
-export default {
-  PI: Math.PI,
-  async setValueAsync(value: string): Promise<void> {
-    emitter.emit("onChange", { value });
+export const module: RNMLKitObjectDetectionModule = {
+  loadCustomModel(_spec: RNMLKitObjectDetectorSpec): Promise<string> {
+    throw webError;
   },
-  hello() {
-    return "Hello world! 👋";
+  loadDefaultModel(_options?: RNMLKitObjectDetectorOptions): Promise<boolean> {
+    throw webError;
+  },
+  detectObjects(
+    _modelName: string,
+    _imagePath: string
+  ): Promise<RNMLKitDetectedObject[]> {
+    throw webError;
+  },
+  isLoaded(_modelName?: string): boolean {
+    throw webError;
   },
 };
