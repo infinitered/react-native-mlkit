@@ -1,18 +1,18 @@
 import React, { PropsWithChildren } from "react";
 
-import { RNMLKitImageLabelerContext } from "./RNMLKitImageLabelerContext";
+import { ImageLabelingContext } from "./ImageLabelingContext";
 import { ImageLabelingConfig, ImageLabelingModels } from "./types";
 
 export function useImageLabelingProvider<T extends ImageLabelingConfig>(
   models: Partial<ImageLabelingModels<T>>
 ) {
-  const ImageLabellingModelProvider = ({
+  const ImageLabelingModelProvider = ({
     children,
   }: PropsWithChildren<object>) => (
-    <RNMLKitImageLabelerContext.Provider value={{ ...models }}>
+    <ImageLabelingContext.Provider value={{ ...models }}>
       {children}
-    </RNMLKitImageLabelerContext.Provider>
+    </ImageLabelingContext.Provider>
   );
 
-  return { ImageLabellingModelProvider };
+  return { ImageLabelingModelProvider };
 }

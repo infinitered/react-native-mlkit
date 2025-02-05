@@ -16,7 +16,7 @@ enum RNMLKitObjectDetectorOptionsError:Error {
     case unknownDetectorMode(mode:String)
 }
 
-public class RNMLKitObjectDetectorOptions {
+public class ObjectDetectorOptions {
     var objectDetectorOptions: ObjectDetectorOptions
 
     init(objectDetectorOptions: ObjectDetectorOptions) {
@@ -29,7 +29,7 @@ public class RNMLKitObjectDetectorOptions {
         if let shouldEnableClassification = record.shouldEnableClassification {
             self.objectDetectorOptions.shouldEnableClassification = shouldEnableClassification
         }
-        
+
         if let shouldEnableMultipleObjects = record.shouldEnableMultipleObjects {
             self.objectDetectorOptions.shouldEnableMultipleObjects = shouldEnableMultipleObjects
         }

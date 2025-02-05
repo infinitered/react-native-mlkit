@@ -26,26 +26,28 @@ npm install @infinitered/react-native-mlkit-object-detection
 
 ### 1. Set up the model context provider
 
-Use the `useObjectDetectionModels` hook to fetch an `ObjectDetectionModelContextProvider`. This will make the models
-available via React context.
+Use the `useObjectDetectionModels` hook to load your models, and `useObjectDetectionProvider` to get the provider
+component.
+This will make the models available via React context.
 
 ```tsx
-// App.tsx
+/// App.tsx
 import {
-  ObjectDetectionAssetRecord,
-  RNMLKitObjectDetectorOptions,
+  ObjectDetectionConfig,
+  CustomObjectDetectorOptions,
   useObjectDetectionModels,
+  useObjectDetectionProvider,
 } from "@infinitered/react-native-mlkit-object-detection";
 
 // Define your custom models if needed (see "Using a Custom Model" for more details)
-const MODELS: ObjectDetectionAssetRecord = {
+const MODELS: ObjectDetectionConfig = {
   furnitureDetector: {
     model: require("./assets/models/furniture-detector.tflite"),
   },
-  // You can add multiple custom models
+// You can add multiple custom models
   birdDetector: {
     model: require("./assets/models/bird-detector.tflite"),
-    // and override the default options
+// and override the default options
     options: {
       shouldEnableClassification: true,
       shouldEnableMultipleObjects: true,
@@ -56,23 +58,28 @@ const MODELS: ObjectDetectionAssetRecord = {
   },
 };
 
-const DEFAULT_MODEL_OPTIONS: RNMLKitObjectDetectorOptions = {
-  shouldEnableMultipleObjects: true,
-  shouldEnableClassification: true,
-  detectorMode: "singleImage",
-};
+// Export this type so we can use it with our hooks later
+export type MyModelsConfig = typeof MODELS;
 
 function App() {
-  const { ObjectDetectionModelContextProvider } = useObjectDetectionModels({
-    assets: MODELS,               // Optional: Custom model assets
-    loadDefaultModel: true,       // Whether to load the default MLKit model
-    defaultModelOptions: DEFAULT_MODEL_OPTIONS,
+// Load the models
+  const models = useObjectDetectionModels<MyModelsConfig>({
+    assets: MODELS,
+    loadDefaultModel: true, // whether to load the default model
+    defaultModelOptions: {
+      shouldEnableMultipleObjects: true,
+      shouldEnableClassification: true,
+      detectorMode: "singleImage",
+    },
   });
 
+// Get the provider component
+  const { ObjectDetectionModelProvider } = useObjectDetectionProvider(models);
+
   return (
-    <ObjectDetectionModelContextProvider>
+    <ObjectDetectionModelProvider>
       {/* Rest of your app */}
-    </ObjectDetectionModelContextProvider>
+    </ObjectDetectionModelProvider>
   );
 }
 ```
@@ -84,30 +91,30 @@ The models are made available through the context system. You can access them in
 ```tsx
 // MyComponent.tsx
 import {
-  useObjectDetectionModels,
-  RNMLKitObjectDetectionObject,
+  useObjectDetector,
+  ObjectDetectionObject,
 } from "@infinitered/react-native-mlkit-object-detection";
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
+import type { MyModelsConfig } from "./App";
 
-function MyComponent() {
-  const {
-    models: { default: defaultModel },
-  } = useObjectDetectionModels({
-    assets: MODELS,
-    loadDefaultModel: true,
-    defaultModelOptions: DEFAULT_MODEL_OPTIONS,
-  });
+type Props = {
+  imagePath: string;
+};
 
-  const [result, setResult] = useState<RNMLKitObjectDetectionObject[]>([]);
+function MyComponent({ imagePath }: Props) {
+// Get the model from context
+  const detector = useObjectDetector<MyModelsConfig>("birdDetector");
+
+  const [detectedObjects, setDetectedObjects] = useState<ObjectDetectionObject[]>([]);
 
   useEffect(() => {
     async function detectObjects(imagePath: string) {
-      if (!defaultModel?.isLoaded()) return;
+      if (!detector) return;
 
       try {
-        const detectionResults = await defaultModel.detectObjects(imagePath);
-        setResult(detectionResults);
+        const detectionResults = await detector.detectObjects(imagePath);
+        setDetectedObjects(detectionResults);
       } catch (error) {
         console.error("Error detecting objects:", error);
       }
@@ -117,14 +124,15 @@ function MyComponent() {
     if (imagePath) {
       detectObjects(imagePath);
     }
-  }, [defaultModel, imagePath]);
+
+  }, [detector, imagePath]);
 
   return (
     <View>
-      {result.map((detection, index) => (
+      {detectedObjects.map((detectedObject, index) => (
         <View key={index}>
           {/* Render your detection results */}
-          {JSON.stringify(detection)}
+          {JSON.stringify(detectedObject)}
         </View>
       ))}
     </View>
@@ -134,28 +142,31 @@ function MyComponent() {
 
 ### Model Options
 
-The `RNMLKitObjectDetectorOptions` interface supports the following options:
+The `ObjectDetectorOptions` and `CustomObjectDetectorOptions` interfaces support the following options:
 
 ```ts
-interface RNMLKitObjectDetectorOptions {
-  shouldEnableClassification?: boolean;      // Enable object classification
-  shouldEnableMultipleObjects?: boolean;     // Allow detection of multiple objects
-  detectorMode?: "singleImage" | "stream";   // Detection mode
+interface ObjectDetectorOptions {
+  shouldEnableClassification?: boolean; // Enable object classification
+  shouldEnableMultipleObjects?: boolean; // Allow detection of multiple objects
+  detectorMode?: "singleImage" | "stream"; // Detection mode
+}
+
+interface CustomObjectDetectorOptions extends ObjectDetectorOptions {
   classificationConfidenceThreshold?: number; // Minimum confidence for classification
-  maxPerObjectLabelCount?: number;           // Maximum number of labels per object
+  maxPerObjectLabelCount?: number; // Maximum number of labels per object
 }
 ```
 
 ### Detection Results
 
-The `detectOptions` method returns an array of `RNMLKitObjectDetectionObject` objects. Each object contains the
+The `detectObjects` method returns an array of `ObjectDetectionObject` objects. Each object contains the
 following properties:
 
 ```ts
-interface RNMLKitObjectDetectionObject {
+interface ObjectDetectionObject {
   frame: {
     origin: { x: number; y: number };
-    size: { width: number; height: number };
+    size: { x: number; y: number };
   };
   labels: Array<{
     text: string;

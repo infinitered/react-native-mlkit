@@ -185,12 +185,12 @@ export function ImageLabelingScreen(
   props: PropsWithChildren<Omit<ImageLabelingScreenProps, "modelNames">>,
 ) {
   const models = useImageLabelingModels(MODELS)
-  const { ImageLabellingModelProvider } = useImageLabelingProvider(models)
+  const { ImageLabelingModelProvider } = useImageLabelingProvider(models)
 
   return (
-    <ImageLabellingModelProvider>
+    <ImageLabelingModelProvider>
       <ImageLabelingScreenComponent {...props} modelNames={Object.keys(MODELS)} />
-    </ImageLabellingModelProvider>
+    </ImageLabelingModelProvider>
   )
 }
 

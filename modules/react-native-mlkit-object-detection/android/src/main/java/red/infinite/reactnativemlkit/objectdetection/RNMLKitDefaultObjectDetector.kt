@@ -12,7 +12,7 @@ import red.infinite.reactnativemlkit.core.RNMLKitLog
 import java.net.URL
 
 class RNMLKitDefaultObjectDetector(
-    private var options: RNMLKitObjectDetectorOptions?,
+    private var options: ObjectDetectorOptions?,
 ) : RNMLKitObjectDetector() {
     override var objectDetector: ObjectDetector? = null
     private var isModelLoaded: Boolean = false

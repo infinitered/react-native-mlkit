@@ -1,13 +1,13 @@
 import { PropsWithChildren } from "react";
 
-import { ObjectDetectionContext } from "./RNMLKitObjectDetectionContext";
-import { ObjectDetectionAssetRecord, ObjectDetectionModels } from "./types";
+import { ObjectDetectionContext } from "./ObjectDetectionContext";
+import { ObjectDetectionConfig, ObjectDetectionModels } from "./types";
 
-export function useObjectDetectionProvider<
-  T extends ObjectDetectionAssetRecord
->(models: ObjectDetectionModels<T>) {
+export function useObjectDetectionProvider<T extends ObjectDetectionConfig>(
+  models: ObjectDetectionModels<T>
+) {
   return {
-    ObjectDetectionProvider: ({ children }: PropsWithChildren<object>) => (
+    ObjectDetectionModelProvider: ({ children }: PropsWithChildren<object>) => (
       <ObjectDetectionContext.Provider value={{ ...models }}>
         {children}
       </ObjectDetectionContext.Provider>

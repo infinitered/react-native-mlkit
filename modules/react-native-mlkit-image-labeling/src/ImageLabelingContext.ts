@@ -8,15 +8,15 @@ export type Models<T extends ModelAssets> = {
   [K in keyof T]?: RNMLKitClassifier;
 };
 
-export const RNMLKitImageLabelerContext = createContext<
+export const ImageLabelingContext = createContext<
   Models<ModelAssets> | undefined
 >(undefined);
 
 export function useRNMLKitImageLabelerContext<T extends ModelAssets>() {
-  const context = useContext(RNMLKitImageLabelerContext);
+  const context = useContext(ImageLabelingContext);
   if (!context) {
     throw new Error(
-      "useRNMLKitImageLabelerContext must be used within a <RNMLKitImageLabelerContext.Provider>"
+      "useRNMLKitImageLabelerContext must be used within a <ImageLabelingContext.Provider>"
     );
   }
   return context as Models<T>;

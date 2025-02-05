@@ -44,10 +44,10 @@ public class RNMLKitObjectDetectionModule: Module {
             let trimmedPath = regex.stringByReplacingMatches(in: spec.modelPath, options: [], range: NSMakeRange(0, 7), withTemplate: "")
 
             print("ExpoMLKItObjectDetection: Loading Custom Model name:\(String(describing: spec.modelName)) modelPath:\(trimmedPath)")
-            var customModelOptions: RNMLKitCustomObjectDetectorOptions
+            var customModelOptions: CustomObjectDetectorOptions
 
             do {
-                customModelOptions = try RNMLKitCustomObjectDetectorOptions(record: spec.options)
+                customModelOptions = try CustomObjectDetectorOptions(record: spec.options)
             } catch {
                 rejectPromiseWithMessage(promise: promise, message: "Error creating options object \(error.localizedDescription)", domain: ERROR_DOMAIN)
                 return
@@ -69,11 +69,11 @@ public class RNMLKitObjectDetectionModule: Module {
                 return
             }
 
-            var defaultModelOptions: RNMLKitObjectDetectorOptions?
+            var defaultModelOptions: ObjectDetectorOptions?
 
             if let optionsRecord = options {
                 do {
-                    defaultModelOptions = try RNMLKitObjectDetectorOptions(record: optionsRecord)
+                    defaultModelOptions = try ObjectDetectorOptions(record: optionsRecord)
                 } catch {
                     rejectPromiseWithMessage(promise: promise, message: "Error creating options object \(error.localizedDescription)", domain: ERROR_DOMAIN)
                     return

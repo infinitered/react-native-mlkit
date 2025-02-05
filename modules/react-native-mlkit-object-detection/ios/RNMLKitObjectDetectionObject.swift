@@ -6,7 +6,7 @@ import RNMLKitCore
 
 public struct RNMLKitObjectDetectionObjectRecord: Record {
     public init() {  }
-    
+
     @Field
     var frame: RNMLKitRect = RNMLKitRect()
     @Field
@@ -15,7 +15,7 @@ public struct RNMLKitObjectDetectionObjectRecord: Record {
     var trackingID: Int? = nil
 }
 
-public class RNMLKitObjectDetectionObject {
+public class ObjectDetectionObject {
     var detectedObject: Object
 
     init(detectedObject: Object) {

@@ -8,7 +8,7 @@
 
 ## Image Labeling
 
-- Renamed `useModels` to `useImageLabellingModels` for better clarity and consistency
+- Renamed `useModels` to `useImageLabelingModels` for better clarity and consistency
 - Renamed model context provider from `ObjectDetectionModelContextProvider` to `ImageLabelingContextProvider`
 - Updated model context types to support consistent type patterns across modules
 
@@ -45,7 +45,7 @@
 
   ```diff
   - import { useModels } from "@infinitered/react-native-mlkit-image-labeling"
-  + import { useImageLabellingModels } from "@infinitered/react-native-mlkit-image-labeling"
+  + import { useImageLabelingModels } from "@infinitered/react-native-mlkit-image-labeling"
   ```
 
 2. Update provider components:

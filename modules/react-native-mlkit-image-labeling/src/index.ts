@@ -1,7 +1,7 @@
 import RNMLKitImageLabelingModule from "./RNMLKitImageLabeler";
 
 export default RNMLKitImageLabelingModule;
-export { useImageLabeler } from "./useImageLabeler";
+export { useImageLabeling } from "./useImageLabeling";
 export { useImageLabelingProvider } from "./useImageLabelingProvider";
 export { useImageLabelingModels } from "./useImageLabelingModels";
 export * from "./types";

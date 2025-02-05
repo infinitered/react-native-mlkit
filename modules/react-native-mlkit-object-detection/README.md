@@ -4,19 +4,22 @@
 
 <!-- TOC -->
 
-- [RNMLKit Object Detection](#reactnativemlkit-object-detection)
-  - [Table of Contents](#table-of-contents)
-  - [Overview](#overview)
-  - [Installation](#installation)
-  - [Basic Usage with Default Model](#basic-usage-with-default-model)
-    - [1. Set up the model context provider](#1-set-up-the-model-context-provider)
-    - [2. Fetch the model using the `useObjectDetectionModel` hook, and use it to detect objects in an image](#2-fetch-the-model-using-the-useobjectdetectionmodel-hook-and-use-it-to-detect-objects-in-an-image)
-  - [Using a custom model](#using-a-custom-model)
-  _ [Compatible Models](#compatible-models)
-  _ [1. Add your model to the project, and Configure Metro to bundle your model](#1-add-your-model-to-the-project-and-configure-metro-to-bundle-your-model)
-  _ [2. Set up the model context provider](#2-set-up-the-model-context-provider)
-  _ [3. Fetch the model using the `useObjectDetectionModel` hook, and use it to detect objects in an image](#3-fetch-the-model-using-the-useobjectdetectionmodel-hook-and-use-it-to-detect-objects-in-an-image)
-  <!-- TOC -->
+* [RNMLKit Object Detection](#rnmlkit-object-detection)
+    * [Table of Contents](#table-of-contents)
+    * [Overview](#overview)
+    * [Installation](#installation)
+    * [Basic Usage with Default Model](#basic-usage-with-default-model)
+        * [1. Set up the model context provider](#1-set-up-the-model-context-provider)
+        * [2. Fetch the model using the
+          `useObjectDetectionModel` hook, and use it to detect objects in an image](#2-fetch-the-model-using-the-useobjectdetectionmodel-hook-and-use-it-to-detect-objects-in-an-image)
+    * [Using a custom model](#using-a-custom-model)
+        * [Compatible Models](#compatible-models)
+        * [1. Add your model to the project, and Configure Metro to bundle your model](#1-add-your-model-to-the-project-and-configure-metro-to-bundle-your-model)
+        * [2. Set up the model context provider](#2-set-up-the-model-context-provider)
+        * [3. Fetch the model using the
+          `useObjectDetectionModel` hook, and use it to detect objects in an image](#3-fetch-the-model-using-the-useobjectdetectionmodel-hook-and-use-it-to-detect-objects-in-an-image)
+
+<!-- TOC -->
 
 ---
 
@@ -82,7 +85,7 @@ app's lifecycle you load the model.
 
 import {
   useObjectDetector,
-  RNMLKitObjectDetectionObject,
+  ObjectDetectionObject,
 } from "@infinitered/react-native-mlkit-object-detection";
 import { useEffect } from "react";
 
@@ -107,8 +110,8 @@ function MyComponent() {
     loadModel();
   }, [model, modelLoaded]);
 
-  // the output of the model is an array of `RNMLKitObjectDetectionObject` objects
-  const [result, setResult] = useState<RNMLKitObjectDetectionObject[]>([]);
+  // the output of the model is an array of `ObjectDetectionObject` objects
+  const [result, setResult] = useState<ObjectDetectionObject[]>([]);
 
   useEffect(() => {
     if (!modelLoaded) return;
@@ -212,7 +215,7 @@ function App() {
 
 import {
   useObjectDetector,
-  RNMLKitObjectDetectionObject,
+  ObjectDetectionObject,
 } from "@infinitered/react-native-mlkit-object-detection";
 import { useEffect } from "react";
 
@@ -237,8 +240,8 @@ function MyComponent() {
     loadModel();
   }, [model, modelLoaded]);
 
-  // the output of the model is an array of `RNMLKitObjectDetectionObject` objects
-  const [result, setResult] = useState<RNMLKitObjectDetectionObject[]>([]);
+  // the output of the model is an array of `ObjectDetectionObject` objects
+  const [result, setResult] = useState<ObjectDetectionObject[]>([]);
 
   useEffect(() => {
     if (!modelLoaded) return;

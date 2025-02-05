@@ -17,7 +17,7 @@ import java.io.FileNotFoundException
 import java.net.URL
 
 
-class RNMLKitObjectDetectorOptions : Record {
+class ObjectDetectorOptions : Record {
     @Field
     var shouldEnableClassification: Boolean = false
 
@@ -35,7 +35,7 @@ class RNMLKitObjectDetectorOptions : Record {
 }
 
 class RNMLKitCustomObjectDetector(
-    modelPath: String, private var options: RNMLKitObjectDetectorOptions?)
+    modelPath: String, private var options: ObjectDetectorOptions?)
     : RNMLKitObjectDetector() {
     override var objectDetector: ObjectDetector? = null
     private val modelPath: String

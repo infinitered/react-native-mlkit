@@ -1,17 +1,15 @@
 import { createContext, useContext } from "react";
 
-import { ObjectDetectionAssetRecord, ObjectDetectionModels } from "./types";
+import { ObjectDetectionConfig, ObjectDetectionModels } from "./types";
 
-export type ObjectDetectionContextValue<T extends ObjectDetectionAssetRecord> =
+export type ObjectDetectionContextValue<T extends ObjectDetectionConfig> =
   ObjectDetectionModels<T>;
 
 export const ObjectDetectionContext = createContext<
-  ObjectDetectionContextValue<ObjectDetectionAssetRecord> | undefined
+  ObjectDetectionContextValue<ObjectDetectionConfig> | undefined
 >(undefined);
 
-export function useObjectDetectionContext<
-  T extends ObjectDetectionAssetRecord
->() {
+export function useObjectDetectionContext<T extends ObjectDetectionConfig>() {
   const context = useContext(ObjectDetectionContext);
   if (!context) {
     throw new Error(

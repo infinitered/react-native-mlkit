@@ -9,7 +9,7 @@ import expo.modules.kotlin.records.Field
 import expo.modules.kotlin.records.Record
 import kotlinx.coroutines.runBlocking
 
-class RNMLKitImageLabelerSpec : Record {
+class ImageLabelerSpec : Record {
     @Field
     var modelName: String = ""
 
@@ -20,14 +20,14 @@ class RNMLKitImageLabelerSpec : Record {
     var options: RNMLKitImageLabelerOptions? = null
 }
 
-class RNMLKitImageLabelingModule : Module() {
+class ImageLabelingModule : Module() {
     private val labelerMap = RNMLKitImageLabelerMap()
 
 
     override fun definition() = ModuleDefinition {
         Name("RNMLKitImageLabeling")
 
-        AsyncFunction("addModel") { spec: RNMLKitImageLabelerSpec, promise: Promise ->
+        AsyncFunction("addModel") { spec: ImageLabelerSpec, promise: Promise ->
             try {
                 Log.d(
                     "RNMLKit",
@@ -38,7 +38,7 @@ class RNMLKitImageLabelingModule : Module() {
             } catch (e: Exception) {
                 promise.reject(
                     CodedException(
-                        "RNMLKitImageLabelingModule - Classifier Error: ${e.message}", e
+                        "ImageLabelingModule - Classifier Error: ${e.message}", e
                     )
                 )
             }
@@ -66,7 +66,7 @@ class RNMLKitImageLabelingModule : Module() {
                     } catch (e: Throwable) {
                         promise.reject(
                             CodedException(
-                                "RNMLKitImageLabelingModule - Classifier Error: ${e.message}", e
+                                "ImageLabelingModule - Classifier Error: ${e.message}", e
                             )
                         )
                     }
@@ -86,7 +86,7 @@ class RNMLKitImageLabelingModule : Module() {
                 } catch (e: Exception) {
                     promise.reject(
                         CodedException(
-                            "RNMLKitImageLabelingModule - Error Updating Options: ${e.message}", e
+                            "ImageLabelingModule - Error Updating Options: ${e.message}", e
                         )
                     )
                 }

@@ -1,7 +1,7 @@
-import { useObjectDetectionContext } from "./RNMLKitObjectDetectionContext";
-import { ObjectDetectionAssetRecord, RNMLKitObjectDetector } from "./types";
+import { useObjectDetectionContext } from "./ObjectDetectionContext";
+import { ObjectDetectionConfig, RNMLKitObjectDetector } from "./types";
 
-export function useObjectDetector<T extends ObjectDetectionAssetRecord>(
+export function useObjectDetector<T extends ObjectDetectionConfig>(
   modelName: keyof T | "default"
 ): RNMLKitObjectDetector | undefined {
   const context = useObjectDetectionContext<T>();

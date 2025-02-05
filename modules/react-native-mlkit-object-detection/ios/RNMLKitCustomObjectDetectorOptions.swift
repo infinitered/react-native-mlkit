@@ -22,13 +22,13 @@ enum RNMLKitCustomObjectDetectorOptionsError: Error {
     case invalidDetectorMode(detectorMode: String)
 }
 
-public class RNMLKitCustomObjectDetectorOptions {
+public class CustomObjectDetectorOptions {
     private var shouldEnableClassification: Bool?
     private var shouldEnableMultipleObjects: Bool?
     private var detectorMode: ObjectDetectorMode?
     private var classificationConfidenceThreshold: Float?
     private var maxPerObjectLabelCount: Int?
-    
+
     public init(record: RNMLKitCustomObjectDetectorOptionsRecord?) throws {
         if let record = record {
             self.shouldEnableClassification = record.shouldEnableClassification ?? true
@@ -62,7 +62,7 @@ public class RNMLKitCustomObjectDetectorOptions {
         options.detectorMode = detectorMode ?? options.detectorMode
         options.classificationConfidenceThreshold = classificationConfidenceThreshold != nil ? NSNumber(value: classificationConfidenceThreshold!) : options.classificationConfidenceThreshold
         options.maxPerObjectLabelCount = maxPerObjectLabelCount ?? options.maxPerObjectLabelCount
-        
+
         return options
     }
 }

@@ -2,7 +2,7 @@ import { useAssets } from "expo-asset";
 import { useState, useEffect } from "react";
 
 import { RNMLKitClassifier } from "./RNMLKitClassifier";
-import { RNMLKitImageLabelerSpec } from "./RNMLKitImageLabeler";
+import { ImageLabelerSpec } from "./RNMLKitImageLabeler";
 import { ImageLabelingConfig, ImageLabelingModels } from "./types";
 
 export function useImageLabelingModels<T extends ImageLabelingConfig>(
@@ -28,7 +28,7 @@ export function useImageLabelingModels<T extends ImageLabelingConfig>(
             return [name as keyof T, undefined];
           }
 
-          const modelSpec: RNMLKitImageLabelerSpec = {
+          const modelSpec: ImageLabelerSpec = {
             modelPath: assetObject.localUri,
             options: modelInfo.options,
             modelName: name,

@@ -34,7 +34,7 @@ class RNMLKitObjectDetectionModule : RNMLKitModule("RNMLKitObjDet") {
             }
         }
 
-        AsyncFunction("loadDefaultModel") { options: RNMLKitObjectDetectorOptions?, promise: Promise ->
+        AsyncFunction("loadDefaultModel") { options: ObjectDetectorOptions?, promise: Promise ->
             log.i( "Loading Default Model") // Log info
             try {
                 defaultDetector = defaultDetector ?: RNMLKitDefaultObjectDetector(options)

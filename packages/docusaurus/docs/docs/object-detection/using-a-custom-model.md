@@ -52,7 +52,7 @@ details.
 ```ts
 type ModelInfo = {
   model: number;
-  options?: RNMLKitCustomObjectDetectorOptions;
+  options?: CustomObjectDetectorOptions;
 };
 ```
 

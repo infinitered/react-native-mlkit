@@ -8,22 +8,20 @@ export type RNMLKitImageLabel = {
 
 export type ClassificationResult = RNMLKitImageLabel[];
 
-export type RNMLKitCustomImageLabelerOptions = {
+export type CustomImageLabelerOptions = {
   maxResultCount?: number;
   confidenceThreshold?: number;
 };
 
-export type RNMLKitImageLabelerSpec = {
+export type ImageLabelerSpec = {
   modelName: string;
   modelPath: string;
-  options?: RNMLKitCustomImageLabelerOptions;
+  options?: CustomImageLabelerOptions;
 };
 
-type RNMLKitImageLabelingModule = {
-  addModel: (modelSpec: RNMLKitImageLabelerSpec) => Promise<string | undefined>;
-  loadModel: (
-    modelSpec: RNMLKitImageLabelerSpec
-  ) => Promise<string | undefined>;
+type ImageLabelingModule = {
+  addModel: (modelSpec: ImageLabelerSpec) => Promise<string | undefined>;
+  loadModel: (modelSpec: ImageLabelerSpec) => Promise<string | undefined>;
   isLoaded: (modelName: string) => boolean;
   runClassification: (imagePath: string) => Promise<ClassificationResult>;
   classifyImage: (
@@ -32,21 +30,19 @@ type RNMLKitImageLabelingModule = {
   ) => Promise<ClassificationResult>;
   updateOptionsAndReload: (
     modelName: string,
-    newOptions: RNMLKitCustomImageLabelerOptions
+    newOptions: CustomImageLabelerOptions
   ) => Promise<void>;
 };
 
 // It loads the native module object from the JSI or falls back to
 // the bridge module (from NativeModulesProxy) if the remote debugger is on.
-const expoMLKitImageLabeler = requireNativeModule(
+const imageLabelingModule = requireNativeModule(
   "RNMLKitImageLabeling"
-) as RNMLKitImageLabelingModule;
+) as ImageLabelingModule;
 
-function loadModel(
-  modelSpec: RNMLKitImageLabelerSpec
-): Promise<string | undefined> {
+function loadModel(modelSpec: ImageLabelerSpec): Promise<string | undefined> {
   try {
-    return expoMLKitImageLabeler.addModel(modelSpec);
+    return imageLabelingModule.addModel(modelSpec);
   } catch (error) {
     console.error("Failed to load model: ", error);
     return Promise.resolve(undefined);
@@ -54,21 +50,21 @@ function loadModel(
 }
 
 function isLoaded(modelName: string): boolean {
-  return expoMLKitImageLabeler.isLoaded(modelName);
+  return imageLabelingModule.isLoaded(modelName);
 }
 
 async function classifyImage(
   modelName: string,
   imagePath: string
 ): Promise<ClassificationResult> {
-  return await expoMLKitImageLabeler.classifyImage(modelName, imagePath);
+  return await imageLabelingModule.classifyImage(modelName, imagePath);
 }
 
 async function updateOptionsAndReload(
   modelName: string,
-  newOptions: RNMLKitCustomImageLabelerOptions
+  newOptions: CustomImageLabelerOptions
 ): Promise<void> {
-  return await expoMLKitImageLabeler.updateOptionsAndReload(
+  return await imageLabelingModule.updateOptionsAndReload(
     modelName,
     newOptions
   );

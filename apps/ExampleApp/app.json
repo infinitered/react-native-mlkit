@@ -35,7 +35,7 @@
       "supportsTablet": true,
       "bundleIdentifier": "red.infinite.reactnativemlkit.example",
       "infoPlist": {
-        "NSCameraUsageDescription": "This app uses the camera to take pictures to demo the machine learning algorithms. (Face detection, Object detection and Image Labelling).",
+        "NSCameraUsageDescription": "This app uses the camera to take pictures to demo the machine learning algorithms. (Face detection, Object detection and Image Labeling).",
         "NSPhotoLibraryUsageDescription": "This app uses the photo library to select images for Machine Learning purposes. i.e. Object and Image detection."
       }
     },

@@ -25,7 +25,7 @@ npm install @infinitered/react-native-mlkit-image-labeling
 
 ```ts
 import {
-  useImageLabeler,
+  useImageLabeling,
   ClassificationResult,
   AssetRecord,
 } from "@infinitered/react-native-mlkit-image-labeling";
@@ -52,7 +52,7 @@ const MODELS: AssetRecord = {
 - Initialize the image labeler for a specific model.
 
   ```ts
-  const model = useImageLabeler("nsfw");
+  const model = useImageLabeling("nsfw");
   ```
 
 - Classify an image by passing its URI.
@@ -62,7 +62,7 @@ const MODELS: AssetRecord = {
 
 ## Components & Hooks
 
-- **useImageLabeler(modelName: string)**
+- **useImageLabeling(modelName: string)**
 
     - Returns an instance of the image labeler for the specified model.
     - `modelName`: The name of the model as defined in your `MODELS` object.
