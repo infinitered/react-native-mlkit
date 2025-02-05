@@ -3,19 +3,28 @@ import { observer } from "mobx-react-lite"
 import { ViewStyle, View, TextStyle, ImageStyle, Text as RNText } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { AppStackScreenProps } from "app/navigators"
-import { Screen, Text, Icon, ImageSelector } from "app/components"
+import { Screen, Text, Icon, ImageSelector, Button } from "app/components"
 import {
   RNMLKitObjectDetectionObject,
   ObjectDetectionAssetRecord,
   RNMLKitObjectDetectorOptions,
   useObjectDetectionModels,
+  useObjectDetector,
+  useObjectDetectionProvider,
 } from "@infinitered/react-native-mlkit-object-detection"
 import { BoundingBox } from "@infinitered/react-native-mlkit-core"
 import { SelectedImage, UseExampleImageStatus } from "../utils/useExampleImage"
 import { useTypedNavigation } from "../navigators/useTypedNavigation"
 
 const MODELS: ObjectDetectionAssetRecord = {
-  // put custom models here
+  cars: {
+    model: require("assets/models/car-detection.tflite"),
+    options: {
+      shouldEnableClassification: false,
+      shouldEnableMultipleObjects: false,
+      detectorMode: "singleImage",
+    },
+  },
 }
 
 const DEFAULT_MODEL_OPTIONS: RNMLKitObjectDetectorOptions = {
@@ -25,18 +34,15 @@ const DEFAULT_MODEL_OPTIONS: RNMLKitObjectDetectorOptions = {
 }
 
 interface ObjectDetectionScreenProps
-  extends NativeStackScreenProps<AppStackScreenProps<"ObjectDetection">> {}
+  extends NativeStackScreenProps<AppStackScreenProps<"ObjectDetection">> {
+  modelNames: string[]
+}
 
 export const ObjectDetectionScreenComponent: FC<ObjectDetectionScreenProps> = observer(
-  function ObjectDetectionScreen() {
+  function ObjectDetectionScreen({ modelNames }) {
     const navigation = useTypedNavigation<"ObjectDetection">()
-    const {
-      models: { default: objectDetectionModel },
-    } = useObjectDetectionModels({
-      assets: MODELS,
-      loadDefaultModel: true,
-      defaultModelOptions: DEFAULT_MODEL_OPTIONS,
-    })
+    const [activeModel, setActiveModel] = useState("default")
+    const detector = useObjectDetector<typeof MODELS>(activeModel)
 
     const [image, setImage] = useState<SelectedImage | null>(null)
     const [result, setResult] = useState<RNMLKitObjectDetectionObject[]>([])
@@ -58,9 +64,7 @@ export const ObjectDetectionScreenComponent: FC<ObjectDetectionScreenProps> = ob
       [],
     )
 
-    const handleImageChange = useCallback((nextImage: SelectedImage) => {
-      setImage(nextImage)
-    }, [])
+    const handleImageChange = (nextImage: SelectedImage) => setImage(nextImage)
 
     const processDetectionResults = useCallback(
       (detectionResults: RNMLKitObjectDetectionObject[]) => {
@@ -82,11 +86,11 @@ export const ObjectDetectionScreenComponent: FC<ObjectDetectionScreenProps> = ob
       let isMounted = true
 
       async function runDetection() {
-        if (!image?.uri || !objectDetectionModel?.isLoaded()) return
+        if (!image?.uri || !detector?.isLoaded()) return
 
         try {
           setStatus("classifying")
-          const detectionResults = await objectDetectionModel.detectObjects(image.uri)
+          const detectionResults = await detector.detectObjects(image.uri)
 
           // Check if component is still mounted before updating state
           if (isMounted) {
@@ -105,7 +109,7 @@ export const ObjectDetectionScreenComponent: FC<ObjectDetectionScreenProps> = ob
       return () => {
         isMounted = false
       }
-    }, [image?.uri, objectDetectionModel, processDetectionResults])
+    }, [image?.uri, detector, processDetectionResults, activeModel])
 
     const clearResult = useCallback(() => {
       setResult([])
@@ -145,6 +149,19 @@ export const ObjectDetectionScreenComponent: FC<ObjectDetectionScreenProps> = ob
           <Text preset={"heading"} text="Object Detection" />
           <Text style={$description}>Detect Objects</Text>
         </View>
+        <View style={$modelSelector}>
+          {modelNames.map((modelName) => {
+            return (
+              <Button
+                key={modelName}
+                text={modelName}
+                style={$modelButton}
+                onPress={() => setActiveModel(modelName)}
+                preset={activeModel === modelName ? "filled" : "default"}
+              />
+            )
+          })}
+        </View>
 
         <ImageSelector
           boundingBoxes={boxes}
@@ -153,7 +170,7 @@ export const ObjectDetectionScreenComponent: FC<ObjectDetectionScreenProps> = ob
           onStatusChange={onStatusChange}
           statusMessage={statusMessage}
           status={status}
-          isLoading={!objectDetectionModel?.isLoaded()}
+          isLoading={!detector?.isLoaded()}
           images={{
             filter: "knownObject",
           }}
@@ -183,17 +200,19 @@ export const ObjectDetectionScreenComponent: FC<ObjectDetectionScreenProps> = ob
   },
 )
 
-export function ObjectDetectionScreen(props: ObjectDetectionScreenProps) {
-  const { ObjectDetectionModelContextProvider } = useObjectDetectionModels({
+export function ObjectDetectionScreen(props: Omit<ObjectDetectionScreenProps, "modelNames">) {
+  const models = useObjectDetectionModels({
     assets: MODELS,
     loadDefaultModel: true,
     defaultModelOptions: DEFAULT_MODEL_OPTIONS,
   })
 
+  const { ObjectDetectionProvider } = useObjectDetectionProvider(models)
+
   return (
-    <ObjectDetectionModelContextProvider>
-      <ObjectDetectionScreenComponent {...props} />
-    </ObjectDetectionModelContextProvider>
+    <ObjectDetectionProvider>
+      <ObjectDetectionScreenComponent {...props} modelNames={[...Object.keys(MODELS), "default"]} />
+    </ObjectDetectionProvider>
   )
 }
 
@@ -225,3 +244,6 @@ const $listItem: ViewStyle = {
   borderColor: "rgba(0,0,0,0.2)",
 }
 const $lastListItem: ViewStyle = { borderBottomWidth: 0 }
+
+const $modelSelector: ViewStyle = { display: "flex", flexDirection: "row", gap: 8 }
+const $modelButton: ViewStyle = { flex: 1 }

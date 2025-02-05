@@ -53,7 +53,7 @@ class RNMLKitCustomObjectDetector(
 
         try {
             val detectorMode = when (options?.detectorMode) {
-                "singleImage" -> CustomObjectDetectorOptions.STREAM_MODE
+                "singleImage" -> CustomObjectDetectorOptions.SINGLE_IMAGE_MODE
                 "stream" -> CustomObjectDetectorOptions.STREAM_MODE
                 else -> CustomObjectDetectorOptions.SINGLE_IMAGE_MODE
             }
@@ -89,6 +89,8 @@ class RNMLKitCustomObjectDetector(
     ): Result<List<RNMLKitDetectedObject>> {
         var result = CompletableDeferred<Result<List<RNMLKitDetectedObject>>>()
 
+        log.d("detectObjects: Starting detection with model path: $modelPath")
+
         val image: InputImage
 
         try {
@@ -109,16 +111,15 @@ class RNMLKitCustomObjectDetector(
         }
 
         objectDetector?.process(image)?.addOnSuccessListener { detectedObjects ->
-            log.d("detectObjects.addOnSuccessListener: Got Labels")
+                log.d("detectObjects.addOnSuccessListener: Got Labels for model at path: $modelPath")
+                log.d("detectObjects.addOnSuccessListener: Detected ${detectedObjects.size} Objects")
 
-            val expoLabels = detectedObjects.map { detectedObject ->
-                RNMLKitDetectedObject(
-                    detectedObject
-                )
-            }
+                val expoLabels = detectedObjects.map { detectedObject ->
+                    RNMLKitDetectedObject(detectedObject)
+                }
 
-            result.complete(Result.success(expoLabels))
-        }?.addOnFailureListener { e ->
+                result.complete(Result.success(expoLabels))
+            }?.addOnFailureListener { e ->
             result.complete(Result.failure(e))
         }
 

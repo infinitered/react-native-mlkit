@@ -1,17 +1,19 @@
 import { useContext } from "react";
 
-import { RNMLKitImageLabelerContext } from "./expoMLKitImageLabelerContext";
+import {
+  ModelAssets,
+  RNMLKitImageLabelerContext,
+  Models,
+} from "./RNMLKitImageLabelerContext";
 
-export function useImageLabeler(modelName: string) {
-  const modelContext = useContext(RNMLKitImageLabelerContext);
+export function useImageLabeler<T extends ModelAssets>(modelName: keyof T) {
+  const context: Models<T> | undefined = useContext(RNMLKitImageLabelerContext);
 
-  if (!modelContext) {
+  if (!context) {
     throw new Error(
-      "useCustomImageLabeler must be used within a <RNMLKitCustomImageLabelerContext.Provider>"
+      "useImageLabeler must be used within a ImageLabelingProvider"
     );
   }
 
-  const { models } = modelContext;
-
-  return models[modelName];
+  return context[modelName];
 }

@@ -1,28 +1,61 @@
+// index.ts
 import RNMLKitObjectDetectionModule from "./RNMLKitObjectDetectionModule";
 import {
   RNMLKitCustomObjectDetectorOptions,
   RNMLKitObjectDetectionObject,
 } from "./types";
 
-export * from "./types";
-export * from "./useObjectDetectionModels";
-export * from "./expoMLKitObjectDetectionContext";
+// Export all types
+export type {
+  RNMLKitObjectDetectionObject,
+  RNMLKitLabel,
+  RNMLKitObjectDetectorOptions,
+  RNMLKitCustomObjectDetectorOptions,
+  RNMLKitObjectDetector,
+  ObjectDetectionModelInfo,
+  ObjectDetectionAssetRecord,
+  ObjectDetectionModels,
+} from "./types";
 
+// Export context and hooks
+export {
+  ObjectDetectionContext,
+  useObjectDetectionContext,
+  type ObjectDetectionContextValue,
+} from "./RNMLKitObjectDetectionContext";
+
+// Export main hooks
+export { useObjectDetectionModels } from "./useObjectDetectionModels";
+export { useObjectDetectionProvider } from "./useObjectDetectionProvider";
+export { useObjectDetector } from "./useObjectDetector";
+
+// Export detector classes
+export { RNMLKitCustomObjectDetector } from "./RNMLKitCustomObjectDetector";
+export { RNMLKitDefaultObjectDetector } from "./RNMLKitDefaultObjectDetector";
+
+// Re-export core library types
+export type {
+  RNMLKitRect,
+  RNMLKitPoint,
+  ModelInfo,
+  AssetRecord,
+} from "@infinitered/react-native-mlkit-core";
+
+// Expo Module API Functions
 export async function loadCustomModel(
   name: string,
   modelPath: string,
   options?: RNMLKitCustomObjectDetectorOptions
 ) {
-  return await RNMLKitObjectDetectionModule.loadCustomModel(
-    name,
+  return await RNMLKitObjectDetectionModule.loadCustomModel({
+    modelName: name,
     modelPath,
-    options
-  );
+    options,
+  });
 }
 
 export async function loadDefaultModel(
-  options?: RNMLKitCustomObjectDetectorOptions // You may need to define a specific type for default options if
-  // different from custom options
+  options?: RNMLKitCustomObjectDetectorOptions
 ) {
   return await RNMLKitObjectDetectionModule.loadDefaultModel(options);
 }
