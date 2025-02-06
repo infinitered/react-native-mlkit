@@ -9,7 +9,7 @@ import {
   ObjectDetectionAssetRecord,
   RNMLKitObjectDetectorOptions,
   useObjectDetectionModels,
-  useObjectDetector,
+  useObjectDetection,
   useObjectDetectionProvider,
 } from "@infinitered/react-native-mlkit-object-detection"
 import { BoundingBox } from "@infinitered/react-native-mlkit-core"
@@ -42,7 +42,7 @@ export const ObjectDetectionScreenComponent: FC<ObjectDetectionScreenProps> = ob
   function ObjectDetectionScreen({ modelNames }) {
     const navigation = useTypedNavigation<"ObjectDetection">()
     const [activeModel, setActiveModel] = useState("default")
-    const detector = useObjectDetector<typeof MODELS>(activeModel)
+    const detector = useObjectDetection<typeof MODELS>(activeModel)
 
     const [image, setImage] = useState<SelectedImage | null>(null)
     const [result, setResult] = useState<RNMLKitObjectDetectionObject[]>([])

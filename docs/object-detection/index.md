@@ -91,7 +91,7 @@ The models are made available through the context system. You can access them in
 ```tsx
 // MyComponent.tsx
 import {
-  useObjectDetector,
+  useObjectDetection,
   ObjectDetectionObject,
 } from "@infinitered/react-native-mlkit-object-detection";
 import React, { useEffect, useState } from "react";
@@ -104,7 +104,7 @@ type Props = {
 
 function MyComponent({ imagePath }: Props) {
 // Get the model from context
-  const detector = useObjectDetector<MyModelsConfig>("birdDetector");
+  const detector = useObjectDetection<MyModelsConfig>("birdDetector");
 
   const [detectedObjects, setDetectedObjects] = useState<ObjectDetectionObject[]>([]);
 

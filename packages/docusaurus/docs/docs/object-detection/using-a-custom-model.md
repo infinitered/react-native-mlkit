@@ -101,13 +101,13 @@ function App() {
 ```tsx
 // MyComponent.tsx
 import {
-  useObjectDetector,
+  useObjectDetection,
   RNMLKitDetectedObject,
 } from "@infinitered/react-native-mlkit-object-detection";
 
 function MyComponent() {
   // fetch the model from the hook, if you don't pass a model name it will fetch the default MLKit Object Detection model
-  const { model } = useObjectDetector("myCustomModel");
+  const { model } = useObjectDetection("myCustomModel");
 
   const [modelLoaded, setModelLoaded] = useState(model?.isLoaded() ?? false);
 

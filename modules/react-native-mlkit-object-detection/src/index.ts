@@ -24,7 +24,7 @@ export {
 // Export main hooks
 export { useObjectDetectionModels } from "./useObjectDetectionModels";
 export { useObjectDetectionProvider } from "./useObjectDetectionProvider";
-export { useObjectDetector } from "./useObjectDetector";
+export { useObjectDetection } from "./useObjectDetection";
 
 // Export detector classes
 export { RNMLKitCustomObjectDetector } from "./RNMLKitCustomObjectDetector";

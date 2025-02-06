@@ -79,8 +79,8 @@ yarn add expo-asset
 4. Update model access pattern:
 
 ```diff
-- const model = useObjectDetector("default")
-+ const detector = useObjectDetector<MyModelsConfig>("modelName")
+- const model = useObjectDetection("default")
++ const detector = useObjectDetection<MyModelsConfig>("modelName")
 ```
 
 5. Update model configuration:

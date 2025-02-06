@@ -84,14 +84,14 @@ app's lifecycle you load the model.
 // MyComponent.tsx
 
 import {
-  useObjectDetector,
+  useObjectDetection,
   ObjectDetectionObject,
 } from "@infinitered/react-native-mlkit-object-detection";
 import { useEffect } from "react";
 
 function MyComponent() {
   // fetch the model from the hook, if you don't pass a model name it will fetch the default MLKit Object Detection model
-  const { model } = useObjectDetector();
+  const { model } = useObjectDetection();
 
   const [modelLoaded, setModelLoaded] = useState(model?.isLoaded() ?? false);
 
@@ -214,14 +214,14 @@ function App() {
 // MyComponent.tsx
 
 import {
-  useObjectDetector,
+  useObjectDetection,
   ObjectDetectionObject,
 } from "@infinitered/react-native-mlkit-object-detection";
 import { useEffect } from "react";
 
 function MyComponent() {
   // fetch the model from the hook, if you don't pass a model name it will fetch the default MLKit Object Detection model
-  const { model } = useObjectDetector("myCustomModel");
+  const { model } = useObjectDetection("myCustomModel");
 
   const [modelLoaded, setModelLoaded] = useState(model?.isLoaded() ?? false);
 

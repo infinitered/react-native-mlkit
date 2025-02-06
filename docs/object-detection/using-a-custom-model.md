@@ -94,7 +94,7 @@ function App() {
 import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
 import {
-  useObjectDetector,
+  useObjectDetection,
   ObjectDetectionObject,
 } from "@infinitered/react-native-mlkit-object-detection";
 
@@ -104,7 +104,7 @@ type Props = {
 
 function MyComponent({ imagePath }: Props) {
 // fetch the model from the hook
-  const detector = useObjectDetector("myCustomModel");
+  const detector = useObjectDetection("myCustomModel");
 
   const [modelLoaded, setModelLoaded] = useState(detector?.isLoaded() ?? false);
 
