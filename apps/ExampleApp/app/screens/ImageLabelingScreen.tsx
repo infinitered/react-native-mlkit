@@ -45,7 +45,6 @@ const ImageLabelingScreenComponent: FC<ImageLabelingScreenProps> = observer(
     const [image, setImage] = useState<SelectedImage | null>(null)
 
     const handleImageChange = useCallback((nextImage: SelectedImage) => {
-      console.log("handleImageChange", nextImage)
       setImage(nextImage)
     }, [])
 
@@ -68,7 +67,6 @@ const ImageLabelingScreenComponent: FC<ImageLabelingScreenProps> = observer(
     useEffect(() => {
       const classifyImage = async () => {
         if (!image?.uri || !model) return
-        console.log("CLASSIFYING:", image.name)
         setStatus("classifying")
         try {
           const classificationResult = await model.classifyImage(image.uri)
