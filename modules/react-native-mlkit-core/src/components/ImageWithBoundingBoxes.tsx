@@ -1,6 +1,6 @@
 import { Image, ImageStyle, ImageSource } from "expo-image";
 import React, { useMemo } from "react";
-import { View, ViewStyle } from "react-native";
+import { View, ViewStyle, DimensionValue } from "react-native";
 
 import { BoundingBoxView } from "./BoundingBoxView";
 import { useLayout, useImageScale, ContentFit, BoundingBox } from "../hooks";
@@ -30,6 +30,7 @@ export function ImageWithBoundingBoxes({
   const [containerLayout, onLayout] = useLayout();
   const scaleFactor = useImageScale(contentFit, containerLayout, image);
   const localUri = image?.localUri ?? image?.uri ?? undefined;
+
   const imageSource = useMemo(() => {
     return localUri
       ? ({
@@ -40,17 +41,30 @@ export function ImageWithBoundingBoxes({
       : undefined;
   }, [localUri]);
 
-  const imageDimensions: ImageStyle = React.useMemo(() => {
-    return image?.width && image?.height
-      ? {
-          width: image.width * scaleFactor.x,
-          height: image.height * scaleFactor.y,
-        }
-      : { width: "100%", height: "100%" };
-  }, [image, scaleFactor]);
+  const imageDimensions: {
+    width: DimensionValue;
+    height: DimensionValue;
+    left?: DimensionValue;
+    top?: DimensionValue;
+  } = React.useMemo(() => {
+    if (!image?.width || !image?.height) {
+      return { width: "100%", height: "100%" };
+    }
+
+    const scaledWidth = image.width * scaleFactor.x;
+    const scaledHeight = image.height * scaleFactor.y;
+
+    return {
+      width: scaledWidth,
+      height: scaledHeight,
+      left: (containerLayout.width - scaledWidth) / 2,
+      top: (containerLayout.height - scaledHeight) / 2,
+      position: "absolute" as const,
+    };
+  }, [image, scaleFactor, containerLayout]);
 
   return (
-    <View style={[$centered, style]} onLayout={onLayout} testID={testId}>
+    <View style={[$container, style]} onLayout={onLayout} testID={testId}>
       <Image
         testID={`${testId}-image`}
         source={imageSource}
@@ -60,7 +74,11 @@ export function ImageWithBoundingBoxes({
       {boundingBoxes.map((box, index) => (
         <BoundingBoxView
           box={box}
-          scale={scaleFactor}
+          scale={{
+            ...scaleFactor,
+            offsetX: imageDimensions.left as number,
+            offsetY: imageDimensions.top as number,
+          }}
           key={index}
           testId={`${testId}-boundingBoxView`}
         />
@@ -69,8 +87,7 @@ export function ImageWithBoundingBoxes({
   );
 }
 
-const $centered: ViewStyle = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
+const $container: ViewStyle = {
+  position: "relative",
+  overflow: "hidden",
 };
