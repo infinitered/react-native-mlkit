@@ -30,7 +30,7 @@ func rejectPromiseWithMessage(promise: Promise, message: String, domain: String)
     )
 }
 
-struct ImageLabelerSpec: Record {
+struct RNMLKitImageLabelerSpec: Record {
     @Field
     var modelName: String = ""
 
@@ -41,17 +41,17 @@ struct ImageLabelerSpec: Record {
     var options: RNMLKitImageLabelerOptionsRecord? = nil
 }
 
-public class ImageLabelingModule: Module {
+public class RNMLKitImageLabelingModule: Module {
     let ERROR_DOMAIN: String = "red.infinite.RNMLKit.RNMLKitImageLabelingModuleErrorDomain"
     var labelers: [String: RNMLKitImageLabeler] = [:]
-    var specs: [String: ImageLabelerSpec] = [:]
+    var specs: [String: RNMLKitImageLabelerSpec] = [:]
 
     var imageLabeler: RNMLKitImageLabeler?
 
     public func definition() -> ModuleDefinition {
         Name("RNMLKitImageLabeling")
 
-        AsyncFunction("addModel") { (spec: ImageLabelerSpec, promise: Promise) in
+        AsyncFunction("addModel") { (spec: RNMLKitImageLabelerSpec, promise: Promise) in
             let logger = Logger(logHandlers: [createOSLogHandler(category: Logger.EXPO_LOG_CATEGORY)])
             let context = RNMLKitContext(logger: logger)
             do {

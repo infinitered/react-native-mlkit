@@ -10,7 +10,7 @@ possible:
 ```tsx
 import {
   RNMLKitFaceDetectorOptions,
-  RNMLKitFaceDetectionContextProvider
+  FaceDetectionProvider
 } from "@infinitered/react-native-mlkit-face-detection";
 
 const CUSTOM_OPTIONS: RNMLKitFaceDetectorOptions = {
@@ -23,9 +23,9 @@ const CUSTOM_OPTIONS: RNMLKitFaceDetectorOptions = {
 
 function App() {
   return (
-    <RNMLKitFaceDetectionContextProvider options={CUSTOM_OPTIONS}>
+    <FaceDetectionProvider options={CUSTOM_OPTIONS}>
       {/* rest of your app goes here */}
-    </RNMLKitFaceDetectionContextProvider>
+    </FaceDetectionProvider>
   );
 }
 ```

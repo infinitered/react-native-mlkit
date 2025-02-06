@@ -8,7 +8,7 @@ title: API
 ## Hooks
 
 :::tip
-All of these hooks must be called inside an `RNMLKitFaceDetectionContextProvider`.
+All of these hooks must be called inside an `FaceDetectionProvider`.
 :::
 
 ### `useFacesInPhoto`
@@ -21,7 +21,7 @@ Custom hook for detecting faces in a photo using ML Kit.
 
 #### Return Type
 
-- `UseFaceDetectorReturnType`: Object
+- `UseFaceDetectionReturnType`: Object
 
     - `clearFaces`: Function - Clears the detected faces.
     - `error`: string | undefined - Any potential errors during detection.
@@ -39,7 +39,7 @@ function FaceDetectionComponent() {
 }
 ```
 
-### `useFaceDetector`
+### `useFaceDetection`
 
 Hook used to directly access the faceDetector instance provided by the context.
 
@@ -50,15 +50,15 @@ Hook used to directly access the faceDetector instance provided by the context.
 #### Usage
 
 ```tsx
-import { useFaceDetector } from "@infinitered/react-native-mlkit-face-detection";
+import { useFaceDetection } from "@infinitered/react-native-mlkit-face-detection";
 
-const faceDetector = useFaceDetector();
+const faceDetector = useFaceDetection();
 // ... rest of your usage
 ```
 
 ## Context
 
-### `ReactMLKitFaceDetectionContextValue`
+### `FaceDetectionContextValue`
 
 Represents the context value for ML Kit Face Detection in React.
 
@@ -66,7 +66,7 @@ Represents the context value for ML Kit Face Detection in React.
 |----------------|--------------------------------------|-----------------------|---------|
 | `faceDetector` | Instance of the RNMLKitFaceDetector. | `RNMLKitFaceDetector` | -       |
 
-### `ReactMLKitFaceDetectionContext`
+### `FaceDetectionContext`
 
 The context for ML Kit Face Detection in React.
 
@@ -74,7 +74,7 @@ The context for ML Kit Face Detection in React.
 |----------------|----------------------------------------------|-----------------------|---------------------------------------|
 | `faceDetector` | Default instance of the RNMLKitFaceDetector. | `RNMLKitFaceDetector` | New instance of `RNMLKitFaceDetector` |
 
-### `RNMLKitFaceDetectionContextProvider`
+### `FaceDetectionProvider`
 
 A provider component for the ML Kit Face Detection context.
 
@@ -87,13 +87,13 @@ A provider component for the ML Kit Face Detection context.
 Usage:
 
 ```tsx
-import { RNMLKitFaceDetectionContextProvider } from 'path-to-context';
+import { FaceDetectionProvider } from 'path-to-context';
 
 function App() {
   return (
-    <RNMLKitFaceDetectionContextProvider options={yourOptions}>
+    <FaceDetectionProvider options={yourOptions}>
       {/* Your components */}
-    </RNMLKitFaceDetectionContextProvider>
+    </FaceDetectionProvider>
   );
 }
 ```

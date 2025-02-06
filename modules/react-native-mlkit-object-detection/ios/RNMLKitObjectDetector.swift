@@ -25,7 +25,7 @@ public class RNMLKitObjectDetector: RNMLKitObjectDetectorCommon {
 
     var nativeOptions:ObjectDetectorOptions
 
-    public init(options: ObjectDetectorOptions?) {
+    public init(options: RNMLKitObjectDetectorOptions?) {
         nativeOptions = options?.objectDetectorOptions ?? getDefaultObjectDetectorOptions()
     }
 
@@ -43,7 +43,7 @@ public class RNMLKitObjectDetector: RNMLKitObjectDetectorCommon {
         let result = try objectDetector.results(in: visionImage)
         print (result)
         return result.map({ object in
-            return ObjectDetectionObject(detectedObject: object).record
+            return RNMLKitObjectDetectionObject(detectedObject: object).record
         })
     }
 }

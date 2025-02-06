@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { RNMLKitCustomObjectDetector } from "./RNMLKitCustomObjectDetector";
 import { RNMLKitDefaultObjectDetector } from "./RNMLKitDefaultObjectDetector";
 import {
-  ObjectDetectorOptions,
+  RNMLKitObjectDetectorOptions,
   ObjectDetectionModels,
   ObjectDetectionConfig,
   RNMLKitObjectDetector,
@@ -17,7 +17,7 @@ export function useObjectDetectionModels<T extends ObjectDetectionConfig>({
 }: {
   assets?: T;
   loadDefaultModel?: boolean;
-  defaultModelOptions?: ObjectDetectorOptions;
+  defaultModelOptions?: RNMLKitObjectDetectorOptions;
 }): ObjectDetectionModels<T> {
   const assetModels = Object.values(assets).map((info) => info.model);
   const [assetObjects, assetsError] = useAssets(assetModels);

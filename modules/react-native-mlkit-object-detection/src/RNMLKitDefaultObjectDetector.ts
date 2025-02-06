@@ -1,14 +1,14 @@
 import RNMLKitObjectDetectionModule from "./RNMLKitObjectDetectionModule";
 import {
-  ObjectDetectionObject,
-  ObjectDetectorOptions,
+  RNMLKitObjectDetectionObject,
+  RNMLKitObjectDetectorOptions,
   RNMLKitObjectDetector,
 } from "./types";
 
 export class RNMLKitDefaultObjectDetector implements RNMLKitObjectDetector {
-  private options?: ObjectDetectorOptions;
+  private options?: RNMLKitObjectDetectorOptions;
 
-  constructor(options?: ObjectDetectorOptions) {
+  constructor(options?: RNMLKitObjectDetectorOptions) {
     this.options = options;
   }
 
@@ -20,7 +20,9 @@ export class RNMLKitDefaultObjectDetector implements RNMLKitObjectDetector {
     return RNMLKitObjectDetectionModule.isLoaded("default");
   }
 
-  async detectObjects(imagePath: string): Promise<ObjectDetectionObject[]> {
+  async detectObjects(
+    imagePath: string
+  ): Promise<RNMLKitObjectDetectionObject[]> {
     if (!this.isLoaded()) {
       throw new Error("Default model is not loaded");
     }
@@ -33,7 +35,7 @@ export class RNMLKitDefaultObjectDetector implements RNMLKitObjectDetector {
   }
 
   async updateOptionsAndReload(
-    newOptions: ObjectDetectorOptions
+    newOptions: RNMLKitObjectDetectorOptions
   ): Promise<void> {
     this.options = newOptions;
     await this.load(); // Reloading the default model with the new options

@@ -1,10 +1,10 @@
 import { useEffect, useCallback, useState } from "react";
 
-import { useFaceDetector } from "./useFaceDetector";
+import { useFaceDetection } from "./useFaceDetection";
 import { FaceDetectionState } from "../module/RNMLKitFaceDetector";
 import { RNMLKitFace } from "../types";
 
-export type UseFaceDetectorReturnType = {
+export type UseFaceDetectionReturnType = {
   clearFaces: () => void;
   error?: string;
   status: FaceDetectionState;
@@ -18,8 +18,8 @@ export type UseFaceDetectorReturnType = {
  *   `ExpoImagePickerResult`, or `myPhoto.localUri` for `ExpoImage`)
  */
 
-export function useFacesInPhoto(imageUri?: string): UseFaceDetectorReturnType {
-  const faceDetector = useFaceDetector();
+export function useFacesInPhoto(imageUri?: string): UseFaceDetectionReturnType {
+  const faceDetector = useFaceDetection();
 
   const [error, setError] = useState<string | undefined>(undefined);
   const [status, setStatus] = useState<FaceDetectionState>("init");
@@ -72,5 +72,5 @@ export function useFacesInPhoto(imageUri?: string): UseFaceDetectorReturnType {
     error,
     status,
     faces,
-  } as UseFaceDetectorReturnType;
+  } as UseFaceDetectionReturnType;
 }

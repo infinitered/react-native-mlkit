@@ -1,13 +1,13 @@
 import RNMLKitImageLabeler, {
   ClassificationResult,
-  CustomImageLabelerOptions,
-  ImageLabelerSpec,
+  RNMLKitCustomImageLabelerOptions,
+  RNMLKitImageLabelerSpec,
 } from "./RNMLKitImageLabeler";
 
 export class RNMLKitClassifier {
-  private modelSpec: ImageLabelerSpec;
+  private modelSpec: RNMLKitImageLabelerSpec;
 
-  constructor(modelSpec: ImageLabelerSpec) {
+  constructor(modelSpec: RNMLKitImageLabelerSpec) {
     this.modelSpec = modelSpec;
   }
 
@@ -38,7 +38,7 @@ export class RNMLKitClassifier {
   }
 
   async updateOptionsAndReload(
-    newOptions: CustomImageLabelerOptions
+    newOptions: RNMLKitCustomImageLabelerOptions
   ): Promise<void> {
     this.modelSpec = { ...this.modelSpec, options: newOptions };
     // Call the native method to update options and reload the model

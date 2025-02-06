@@ -10,19 +10,20 @@ export interface RNMLKitLabel {
   index: number;
 }
 
-export interface ObjectDetectionObject {
+export interface RNMLKitObjectDetectionObject {
   frame: RNMLKitRect;
   labels: RNMLKitLabel[];
   trackingID?: number;
 }
 
-export interface ObjectDetectorOptions {
+export interface RNMLKitObjectDetectorOptions {
   shouldEnableClassification?: boolean;
   shouldEnableMultipleObjects?: boolean;
   detectorMode?: "singleImage" | "stream";
 }
 
-export interface CustomObjectDetectorOptions extends ObjectDetectorOptions {
+export interface RNMLKitCustomObjectDetectorOptions
+  extends RNMLKitObjectDetectorOptions {
   classificationConfidenceThreshold?: number;
   maxPerObjectLabelCount?: number;
 }
@@ -30,15 +31,19 @@ export interface CustomObjectDetectorOptions extends ObjectDetectorOptions {
 export interface RNMLKitObjectDetector {
   load(): Promise<void>;
   isLoaded(): boolean;
-  detectObjects(imagePath: string): Promise<ObjectDetectionObject[]>;
-  updateOptionsAndReload(options: ObjectDetectorOptions): Promise<void>;
+  detectObjects(imagePath: string): Promise<RNMLKitObjectDetectionObject[]>;
+  updateOptionsAndReload(
+    newOptions: RNMLKitObjectDetectorOptions
+  ): Promise<void>;
 }
 
 // This represents the configuration for a specific model
-export type ObjectDetectionModelInfo = ModelInfo<CustomObjectDetectorOptions>;
+export type ObjectDetectionModelInfo =
+  ModelInfo<RNMLKitCustomObjectDetectorOptions>;
 
 // This represents all models in the configuration
-export type ObjectDetectionConfig = AssetRecord<CustomObjectDetectorOptions>;
+export type ObjectDetectionConfig =
+  AssetRecord<RNMLKitCustomObjectDetectorOptions>;
 
 // This represents the loaded model instances
 export type ObjectDetectionModels<T extends ObjectDetectionConfig> = {

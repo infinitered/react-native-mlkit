@@ -432,7 +432,7 @@ function Switch(props: ToggleInputProps) {
       0) as number
 
     const start = withTiming(on ? "100%" : "0%")
-    const marginStart = withTiming(on ? -(knobWidth || 0) - offsetRight : 0 + offsetLeft)
+    const marginStart = withTiming(on ? -(knobWidth || 0) - offsetRight : offsetLeft)
 
     return { start, marginStart }
   }, [on, knobWidth])

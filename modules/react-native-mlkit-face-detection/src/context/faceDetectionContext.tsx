@@ -3,28 +3,27 @@ import { createContext, PropsWithChildren, FC } from "react";
 import { RNMLKitFaceDetector } from "../module/RNMLKitFaceDetector";
 import { RNMLKitFaceDetectorOptions } from "../types";
 
-export type ReactMLKitFaceDetectionContextValue = {
+export type FaceDetectionContextValue = {
   faceDetector: RNMLKitFaceDetector;
 };
 
-export const ReactMLKitFaceDetectionContext =
-  createContext<ReactMLKitFaceDetectionContextValue>({
-    faceDetector: new RNMLKitFaceDetector(),
-  });
+export const FaceDetectionContext = createContext<FaceDetectionContextValue>({
+  faceDetector: new RNMLKitFaceDetector(),
+});
 
-export const RNMLKitFaceDetectionContextProvider: FC<
+export const FaceDetectionProvider: FC<
   PropsWithChildren<{
     options?: RNMLKitFaceDetectorOptions;
     deferInitialization?: boolean;
   }>
 > = ({ options, deferInitialization, children }) => {
-  const contextValue: ReactMLKitFaceDetectionContextValue = {
+  const contextValue: FaceDetectionContextValue = {
     faceDetector: new RNMLKitFaceDetector(options, deferInitialization),
   };
 
   return (
-    <ReactMLKitFaceDetectionContext.Provider value={contextValue}>
+    <FaceDetectionContext.Provider value={contextValue}>
       {children}
-    </ReactMLKitFaceDetectionContext.Provider>
+    </FaceDetectionContext.Provider>
   );
 };

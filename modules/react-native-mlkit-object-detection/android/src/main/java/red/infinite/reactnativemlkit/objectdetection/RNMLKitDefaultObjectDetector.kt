@@ -12,7 +12,7 @@ import red.infinite.reactnativemlkit.core.RNMLKitLog
 import java.net.URL
 
 class RNMLKitDefaultObjectDetector(
-    private var options: ObjectDetectorOptions?,
+    private var options: RNMLKitObjectDetectorOptions?,
 ) : RNMLKitObjectDetector() {
     override var objectDetector: ObjectDetector? = null
     private var isModelLoaded: Boolean = false
@@ -21,7 +21,7 @@ class RNMLKitDefaultObjectDetector(
 
     init {
         try {
-            val detectorMode = when (options?.detectorMode) {
+            val detectorMode = when (options?.detectorMode?.toString()) {
                 "singleImage" -> ObjectDetectorOptions.SINGLE_IMAGE_MODE
                 "stream" -> ObjectDetectorOptions.STREAM_MODE
                 else -> ObjectDetectorOptions.SINGLE_IMAGE_MODE

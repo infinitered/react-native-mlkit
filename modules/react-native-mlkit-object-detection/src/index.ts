@@ -1,13 +1,16 @@
 // index.ts
 import RNMLKitObjectDetectionModule from "./RNMLKitObjectDetectionModule";
-import { CustomObjectDetectorOptions, ObjectDetectionObject } from "./types";
+import {
+  RNMLKitCustomObjectDetectorOptions,
+  RNMLKitObjectDetectionObject,
+} from "./types";
 
 // Export all types
 export type {
-  ObjectDetectionObject,
+  RNMLKitObjectDetectionObject,
   RNMLKitLabel,
-  ObjectDetectorOptions,
-  CustomObjectDetectorOptions,
+  RNMLKitObjectDetectorOptions,
+  RNMLKitCustomObjectDetectorOptions,
   RNMLKitObjectDetector,
   ObjectDetectionModelInfo,
   ObjectDetectionConfig,
@@ -42,7 +45,7 @@ export type {
 export async function loadCustomModel(
   name: string,
   modelPath: string,
-  options?: CustomObjectDetectorOptions
+  options?: RNMLKitCustomObjectDetectorOptions
 ) {
   return await RNMLKitObjectDetectionModule.loadCustomModel({
     modelName: name,
@@ -51,14 +54,16 @@ export async function loadCustomModel(
   });
 }
 
-export async function loadDefaultModel(options?: CustomObjectDetectorOptions) {
+export async function loadDefaultModel(
+  options?: RNMLKitCustomObjectDetectorOptions
+) {
   return await RNMLKitObjectDetectionModule.loadDefaultModel(options);
 }
 
 export async function detectObjects(
   modelName: string,
   imagePath: string
-): Promise<ObjectDetectionObject[]> {
+): Promise<RNMLKitObjectDetectionObject[]> {
   return await RNMLKitObjectDetectionModule.detectObjects(modelName, imagePath);
 }
 

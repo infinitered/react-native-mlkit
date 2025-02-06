@@ -15,7 +15,7 @@ public struct RNMLKitObjectDetectionObjectRecord: Record {
     var trackingID: Int? = nil
 }
 
-public class ObjectDetectionObject {
+public class RNMLKitObjectDetectionObject {
     var detectedObject: Object
 
     init(detectedObject: Object) {

@@ -16,7 +16,7 @@ enum RNMLKitObjectDetectorOptionsError:Error {
     case unknownDetectorMode(mode:String)
 }
 
-public class ObjectDetectorOptions {
+public class RNMLKitObjectDetectorOptions {
     var objectDetectorOptions: ObjectDetectorOptions
 
     init(objectDetectorOptions: ObjectDetectorOptions) {

@@ -16,7 +16,7 @@ public class RNMLKitCustomObjectDetector: RNMLKitObjectDetectorCommon {
     var localModel: LocalModel? = nil
     var nativeOptions: CustomObjectDetectorOptions?
 
-    public init(name: String, modelPath: String, options: CustomObjectDetectorOptions) throws {
+    public init(name: String, modelPath: String, options: RNMLKitCustomObjectDetectorOptions) throws {
         self.localModel = LocalModel(path: modelPath)
         guard let model = localModel else {
             throw RNMLKitCustomObjectDetectorError.modelDoesNotExist(modelPath: modelPath)
@@ -47,7 +47,7 @@ public class RNMLKitCustomObjectDetector: RNMLKitObjectDetectorCommon {
         let result = try objectDetector.results(in: visionImage)
         print (result)
         return result.map({ object in
-            return ObjectDetectionObject(detectedObject: object).record
+            return RNMLKitObjectDetectionObject(detectedObject: object).record
         })
     }
 

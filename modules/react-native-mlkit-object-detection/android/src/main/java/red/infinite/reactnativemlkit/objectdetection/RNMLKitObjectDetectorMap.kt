@@ -12,7 +12,7 @@ class RNMLKitObjectDetectorSpec : Record {
     var modelPath: String = ""
 
     @Field
-    var options: ObjectDetectorOptions? = null
+    var options: RNMLKitObjectDetectorOptions? = null
 }
 
 const val LOG_TAG = "RNMLKitObjDetectMap"

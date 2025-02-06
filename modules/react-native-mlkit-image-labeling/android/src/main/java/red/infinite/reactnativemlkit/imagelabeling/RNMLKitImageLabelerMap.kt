@@ -6,7 +6,7 @@ class RNMLKitImageLabelerMap {
 
     private val labelerMap = mutableMapOf<String, RNMLKitImageLabeler>()
 
-    fun add(spec: ImageLabelerSpec): RNMLKitImageLabeler {
+    fun add(spec: RNMLKitImageLabelerSpec): RNMLKitImageLabeler {
         Log.d("RNMLKit", "add: Loading model '${spec.modelName}' from ${spec.modelPath} with options ${spec.options}")
 
         labelerMap[spec.modelName] = RNMLKitImageLabeler(spec.modelPath, spec.options)

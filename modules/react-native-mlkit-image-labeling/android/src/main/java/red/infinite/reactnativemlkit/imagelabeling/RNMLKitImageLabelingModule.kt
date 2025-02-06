@@ -9,7 +9,7 @@ import expo.modules.kotlin.records.Field
 import expo.modules.kotlin.records.Record
 import kotlinx.coroutines.runBlocking
 
-class ImageLabelerSpec : Record {
+class RNMLKitImageLabelerSpec : Record {
     @Field
     var modelName: String = ""
 
@@ -20,14 +20,14 @@ class ImageLabelerSpec : Record {
     var options: RNMLKitImageLabelerOptions? = null
 }
 
-class ImageLabelingModule : Module() {
+class RNMLKitImageLabelingModule : Module() {
     private val labelerMap = RNMLKitImageLabelerMap()
 
 
     override fun definition() = ModuleDefinition {
         Name("RNMLKitImageLabeling")
 
-        AsyncFunction("addModel") { spec: ImageLabelerSpec, promise: Promise ->
+        AsyncFunction("addModel") { spec: RNMLKitImageLabelerSpec, promise: Promise ->
             try {
                 Log.d(
                     "RNMLKit",
@@ -38,7 +38,7 @@ class ImageLabelingModule : Module() {
             } catch (e: Exception) {
                 promise.reject(
                     CodedException(
-                        "ImageLabelingModule - Classifier Error: ${e.message}", e
+                        "RNMLKitImageLabelingModule - Classifier Error: ${e.message}", e
                     )
                 )
             }
@@ -66,7 +66,7 @@ class ImageLabelingModule : Module() {
                     } catch (e: Throwable) {
                         promise.reject(
                             CodedException(
-                                "ImageLabelingModule - Classifier Error: ${e.message}", e
+                                "RNMLKitImageLabelingModule - Classifier Error: ${e.message}", e
                             )
                         )
                     }
@@ -86,7 +86,7 @@ class ImageLabelingModule : Module() {
                 } catch (e: Exception) {
                     promise.reject(
                         CodedException(
-                            "ImageLabelingModule - Error Updating Options: ${e.message}", e
+                            "RNMLKitImageLabelingModule - Error Updating Options: ${e.message}", e
                         )
                     )
                 }

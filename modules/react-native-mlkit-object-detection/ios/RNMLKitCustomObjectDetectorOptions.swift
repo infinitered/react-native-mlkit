@@ -22,7 +22,7 @@ enum RNMLKitCustomObjectDetectorOptionsError: Error {
     case invalidDetectorMode(detectorMode: String)
 }
 
-public class CustomObjectDetectorOptions {
+public class RNMLKitCustomObjectDetectorOptions {
     private var shouldEnableClassification: Bool?
     private var shouldEnableMultipleObjects: Bool?
     private var detectorMode: ObjectDetectorMode?

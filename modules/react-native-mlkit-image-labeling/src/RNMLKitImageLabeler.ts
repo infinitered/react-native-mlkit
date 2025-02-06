@@ -8,20 +8,22 @@ export type RNMLKitImageLabel = {
 
 export type ClassificationResult = RNMLKitImageLabel[];
 
-export type CustomImageLabelerOptions = {
+export type RNMLKitCustomImageLabelerOptions = {
   maxResultCount?: number;
   confidenceThreshold?: number;
 };
 
-export type ImageLabelerSpec = {
+export type RNMLKitImageLabelerSpec = {
   modelName: string;
   modelPath: string;
-  options?: CustomImageLabelerOptions;
+  options?: RNMLKitCustomImageLabelerOptions;
 };
 
-type ImageLabelingModule = {
-  addModel: (modelSpec: ImageLabelerSpec) => Promise<string | undefined>;
-  loadModel: (modelSpec: ImageLabelerSpec) => Promise<string | undefined>;
+type RNMLKitImageLabelingModule = {
+  addModel: (modelSpec: RNMLKitImageLabelerSpec) => Promise<string | undefined>;
+  loadModel: (
+    modelSpec: RNMLKitImageLabelerSpec
+  ) => Promise<string | undefined>;
   isLoaded: (modelName: string) => boolean;
   runClassification: (imagePath: string) => Promise<ClassificationResult>;
   classifyImage: (
@@ -30,7 +32,7 @@ type ImageLabelingModule = {
   ) => Promise<ClassificationResult>;
   updateOptionsAndReload: (
     modelName: string,
-    newOptions: CustomImageLabelerOptions
+    newOptions: RNMLKitCustomImageLabelerOptions
   ) => Promise<void>;
 };
 
@@ -38,9 +40,11 @@ type ImageLabelingModule = {
 // the bridge module (from NativeModulesProxy) if the remote debugger is on.
 const imageLabelingModule = requireNativeModule(
   "RNMLKitImageLabeling"
-) as ImageLabelingModule;
+) as RNMLKitImageLabelingModule;
 
-function loadModel(modelSpec: ImageLabelerSpec): Promise<string | undefined> {
+function loadModel(
+  modelSpec: RNMLKitImageLabelerSpec
+): Promise<string | undefined> {
   try {
     return imageLabelingModule.addModel(modelSpec);
   } catch (error) {
@@ -62,7 +66,7 @@ async function classifyImage(
 
 async function updateOptionsAndReload(
   modelName: string,
-  newOptions: CustomImageLabelerOptions
+  newOptions: RNMLKitCustomImageLabelerOptions
 ): Promise<void> {
   return await imageLabelingModule.updateOptionsAndReload(
     modelName,
