@@ -1,8 +1,10 @@
-# react-native-mlkit-face-detection
+# @infinitered/react-native-mlkit-face-detection
 
-MLKit Face Detection for Expo
+MLKit Face Detection for Expo apps.
 
 # API documentation
+
+### [Check the friendly docs here! 📖](https://docs.infinite.red/react-native-mlkit/face-detection)
 
 # Installation in managed Expo projects
 

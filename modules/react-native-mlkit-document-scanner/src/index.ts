@@ -1,12 +1,13 @@
-// Import the native module. On web, it will be resolved to RNMLKitDocumentScannerModule.web.ts
-// and on native platforms to RNMLKitDocumentScannerModule.ts
 import { UnavailabilityError } from "expo-modules-core";
 
+// Import the native module. On web, it will be resolved to RNMLKitDocumentScannerModule.web.ts
+// and on native platforms to RNMLKitDocumentScannerModule.ts
 import RNMLKitDocumentScannerModule from "./module/RNMLKitDocumentScannerModule";
 import {
   DocumentScannerOptions,
   DocumentScannerResult,
 } from "./module/RNMLKitDocumentScannerModule.types";
+
 export * from "./module/RNMLKitDocumentScannerModule.types";
 
 export async function scan() {
