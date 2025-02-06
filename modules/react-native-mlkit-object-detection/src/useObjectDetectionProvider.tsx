@@ -7,7 +7,7 @@ export function useObjectDetectionProvider<T extends ObjectDetectionConfig>(
   models: ObjectDetectionModels<T>
 ) {
   return {
-    ObjectDetectionModelProvider: ({ children }: PropsWithChildren<object>) => (
+    ObjectDetectionProvider: ({ children }: PropsWithChildren<object>) => (
       <ObjectDetectionContext.Provider value={{ ...models }}>
         {children}
       </ObjectDetectionContext.Provider>

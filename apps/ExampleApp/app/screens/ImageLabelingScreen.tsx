@@ -7,13 +7,14 @@ import { Screen, Text, Icon, ImageSelector, Button } from "../components"
 import { useTypedNavigation } from "../navigators/useTypedNavigation"
 
 import {
-  useImageLabeler,
+  useImageLabeling,
   ClassificationResult,
   useImageLabelingProvider,
   ImageLabelingConfig,
   useImageLabelingModels,
 } from "@infinitered/react-native-mlkit-image-labeling"
 import { UseExampleImageStatus, SelectedImage } from "../utils/useExampleImage"
+import { colors } from "../theme"
 
 interface ImageLabelingScreenProps
   extends NativeStackScreenProps<AppStackScreenProps<"ImageLabeling">> {
@@ -50,7 +51,7 @@ const ImageLabelingScreenComponent: FC<ImageLabelingScreenProps> = observer(
 
     const [activeModel, setActiveModel] = useState("nsfw")
 
-    const model = useImageLabeler(activeModel)
+    const model = useImageLabeling(activeModel)
     const [result, setResult] = useState<ClassificationResult | null>(null)
     const [status, setStatus] = useState<
       "init" | "noPermissions" | "done" | "error" | "loading" | UseExampleImageStatus
@@ -132,18 +133,22 @@ const ImageLabelingScreenComponent: FC<ImageLabelingScreenProps> = observer(
         <View style={$modelSelector}>
           {modelNames
             .sort((a, b) => {
-              if (a === "default") return -1
-              if (b === "default") return 1
+              if (a === "nsfw") return -1
+              if (b === "nsfw") return 1
               return a.localeCompare(b)
             })
             .map((modelName) => {
+              const isActive = activeModel === modelName
               return (
                 <Button
                   key={modelName}
-                  text={modelName}
-                  style={$modelButton}
+                  text={`${isActive ? "✔ " : ""}${modelName}`}
+                  style={[
+                    $modelButton,
+                    isActive ? { backgroundColor: colors.palette.accent500 } : {},
+                  ]}
                   onPress={() => setActiveModel(modelName)}
-                  preset={activeModel === modelName ? "filled" : "default"}
+                  preset={isActive ? "filled" : "default"}
                 />
               )
             })}

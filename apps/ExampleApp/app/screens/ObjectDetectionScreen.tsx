@@ -6,7 +6,7 @@ import { AppStackScreenProps } from "app/navigators"
 import { Screen, Text, Icon, ImageSelector, Button } from "app/components"
 import {
   RNMLKitObjectDetectionObject,
-  ObjectDetectionAssetRecord,
+  ObjectDetectionConfig,
   RNMLKitObjectDetectorOptions,
   useObjectDetectionModels,
   useObjectDetection,
@@ -15,9 +15,11 @@ import {
 import { BoundingBox } from "@infinitered/react-native-mlkit-core"
 import { SelectedImage, UseExampleImageStatus } from "../utils/useExampleImage"
 import { useTypedNavigation } from "../navigators/useTypedNavigation"
+import { colors } from "../theme"
 
-const MODELS: ObjectDetectionAssetRecord = {
+const MODELS: ObjectDetectionConfig = {
   cars: {
+    // This model is not very accurate, but it's just here to show how to use a custom model
     model: require("assets/models/car-detection.tflite"),
     options: {
       shouldEnableClassification: false,
@@ -150,17 +152,27 @@ export const ObjectDetectionScreenComponent: FC<ObjectDetectionScreenProps> = ob
           <Text style={$description}>Detect Objects</Text>
         </View>
         <View style={$modelSelector}>
-          {modelNames.map((modelName) => {
-            return (
-              <Button
-                key={modelName}
-                text={modelName}
-                style={$modelButton}
-                onPress={() => setActiveModel(modelName)}
-                preset={activeModel === modelName ? "filled" : "default"}
-              />
-            )
-          })}
+          {modelNames
+            .sort((a, b) => {
+              if (a === "default") return -1
+              if (b === "default") return 1
+              return a.localeCompare(b)
+            })
+            .map((modelName) => {
+              const isActive = activeModel === modelName
+              return (
+                <Button
+                  key={modelName}
+                  text={`${isActive ? "✔ " : ""}${modelName}`}
+                  style={[
+                    $modelButton,
+                    isActive ? { backgroundColor: colors.palette.accent500 } : {},
+                  ]}
+                  onPress={() => setActiveModel(modelName)}
+                  preset={isActive ? "filled" : "default"}
+                />
+              )
+            })}
         </View>
 
         <ImageSelector
