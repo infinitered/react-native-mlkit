@@ -11466,6 +11466,7 @@ __metadata:
     react: 18.3.1
     react-dom: ^18.3.1
     react-native: ^0.76.0
+    react-native-device-info: ^14.0.4
     react-native-gesture-handler: ^2.20.0
     react-native-reanimated: ^3.16.1
     react-native-safe-area-context: ^4.12.0
@@ -19032,6 +19033,15 @@ __metadata:
     react-loadable: "*"
     webpack: ">=4.41.1 || 5.x"
   checksum: 1cf7ceb488d329a5be15f891dae16727fb7ade08ef57826addd21e2c3d485e2440259ef8be94f4d54e9afb4bcbd2fcc22c3c5bad92160c9c06ae6ba7b5562497
+  languageName: node
+  linkType: hard
+
+"react-native-device-info@npm:^14.0.4":
+  version: 14.0.4
+  resolution: "react-native-device-info@npm:14.0.4"
+  peerDependencies:
+    react-native: "*"
+  checksum: aa839dbe7df1246a4b5f9bcfeb3d4cc4be585f13a0d3ff6a03f57a0c2cfe7590291ac292dda4c51fd8765f94c870857676463e8e2f1660b057f3ae2b4335db29
   languageName: node
   linkType: hard
 

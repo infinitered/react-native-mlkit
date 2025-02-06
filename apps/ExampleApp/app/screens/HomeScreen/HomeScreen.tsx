@@ -26,6 +26,7 @@ export const HomeScreen: FC<HomeScreenProps> = observer(function HomeScreen() {
     },
     [navigation],
   )
+
   return (
     <Screen style={$root} preset="fixed">
       <View style={$shadowSpace}>

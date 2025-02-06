@@ -127,11 +127,11 @@ struct RNMLKitRect: Record {
     static func fromCGRect(rect: CGRect) -> RNMLKitRect {
         var expoRect = RNMLKitRect()
 
-        var origin = RNMLKitPoint()
+        let origin = RNMLKitPoint()
         origin.x = rect.origin.x
         origin.y = rect.origin.y
 
-        var size = RNMLKitPoint()
+        let size = RNMLKitPoint()
         size.x = rect.width
         size.y = rect.height
 
