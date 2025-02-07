@@ -1,80 +1,121 @@
-import React, { FC, useEffect, useState, PropsWithChildren, useCallback } from "react"
+import React, { FC, useEffect, useState, useCallback } from "react"
 import { observer } from "mobx-react-lite"
 import { ViewStyle, View, TextStyle, ImageStyle, Text as RNText } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { AppStackScreenProps } from "app/navigators"
-import { Screen, Text, Icon, ImageSelector } from "app/components"
+import { Screen, Text, Icon, ImageSelector, Button } from "app/components"
 import {
-  useObjectDetectionModels,
   RNMLKitObjectDetectionObject,
-  useObjectDetector,
-  AssetRecord,
+  ObjectDetectionConfig,
   RNMLKitObjectDetectorOptions,
+  useObjectDetectionModels,
+  useObjectDetection,
+  useObjectDetectionProvider,
 } from "@infinitered/react-native-mlkit-object-detection"
 import { BoundingBox } from "@infinitered/react-native-mlkit-core"
 import { SelectedImage, UseExampleImageStatus } from "../utils/useExampleImage"
 import { useTypedNavigation } from "../navigators/useTypedNavigation"
+import { colors } from "../theme"
+
+const MODELS: ObjectDetectionConfig = {
+  cars: {
+    // This model is not very accurate, but it's just here to show how to use a custom model
+    model: require("assets/models/car-detection.tflite"),
+    options: {
+      shouldEnableClassification: false,
+      shouldEnableMultipleObjects: false,
+      detectorMode: "singleImage",
+    },
+  },
+}
+
+const DEFAULT_MODEL_OPTIONS: RNMLKitObjectDetectorOptions = {
+  shouldEnableMultipleObjects: true,
+  shouldEnableClassification: true,
+  detectorMode: "singleImage",
+}
 
 interface ObjectDetectionScreenProps
-  extends NativeStackScreenProps<AppStackScreenProps<"ObjectDetection">> {}
+  extends NativeStackScreenProps<AppStackScreenProps<"ObjectDetection">> {
+  modelNames: string[]
+}
 
 export const ObjectDetectionScreenComponent: FC<ObjectDetectionScreenProps> = observer(
-  function ObjectDetectionScreen() {
+  function ObjectDetectionScreen({ modelNames }) {
     const navigation = useTypedNavigation<"ObjectDetection">()
+    const [activeModel, setActiveModel] = useState("default")
+    const detector = useObjectDetection<typeof MODELS>(activeModel)
 
     const [image, setImage] = useState<SelectedImage | null>(null)
     const [result, setResult] = useState<RNMLKitObjectDetectionObject[]>([])
     const [boxes, setBoxes] = useState<BoundingBox[]>([])
     const [status, setStatus] = useState<
-      "init" | "noPermissions" | "done" | "error" | "loading" | UseExampleImageStatus
+      | "init"
+      | "noPermissions"
+      | "done"
+      | "error"
+      | "loading"
+      | "classifying"
+      | UseExampleImageStatus
     >("init")
 
-    const onStatusChange = React.useCallback(
+    const onStatusChange = useCallback(
       (status: "init" | "noPermissions" | "done" | "error" | "loading" | UseExampleImageStatus) => {
-        console.log("status", status)
         setStatus(status)
       },
       [],
     )
 
-    const handleImageChange = useCallback((nextImage: SelectedImage) => {
-      console.log("handleImageChange", nextImage)
-      setImage(nextImage)
-    }, [])
+    const handleImageChange = (nextImage: SelectedImage) => setImage(nextImage)
 
-    const licensePlateModel = useObjectDetector("default")
-
-    const detectLicensePlate = useCallback(async () => {
-      if (!licensePlateModel?.isLoaded()) {
-        await licensePlateModel?.load()
-      } else {
-        console.log("licensePlateModel is loaded")
-      }
-
-      if (!image?.uri) {
-        console.log("No Image or Image has no URI")
-        return
-      }
-
-      const result = await licensePlateModel?.detectObjects(image?.uri)
-      console.log("result", result?.[0]?.frame)
-      setResult(result)
-      setBoxes(
-        result.map((r) => {
-          const label = r.labels[0]
-            ? `${r.labels[0]?.text} (${Math.round(r.labels[0]?.confidence * 1000) / 10}%)`
-            : undefined
-          return { ...r.frame, width: 2, label } as BoundingBox
-        }),
-      )
-    }, [licensePlateModel, image])
+    const processDetectionResults = useCallback(
+      (detectionResults: RNMLKitObjectDetectionObject[]) => {
+        setResult(detectionResults)
+        setBoxes(
+          detectionResults.map((r) => {
+            const label = r.labels[0]
+              ? `${r.labels[0]?.text} (${Math.round(r.labels[0]?.confidence * 1000) / 10}%)`
+              : undefined
+            return { ...r.frame, width: 2, label } as BoundingBox
+          }),
+        )
+        setStatus("done")
+      },
+      [],
+    )
 
     useEffect(() => {
-      detectLicensePlate()
-    }, [licensePlateModel, image, image?.uri, detectLicensePlate])
+      let isMounted = true
+
+      async function runDetection() {
+        if (!image?.uri || !detector?.isLoaded()) return
+
+        try {
+          setStatus("classifying")
+          const detectionResults = await detector.detectObjects(image.uri)
+
+          // Check if component is still mounted before updating state
+          if (isMounted) {
+            processDetectionResults(detectionResults)
+          }
+        } catch (error) {
+          console.error("Error detecting objects:", error)
+          if (isMounted) {
+            setStatus("error")
+          }
+        }
+      }
+
+      runDetection().catch((e) => console.error("Error Running Detection", e))
+
+      return () => {
+        isMounted = false
+      }
+    }, [image?.uri, detector, processDetectionResults, activeModel])
 
     const clearResult = useCallback(() => {
       setResult([])
+      setBoxes([])
     }, [])
 
     const statusMessage = React.useMemo(() => {
@@ -91,7 +132,7 @@ export const ObjectDetectionScreenComponent: FC<ObjectDetectionScreenProps> = ob
         case "selectingPhoto":
           return "Selecting photo..."
         case "done":
-          return `Found ${result.length} license plates`
+          return `Found ${result.length} objects`
         case "error":
           return "Error during classification!"
         case "classifying":
@@ -110,6 +151,30 @@ export const ObjectDetectionScreenComponent: FC<ObjectDetectionScreenProps> = ob
           <Text preset={"heading"} text="Object Detection" />
           <Text style={$description}>Detect Objects</Text>
         </View>
+        <View style={$modelSelector}>
+          {modelNames
+            .sort((a, b) => {
+              if (a === "default") return -1
+              if (b === "default") return 1
+              return a.localeCompare(b)
+            })
+            .map((modelName) => {
+              const isActive = activeModel === modelName
+              return (
+                <Button
+                  key={modelName}
+                  text={`${isActive ? "✔ " : ""}${modelName}`}
+                  style={[
+                    $modelButton,
+                    isActive ? { backgroundColor: colors.palette.accent500 } : {},
+                  ]}
+                  onPress={() => setActiveModel(modelName)}
+                  preset={isActive ? "filled" : "default"}
+                />
+              )
+            })}
+        </View>
+
         <ImageSelector
           boundingBoxes={boxes}
           onImageChange={handleImageChange}
@@ -117,40 +182,63 @@ export const ObjectDetectionScreenComponent: FC<ObjectDetectionScreenProps> = ob
           onStatusChange={onStatusChange}
           statusMessage={statusMessage}
           status={status}
-          isLoading={!licensePlateModel?.isLoaded()}
+          isLoading={!detector?.isLoaded()}
           images={{
             filter: "knownObject",
           }}
         />
+
         <View>
           <Text preset={"subheading"} text="Results" />
-          {result?.map((r, i) => {
-            return (
-              <View
-                key={`list-item-${r.frame.origin.x}-${r.frame.origin.y}`}
-                style={[$listItem, i === result.length - 1 && $lastListItem]}
-              >
-                <RNText style={$itemTitle}>
-                  {r.labels[0] ? r.labels[0]?.text : `Item ${i + 1}`}
-                </RNText>
-                {Object.entries(r).map(([key, value]) => {
-                  return (
-                    <View key={`prop-${key}`} style={$itemDetails}>
-                      <RNText style={[$itemDetail, $itemDetailLabel]}>{`${key}:`}</RNText>
-                      <RNText key={`prop-${key}`} style={$itemDetail}>
-                        {JSON.stringify(value)}
-                      </RNText>
-                    </View>
-                  )
-                })}
-              </View>
-            )
-          })}
+          {result?.map((r, i) => (
+            <View
+              key={`list-item-${r.frame.origin.x}-${r.frame.origin.y}`}
+              style={[$listItem, i === result.length - 1 && $lastListItem]}
+            >
+              <RNText style={$itemTitle}>
+                {r.labels[0] ? r.labels[0]?.text : `Item ${i + 1}`}
+              </RNText>
+              {Object.entries(r).map(([key, value]) => (
+                <View key={`prop-${key}`} style={$itemDetails}>
+                  <RNText style={[$itemDetail, $itemDetailLabel]}>{`${key}:`}</RNText>
+                  <RNText style={$itemDetail}>{JSON.stringify(value)}</RNText>
+                </View>
+              ))}
+            </View>
+          ))}
         </View>
       </Screen>
     )
   },
 )
+
+export function ObjectDetectionScreen(props: Omit<ObjectDetectionScreenProps, "modelNames">) {
+  const models = useObjectDetectionModels({
+    assets: MODELS,
+    loadDefaultModel: true,
+    defaultModelOptions: DEFAULT_MODEL_OPTIONS,
+  })
+
+  const { ObjectDetectionProvider } = useObjectDetectionProvider(models)
+
+  return (
+    <ObjectDetectionProvider>
+      <ObjectDetectionScreenComponent {...props} modelNames={[...Object.keys(MODELS), "default"]} />
+    </ObjectDetectionProvider>
+  )
+}
+
+const $root: ViewStyle = {
+  flex: 1,
+  paddingHorizontal: 8,
+}
+
+const $description: TextStyle = {
+  marginVertical: 8,
+  color: "rgba(0,0,0,0.6)",
+}
+
+const $backIcon: ImageStyle = { marginVertical: 8 }
 
 const $itemTitle: TextStyle = { fontWeight: "bold" }
 const $itemDetails: ViewStyle = {
@@ -169,45 +257,5 @@ const $listItem: ViewStyle = {
 }
 const $lastListItem: ViewStyle = { borderBottomWidth: 0 }
 
-const MODELS: AssetRecord = {
-  licensePlate: {
-    model: require("../../assets/models/license-plate-detection.tflite"),
-    options: {
-      shouldEnableMultipleObjects: false,
-      shouldEnableClassification: false,
-      detectorMode: "singleImage",
-    },
-  },
-}
-
-const DEFAULT_MODEL_OPTIONS: RNMLKitObjectDetectorOptions = {
-  shouldEnableMultipleObjects: true,
-  shouldEnableClassification: true,
-  detectorMode: "singleImage",
-}
-
-export function ObjectDetectionScreen(props: PropsWithChildren<ObjectDetectionScreenProps>) {
-  const { ObjectDetectionModelContextProvider } = useObjectDetectionModels({
-    assets: MODELS,
-    loadDefaultModel: true,
-    defaultModelOptions: DEFAULT_MODEL_OPTIONS,
-  })
-
-  return (
-    <ObjectDetectionModelContextProvider>
-      <ObjectDetectionScreenComponent {...props} />
-    </ObjectDetectionModelContextProvider>
-  )
-}
-
-const $root: ViewStyle = {
-  flex: 1,
-  paddingHorizontal: 8,
-}
-
-const $description: TextStyle = {
-  marginVertical: 8,
-  color: "rgba(0,0,0,0.6)",
-}
-
-const $backIcon: ImageStyle = { marginVertical: 8 }
+const $modelSelector: ViewStyle = { display: "flex", flexDirection: "row", gap: 8 }
+const $modelButton: ViewStyle = { flex: 1 }

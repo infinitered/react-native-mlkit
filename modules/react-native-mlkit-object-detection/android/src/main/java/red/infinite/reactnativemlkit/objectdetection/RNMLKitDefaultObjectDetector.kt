@@ -21,7 +21,7 @@ class RNMLKitDefaultObjectDetector(
 
     init {
         try {
-            val detectorMode = when (options?.detectorMode) {
+            val detectorMode = when (options?.detectorMode?.toString()) {
                 "singleImage" -> ObjectDetectorOptions.SINGLE_IMAGE_MODE
                 "stream" -> ObjectDetectorOptions.STREAM_MODE
                 else -> ObjectDetectorOptions.SINGLE_IMAGE_MODE
@@ -49,6 +49,8 @@ class RNMLKitDefaultObjectDetector(
     ): Result<List<RNMLKitDetectedObject>> {
         val result = CompletableDeferred<Result<List<RNMLKitDetectedObject>>>()
 
+         log.d("detectObjects: Starting detection with default model")
+
         val image: InputImage
 
         try {
@@ -70,7 +72,8 @@ class RNMLKitDefaultObjectDetector(
         }
 
         objectDetector?.process(image)?.addOnSuccessListener { detectedObjects ->
-            log.d("detectObjects.addOnSuccessListener: Got Labels")
+             log.d("detectObjects.addOnSuccessListener: Got Labels from default model")
+             log.d("detectObjects.addOnSuccessListener: Detected ${detectedObjects.size} objects")
             log.d(detectedObjects.map { it.toString() }.toString())
             val expoLabels = detectedObjects.map { detectedObject ->
                 RNMLKitDetectedObject(

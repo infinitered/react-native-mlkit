@@ -35,20 +35,20 @@ yarn add @infinitered/react-native-mlkit-face-detection
 
 ### 2. Setting Up the Context
 
-Wrap your app with the `RNMLKitFaceDetectionContextProvider` component.
+Wrap your app with the `FaceDetectionProvider` component.
 
 ```tsx
 // App.tsx
 
 import {
-  RNMLKitFaceDetectionContextProvider,
+  FaceDetectionProvider,
 } from "@infinitered/react-native-mlkit-face-detection";
 
 function App() {
   return (
-    <RNMLKitFaceDetectionContextProvider>
+    <FaceDetectionProvider>
       {/* rest of your app goes here */}
-    </RNMLKitFaceDetectionContextProvider>
+    </FaceDetectionProvider>
   );
 }
 ```

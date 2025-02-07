@@ -4,5 +4,6 @@ module.exports = {
   ignorePatterns: ["build"],
   rules: {
     "@typescript-eslint/array-type": "off",
+    "prettier/prettier": "off",
   },
 };

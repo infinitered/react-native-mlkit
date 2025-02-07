@@ -3,20 +3,32 @@ import { observer } from "mobx-react-lite"
 import { ViewStyle, View, ImageStyle, TextStyle } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { AppStackScreenProps } from "../navigators"
-import { Screen, Text, Icon, ImageSelector } from "../components"
+import { Screen, Text, Icon, ImageSelector, Button } from "../components"
 import { useTypedNavigation } from "../navigators/useTypedNavigation"
 
 import {
-  useModels,
-  useImageLabeler,
+  useImageLabeling,
   ClassificationResult,
+  useImageLabelingProvider,
+  ImageLabelingConfig,
+  useImageLabelingModels,
 } from "@infinitered/react-native-mlkit-image-labeling"
 import { UseExampleImageStatus, SelectedImage } from "../utils/useExampleImage"
+import { colors } from "../theme"
 
 interface ImageLabelingScreenProps
-  extends NativeStackScreenProps<AppStackScreenProps<"ImageLabeling">> {}
+  extends NativeStackScreenProps<AppStackScreenProps<"ImageLabeling">> {
+  modelNames: string[]
+}
 
-const MODELS = {
+const MODELS: ImageLabelingConfig = {
+  efficientNet: {
+    model: require("assets/models/efficientnet/efficientnet-lite0-uint8.tflite"),
+    options: {
+      maxResultCount: 5,
+      confidenceThreshold: 0,
+    },
+  },
   nsfw: {
     model: require("assets/models/nsfwjs-quant-mobilenet.tflite"),
     options: {
@@ -27,17 +39,18 @@ const MODELS = {
 }
 
 const ImageLabelingScreenComponent: FC<ImageLabelingScreenProps> = observer(
-  function ImageLabelingScreen() {
+  function ImageLabelingScreen({ modelNames }) {
     const navigation = useTypedNavigation<"ImageLabeling">()
 
     const [image, setImage] = useState<SelectedImage | null>(null)
 
     const handleImageChange = useCallback((nextImage: SelectedImage) => {
-      console.log("handleImageChange", nextImage)
       setImage(nextImage)
     }, [])
 
-    const model = useImageLabeler("nsfw")
+    const [activeModel, setActiveModel] = useState("nsfw")
+
+    const model = useImageLabeling(activeModel)
     const [result, setResult] = useState<ClassificationResult | null>(null)
     const [status, setStatus] = useState<
       "init" | "noPermissions" | "done" | "error" | "loading" | UseExampleImageStatus
@@ -54,7 +67,6 @@ const ImageLabelingScreenComponent: FC<ImageLabelingScreenProps> = observer(
     useEffect(() => {
       const classifyImage = async () => {
         if (!image?.uri || !model) return
-        console.log("CLASSIFYING:", image.name)
         setStatus("classifying")
         try {
           const classificationResult = await model.classifyImage(image.uri)
@@ -66,8 +78,8 @@ const ImageLabelingScreenComponent: FC<ImageLabelingScreenProps> = observer(
         }
       }
 
-      classifyImage()
-    }, [image, model])
+      classifyImage().then(() => null)
+    }, [image, model, activeModel])
 
     const bestGuess = useMemo(() => {
       if (result && result.length > 0) {
@@ -103,7 +115,7 @@ const ImageLabelingScreenComponent: FC<ImageLabelingScreenProps> = observer(
         default:
           throw new Error("Invalid status")
       }
-    }, [bestGuess, image, status])
+    }, [bestGuess, image, status, activeModel])
 
     const clearResults = useCallback(() => {
       setResult(null)
@@ -115,6 +127,29 @@ const ImageLabelingScreenComponent: FC<ImageLabelingScreenProps> = observer(
           <Icon icon={"back"} onPress={() => navigation.navigate("Home")} style={$backIcon} />
           <Text preset={"heading"} text="Image Labeling" />
           <Text style={$description}>Take a photo, and find out if it is 🚫NSFW.</Text>
+        </View>
+        <View style={$modelSelector}>
+          {modelNames
+            .sort((a, b) => {
+              if (a === "nsfw") return -1
+              if (b === "nsfw") return 1
+              return a.localeCompare(b)
+            })
+            .map((modelName) => {
+              const isActive = activeModel === modelName
+              return (
+                <Button
+                  key={modelName}
+                  text={`${isActive ? "✔ " : ""}${modelName}`}
+                  style={[
+                    $modelButton,
+                    isActive ? { backgroundColor: colors.palette.accent500 } : {},
+                  ]}
+                  onPress={() => setActiveModel(modelName)}
+                  preset={isActive ? "filled" : "default"}
+                />
+              )
+            })}
         </View>
         <ImageSelector
           onImageChange={handleImageChange}
@@ -149,13 +184,16 @@ const ImageLabelingScreenComponent: FC<ImageLabelingScreenProps> = observer(
   },
 )
 
-export function ImageLabelingScreen(props: PropsWithChildren<ImageLabelingScreenProps>) {
-  const { ObjectDetectionModelContextProvider } = useModels(MODELS)
+export function ImageLabelingScreen(
+  props: PropsWithChildren<Omit<ImageLabelingScreenProps, "modelNames">>,
+) {
+  const models = useImageLabelingModels(MODELS)
+  const { ImageLabelingModelProvider } = useImageLabelingProvider(models)
 
   return (
-    <ObjectDetectionModelContextProvider>
-      <ImageLabelingScreenComponent {...props} />
-    </ObjectDetectionModelContextProvider>
+    <ImageLabelingModelProvider>
+      <ImageLabelingScreenComponent {...props} modelNames={Object.keys(MODELS)} />
+    </ImageLabelingModelProvider>
   )
 }
 
@@ -183,7 +221,7 @@ const $resultRow: ViewStyle = {
   alignItems: "center",
   padding: 8,
 }
-const $resultText: ViewStyle = { flex: 1 }
+const $resultText: TextStyle = { flex: 1 }
 const $resultBarContainer: ViewStyle = {
   flex: 3,
   height: 20,
@@ -204,3 +242,6 @@ const $resultBarBackground: ViewStyle = {
   borderRadius: 4,
   overflow: "hidden",
 }
+
+const $modelButton: ViewStyle = { flex: 1 }
+const $modelSelector: ViewStyle = { display: "flex", flexDirection: "row", gap: 8 }

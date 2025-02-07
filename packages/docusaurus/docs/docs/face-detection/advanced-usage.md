@@ -9,19 +9,19 @@ dives deeper.
 
 ## 1. Direct Access to the Face Detector
 
-For advanced scenarios, you might want direct access to the face detector instance. The `useFaceDetector` hook allows
+For advanced scenarios, you might want direct access to the face detector instance. The `useFaceDetection` hook allows
 you to get the instance and work with it directly.
 
 ```tsx
 
 import {
-  useFaceDetector,
+  useFaceDetection,
   RNMLKitFaceDetectorOptions,
   RNMLKitFaceDetector
 } from "@infinitered/react-native-mlkit-face-detection";
 
 function AdvancedFaceComponent() {
-  const faceDetector = useFaceDetector();
+  const faceDetector = useFaceDetection();
 
   // You can now call methods directly on the faceDetector instance
   // Example:
@@ -40,7 +40,7 @@ function AdvancedFaceComponent() {
 [link](#2-deferred-initialization)
 
 :::tip
-The `useFaceDetector` hook gives you maximum flexibility but requires a deeper understanding of the detector's API.
+The `useFaceDetection` hook gives you maximum flexibility but requires a deeper understanding of the detector's API.
 Always refer back to the official documentation if in doubt.
 :::
 
@@ -53,12 +53,12 @@ setting the `deferInitialization` flag prop.
 ```tsx
 function App() {
   return (
-    <RNMLKitFaceDetectionContextProvider
+    <FaceDetectionProvider
       options={FACE_DETECTION_OPTIONS}
       deferInitialization
     >
       {/* rest of your app goes here */}
-    </RNMLKitFaceDetectionContextProvider>
+    </FaceDetectionProvider>
   );
 }
 ```
@@ -69,7 +69,7 @@ Then, when you're ready to initialize the detector you can simply call the `init
 import { useEffect } from "react";
 
 function MyComponent() {
-  const detector = useFaceDetector();
+  const detector = useFaceDetection();
   useEffect(() => {
     detector.initialize();
   }, []);

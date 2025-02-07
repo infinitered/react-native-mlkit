@@ -20,25 +20,25 @@ potential errors, and the path to the image.
 
 Details of each detected face, including frame, landmarks, contours, and various other properties.
 
-| Property                     | Description                                                 | Type                    | Default |
-|------------------------------|-------------------------------------------------------------|-------------------------|---------|
-| `frame`                      | Frame detailing the position and size of the detected face. | `{x, y, width, height}` | -       |
-| `landmarks`                  | Array of landmarks on the face.                             | `RNMLKitFaceLandmark[]` | -       |
-| `contours`                   | Array of contours on the face.                              | `RNMLKitFaceContour[]`  | -       |
-| `hasTrackingID`              | Indicates if the face has a tracking ID.                    | `boolean`               | -       |
-| `trackingID`                 | The tracking ID of the face, if available.                  | `number \| null`        | `null`  |
-| `hasHeadEulerAngleX`         | Indicates if the head Euler angle X is available.           | `boolean`               | -       |
-| `headEulerAngleX`            | The head Euler angle X of the face, if available.           | `number \| null`        | `null`  |
-| `hasHeadEulerAngleY`         | Indicates if the head Euler angle Y is available.           | `boolean`               | -       |
-| `headEulerAngleY`            | The head Euler angle Y of the face, if available.           | `number \| null`        | `null`  |
-| `hasHeadEulerAngleZ`         | Indicates if the head Euler angle Z is available.           | `boolean`               | -       |
-| `headEulerAngleZ`            | The head Euler angle Z of the face, if available.           | `number \| null`        | `null`  |
-| `hasSmilingProbability`      | Indicates if the smiling probability is available.          | `boolean`               | -       |
-| `smilingProbability`         | The smiling probability of the face, if available.          | `number \| null`        | `null`  |
-| `hasLeftEyeOpenProbability`  | Indicates if the left eye open probability is available.    | `boolean`               | -       |
-| `leftEyeOpenProbability`     | The left eye open probability of the face, if available.    | `number \| null`        | `null`  |
-| `hasRightEyeOpenProbability` | Indicates if the right eye open probability is available.   | `boolean`               | -       |
-| `rightEyeOpenProbability`    | The right eye open probability of the face, if available.   | `number \| null`        | `null`  |
+| Property                     | Description                                                 | Type                           | Default |
+|------------------------------|-------------------------------------------------------------|--------------------------------|---------|
+| `frame`                      | Frame detailing the position and size of the detected face. | `{origin: {x, y}, size:{x, y}` | -       |
+| `landmarks`                  | Array of landmarks on the face.                             | `RNMLKitFaceLandmark[]`        | -       |
+| `contours`                   | Array of contours on the face.                              | `RNMLKitFaceContour[]`         | -       |
+| `hasTrackingID`              | Indicates if the face has a tracking ID.                    | `boolean`                      | -       |
+| `trackingID`                 | The tracking ID of the face, if available.                  | `number \| null`               | `null`  |
+| `hasHeadEulerAngleX`         | Indicates if the head Euler angle X is available.           | `boolean`                      | -       |
+| `headEulerAngleX`            | The head Euler angle X of the face, if available.           | `number \| null`               | `null`  |
+| `hasHeadEulerAngleY`         | Indicates if the head Euler angle Y is available.           | `boolean`                      | -       |
+| `headEulerAngleY`            | The head Euler angle Y of the face, if available.           | `number \| null`               | `null`  |
+| `hasHeadEulerAngleZ`         | Indicates if the head Euler angle Z is available.           | `boolean`                      | -       |
+| `headEulerAngleZ`            | The head Euler angle Z of the face, if available.           | `number \| null`               | `null`  |
+| `hasSmilingProbability`      | Indicates if the smiling probability is available.          | `boolean`                      | -       |
+| `smilingProbability`         | The smiling probability of the face, if available.          | `number \| null`               | `null`  |
+| `hasLeftEyeOpenProbability`  | Indicates if the left eye open probability is available.    | `boolean`                      | -       |
+| `leftEyeOpenProbability`     | The left eye open probability of the face, if available.    | `number \| null`               | `null`  |
+| `hasRightEyeOpenProbability` | Indicates if the right eye open probability is available.   | `boolean`                      | -       |
+| `rightEyeOpenProbability`    | The right eye open probability of the face, if available.   | `number \| null`               | `null`  |
 
 ## `FaceLandmarkType`
 
@@ -112,3 +112,15 @@ Options for the face detector.
 | `minFaceSize`        | Minimum size of the face for detection.                     | `number \| null`  | `null`  |
 | `isTrackingEnabled`  | Indicates if tracking should be enabled for detected faces. | `boolean \| null` | `null`  |
 
+## FaceDetectionState
+
+The possible states of the face detection process.
+
+| State          | Description                                  |
+|----------------|----------------------------------------------|
+| `init`         | Initial state before detector initialization |
+| `modelLoading` | ML model is currently being loaded           |
+| `ready`        | Detector is initialized and ready            |
+| `detecting`    | Currently processing an image                |
+| `done`         | Detection completed successfully             |
+| `error`        | An error occurred during detection           |

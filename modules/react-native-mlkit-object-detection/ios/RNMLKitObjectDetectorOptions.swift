@@ -29,7 +29,7 @@ public class RNMLKitObjectDetectorOptions {
         if let shouldEnableClassification = record.shouldEnableClassification {
             self.objectDetectorOptions.shouldEnableClassification = shouldEnableClassification
         }
-        
+
         if let shouldEnableMultipleObjects = record.shouldEnableMultipleObjects {
             self.objectDetectorOptions.shouldEnableMultipleObjects = shouldEnableMultipleObjects
         }

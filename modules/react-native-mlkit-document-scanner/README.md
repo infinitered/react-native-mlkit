@@ -4,6 +4,8 @@ MLKit Document Scanner for Expo
 
 # API documentation
 
+### [Check the friendly docs here! 📖](https://docs.infinite.red/react-native-mlkit/document-scanner)
+
 # Installation in managed Expo projects
 
 For [managed](https://docs.expo.dev/archive/managed-vs-bare/) Expo projects, please follow the installation instructions

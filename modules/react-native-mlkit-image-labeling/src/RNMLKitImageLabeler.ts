@@ -38,7 +38,7 @@ type RNMLKitImageLabelingModule = {
 
 // It loads the native module object from the JSI or falls back to
 // the bridge module (from NativeModulesProxy) if the remote debugger is on.
-const expoMLKitImageLabeler = requireNativeModule(
+const imageLabelingModule = requireNativeModule(
   "RNMLKitImageLabeling"
 ) as RNMLKitImageLabelingModule;
 
@@ -46,7 +46,7 @@ function loadModel(
   modelSpec: RNMLKitImageLabelerSpec
 ): Promise<string | undefined> {
   try {
-    return expoMLKitImageLabeler.addModel(modelSpec);
+    return imageLabelingModule.addModel(modelSpec);
   } catch (error) {
     console.error("Failed to load model: ", error);
     return Promise.resolve(undefined);
@@ -54,21 +54,21 @@ function loadModel(
 }
 
 function isLoaded(modelName: string): boolean {
-  return expoMLKitImageLabeler.isLoaded(modelName);
+  return imageLabelingModule.isLoaded(modelName);
 }
 
 async function classifyImage(
   modelName: string,
   imagePath: string
 ): Promise<ClassificationResult> {
-  return await expoMLKitImageLabeler.classifyImage(modelName, imagePath);
+  return await imageLabelingModule.classifyImage(modelName, imagePath);
 }
 
 async function updateOptionsAndReload(
   modelName: string,
   newOptions: RNMLKitCustomImageLabelerOptions
 ): Promise<void> {
-  return await expoMLKitImageLabeler.updateOptionsAndReload(
+  return await imageLabelingModule.updateOptionsAndReload(
     modelName,
     newOptions
   );

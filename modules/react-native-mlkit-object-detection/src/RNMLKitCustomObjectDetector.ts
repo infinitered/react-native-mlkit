@@ -6,8 +6,8 @@ import {
 } from "./types";
 
 export class RNMLKitCustomObjectDetector implements RNMLKitObjectDetector {
-  private modelName: string;
-  private modelPath: string;
+  private readonly modelName: string;
+  private readonly modelPath: string;
   private options?: RNMLKitObjectDetectorOptions;
 
   constructor(

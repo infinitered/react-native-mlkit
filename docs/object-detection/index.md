@@ -26,22 +26,46 @@ npm install @infinitered/react-native-mlkit-object-detection
 
 ### 1. Set up the model context provider
 
-Use the `useObjectDetectionModels` hook to fetch an `ObjectDetectionModelContextProvider`. This will make the models
-available via React context.
+Use the `useObjectDetectionModels` hook to load your models, and `useObjectDetectionProvider` to get the provider
+component.
+This will make the models available via React context.
 
 ```tsx
-// App.tsx
-
+/// App.tsx
 import {
-  AssetRecord,
+  ObjectDetectionConfig,
+  CustomObjectDetectorOptions,
   useObjectDetectionModels,
+  useObjectDetectionProvider,
 } from "@infinitered/react-native-mlkit-object-detection";
 
-// For descriptions of options for default models see link below this snipped.
+// Define your custom models if needed (see "Using a Custom Model" for more details)
+const MODELS: ObjectDetectionConfig = {
+  furnitureDetector: {
+    model: require("./assets/models/furniture-detector.tflite"),
+  },
+// You can add multiple custom models
+  birdDetector: {
+    model: require("./assets/models/bird-detector.tflite"),
+// and override the default options
+    options: {
+      shouldEnableClassification: true,
+      shouldEnableMultipleObjects: true,
+      detectorMode: "singleImage",
+      classificationConfidenceThreshold: 0.5,
+      maxPerObjectLabelCount: 3
+    }
+  },
+};
+
+// Export this type so we can use it with our hooks later
+export type MyModelsConfig = typeof MODELS;
+
 function App() {
-  // fetch the provider component from the hook
-  const { ObjectDetectionModelContextProvider } = useObjectDetectionModels({
-    loadDefaultModel: true,
+// Load the models
+  const models = useObjectDetectionModels<MyModelsConfig>({
+    assets: MODELS,
+    loadDefaultModel: true, // whether to load the default model
     defaultModelOptions: {
       shouldEnableMultipleObjects: true,
       shouldEnableClassification: true,
@@ -49,67 +73,110 @@ function App() {
     },
   });
 
+// Get the provider component
+  const { ObjectDetectionModelProvider } = useObjectDetectionProvider(models);
+
   return (
-    <ObjectDetectionModelContextProvider>
+    <ObjectDetectionModelProvider>
       {/* Rest of your app */}
-    </ObjectDetectionModelContextProvider>
+    </ObjectDetectionModelProvider>
   );
 }
 ```
 
-### 2. Fetch the model using the `useObjectDetectionModel` hook, and use it to detect objects in an image
+### 2. Use the models in your components
 
-Models can be quite large, take a while to load and can consume a lot of memory. You should consider where in your
-app's lifecycle you load the model.
+The models are made available through the context system. You can access them in your components using the same hook
 
 ```tsx
 // MyComponent.tsx
-
 import {
-  useObjectDetector,
-  RNMLKitObjectDetectionObject,
+  useObjectDetection,
+  ObjectDetectionObject,
 } from "@infinitered/react-native-mlkit-object-detection";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { View } from "react-native";
+import type { MyModelsConfig } from "./App";
 
-function MyComponent() {
-  // fetch the model from the hook, if you don't pass a model name it will fetch the default MLKit Object Detection model
-  const model = useObjectDetector();
+type Props = {
+  imagePath: string;
+};
 
-  const [modelLoaded, setModelLoaded] = useState(model?.isLoaded() ?? false);
+function MyComponent({ imagePath }: Props) {
+// Get the model from context
+  const detector = useObjectDetection<MyModelsConfig>("birdDetector");
 
-  // Models must be loaded before they can be used. This can be slow, and consume
-  // a lot of resources so consider carefully where and when to load the model
-  useEffect(() => {
-    // Loading models is done asynchronously, so in a useEffect we need to wrap it in an async function
-    async function loadModel() {
-      if (!model || modelLoaded) return;
-      // load the model
-      await model.load();
-      // set the model loaded state to true
-      setModelLoaded(true);
-    }
-
-    loadModel();
-  }, [model, modelLoaded]);
-
-  // the output of the model is an array of `RNMLKitObjectDetectionObject` objects
-  const [result, setResult] = useState<RNMLKitObjectDetectionObject[]>([]);
+  const [detectedObjects, setDetectedObjects] = useState<ObjectDetectionObject[]>([]);
 
   useEffect(() => {
-    if (!modelLoaded) return;
+    async function detectObjects(imagePath: string) {
+      if (!detector) return;
 
-    // model.detectObjects is async, so when we use it in a useEffect, we need to wrap it in an async function
-    async function detectObjects(image: AssetRecord) {
-      const result = await model.detectObjects(image);
-      setResult(result);
+      try {
+        const detectionResults = await detector.detectObjects(imagePath);
+        setDetectedObjects(detectionResults);
+      } catch (error) {
+        console.error("Error detecting objects:", error);
+      }
     }
 
-    detectObjects();
-  }, [model, modelLoaded]);
+    // Call detectObjects with your image path
+    if (imagePath) {
+      detectObjects(imagePath);
+    }
 
-  return <View>{JSON.stringify(result)}</View>;
+  }, [detector, imagePath]);
+
+  return (
+    <View>
+      {detectedObjects.map((detectedObject, index) => (
+        <View key={index}>
+          {/* Render your detection results */}
+          {JSON.stringify(detectedObject)}
+        </View>
+      ))}
+    </View>
+  );
+}
+```
+
+### Model Options
+
+The `ObjectDetectorOptions` and `CustomObjectDetectorOptions` interfaces support the following options:
+
+```ts
+interface ObjectDetectorOptions {
+  shouldEnableClassification?: boolean; // Enable object classification
+  shouldEnableMultipleObjects?: boolean; // Allow detection of multiple objects
+  detectorMode?: "singleImage" | "stream"; // Detection mode
+}
+
+interface CustomObjectDetectorOptions extends ObjectDetectorOptions {
+  classificationConfidenceThreshold?: number; // Minimum confidence for classification
+  maxPerObjectLabelCount?: number; // Maximum number of labels per object
+}
+```
+
+### Detection Results
+
+The `detectObjects` method returns an array of `ObjectDetectionObject` objects. Each object contains the
+following properties:
+
+```ts
+interface ObjectDetectionObject {
+  frame: {
+    origin: { x: number; y: number };
+    size: { x: number; y: number };
+  };
+  labels: Array<{
+    text: string;
+    confidence: number;
+    index: number;
+  }>;
+  trackingID?: number;
 }
 ```
 
 :::tip
 To use a custom TFLite model for inference, see [Using a Custom Model](./using-a-custom-model).
+:::

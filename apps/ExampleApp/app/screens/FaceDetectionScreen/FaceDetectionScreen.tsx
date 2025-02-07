@@ -11,7 +11,7 @@ import { BOX_COLORS } from "~/screens"
 import { BoundingBox } from "@infinitered/react-native-mlkit-core"
 import {
   useFacesInPhoto,
-  RNMLKitFaceDetectionContextProvider,
+  FaceDetectionProvider,
 } from "@infinitered/react-native-mlkit-face-detection"
 
 interface FaceDetectionScreenProps
@@ -38,8 +38,8 @@ const FaceDetectionScreenComponent: FC<FaceDetectionScreenProps> = observer(
     const {
       faces,
       clearFaces,
-      status: faceDetectorStatus,
-      error: faceDetectorError,
+      status: faceDetectionStatus,
+      error: faceDetectionError,
     } = useFacesInPhoto(image?.uri)
     const boxes = useMemo(() => {
       return faces.map((face, index) => {
@@ -52,7 +52,7 @@ const FaceDetectionScreenComponent: FC<FaceDetectionScreenProps> = observer(
     }, [faces])
 
     const statusMessage = useMemo(() => {
-      switch (faceDetectorStatus) {
+      switch (faceDetectionStatus) {
         case "init":
         case "modelLoading":
           return "Initializing Face Detection Model..."
@@ -63,11 +63,11 @@ const FaceDetectionScreenComponent: FC<FaceDetectionScreenProps> = observer(
         case "done":
           return `Found ${faces.length} faces`
         case "error":
-          return faceDetectorError || "An error occurred"
+          return faceDetectionError || "An error occurred"
         default:
           throw new Error("Invalid status")
       }
-    }, [faceDetectorStatus, faces.length, faceDetectorError])
+    }, [faceDetectionStatus, faces.length, faceDetectionError])
 
     return (
       <Screen style={$root} preset="scroll" safeAreaEdges={["top", "bottom"]}>
@@ -81,7 +81,7 @@ const FaceDetectionScreenComponent: FC<FaceDetectionScreenProps> = observer(
         <RNMLKitImageView image={image} onPress={image ? clearPhoto : takePhoto} boxes={boxes} />
 
         <View style={$status}>
-          {faceDetectorStatus === "detecting" ? (
+          {faceDetectionStatus === "detecting" ? (
             <ActivityIndicator />
           ) : (
             <Text style={$statusMessage}>{statusMessage}</Text>
@@ -115,9 +115,9 @@ const FACE_DETECTOR_OPTIONS = {
 
 export function FaceDetectionScreen(props: FaceDetectionScreenProps) {
   return (
-    <RNMLKitFaceDetectionContextProvider options={FACE_DETECTOR_OPTIONS}>
+    <FaceDetectionProvider options={FACE_DETECTOR_OPTIONS}>
       <FaceDetectionScreenComponent {...props} />
-    </RNMLKitFaceDetectionContextProvider>
+    </FaceDetectionProvider>
   )
 }
 

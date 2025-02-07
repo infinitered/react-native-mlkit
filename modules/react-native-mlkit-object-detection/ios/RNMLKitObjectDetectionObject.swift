@@ -6,7 +6,7 @@ import RNMLKitCore
 
 public struct RNMLKitObjectDetectionObjectRecord: Record {
     public init() {  }
-    
+
     @Field
     var frame: RNMLKitRect = RNMLKitRect()
     @Field

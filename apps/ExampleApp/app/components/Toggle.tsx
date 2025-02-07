@@ -110,7 +110,9 @@ interface CheckboxToggleProps extends BaseToggleProps {
   /**
    * Optional style prop that affects the Image component.
    */
-  inputDetailStyle?: ImageStyle
+  inputDetailStyle?: Omit<ViewStyle & ImageStyle, "overflow" | "position"> & {
+    position?: "static" | "relative" | "absolute"
+  }
   /**
    * Checkbox-only prop that changes the icon used for the "on" state.
    */
@@ -122,7 +124,9 @@ interface RadioToggleProps extends BaseToggleProps {
   /**
    * Optional style prop that affects the dot View.
    */
-  inputDetailStyle?: ViewStyle
+  inputDetailStyle?: Omit<ViewStyle & ImageStyle, "overflow" | "position"> & {
+    position?: "static" | "relative" | "absolute"
+  }
 }
 
 interface SwitchToggleProps extends BaseToggleProps {
@@ -135,7 +139,9 @@ interface SwitchToggleProps extends BaseToggleProps {
    * Optional style prop that affects the knob View.
    * Note: `width` and `height` rules should be points (numbers), not percentages.
    */
-  inputDetailStyle?: Omit<ViewStyle, "width" | "height"> & { width?: number; height?: number }
+  inputDetailStyle?: Omit<ViewStyle & ImageStyle, "overflow" | "position"> & {
+    position?: "static" | "relative" | "absolute"
+  }
 }
 
 export type ToggleProps = CheckboxToggleProps | RadioToggleProps | SwitchToggleProps
@@ -146,7 +152,10 @@ interface ToggleInputProps {
   disabled: boolean
   outerStyle: ViewStyle
   innerStyle: ViewStyle
-  detailStyle: Omit<ViewStyle & ImageStyle, "overflow">
+  detailStyle: Omit<ViewStyle & ImageStyle, "overflow" | "position"> & {
+    position?: "static" | "relative" | "absolute"
+  }
+
   switchAccessibilityMode?: SwitchToggleProps["switchAccessibilityMode"]
   checkboxIcon?: CheckboxToggleProps["checkboxIcon"]
 }
@@ -432,7 +441,7 @@ function Switch(props: ToggleInputProps) {
       0) as number
 
     const start = withTiming(on ? "100%" : "0%")
-    const marginStart = withTiming(on ? -(knobWidth || 0) - offsetRight : 0 + offsetLeft)
+    const marginStart = withTiming(on ? -(knobWidth || 0) - offsetRight : offsetLeft)
 
     return { start, marginStart }
   }, [on, knobWidth])
@@ -632,7 +641,7 @@ const $labelLeft: TextStyle = {
   marginEnd: spacing.md,
 }
 
-const $switchAccessibility: TextStyle = {
+const $switchAccessibility: ViewStyle = {
   width: "40%",
   justifyContent: "center",
   alignItems: "center",

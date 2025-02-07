@@ -7,7 +7,7 @@ title: Options
 
 ## Default Model
 
-An `RNMLKitObjectDetectorOptions` object is used to configure the behavior of the object detection process. This
+An `ObjectDetectorOptions` object is used to configure the behavior of the object detection process. This
 interface provides several optional properties that allow you to enable or disable certain features and set the mode of
 the detector.
 
@@ -23,7 +23,7 @@ see [the MLKit Docs](https://developers.google.com/ml-kit/vision/object-detectio
 ### Example Usage
 
 ```ts
-const options: RNMLKitObjectDetectorOptions = {
+const options: ObjectDetectorOptions = {
   shouldEnableClassification: true,
   shouldEnableMultipleObjects: false,
   detectorMode: "stream",

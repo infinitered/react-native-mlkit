@@ -31,6 +31,7 @@
     "@infinitered/tsconfig": "0.3.0",
     "@rnx-kit/align-deps": "^3.0.3",
     "@testing-library/react-native": "^13.0.1",
+    "expo-asset": "^11.0.3",
     "expo-image": "^2.0.4",
     "expo-module-scripts": "^3.4.1",
     "expo-modules-core": "^2.2.0",

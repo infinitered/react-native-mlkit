@@ -35,20 +35,20 @@ yarn add @infinitered/react-native-mlkit-face-detection
 
 ### 2. Setting Up the Context
 
-Wrap your app with the `RNMLKitFaceDetectionContextProvider` component.
+Wrap your app with the `FaceDetectionProvider` component.
 
 ```tsx
 // App.tsx
 
 import {
-  RNMLKitFaceDetectionContextProvider,
+  FaceDetectionProvider,
 } from "@infinitered/react-native-mlkit-face-detection";
 
 function App() {
   return (
-    <RNMLKitFaceDetectionContextProvider>
+    <FaceDetectionProvider>
       {/* rest of your app goes here */}
-    </RNMLKitFaceDetectionContextProvider>
+    </FaceDetectionProvider>
   );
 }
 ```
@@ -69,10 +69,15 @@ the [Options](../options) page.
 Once the provider is in place, use the `useFacesInPhoto` hook. This hook will allow you to detect faces in any photo by
 simply passing the image's URI.
 
+::: warning
+The `useFacesInPhoto` hook requires a local URI to the image file. Remote URLs are not supported.
+:::
+
 ```tsx
 import { useFacesInPhoto } from "@infinitered/react-native-mlkit-face-detection";
 
 function FaceDetectionComponent() {
+  // imageUri must be a local file URI
   const { faces, error, status } = useFacesInPhoto('local_uri_of_your_image_uri');
 
   if (error) {
