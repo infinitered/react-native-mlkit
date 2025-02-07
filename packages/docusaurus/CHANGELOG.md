@@ -1,5 +1,11 @@
 # docusaurus
 
+## 0.6.0
+
+### Minor Changes
+
+- b668ab0: Upgrade to expo 52
+
 ## 0.5.12
 
 ### Patch Changes

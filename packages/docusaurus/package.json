@@ -1,6 +1,6 @@
 {
   "name": "@infinitered/react-native-mlkit-docs",
-  "version": "0.5.12",
+  "version": "0.6.0",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",

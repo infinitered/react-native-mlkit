@@ -1,5 +1,19 @@
 # @infinitered/react-native-mlkit-document-scanner
 
+## 3.0.0
+
+### Major Changes
+
+- b668ab0: Upgrade to expo 52
+
+### Patch Changes
+
+- Updated dependencies [b668ab0]
+- Updated dependencies [83b7e6e]
+- Updated dependencies [b668ab0]
+- Updated dependencies [213f085]
+  - @infinitered/react-native-mlkit-core@3.0.0
+
 ## 2.0.1
 
 ### Patch Changes
