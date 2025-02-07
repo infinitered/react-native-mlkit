@@ -1,5 +1,21 @@
 # example-app
 
+## 4.0.0
+
+### Major Changes
+
+- b668ab0: Upgrade to expo 52
+
+### Patch Changes
+
+- Updated dependencies [b668ab0]
+- Updated dependencies [83b7e6e]
+- Updated dependencies [b668ab0]
+  - @infinitered/react-native-mlkit-object-detection@3.0.0
+  - @infinitered/react-native-mlkit-face-detection@3.0.0
+  - @infinitered/react-native-mlkit-image-labeling@3.0.0
+  - @infinitered/react-native-mlkit-document-scanner@3.0.0
+
 ## 3.0.0
 
 ### Major Changes

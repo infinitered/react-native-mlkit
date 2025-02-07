@@ -1,5 +1,11 @@
 # @infinitered/tsconfig
 
+## 0.4.0
+
+### Minor Changes
+
+- b668ab0: Upgrade to expo 52
+
 ## 0.3.0
 
 ### Minor Changes
