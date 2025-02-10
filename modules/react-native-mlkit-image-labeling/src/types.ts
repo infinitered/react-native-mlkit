@@ -1,10 +1,10 @@
 import { ModelInfo } from "@infinitered/react-native-mlkit-core";
 
-import { RNMLKitClassifier } from "./RNMLKitClassifier";
+import { RNMLKitClassifier } from "./module/RNMLKitClassifier";
 import {
   RNMLKitCustomImageLabelerOptions,
   RNMLKitImageLabel,
-} from "./RNMLKitImageLabeler";
+} from "./module/RNMLKitImageLabeler";
 
 export type ImageLabelingModelInfo =
   ModelInfo<RNMLKitCustomImageLabelerOptions>;

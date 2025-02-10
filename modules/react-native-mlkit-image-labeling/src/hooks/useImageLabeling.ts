@@ -4,7 +4,7 @@ import {
   ModelAssets,
   ImageLabelingContext,
   Models,
-} from "./ImageLabelingContext";
+} from "../context/ImageLabelingContext";
 
 export function useImageLabeling<T extends ModelAssets>(modelName: keyof T) {
   const context: Models<T> | undefined = useContext(ImageLabelingContext);
