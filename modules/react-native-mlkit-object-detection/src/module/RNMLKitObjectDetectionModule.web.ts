@@ -3,7 +3,7 @@ import {
   RNMLKitObjectDetectionModule,
   RNMLKitObjectDetectorOptions,
   RNMLKitObjectDetectorSpec,
-} from "./RNMLKitObjectDetectionModule";
+} from "../module/RNMLKitObjectDetectionModule";
 
 const webError = new Error(
   "RNMLKitObjectDetectionModule is not supported on web"
