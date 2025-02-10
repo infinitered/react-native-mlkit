@@ -7,6 +7,6 @@ interface Props extends PropsWithChildren {
   deferInitialization?: boolean;
 }
 
-const RNMLKitFaceDetectionContextProvider = ({ children }: Props) => children;
+const FaceDetectionProvider = ({ children }: Props) => children;
 
-export default RNMLKitFaceDetectionContextProvider;
+export default FaceDetectionProvider;

@@ -1,6 +1,6 @@
 import { WEB_ERROR } from "../constants";
 
-const useFaceDetector = () => ({
+const useFaceDetection = () => ({
   detectFaces: () => {
     throw new Error(WEB_ERROR);
   },
@@ -11,4 +11,4 @@ const useFaceDetector = () => ({
   status: "ready",
 });
 
-export default useFaceDetector;
+export default useFaceDetection;

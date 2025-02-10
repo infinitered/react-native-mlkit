@@ -1,7 +1,7 @@
-import { UseFaceDetectorReturnType } from "./useFacesInPhoto";
+import { UseFaceDetectionReturnType } from "./useFacesInPhoto";
 import { WEB_ERROR } from "../constants";
 
-export function useFacesInPhoto(imageUri?: string): UseFaceDetectorReturnType {
+export function useFacesInPhoto(imageUri?: string): UseFaceDetectionReturnType {
   return {
     clearFaces: () => {
       throw new Error(WEB_ERROR);
@@ -9,5 +9,5 @@ export function useFacesInPhoto(imageUri?: string): UseFaceDetectorReturnType {
     error: WEB_ERROR,
     status: "ready",
     faces: [],
-  } as UseFaceDetectorReturnType;
+  } as UseFaceDetectionReturnType;
 }
