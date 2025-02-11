@@ -1,6 +1,15 @@
 import { WEB_ERROR } from "../constants";
-import { ModelAssets } from "../context/ImageLabelingContext";
 
-export function useImageLabeling<T extends ModelAssets>(_modelName: keyof T) {
-  throw new Error(WEB_ERROR);
-}
+const useImageLabeling = () => ({
+  modelSpec: "ImageLabeling",
+  loaded: () => false,
+  isLoaded: false,
+  classifyImage: () => {
+    throw new Error(WEB_ERROR);
+  },
+  updateOptionsAndReload: () => {
+    throw new Error(WEB_ERROR);
+  },
+});
+
+export { useImageLabeling };
