@@ -1,3 +1,4 @@
+import { WEB_ERROR } from "../constants";
 import {
   RNMLKitDetectedObject,
   RNMLKitObjectDetectionModule,
@@ -5,24 +6,20 @@ import {
   RNMLKitObjectDetectorSpec,
 } from "../module/RNMLKitObjectDetectionModule";
 
-const webError = new Error(
-  "RNMLKitObjectDetectionModule is not supported on web"
-);
-
 export const module: RNMLKitObjectDetectionModule = {
   loadCustomModel(_spec: RNMLKitObjectDetectorSpec): Promise<string> {
-    throw webError;
+    throw new Error(WEB_ERROR);
   },
   loadDefaultModel(_options?: RNMLKitObjectDetectorOptions): Promise<boolean> {
-    throw webError;
+    throw new Error(WEB_ERROR);
   },
   detectObjects(
     _modelName: string,
     _imagePath: string
   ): Promise<RNMLKitDetectedObject[]> {
-    throw webError;
+    throw new Error(WEB_ERROR);
   },
   isLoaded(_modelName?: string): boolean {
-    throw webError;
+    throw new Error(WEB_ERROR);
   },
 };
