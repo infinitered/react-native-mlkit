@@ -7,6 +7,4 @@ interface Props extends PropsWithChildren {
   deferInitialization?: boolean;
 }
 
-const FaceDetectionProvider = ({ children }: Props) => children;
-
-export default FaceDetectionProvider;
+export const FaceDetectionProvider = ({ children }: Props) => children;
