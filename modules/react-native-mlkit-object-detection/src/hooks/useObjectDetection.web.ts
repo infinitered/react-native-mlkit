@@ -1,8 +1,10 @@
-import { WEB_ERROR } from "../constants";
+import { UnavailabilityError } from "expo-modules-core";
+
+import { RNMLKIT_MODULE_NAME, WEB_ERROR } from "../constants";
 import { ObjectDetectionConfig, RNMLKitObjectDetector } from "../types";
 
 export function useObjectDetection<T extends ObjectDetectionConfig>(
   modelName: keyof T | "default"
 ): RNMLKitObjectDetector | undefined {
-  throw new Error(WEB_ERROR);
+  throw new UnavailabilityError(RNMLKIT_MODULE_NAME, WEB_ERROR);
 }

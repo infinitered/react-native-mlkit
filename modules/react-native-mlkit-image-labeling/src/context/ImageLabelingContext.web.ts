@@ -1,5 +1,7 @@
+import { UnavailabilityError } from "expo-modules-core";
 import { createContext } from "react";
 
+import { RNMLKIT_MODULE_NAME, WEB_ERROR } from "../constants";
 import { RNMLKitClassifier } from "../module/RNMLKitClassifier";
 
 export type ModelAssets = Record<string, number>;
@@ -13,5 +15,5 @@ export const ImageLabelingContext = createContext<
 >(undefined);
 
 export function useRNMLKitImageLabelerContext() {
-  throw new Error("WEB_ERROR");
+  throw new UnavailabilityError(RNMLKIT_MODULE_NAME, WEB_ERROR);
 }

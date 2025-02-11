@@ -1,7 +1,9 @@
-import { WEB_ERROR } from "../constants";
+import { UnavailabilityError } from "expo-modules-core";
+
+import { RNMLKIT_MODULE_NAME, WEB_ERROR } from "../constants";
 
 export function useImageLabelingModels() {
-  throw new Error(WEB_ERROR);
+  throw new UnavailabilityError(RNMLKIT_MODULE_NAME, WEB_ERROR);
 }
 
 export default useImageLabelingModels;

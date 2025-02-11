@@ -1,8 +1,10 @@
-import { WEB_ERROR } from "../constants";
+import { UnavailabilityError } from "expo-modules-core";
+
+import { WEB_ERROR, RNMLKIT_MODULE_NAME } from "../constants";
 
 const useFaceDetection = () => ({
   detectFaces: () => {
-    throw new Error(WEB_ERROR);
+    throw new UnavailabilityError(RNMLKIT_MODULE_NAME, WEB_ERROR);
   },
   error: null,
   initialize: () => {

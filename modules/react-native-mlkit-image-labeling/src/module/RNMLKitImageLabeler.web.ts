@@ -1,4 +1,7 @@
 import { requireNativeModule } from "expo";
+import { UnavailabilityError } from "expo-modules-core";
+
+import { RNMLKIT_MODULE_NAME } from "../constants";
 
 const WEB_ERROR = "Method not available on web";
 
@@ -41,25 +44,25 @@ type RNMLKitImageLabelingModule = {
 function loadModel(
   modelSpec: RNMLKitImageLabelerSpec
 ): Promise<string | undefined> {
-  throw new Error(WEB_ERROR);
+  throw new UnavailabilityError(RNMLKIT_MODULE_NAME, WEB_ERROR);
 }
 
 function isLoaded(modelName: string): boolean {
-  throw new Error(WEB_ERROR);
+  throw new UnavailabilityError(RNMLKIT_MODULE_NAME, WEB_ERROR);
 }
 
 async function classifyImage(
   modelName: string,
   imagePath: string
 ): Promise<ClassificationResult> {
-  throw new Error(WEB_ERROR);
+  throw new UnavailabilityError(RNMLKIT_MODULE_NAME, WEB_ERROR);
 }
 
 async function updateOptionsAndReload(
   modelName: string,
   newOptions: RNMLKitCustomImageLabelerOptions
 ): Promise<void> {
-  throw new Error(WEB_ERROR);
+  throw new UnavailabilityError(RNMLKIT_MODULE_NAME, WEB_ERROR);
 }
 
 export default { loadModel, classifyImage, updateOptionsAndReload, isLoaded };
