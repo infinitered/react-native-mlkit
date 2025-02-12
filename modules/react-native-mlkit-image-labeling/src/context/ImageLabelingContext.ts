@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
 
-import { RNMLKitClassifier } from "./RNMLKitClassifier";
+import { RNMLKitClassifier } from "../module/RNMLKitClassifier";
 
 export type ModelAssets = Record<string, number>;
 

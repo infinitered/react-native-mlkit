@@ -1,5 +1,5 @@
 // index.ts
-import RNMLKitObjectDetectionModule from "./RNMLKitObjectDetectionModule";
+import RNMLKitObjectDetectionModule from "./module/RNMLKitObjectDetectionModule";
 import {
   RNMLKitCustomObjectDetectorOptions,
   RNMLKitObjectDetectionObject,
@@ -22,16 +22,16 @@ export {
   ObjectDetectionContext,
   useObjectDetectionContext,
   type ObjectDetectionContextValue,
-} from "./ObjectDetectionContext";
+} from "./context/ObjectDetectionContext";
 
 // Export main hooks
-export { useObjectDetectionModels } from "./useObjectDetectionModels";
-export { useObjectDetectionProvider } from "./useObjectDetectionProvider";
-export { useObjectDetection } from "./useObjectDetection";
+export { useObjectDetectionModels } from "./hooks/useObjectDetectionModels";
+export { useObjectDetectionProvider } from "./hooks/useObjectDetectionProvider";
+export { useObjectDetection } from "./hooks/useObjectDetection";
 
 // Export detector classes
-export { RNMLKitCustomObjectDetector } from "./RNMLKitCustomObjectDetector";
-export { RNMLKitDefaultObjectDetector } from "./RNMLKitDefaultObjectDetector";
+export { RNMLKitCustomObjectDetector } from "./module/RNMLKitCustomObjectDetector";
+export { RNMLKitDefaultObjectDetector } from "./module/RNMLKitDefaultObjectDetector";
 
 // Re-export core library types
 export type {

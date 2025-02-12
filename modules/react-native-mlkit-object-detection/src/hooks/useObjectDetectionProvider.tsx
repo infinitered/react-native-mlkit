@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
 
-import { ObjectDetectionContext } from "./ObjectDetectionContext";
-import { ObjectDetectionConfig, ObjectDetectionModels } from "./types";
+import { ObjectDetectionContext } from "../context/ObjectDetectionContext";
+import { ObjectDetectionConfig, ObjectDetectionModels } from "../types";
 
 export function useObjectDetectionProvider<T extends ObjectDetectionConfig>(
   models: ObjectDetectionModels<T>

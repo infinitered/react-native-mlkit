@@ -1,14 +1,14 @@
 import { useAssets } from "expo-asset";
 import { useState, useEffect } from "react";
 
-import { RNMLKitCustomObjectDetector } from "./RNMLKitCustomObjectDetector";
-import { RNMLKitDefaultObjectDetector } from "./RNMLKitDefaultObjectDetector";
+import { RNMLKitCustomObjectDetector } from "../module/RNMLKitCustomObjectDetector";
+import { RNMLKitDefaultObjectDetector } from "../module/RNMLKitDefaultObjectDetector";
 import {
   RNMLKitObjectDetectorOptions,
   ObjectDetectionModels,
   ObjectDetectionConfig,
   RNMLKitObjectDetector,
-} from "./types";
+} from "../types";
 
 export function useObjectDetectionModels<T extends ObjectDetectionConfig>({
   assets = {} as T,

@@ -3,7 +3,7 @@ import {
   RNMLKitObjectDetectionObject,
   RNMLKitObjectDetectorOptions,
   RNMLKitObjectDetector,
-} from "./types";
+} from "../types";
 
 export class RNMLKitDefaultObjectDetector implements RNMLKitObjectDetector {
   private options?: RNMLKitObjectDetectorOptions;

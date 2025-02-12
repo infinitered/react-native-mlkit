@@ -1,9 +1,9 @@
-import RNMLKitImageLabelingModule from "./RNMLKitImageLabeler";
+import RNMLKitImageLabelingModule from "./module/RNMLKitImageLabeler";
 
 export default RNMLKitImageLabelingModule;
-export { useImageLabeling } from "./useImageLabeling";
-export { useImageLabelingProvider } from "./useImageLabelingProvider";
-export { useImageLabelingModels } from "./useImageLabelingModels";
+export { useImageLabeling } from "./hooks/useImageLabeling";
+export { useImageLabelingProvider } from "./hooks/useImageLabelingProvider";
+export { useImageLabelingModels } from "./hooks/useImageLabelingModels";
 export * from "./types";
 
-export type { ClassificationResult } from "./RNMLKitImageLabeler";
+export type { ClassificationResult } from "./module/RNMLKitImageLabeler";

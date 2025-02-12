@@ -1,28 +1,27 @@
+import { UnavailabilityError } from "expo-modules-core";
+
+import { RNMLKIT_MODULE_NAME, WEB_ERROR } from "../constants";
 import {
   RNMLKitDetectedObject,
   RNMLKitObjectDetectionModule,
   RNMLKitObjectDetectorOptions,
   RNMLKitObjectDetectorSpec,
-} from "./RNMLKitObjectDetectionModule";
-
-const webError = new Error(
-  "RNMLKitObjectDetectionModule is not supported on web"
-);
+} from "../module/RNMLKitObjectDetectionModule";
 
 export const module: RNMLKitObjectDetectionModule = {
   loadCustomModel(_spec: RNMLKitObjectDetectorSpec): Promise<string> {
-    throw webError;
+    throw new UnavailabilityError(RNMLKIT_MODULE_NAME, WEB_ERROR);
   },
   loadDefaultModel(_options?: RNMLKitObjectDetectorOptions): Promise<boolean> {
-    throw webError;
+    throw new UnavailabilityError(RNMLKIT_MODULE_NAME, WEB_ERROR);
   },
   detectObjects(
     _modelName: string,
     _imagePath: string
   ): Promise<RNMLKitDetectedObject[]> {
-    throw webError;
+    throw new UnavailabilityError(RNMLKIT_MODULE_NAME, WEB_ERROR);
   },
   isLoaded(_modelName?: string): boolean {
-    throw webError;
+    throw new UnavailabilityError(RNMLKIT_MODULE_NAME, WEB_ERROR);
   },
 };

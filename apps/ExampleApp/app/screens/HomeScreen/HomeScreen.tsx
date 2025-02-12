@@ -28,7 +28,7 @@ export const HomeScreen: FC<HomeScreenProps> = observer(function HomeScreen() {
   )
 
   return (
-    <Screen style={$root} preset="fixed">
+    <Screen style={$root} preset="auto">
       <View style={$shadowSpace}>
         <View style={$titleContainer}>
           <Text preset={"heading"} text={"Infinite Red AI"} />
@@ -60,6 +60,8 @@ const $listContainer: ViewStyle = {
   position: "relative",
   top: -32,
   marginTop: 16,
+  flex: 1,
+  display: "flex",
 }
 
 const $contentContainerStyle: ViewStyle = { paddingBottom: 100, paddingTop: 24 }

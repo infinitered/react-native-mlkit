@@ -1,9 +1,9 @@
 import { useAssets } from "expo-asset";
 import { useState, useEffect } from "react";
 
-import { RNMLKitClassifier } from "./RNMLKitClassifier";
-import { RNMLKitImageLabelerSpec } from "./RNMLKitImageLabeler";
-import { ImageLabelingConfig, ImageLabelingModels } from "./types";
+import { RNMLKitClassifier } from "../module/RNMLKitClassifier";
+import { RNMLKitImageLabelerSpec } from "../module/RNMLKitImageLabeler";
+import { ImageLabelingConfig, ImageLabelingModels } from "../types";
 
 export function useImageLabelingModels<T extends ImageLabelingConfig>(
   assets: T

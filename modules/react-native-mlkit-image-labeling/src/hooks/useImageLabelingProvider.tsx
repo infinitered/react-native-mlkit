@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from "react";
 
-import { ImageLabelingContext } from "./ImageLabelingContext";
-import { ImageLabelingConfig, ImageLabelingModels } from "./types";
+import { ImageLabelingContext } from "../context/ImageLabelingContext";
+import { ImageLabelingConfig, ImageLabelingModels } from "../types";
 
 export function useImageLabelingProvider<T extends ImageLabelingConfig>(
   models: Partial<ImageLabelingModels<T>>

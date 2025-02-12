@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
 
-import { ObjectDetectionConfig, ObjectDetectionModels } from "./types";
+import { ObjectDetectionConfig, ObjectDetectionModels } from "../types";
 
 export type ObjectDetectionContextValue<T extends ObjectDetectionConfig> =
   ObjectDetectionModels<T>;

@@ -1,5 +1,5 @@
-import { useObjectDetectionContext } from "./ObjectDetectionContext";
-import { ObjectDetectionConfig, RNMLKitObjectDetector } from "./types";
+import { useObjectDetectionContext } from "../context/ObjectDetectionContext";
+import { ObjectDetectionConfig, RNMLKitObjectDetector } from "../types";
 
 export function useObjectDetection<T extends ObjectDetectionConfig>(
   modelName: keyof T | "default"
