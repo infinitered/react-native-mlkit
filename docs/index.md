@@ -45,4 +45,9 @@ need.
 Logic and classes shared by all the types have been extracted into `react-native-mlkit-core`, to reduce code
 duplication.
 
+### Is RN MLKit compatible with all platforms?
+
+While we aim to support all platforms, we currently only support iOS and Android. The native modules do not work on the
+web, and we do not have plans to support the web at this time.
+
 ---

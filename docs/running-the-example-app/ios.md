@@ -15,6 +15,10 @@ This is a [known issue](https://issuetracker.google.com/issues/178965151?pli=1) 
 waiting either for a fix from Google, or for Apple to release a native `arm64` simulator.
 :::
 
+:::note
+MLKit is not supported in the iOS simulator. You will need to use a hardware device.
+:::
+
 ## 1. Clone the project
 
 ```bash
