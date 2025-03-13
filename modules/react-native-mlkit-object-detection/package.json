@@ -25,7 +25,7 @@
   },
   "author": "Trevor Coleman <trevor@infinitered.com> (https://github.com/trevor-coleman)",
   "license": "MIT",
-  "homepage": "https://docs.infinite.red/category/object-detection/",
+  "homepage": "https://docs.infinite.red/react-native-mlkit/object-detection",
   "dependencies": {
     "@infinitered/react-native-mlkit-core": "3.1.0"
   },

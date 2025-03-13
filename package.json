@@ -43,6 +43,6 @@
   ],
   "packageManager": "yarn@3.6.1",
   "repository": "https://www.github.com/infinitered/react-native-mlkit",
-  "homepage": "https://infinitered.github.io/react-native-mlkit",
+  "homepage": "https://docs.infinite.red/react-native-mlkit",
   "x": "http://localhost:3000/react-native-mlkit/face-detection/options/"
 }

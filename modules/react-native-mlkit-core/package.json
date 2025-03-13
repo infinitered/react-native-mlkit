@@ -25,7 +25,7 @@
   },
   "author": "Trevor Coleman <trevor@infinitered.com> (https://github.com/trevor-coleman)",
   "license": "MIT",
-  "homepage": "https://infinitered.github.io/react-native-mlkit",
+  "homepage": "https://docs.infinite.red/react-native-mlkit/",
   "devDependencies": {
     "@babel/plugin-transform-private-methods": "^7.24.7",
     "@infinitered/tsconfig": "0.5.0",

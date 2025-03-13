@@ -25,7 +25,7 @@
   },
   "author": "Frank Calise <frank@infinitered.com> (https://github.com/frankcalise)",
   "license": "MIT",
-  "homepage": "https://docs.infinite.red/category/document-scanner/",
+  "homepage": "https://docs.infinite.red/react-native-mlkit/document-scanner",
   "dependencies": {
     "@infinitered/react-native-mlkit-core": "3.1.0"
   },
