@@ -114,6 +114,29 @@ Running `yarn build` inside of an expo module workspace will start watch mode fo
 | ^51.0.0  | ^2.0.0   |
 | ^52.0.0  | ^3.0.0   |
 
+### React Native Firebase
+When using React Native MLKit alongside React Native Firebase, you may encounter dependency conflicts with the underlying Google libraries. This occurs because Firebase requires newer versions of shared dependencies than those used by Google's MLKit SDK.
+
+#### Specific conflicts:
+- React Native Firebase needs GoogleDataTransport ~> 10.0 and GoogleUtilities ~> 8.0
+- MLKit uses GoogleDataTransport ~> 3.2 or ~> 8.0 and GoogleUtilities ~> 6.0
+
+#### Solutions
+
+1. For standard React Native projects:
+```
+# In your Podfile
+pod 'GoogleDataTransport', '~> 10.0'
+pod 'GoogleUtilities', '~> 8.0'
+```
+
+2. For Expo projects:
+  Use a config plugin or expo-build-properties to override the pod versions.
+  
+3. Alternative: Consider downgrading React Native Firebase to a version with compatible dependencies.
+
+We're tracking this issue and will update when Google releases compatible versions of their SDK components.
+
 ## Contributors
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
