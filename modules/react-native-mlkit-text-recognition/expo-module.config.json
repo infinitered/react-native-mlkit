@@ -1,0 +1,17 @@
+{
+  "platforms": [
+    "apple",
+    "android",
+    "web"
+  ],
+  "apple": {
+    "modules": [
+      "RNMLKitTextRecognitionModule"
+    ]
+  },
+  "android": {
+    "modules": [
+      "@infinitered/react-native-mlkit-text-recognition.RNMLKitTextRecognitionModule"
+    ]
+  }
+}

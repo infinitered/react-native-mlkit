@@ -1,0 +1,44 @@
+{
+  "name": "@infinitered/react-native-mlkit-text-recognition",
+  "version": "1.0.0",
+  "description": "Expo module for MLKit Text Recognition",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "scripts": {
+    "build": "expo-module build",
+    "ci:build": "tsc",
+    "clean": "expo-module clean",
+    "lint": "expo-module lint",
+    "test": "../../scripts/test-module.sh",
+    "prepublishOnly": "expo-module prepublishOnly",
+    "expo-module": "expo-module"
+  },
+  "keywords": [
+    "react-native",
+    "expo",
+    "react-native-mlkit-text-recognition",
+    "RNMLKitObjectDetection"
+  ],
+  "repository": "https://github.com/infinitered/react-native-mlkit",
+  "bugs": {
+    "url": "https://github.com/infinitered/react-native-mlkit/issues"
+  },
+  "author": "Diogo Carmo <hi@diogocarmo.com> (https://github.com/dccarmo)",
+  "license": "MIT",
+  "homepage": "https://docs.infinite.red/react-native-mlkit/text-recognition",
+  "dependencies": {
+    "@infinitered/react-native-mlkit-core": "3.1.0"
+  },
+  "devDependencies": {
+    "@infinitered/react-native-mlkit-core": "3.1.0",
+    "@types/react": "~18.3.12",
+    "expo-module-scripts": "^3.4.1",
+    "expo-modules-core": "~2.2.0",
+    "typescript": "~5.1.6"
+  },
+  "peerDependencies": {
+    "expo": "*",
+    "react": "*",
+    "react-native": "*"
+  }
+}

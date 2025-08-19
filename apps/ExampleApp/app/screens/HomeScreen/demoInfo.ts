@@ -46,5 +46,11 @@ export const DEMO_LIST: DemoInfo[] = [
     screen: "ImageLabeling",
     image: FACE_HOLDER,
   },
+  {
+    title: "Text recognition",
+    description: "Recognize text in an image",
+    screen: "TextRecognition",
+    image: DOCUMENT_SCANNER,
+  },
   ...PLATFORM_SPECIFIC_DEMOS,
 ]

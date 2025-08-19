@@ -18,9 +18,7 @@
       "fallbackToCacheTimeout": 0
     },
     "jsEngine": "hermes",
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "android": {
       "icon": "./assets/images/app-icon-android-legacy.png",
       "package": "red.infinite.reactnativemlkit.example",
@@ -63,6 +61,12 @@
           "image": "./assets/images/splash-logo-android-universal.png",
           "backgroundColor": "#F4F2F1",
           "imageWidth": 250
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "This app uses the photo library to select images for Machine Learning purposes. i.e. Object and Image detection."
         }
       ]
     ],
