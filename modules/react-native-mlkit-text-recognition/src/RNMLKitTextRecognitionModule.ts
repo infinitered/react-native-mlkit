@@ -1,4 +1,4 @@
-import { NativeModule, requireNativeModule } from "expo";
+import { requireNativeModule } from "expo";
 
 type RNMLKitTextRecognitionModule = {
   recognizeText: (imagePath: string) => Promise<string>;

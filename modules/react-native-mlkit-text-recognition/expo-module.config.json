@@ -11,7 +11,7 @@
   },
   "android": {
     "modules": [
-      "@infinitered/react-native-mlkit-text-recognition.RNMLKitTextRecognitionModule"
+      "red.infinite.reactnativemlkit.textrecognition.RNMLKitTextRecognitionModule"
     ]
   }
 }
