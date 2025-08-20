@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:developers.google.com)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
