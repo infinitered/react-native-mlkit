@@ -5,8 +5,8 @@ import expo.modules.kotlin.exception.CodedException
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
 import java.net.URL
-import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
+import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.common.InputImage
 import android.graphics.BitmapFactory
 import kotlinx.coroutines.Dispatchers
@@ -39,7 +39,7 @@ class RNMLKitTextRecognitionModule : Module() {
 
         recognizer.process(image)
           .addOnSuccessListener { visionText ->
-            promise.resolve(visionText.text)
+            promise.resolve(mapTextToRecord(visionText))
           }
           .addOnFailureListener { e ->
             promise.reject(

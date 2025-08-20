@@ -22,7 +22,7 @@ public class RNMLKitTextRecognitionModule: Module {
         do {
           let result = try await textRecognizer.process(image.visionImage)
           
-          promise.resolve(result.text)
+          promise.resolve(mapTextToRecord(result))
         } catch {
           promise.reject(
               NSError(domain: ERROR_DOMAIN, code: 1, userInfo: [NSLocalizedDescriptionKey: "Error occurred: \(error)"])
