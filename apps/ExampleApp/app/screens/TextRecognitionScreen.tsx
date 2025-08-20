@@ -39,7 +39,6 @@ export const TextRecognitionScreen: FC<TextRecognitionScreenProps> = observer(
         setStatus("recognizing")
         try {
           const recognitionResult = await recognizeText(image.uri)
-          console.log("recognitionResult", recognitionResult)
           setResult(recognitionResult.text)
           setStatus("done")
         } catch (error) {
