@@ -28,7 +28,6 @@ export const TextRecognitionScreen: FC<TextRecognitionScreenProps> = observer(
 
     const onStatusChange = React.useCallback(
       (status: "init" | "noPermissions" | "done" | "error" | "loading" | UseExampleImageStatus) => {
-        console.log("status", status)
         setStatus(status)
       },
       [],
@@ -37,13 +36,13 @@ export const TextRecognitionScreen: FC<TextRecognitionScreenProps> = observer(
     useEffect(() => {
       const recognizeImage = async () => {
         if (!image?.uri) return
-        setStatus("classifying")
+        setStatus("recognizing")
         try {
           const recognitionResult = await recognizeText(image.uri)
           setResult(recognitionResult)
           setStatus("done")
         } catch (error) {
-          console.error("Error classifying image:", error)
+          console.error("Error recognizing image:", error)
           setStatus("error")
         }
       }
@@ -67,9 +66,9 @@ export const TextRecognitionScreen: FC<TextRecognitionScreenProps> = observer(
         case "done":
           return "Done!"
         case "error":
-          return "Error during classification!"
-        case "classifying":
-          return "Classifying Image..."
+          return "Error during recognition!"
+        case "recognizing":
+          return "Recognizing Image..."
         case "loading":
           return "Loading Example Images..."
         default:

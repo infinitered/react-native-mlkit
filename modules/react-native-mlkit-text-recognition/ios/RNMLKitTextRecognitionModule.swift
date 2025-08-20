@@ -3,13 +3,6 @@ import MLKitCommon
 import MLKitTextRecognition
 import RNMLKitCore
 
-// Function to reject a promise with a specified message and domain
-func rejectPromiseWithMessage(promise: Promise, message: String, domain: String) {
-    promise.reject(
-        NSError(domain: domain, code: 1, userInfo: [NSLocalizedDescriptionKey: message])
-    )
-}
-
 public class RNMLKitTextRecognitionModule: Module {
     let ERROR_DOMAIN: String = "red.infinite.RNMLKit.RNMLKitTextRecognitionModuleErrorDomain"
     
@@ -31,7 +24,9 @@ public class RNMLKitTextRecognitionModule: Module {
           
           promise.resolve(result.text)
         } catch {
-          rejectPromiseWithMessage(promise: promise, message: "Error occurred: \(error)", domain: ERROR_DOMAIN)
+          promise.reject(
+              NSError(domain: ERROR_DOMAIN, code: 1, userInfo: [NSLocalizedDescriptionKey: "Error occurred: \(error)"])
+          )
         }
       }
     }

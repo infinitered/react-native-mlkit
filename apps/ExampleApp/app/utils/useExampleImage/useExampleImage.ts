@@ -1,6 +1,5 @@
 import {
   ImagePickerResult,
-  launchCameraAsync,
   launchImageLibraryAsync,
   ImagePickerOptions,
   ImagePickerAsset,
@@ -24,6 +23,7 @@ export type UseExampleImageStatus =
   | "takingPhoto"
   | "selectingPhoto"
   | "classifying"
+  | "recognizing"
   | "done"
   | "error"
   | "loading"
@@ -127,7 +127,6 @@ export function useExampleImage(predicates?: {
       return
     }
     setStatus("takingPhoto")
-    // const result = await launchCameraAsync(IMAGE_PICKER_OPTIONS)
     const result = await launchImageLibrary({
       mediaType: "photo",
     })

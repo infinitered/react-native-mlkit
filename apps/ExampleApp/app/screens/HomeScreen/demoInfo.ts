@@ -11,6 +11,7 @@ export interface DemoInfo {
 const FACE_DETECTION = require("../../../assets/images/face-detection.jpg")
 const FACE_HOLDER = require("../../../assets/images/welcome-face.png")
 const DOCUMENT_SCANNER = require("../../../assets/images/doc-scanner.png")
+const TEXT_RECOGNITION = require("../../../assets/images/text-recognition.png")
 
 const ANDROID_ONLY_DEMOS: DemoInfo[] = [
   {
@@ -50,7 +51,7 @@ export const DEMO_LIST: DemoInfo[] = [
     title: "Text recognition",
     description: "Recognize text in an image",
     screen: "TextRecognition",
-    image: DOCUMENT_SCANNER,
+    image: TEXT_RECOGNITION,
   },
   ...PLATFORM_SPECIFIC_DEMOS,
 ]

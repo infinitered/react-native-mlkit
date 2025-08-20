@@ -4,16 +4,11 @@ import expo.modules.kotlin.Promise
 import expo.modules.kotlin.exception.CodedException
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
-import expo.modules.kotlin.records.Field
-import expo.modules.kotlin.records.Record
 import java.net.URL
-import com.google.mlkit.vision.text.Text
 import com.google.mlkit.vision.text.TextRecognition
-import com.google.mlkit.vision.text.TextRecognizer
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
 import com.google.mlkit.vision.common.InputImage
 import android.graphics.BitmapFactory
-import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
@@ -21,8 +16,6 @@ import kotlinx.coroutines.withContext
 suspend fun getInputImage(
   imagePath: String
 ): InputImage {
-  val image: InputImage
-
   try {
     val bitmap = BitmapFactory.decodeStream(withContext(Dispatchers.IO) {
       URL(imagePath).openStream()
@@ -44,7 +37,7 @@ class RNMLKitTextRecognitionModule : Module() {
 
         val image: InputImage = getInputImage(imagePath)
 
-        val result = recognizer.process(image)
+        recognizer.process(image)
           .addOnSuccessListener { visionText ->
             promise.resolve(visionText.text)
           }
