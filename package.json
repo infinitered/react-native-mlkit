@@ -10,7 +10,7 @@
     "test": "turbo run test -- --run-in-band",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "clean": "turbo run clean",
+    "clean": "turbo run clean --force",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "setup": "./scripts/setup.sh",
     "version": "changeset version && yarn install --mode update-lockfile",
