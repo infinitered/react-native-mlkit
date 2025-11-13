@@ -38,12 +38,6 @@ export type AppStackParamList = {
   // IGNITE_GENERATOR_ANCHOR_APP_STACK_PARAM_LIST
 }
 
-/**
- * This is a list of all the route names that will exit the app if the back button
- * is pressed while in that screen. Only affects Android.
- */
-const exitRoutes = Config.exitRoutes
-
 export type AppStackScreenProps<T extends keyof AppStackParamList> = NativeStackScreenProps<
   AppStackParamList,
   T
@@ -78,8 +72,6 @@ export interface NavigationProps
 
 export const AppNavigator = observer(function AppNavigator(props: NavigationProps) {
   const colorScheme = useColorScheme()
-
-  useBackButtonHandler((routeName) => exitRoutes.includes(routeName))
 
   return (
     <NavigationContainer
