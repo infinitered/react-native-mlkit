@@ -10,8 +10,7 @@ import { observer } from "mobx-react-lite"
 import React from "react"
 import { useColorScheme } from "react-native"
 import * as Screens from "~/screens"
-import Config from "../config"
-import { navigationRef, useBackButtonHandler } from "./navigationUtilities"
+import { navigationRef } from "./navigationUtilities"
 import { colors } from "~/theme"
 
 /**
