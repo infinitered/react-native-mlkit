@@ -1,5 +1,15 @@
 # @infinitered/react-native-mlkit-core
 
+## 4.0.0
+
+### Major Changes
+
+- d98fb8a: Added module support for Expo SDK 53
+
+### Patch Changes
+
+- 728b0f9: Move testing deps to devDependencies
+
 ## 3.1.0
 
 ### Minor Changes

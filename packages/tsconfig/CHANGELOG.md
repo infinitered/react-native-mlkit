@@ -1,5 +1,11 @@
 # @infinitered/tsconfig
 
+## 0.6.0
+
+### Minor Changes
+
+- d98fb8a: Added module support for Expo SDK 53
+
 ## 0.5.0
 
 ### Minor Changes

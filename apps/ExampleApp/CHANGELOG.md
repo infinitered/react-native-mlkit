@@ -1,5 +1,19 @@
 # example-app
 
+## 5.0.0
+
+### Major Changes
+
+- d98fb8a: Added module support for Expo SDK 53
+
+### Patch Changes
+
+- Updated dependencies [d98fb8a]
+  - @infinitered/react-native-mlkit-document-scanner@4.0.0
+  - @infinitered/react-native-mlkit-object-detection@4.0.0
+  - @infinitered/react-native-mlkit-face-detection@4.0.0
+  - @infinitered/react-native-mlkit-image-labeling@4.0.0
+
 ## 4.1.0
 
 ### Minor Changes
