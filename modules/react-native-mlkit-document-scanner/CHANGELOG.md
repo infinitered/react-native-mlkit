@@ -1,5 +1,17 @@
 # @infinitered/react-native-mlkit-document-scanner
 
+## 4.0.0
+
+### Major Changes
+
+- d98fb8a: Added module support for Expo SDK 53
+
+### Patch Changes
+
+- Updated dependencies [728b0f9]
+- Updated dependencies [d98fb8a]
+  - @infinitered/react-native-mlkit-core@4.0.0
+
 ## 3.1.0
 
 ### Minor Changes
