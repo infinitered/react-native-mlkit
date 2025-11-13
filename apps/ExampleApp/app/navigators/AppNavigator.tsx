@@ -10,8 +10,7 @@ import { observer } from "mobx-react-lite"
 import React from "react"
 import { useColorScheme } from "react-native"
 import * as Screens from "~/screens"
-import Config from "../config"
-import { navigationRef, useBackButtonHandler } from "./navigationUtilities"
+import { navigationRef } from "./navigationUtilities"
 import { colors } from "~/theme"
 
 /**
@@ -37,12 +36,6 @@ export type AppStackParamList = {
   DocumentScanner: Record<string, never>
   // IGNITE_GENERATOR_ANCHOR_APP_STACK_PARAM_LIST
 }
-
-/**
- * This is a list of all the route names that will exit the app if the back button
- * is pressed while in that screen. Only affects Android.
- */
-const exitRoutes = Config.exitRoutes
 
 export type AppStackScreenProps<T extends keyof AppStackParamList> = NativeStackScreenProps<
   AppStackParamList,
@@ -78,8 +71,6 @@ export interface NavigationProps
 
 export const AppNavigator = observer(function AppNavigator(props: NavigationProps) {
   const colorScheme = useColorScheme()
-
-  useBackButtonHandler((routeName) => exitRoutes.includes(routeName))
 
   return (
     <NavigationContainer

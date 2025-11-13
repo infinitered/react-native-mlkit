@@ -10,7 +10,7 @@
     "test": "turbo run test -- --run-in-band",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "clean": "turbo run clean",
+    "clean": "turbo run clean --force",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "setup": "./scripts/setup.sh",
     "version": "changeset version && yarn install --mode update-lockfile",
@@ -28,12 +28,16 @@
     "@types/jest": "^29.5.5",
     "eslint": "^8.0.0",
     "execa": "^8.0.1",
+    "expo": "^53",
+    "expo-image": "~2.4.1",
     "jest": "^29.7.0",
     "metro-react-native-babel-preset": "^0.77.0",
     "prettier": "^2.5.1",
+    "react": "19.0.0",
+    "react-native": "0.79.6",
     "ts-jest": "^29.1.1",
     "turbo": "latest",
-    "typescript": "~5.1.6"
+    "typescript": "~5.8.3"
   },
   "name": "react-native-mlkit",
   "workspaces": [
