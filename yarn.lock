@@ -7590,15 +7590,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"apisauce@npm:3.0.1":
-  version: 3.0.1
-  resolution: "apisauce@npm:3.0.1"
-  dependencies:
-    axios: ^1.4.0
-  checksum: fbf689442b17e1bfcbce9aa105b4ca971ff5b1a264ae30d2ca33df2d074d5ea4a498070fb2be0d14000bb5ff2858351cd67bc20621207b1061cc5fa7113cd6e2
-  languageName: node
-  linkType: hard
-
 "appdirsjs@npm:^1.2.4":
   version: 1.2.7
   resolution: "appdirsjs@npm:1.2.7"
@@ -7890,17 +7881,6 @@ __metadata:
   dependencies:
     follow-redirects: ^1.14.7
   checksum: 2a8a3787c05f2a0c9c3878f49782357e2a9f38945b93018fb0c4fd788171c43dceefbb577988628e09fea53952744d1ecebde234b561f1e703aa43e0a598a3ad
-  languageName: node
-  linkType: hard
-
-"axios@npm:^1.4.0":
-  version: 1.7.2
-  resolution: "axios@npm:1.7.2"
-  dependencies:
-    follow-redirects: ^1.15.6
-    form-data: ^4.0.0
-    proxy-from-env: ^1.1.0
-  checksum: e457e2b0ab748504621f6fa6609074ac08c824bf0881592209dfa15098ece7e88495300e02cd22ba50b3468fd712fe687e629dcb03d6a3f6a51989727405aedf
   languageName: node
   linkType: hard
 
@@ -10637,7 +10617,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"error-stack-parser@npm:^2.0.4, error-stack-parser@npm:^2.0.6":
+"error-stack-parser@npm:^2.0.6":
   version: 2.1.4
   resolution: "error-stack-parser@npm:2.1.4"
   dependencies:
@@ -11620,7 +11600,6 @@ __metadata:
     "@types/react-test-renderer": ^18.0.0
     "@typescript-eslint/eslint-plugin": ^5.59.0
     "@typescript-eslint/parser": ^5.59.0
-    apisauce: 3.0.1
     babel-jest: ^29.2.1
     date-fns: ^2.30.0
     eslint: 8.17.0
@@ -11662,10 +11641,9 @@ __metadata:
     react-native-screens: ~4.11.1
     react-native-web: ^0.20.0
     react-test-renderer: 18.3.1
-    reactotron-core-client: ^2.8.13
+    reactotron-core-client: latest
     reactotron-mst: ^3.1.7
-    reactotron-react-js: ^3.3.11
-    reactotron-react-native: ^5.0.5
+    reactotron-react-native: latest
     ts-jest: ^29.1.1
     ts-node: ^10.9.2
     typescript: ~5.8.3
@@ -12544,7 +12522,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.0.0, follow-redirects@npm:^1.14.7, follow-redirects@npm:^1.15.6":
+"follow-redirects@npm:^1.0.0, follow-redirects@npm:^1.14.7":
   version: 1.15.6
   resolution: "follow-redirects@npm:1.15.6"
   peerDependenciesMeta:
@@ -19470,16 +19448,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-flipper@npm:^0.164.0":
-  version: 0.164.0
-  resolution: "react-native-flipper@npm:0.164.0"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    react-native: ">0.62.0"
-  checksum: 8730d7349bec27a23558760320082bd89b07fb404a87bf039a8d852455f28e4d5419f093bb7900ff5f6d85488274cfb246278b6700878bcabe574d5aacd88dac
-  languageName: node
-  linkType: hard
-
 "react-native-gesture-handler@npm:~2.24.0":
   version: 2.24.0
   resolution: "react-native-gesture-handler@npm:2.24.0"
@@ -19826,19 +19794,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"reactotron-core-client@npm:2.9.3, reactotron-core-client@npm:^2.8.13":
-  version: 2.9.3
-  resolution: "reactotron-core-client@npm:2.9.3"
+"reactotron-core-client@npm:2.9.9, reactotron-core-client@npm:latest":
+  version: 2.9.9
+  resolution: "reactotron-core-client@npm:2.9.9"
   dependencies:
-    reactotron-core-contract: 0.2.3
-  checksum: 4af1e96a14af245e3b6b2f89689772a930e6bde349443ec16100f566430b94b47d63cbeed7d3c6a5e1ec5eb5ef0a85e81f54a701d61e73a95c5ad50ed154a698
+    reactotron-core-contract: 0.3.2
+  checksum: 28b03ffefaa516f9c95cc7edc68a46cf6699232c1cfaec7920834a86cecc4d16b0a64774cf1240e1961f792cefb3bd346f8974691662c154c5ff90ccd89cea9c
   languageName: node
   linkType: hard
 
-"reactotron-core-contract@npm:0.2.3":
-  version: 0.2.3
-  resolution: "reactotron-core-contract@npm:0.2.3"
-  checksum: 956a6bf3cf845ac52ff90533da9714f2766e84570a391069601ed7ec8795ec6051c40ba6788f91ef1c34da808f98415e06a1cbd47a755fb7d4e821c6eb0d2377
+"reactotron-core-contract@npm:0.3.2":
+  version: 0.3.2
+  resolution: "reactotron-core-contract@npm:0.3.2"
+  checksum: fe7ec0ca048437c559b6904377f20b29ec9defecc3bc4859d13eebbaada168a26a2daff0050ac79d138d981f1be32bea79ac499f14b007932e1671605c7085ff
   languageName: node
   linkType: hard
 
@@ -19855,29 +19823,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"reactotron-react-js@npm:^3.3.11":
-  version: 3.3.14
-  resolution: "reactotron-react-js@npm:3.3.14"
-  dependencies:
-    reactotron-core-client: 2.9.3
-    stacktrace-js: 2.0.1
-  checksum: 742ae86aa45eb92dffb0d005004407f5396d7b46d9f1a14b2b8a62247b3cdd182b1a47efde6cdd254291f6588dd40af9219b8d03cd58ebb7ae2dd5339e3d074d
-  languageName: node
-  linkType: hard
-
-"reactotron-react-native@npm:^5.0.5":
-  version: 5.1.7
-  resolution: "reactotron-react-native@npm:5.1.7"
+"reactotron-react-native@npm:latest":
+  version: 5.1.18
+  resolution: "reactotron-react-native@npm:5.1.18"
   dependencies:
     mitt: ^3.0.1
-    react-native-flipper: ^0.164.0
-    reactotron-core-client: 2.9.3
+    reactotron-core-client: 2.9.9
   peerDependencies:
     react-native: ">=0.40.0"
-  dependenciesMeta:
-    react-native-flipper:
-      optional: true
-  checksum: 6cdfcf45592dbfd8ca3f51fa59da666dc7b5b91c34bdd6dbd703ae75d5cd86df275250cc9a784c02077e1d05952041f76940384d926372a1cf3d49f6134a59cd
+  checksum: 7914aa56f5d8932734718cad701f7a155dc0aa3f724d247373ffe65f6b6aba50b1eddde28888ce3c85b7190a7d39d59b9747bf201b0bd0b7d73a706a3bea51d2
   languageName: node
   linkType: hard
 
@@ -21430,7 +21384,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stack-generator@npm:^2.0.4, stack-generator@npm:^2.0.5":
+"stack-generator@npm:^2.0.5":
   version: 2.0.10
   resolution: "stack-generator@npm:2.0.10"
   dependencies:
@@ -21455,24 +21409,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stacktrace-gps@npm:^3.0.3, stacktrace-gps@npm:^3.0.4":
+"stacktrace-gps@npm:^3.0.4":
   version: 3.1.2
   resolution: "stacktrace-gps@npm:3.1.2"
   dependencies:
     source-map: 0.5.6
     stackframe: ^1.3.4
   checksum: 85daa232d138239b6ae0f4bcdd87d15d302a045d93625db17614030945b5314e204b5fbcf9bee5b6f4f9e6af5fca05f65c27fe910894b861ef6853b99470aa1c
-  languageName: node
-  linkType: hard
-
-"stacktrace-js@npm:2.0.1":
-  version: 2.0.1
-  resolution: "stacktrace-js@npm:2.0.1"
-  dependencies:
-    error-stack-parser: ^2.0.4
-    stack-generator: ^2.0.4
-    stacktrace-gps: ^3.0.3
-  checksum: 4e54ef92bcf19899f630b5445700cf7a72dfea278deb52fcef18d8bec9f0cc3e79c710e6b05400f4e009225a5bf3119c4e4a089e5ef5b98fbe318be963522c63
   languageName: node
   linkType: hard
 
