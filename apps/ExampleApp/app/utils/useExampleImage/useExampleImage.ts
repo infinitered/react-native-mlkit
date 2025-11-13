@@ -3,7 +3,6 @@ import {
   launchCameraAsync,
   launchImageLibraryAsync,
   ImagePickerOptions,
-  MediaTypeOptions,
   ImagePickerAsset,
   useCameraPermissions,
 } from "expo-image-picker"
@@ -56,7 +55,7 @@ interface ZippedImage extends RandomImage {
 }
 
 const IMAGE_PICKER_OPTIONS: ImagePickerOptions = {
-  mediaTypes: MediaTypeOptions.Images,
+  mediaTypes: "images",
   allowsEditing: false,
   quality: 0.5,
 }
