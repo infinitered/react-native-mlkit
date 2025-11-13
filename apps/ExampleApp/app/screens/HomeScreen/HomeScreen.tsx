@@ -28,20 +28,18 @@ export const HomeScreen: FC<HomeScreenProps> = observer(function HomeScreen() {
   )
 
   return (
-    <Screen style={$root} preset="auto">
-      <View style={$shadowSpace}>
-        <View style={$titleContainer}>
-          <Text preset={"heading"} text={"Infinite Red AI"} />
+    <FlatList
+      ListHeaderComponent={
+        <View style={$shadowSpace}>
+          <View style={$titleContainer}>
+            <Text preset={"heading"} text={"Infinite Red AI"} />
+          </View>
         </View>
-      </View>
-      <View style={$listContainer}>
-        <FlatList
-          data={DEMO_LIST}
-          renderItem={renderItem}
-          contentContainerStyle={$contentContainerStyle}
-        />
-      </View>
-    </Screen>
+      }
+      data={DEMO_LIST}
+      renderItem={renderItem}
+      contentContainerStyle={$contentContainerStyle}
+    />
   )
 })
 
@@ -49,19 +47,6 @@ const $shadowSpace: ViewStyle = {
   paddingBottom: 4,
   backgroundColor: "rgba(0,0,0,0)",
   zIndex: 1,
-}
-
-const $root: ViewStyle = {
-  flex: 1,
-}
-
-const $listContainer: ViewStyle = {
-  paddingHorizontal: 8,
-  position: "relative",
-  top: -32,
-  marginTop: 16,
-  flex: 1,
-  display: "flex",
 }
 
 const $contentContainerStyle: ViewStyle = { paddingBottom: 100, paddingTop: 24 }
