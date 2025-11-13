@@ -32,7 +32,7 @@
   "devDependencies": {
     "@types/react": "~18.3.12",
     "expo-module-scripts": "^3.4.1",
-    "expo-modules-core": "~2.2.0"
+    "expo-modules-core": "~2.5.0"
   },
   "peerDependencies": {
     "expo": "*",
