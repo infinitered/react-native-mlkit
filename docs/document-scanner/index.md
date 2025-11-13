@@ -10,7 +10,7 @@ title: Getting Started
 This is an expo module that lets you use
 the [MLKit Document Scanner](https://developers.google.com/ml-kit/vision/doc-scanner) library in your Expo app.
 
-:::warning
+:::warn 
 ML Kit does not provide a Document Scanning module for iOS, so this feature is **not supported on iOS**.
 
 This limitation comes from Google’s ML Kit itself and cannot be addressed by this library.
