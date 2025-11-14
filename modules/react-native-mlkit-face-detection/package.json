@@ -30,9 +30,9 @@
     "@infinitered/react-native-mlkit-core": "4.0.0"
   },
   "devDependencies": {
-    "@types/react": "~18.3.12",
+    "@types/react": "~19.1.10",
     "expo-module-scripts": "^3.4.1",
-    "expo-modules-core": "~2.5.0"
+    "expo-modules-core": "~3.0.25"
   },
   "peerDependencies": {
     "expo": "*",
