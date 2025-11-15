@@ -26,9 +26,6 @@
   "author": "Frank Calise <frank@infinitered.com> (https://github.com/frankcalise)",
   "license": "MIT",
   "homepage": "https://docs.infinite.red/react-native-mlkit/document-scanner",
-  "dependencies": {
-    "@infinitered/react-native-mlkit-core": "3.1.0"
-  },
   "devDependencies": {
     "@types/react": "~19.1.10",
     "expo-module-scripts": "^3.4.1",

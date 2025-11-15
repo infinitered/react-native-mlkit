@@ -4684,7 +4684,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@infinitered/react-native-mlkit-document-scanner@workspace:modules/react-native-mlkit-document-scanner"
   dependencies:
-    "@infinitered/react-native-mlkit-core": 3.1.0
     "@types/react": ~19.1.10
     expo-module-scripts: ^3.4.1
     expo-modules-core: ~3.0.25
