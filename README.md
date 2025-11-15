@@ -114,7 +114,7 @@ Running `yarn build` inside of an expo module workspace will start watch mode fo
 | ^51.0.0  | ^2.0.0   |
 | ^52.0.0  | ^3.0.0   |
 | ^53.0.0  | ^4.0.0   |
-| ^54.0.0  | WIP      |
+| ^54.0.0  | ^5.0.0   |
 
 ### React Native Firebase
 
