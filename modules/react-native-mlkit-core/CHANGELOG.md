@@ -1,5 +1,11 @@
 # @infinitered/react-native-mlkit-core
 
+## 5.0.0
+
+### Major Changes
+
+- 12967b7: Support for Expo SDK 54
+
 ## 4.0.0
 
 ### Major Changes

@@ -1,5 +1,16 @@
 # @infinitered/react-native-mlkit-document-scanner
 
+## 5.0.0
+
+### Major Changes
+
+- 12967b7: Support for Expo SDK 54
+
+### Patch Changes
+
+- Updated dependencies [12967b7]
+  - @infinitered/react-native-mlkit-core@5.0.0
+
 ## 4.0.0
 
 ### Major Changes

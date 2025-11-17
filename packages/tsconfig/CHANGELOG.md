@@ -1,5 +1,11 @@
 # @infinitered/tsconfig
 
+## 0.7.0
+
+### Minor Changes
+
+- 12967b7: Support for Expo SDK 54
+
 ## 0.6.0
 
 ### Minor Changes
