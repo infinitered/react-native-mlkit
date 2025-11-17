@@ -1,6 +1,6 @@
 {
   "name": "@infinitered/react-native-mlkit-core",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "Shared Library for RNMLKit",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -28,7 +28,7 @@
   "homepage": "https://docs.infinite.red/react-native-mlkit/",
   "devDependencies": {
     "@babel/plugin-transform-private-methods": "^7.24.7",
-    "@infinitered/tsconfig": "0.6.0",
+    "@infinitered/tsconfig": "0.7.0",
     "@rnx-kit/align-deps": "^3.0.3",
     "@testing-library/jest-native": "^5.4.3",
     "@testing-library/react-hooks": "^8.0.1",
