@@ -609,3 +609,6 @@ $RECYCLE.BIN/
 # .pnp.*
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij,reactnative,turbo,yarn,react,macos,windows,swift,java,kotlin,objective-c
+
+# Do not version control .claude folders
+./claude
