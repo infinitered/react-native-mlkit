@@ -1,5 +1,6 @@
 import {
   ImagePickerResult,
+  launchCameraAsync,
   launchImageLibraryAsync,
   ImagePickerOptions,
   ImagePickerAsset,
@@ -15,7 +16,6 @@ import {
   imageFilters,
   imageGroupers,
 } from "./examples"
-import { launchImageLibrary } from "react-native-image-picker"
 
 export type UseExampleImageStatus =
   | "init"
@@ -127,15 +127,13 @@ export function useExampleImage(predicates?: {
       return
     }
     setStatus("takingPhoto")
-    const result = await launchImageLibrary({
-      mediaType: "photo",
-    })
+    const result: ImagePickerResult = await launchCameraAsync(IMAGE_PICKER_OPTIONS)
     if (result.assets?.[0]) {
       setImage({ ...result.assets?.[0], localUri: result.assets?.[0].uri } as SelectedImage)
     } else {
       setImage(undefined)
     }
-  }, [checkPermissions, setStatus]) // Note: Removed parentheses from launchCameraAsync
+  }, [checkPermissions, setStatus])
 
   const [currentIndexes, setCurrentIndexes] = useState<Record<string, number>>(
     {} as Record<string, number>,
