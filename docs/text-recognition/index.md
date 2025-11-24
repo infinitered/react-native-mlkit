@@ -65,7 +65,7 @@ function MyComponent({ imagePath }: Props) {
 
 ### Recognition Results
 
-The `recognizeText` method returns an `Text` object:
+The `recognizeText` method returns a `Text` object:
 
 ```ts
 interface Rect {
@@ -75,24 +75,28 @@ interface Rect {
   bottom: number;
 }
 
-interface TextBase {
+interface TextElement {
   text: string;
   frame: Rect;
-  recognizedLanguage: string;
+  recognizedLanguages: string[];
 }
 
-interface TextElement extends TextBase {}
-
-interface TextLine extends TextBase {
+interface TextLine {
+  text: string;
+  frame: Rect;
+  recognizedLanguages: string[];
   elements: TextElement[];
 }
 
-interface TextBlock extends TextBase {
+interface Block {
+  text: string;
+  frame: Rect;
+  recognizedLanguages: string[];
   lines: TextLine[];
 }
 
 interface Text {
   text: string;
-  textBlocks: TextBlock[];
+  blocks: Block[];
 }
 ```
