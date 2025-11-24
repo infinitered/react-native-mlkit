@@ -1,5 +1,5 @@
 ---
-"@infinitered/react-native-mlkit-text-recognition": major
+"@infinitered/react-native-mlkit-text-recognition": minor
 "example-app": major
 ---
 
