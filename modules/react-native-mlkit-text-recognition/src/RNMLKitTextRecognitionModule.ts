@@ -8,22 +8,22 @@ interface Rect {
 }
 
 interface TextElement {
-  text: string
-  frame: Rect
-  recognizedLanguages: string[]
+  text: string;
+  frame: Rect;
+  recognizedLanguages: string[];
 }
 
 interface TextLine {
-  text: string
-  frame: Rect
-  recognizedLanguages: string[]
+  text: string;
+  frame: Rect;
+  recognizedLanguages: string[];
   elements: TextElement[];
 }
 
 interface Block {
-  text: string
-  frame: Rect
-  recognizedLanguages: string[]
+  text: string;
+  frame: Rect;
+  recognizedLanguages: string[];
   lines: TextLine[];
 }
 
