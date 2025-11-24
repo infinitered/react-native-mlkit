@@ -45,3 +45,4 @@ async function recognizeText(imagePath: string): Promise<Text> {
 }
 
 export { recognizeText };
+export type { Text, Block, TextLine, TextElement, Rect };

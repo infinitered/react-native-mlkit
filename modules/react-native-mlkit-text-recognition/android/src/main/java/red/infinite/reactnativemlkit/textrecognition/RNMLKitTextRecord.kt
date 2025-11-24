@@ -14,26 +14,26 @@ class RectRecord(
 class TextElementRecord(
   @Field val text: String = "",
   @Field val frame: RectRecord = RectRecord(),
-  @Field val recognizedLanguage: String = ""
+  @Field val recognizedLanguages: List<String> = emptyList()
 ) : Record
 
 class TextLineRecord(
   @Field val text: String = "",
   @Field val frame: RectRecord = RectRecord(),
-  @Field val recognizedLanguage: String = "",
+  @Field val recognizedLanguages: List<String> = emptyList(),
   @Field val elements: List<TextElementRecord> = emptyList()
 ) : Record
 
-class TextBlockRecord(
+class BlockRecord(
   @Field val text: String = "",
   @Field val frame: RectRecord = RectRecord(),
-  @Field val recognizedLanguage: String = "",
+  @Field val recognizedLanguages: List<String> = emptyList(),
   @Field val lines: List<TextLineRecord> = emptyList()
 ) : Record
 
 class TextRecord(
   @Field val text: String = "",
-  @Field val textBlocks: List<TextBlockRecord> = emptyList()
+  @Field val blocks: List<BlockRecord> = emptyList()
 ) : Record
 
 fun mapRectToRecord(rect: android.graphics.Rect?): RectRecord {
@@ -51,7 +51,7 @@ fun mapElementToRecord(element: Text.Element): TextElementRecord {
   return TextElementRecord(
     text = element.text,
     frame = mapRectToRecord(element.boundingBox),
-    recognizedLanguage = element.recognizedLanguage ?: ""
+    recognizedLanguages = listOfNotNull(element.recognizedLanguage)
   )
 }
 
@@ -59,16 +59,16 @@ fun mapLineToRecord(line: Text.Line): TextLineRecord {
   return TextLineRecord(
     text = line.text,
     frame = mapRectToRecord(line.boundingBox),
-    recognizedLanguage = line.recognizedLanguage ?: "",
+    recognizedLanguages = listOfNotNull(line.recognizedLanguage),
     elements = line.elements.map { mapElementToRecord(it) }
   )
 }
 
-fun mapTextBlockToRecord(textBlock: Text.TextBlock): TextBlockRecord {
-  return TextBlockRecord(
+fun mapTextBlockToRecord(textBlock: Text.TextBlock): BlockRecord {
+  return BlockRecord(
     text = textBlock.text,
     frame = mapRectToRecord(textBlock.boundingBox),
-    recognizedLanguage = textBlock.recognizedLanguage ?: "",
+    recognizedLanguages = listOfNotNull(textBlock.recognizedLanguage),
     lines = textBlock.lines.map { mapLineToRecord(it) }
   )
 }
@@ -76,6 +76,6 @@ fun mapTextBlockToRecord(textBlock: Text.TextBlock): TextBlockRecord {
 fun mapTextToRecord(text: Text): TextRecord {
   return TextRecord(
     text = text.text,
-    textBlocks = text.textBlocks.map { mapTextBlockToRecord(it) }
+    blocks = text.textBlocks.map { mapTextBlockToRecord(it) }
   )
 }

@@ -1,15 +1,34 @@
 import React, { FC, useState, useEffect, useCallback } from "react"
 import { observer } from "mobx-react-lite"
-import { ViewStyle, View, ImageStyle, TextStyle } from "react-native"
+import { ViewStyle, View, ImageStyle, TextStyle, ScrollView, Pressable } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { AppStackScreenProps } from "../navigators"
 import { Text, Icon, ImageSelector, Screen } from "../components"
 import { useTypedNavigation } from "../navigators/useTypedNavigation"
 
-import { recognizeText } from "@infinitered/react-native-mlkit-text-recognition"
+import { recognizeText, Text as RecognizedText } from "@infinitered/react-native-mlkit-text-recognition"
 import { UseExampleImageStatus, SelectedImage } from "../utils/useExampleImage"
 
 type TextRecognitionScreenProps = NativeStackScreenProps<AppStackScreenProps<"TextRecognition">>
+
+function DebugOutput({ data }: { data: unknown }) {
+  const [expanded, setExpanded] = useState(false)
+
+  return (
+    <View style={$debugContainer}>
+      <Pressable onPress={() => setExpanded(!expanded)} style={$debugHeader}>
+        <Text style={$debugTitle}>{expanded ? "▼" : "▶"} Debug Output</Text>
+      </Pressable>
+      {expanded && (
+        <ScrollView style={$debugContent} horizontal>
+          <ScrollView nestedScrollEnabled>
+            <Text style={$debugText}>{JSON.stringify(data, null, 2)}</Text>
+          </ScrollView>
+        </ScrollView>
+      )}
+    </View>
+  )
+}
 
 export const TextRecognitionScreen: FC<TextRecognitionScreenProps> = observer(
   function TextRecognitionScreen() {
@@ -21,7 +40,7 @@ export const TextRecognitionScreen: FC<TextRecognitionScreenProps> = observer(
       setImage(nextImage)
     }, [])
 
-    const [result, setResult] = useState<string | null>(null)
+    const [result, setResult] = useState<RecognizedText | null>(null)
     const [status, setStatus] = useState<
       "init" | "noPermissions" | "done" | "error" | "loading" | UseExampleImageStatus
     >("init")
@@ -39,7 +58,7 @@ export const TextRecognitionScreen: FC<TextRecognitionScreenProps> = observer(
         setStatus("recognizing")
         try {
           const recognitionResult = await recognizeText(image.uri)
-          setResult(recognitionResult.text)
+          setResult(recognitionResult)
           setStatus("done")
         } catch (error) {
           console.error("Error recognizing image:", error)
@@ -101,9 +120,13 @@ export const TextRecognitionScreen: FC<TextRecognitionScreenProps> = observer(
         />
 
         {result && (
-          <View style={$resultContainer}>
-            <Text>{result}</Text>
-          </View>
+          <>
+            <View style={$resultContainer}>
+              <Text preset="subheading">Recognized Text</Text>
+              <Text style={$resultText}>{result.text}</Text>
+            </View>
+            <DebugOutput data={result} />
+          </>
         )}
       </Screen>
     )
@@ -126,5 +149,41 @@ const $description: TextStyle = {
 const $resultContainer: ViewStyle = {
   width: "100%",
   borderWidth: 1,
-  marginVertical: 24,
+  borderColor: "rgba(0,0,0,0.2)",
+  borderRadius: 8,
+  padding: 12,
+  marginVertical: 16,
+}
+
+const $resultText: TextStyle = {
+  marginTop: 8,
+}
+
+const $debugContainer: ViewStyle = {
+  width: "100%",
+  borderWidth: 1,
+  borderColor: "rgba(0,0,0,0.2)",
+  borderRadius: 8,
+  marginBottom: 24,
+  overflow: "hidden",
+}
+
+const $debugHeader: ViewStyle = {
+  padding: 12,
+  backgroundColor: "rgba(0,0,0,0.05)",
+}
+
+const $debugTitle: TextStyle = {
+  fontWeight: "bold",
+}
+
+const $debugContent: ViewStyle = {
+  maxHeight: 300,
+  padding: 12,
+  backgroundColor: "rgba(0,0,0,0.02)",
+}
+
+const $debugText: TextStyle = {
+  fontFamily: "monospace",
+  fontSize: 12,
 }
