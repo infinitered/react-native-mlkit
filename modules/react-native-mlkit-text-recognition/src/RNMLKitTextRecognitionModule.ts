@@ -7,25 +7,29 @@ interface Rect {
   bottom: number;
 }
 
-interface TextBase {
-  text: string;
-  frame: Rect;
-  recognizedLanguage: string;
+interface TextElement {
+  text: string
+  frame: Rect
+  recognizedLanguages: string[]
 }
 
-interface TextElement extends TextBase {}
-
-interface TextLine extends TextBase {
+interface TextLine {
+  text: string
+  frame: Rect
+  recognizedLanguages: string[]
   elements: TextElement[];
 }
 
-interface TextBlock extends TextBase {
+interface Block {
+  text: string
+  frame: Rect
+  recognizedLanguages: string[]
   lines: TextLine[];
 }
 
 interface Text {
   text: string;
-  textBlocks: TextBlock[];
+  blocks: Block[];
 }
 
 interface RNMLKitTextRecognitionModule {

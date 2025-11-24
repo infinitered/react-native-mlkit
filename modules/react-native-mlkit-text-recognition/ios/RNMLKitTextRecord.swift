@@ -12,26 +12,26 @@ struct RectRecord: Record {
 struct TextElementRecord: Record {
     @Field var text: String = ""
     @Field var frame: RectRecord = RectRecord()
-    @Field var recognizedLanguage: String = ""
+    @Field var recognizedLanguages: [String] = []
 }
 
 struct TextLineRecord: Record {
     @Field var text: String = ""
     @Field var frame: RectRecord = RectRecord()
-    @Field var recognizedLanguage: String = ""
+    @Field var recognizedLanguages: [String] = []
     @Field var elements: [TextElementRecord] = []
 }
 
-struct TextBlockRecord: Record {
+struct BlockRecord: Record {
     @Field var text: String = ""
     @Field var frame: RectRecord = RectRecord()
-    @Field var recognizedLanguage: String = ""
+    @Field var recognizedLanguages: [String] = []
     @Field var lines: [TextLineRecord] = []
 }
 
 struct TextRecord: Record {
     @Field var text: String = ""
-    @Field var textBlocks: [TextBlockRecord] = []
+    @Field var blocks: [BlockRecord] = []
 }
 
 func mapRectToRecord(_ rect: CGRect?) -> RectRecord {
@@ -48,7 +48,7 @@ func mapElementToRecord(_ element: TextElement) -> TextElementRecord {
     return TextElementRecord(
         text: element.text,
         frame: mapRectToRecord(element.frame),
-        recognizedLanguage: element.recognizedLanguages.first?.languageCode ?? ""
+        recognizedLanguages: element.recognizedLanguages.map { $0.languageCode ?? "" }
     )
 }
 
@@ -56,16 +56,16 @@ func mapLineToRecord(_ line: TextLine) -> TextLineRecord {
     return TextLineRecord(
         text: line.text,
         frame: mapRectToRecord(line.frame),
-        recognizedLanguage: line.recognizedLanguages.first?.languageCode ?? "",
+        recognizedLanguages: line.recognizedLanguages.map { $0.languageCode ?? "" },
         elements: line.elements.map(mapElementToRecord)
     )
 }
 
-func mapTextBlockToRecord(_ textBlock: TextBlock) -> TextBlockRecord {
-    return TextBlockRecord(
+func mapTextBlockToRecord(_ textBlock: TextBlock) -> BlockRecord {
+    return BlockRecord(
         text: textBlock.text,
         frame: mapRectToRecord(textBlock.frame),
-        recognizedLanguage: textBlock.recognizedLanguages.first?.languageCode ?? "",
+        recognizedLanguages: textBlock.recognizedLanguages.map { $0.languageCode ?? "" },
         lines: textBlock.lines.map(mapLineToRecord)
     )
 }
@@ -73,6 +73,6 @@ func mapTextBlockToRecord(_ textBlock: TextBlock) -> TextBlockRecord {
 func mapTextToRecord(_ text: Text) -> TextRecord {
     return TextRecord(
         text: text.text,
-        textBlocks: text.blocks.map(mapTextBlockToRecord)
+        blocks: text.blocks.map(mapTextBlockToRecord)
     )
 }
