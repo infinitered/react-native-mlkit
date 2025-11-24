@@ -1,6 +1,6 @@
 import React, { FC, useState, useEffect, useCallback } from "react"
 import { observer } from "mobx-react-lite"
-import { ViewStyle, View, ImageStyle, TextStyle } from "react-native"
+import { ViewStyle, View, ImageStyle, TextStyle, ScrollView, Pressable } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { AppStackScreenProps } from "../navigators"
 import { Text, Icon, ImageSelector, Screen } from "../components"
@@ -11,6 +11,24 @@ import { UseExampleImageStatus, SelectedImage } from "../utils/useExampleImage"
 
 type TextRecognitionScreenProps = NativeStackScreenProps<AppStackScreenProps<"TextRecognition">>
 
+function DebugOutput({ data }: { data: unknown }) {
+  const [expanded, setExpanded] = useState(false)
+
+  return (
+    <View style={$debugContainer}>
+      <Pressable onPress={() => setExpanded(!expanded)} style={$debugHeader}>
+        <Text style={$debugTitle}>{expanded ? "▼" : "▶"} Debug Output</Text>
+      </Pressable>
+      {expanded && (
+        <ScrollView style={$debugContent} horizontal>
+          <ScrollView nestedScrollEnabled>
+            <Text style={$debugText}>{JSON.stringify(data, null, 2)}</Text>
+          </ScrollView>
+        </ScrollView>
+      )}
+    </View>
+  )
+}
 export const TextRecognitionScreen: FC<TextRecognitionScreenProps> = observer(
   function TextRecognitionScreen() {
     const navigation = useTypedNavigation<"TextRecognition">()
@@ -106,10 +124,7 @@ export const TextRecognitionScreen: FC<TextRecognitionScreenProps> = observer(
               <Text preset="subheading">Recognized Text</Text>
               <Text style={$resultText}>{result.text}</Text>
             </View>
-            <View style={$debugContainer}>
-              <Text preset="subheading">Debug Output</Text>
-              <Text style={$debugText}>{JSON.stringify(result, null, 2)}</Text>
-            </View>
+            <DebugOutput data={result} />
           </>
         )}
       </Screen>
@@ -148,12 +163,26 @@ const $debugContainer: ViewStyle = {
   borderWidth: 1,
   borderColor: "rgba(0,0,0,0.2)",
   borderRadius: 8,
-  padding: 12,
   marginBottom: 24,
+  overflow: "hidden",
+}
+
+const $debugHeader: ViewStyle = {
+  padding: 12,
+  backgroundColor: "rgba(0,0,0,0.05)",
+}
+
+const $debugTitle: TextStyle = {
+  fontWeight: "bold",
+}
+
+const $debugContent: ViewStyle = {
+  maxHeight: 300,
+  padding: 12,
+  backgroundColor: "rgba(0,0,0,0.02)",
 }
 
 const $debugText: TextStyle = {
   fontFamily: "monospace",
   fontSize: 12,
-  marginTop: 8,
 }
