@@ -35,6 +35,7 @@ the following pages:
 - [Object Detection](./object-detection)
 - [Image Labeling](./image-labeling)
 - [Document Scanner](./document-scanner)
+- [Text Recognition](./text-recognition/)
 
 ## FAQ
 
