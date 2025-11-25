@@ -1,6 +1,6 @@
 {
   "name": "example-app",
-  "version": "7.0.0",
+  "version": "7.1.0",
   "private": true,
   "main": "./index.js",
   "scripts": {
@@ -36,7 +36,7 @@
     "@infinitered/react-native-mlkit-face-detection": "workspace:^5.0.0",
     "@infinitered/react-native-mlkit-image-labeling": "workspace:^5.0.0",
     "@infinitered/react-native-mlkit-object-detection": "workspace:^5.0.0",
-    "@infinitered/react-native-mlkit-text-recognition": "workspace:^5.0.0",
+    "@infinitered/react-native-mlkit-text-recognition": "workspace:^5.0.1",
     "@react-native-async-storage/async-storage": "2.2.0",
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/native-stack": "^6.0.2",
