@@ -148,6 +148,16 @@
       "contributions": [
         "maintenance"
       ]
+    },
+    {
+      "login": "dccarmo",
+      "name": "Diogo Carmo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/638474?v=4",
+      "profile": "http://diogocarmo.com/",
+      "contributions": [
+        "code",
+        "doc"
+      ]
     }
   ]
 }
