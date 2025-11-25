@@ -1,5 +1,16 @@
 # example-app
 
+## 7.1.0
+
+### Minor Changes
+
+- b842bfd: Version bump
+
+### Patch Changes
+
+- Updated dependencies [b842bfd]
+  - @infinitered/react-native-mlkit-text-recognition@5.0.1
+
 ## 7.0.0
 
 ### Major Changes
