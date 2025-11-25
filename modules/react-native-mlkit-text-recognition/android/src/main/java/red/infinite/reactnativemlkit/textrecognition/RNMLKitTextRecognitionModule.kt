@@ -4,28 +4,12 @@ import expo.modules.kotlin.Promise
 import expo.modules.kotlin.exception.CodedException
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
-import java.net.URL
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.common.InputImage
-import android.graphics.BitmapFactory
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
-
-suspend fun getInputImage(
-  imagePath: String
-): InputImage {
-  try {
-    val bitmap = BitmapFactory.decodeStream(withContext(Dispatchers.IO) {
-      URL(imagePath).openStream()
-    })
-
-    return InputImage.fromBitmap(bitmap, 0)
-  } catch (e: Exception) {
-    throw Exception("RNMLKitTextRecognition: Could not load image from $imagePath", e)
-  }
-}
+import red.infinite.reactnativemlkit.core.RNMLKitImage
+import android.net.Uri
 
 class RNMLKitTextRecognitionModule : Module() {
   override fun definition() = ModuleDefinition {
@@ -35,7 +19,7 @@ class RNMLKitTextRecognitionModule : Module() {
       runBlocking {
         val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
 
-        val image: InputImage = getInputImage(imagePath)
+        val image: InputImage = RNMLKitImage(Uri.parse(imagePath), appContext.reactContext!!).image
 
         recognizer.process(image)
           .addOnSuccessListener { visionText ->
