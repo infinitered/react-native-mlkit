@@ -96,6 +96,7 @@ For usage instructions see the readme in each module's directory.
 
 - [react-native-mlkit-core](./modules/react-native-mlkit-core/README.md)
 - [react-native-mlkit-face-detection](./modules/react-native-mlkit-face-detection/README.md)
+- [react-native-mlkit-text-recognition](./modules/react-native-mlkit-text-recognition/README.md)
 
 ## Building
 
