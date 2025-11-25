@@ -1,0 +1,13 @@
+{
+  "extends": "@infinitered/tsconfig/expo-module",
+  "compilerOptions": {
+    "outDir": "./build"
+  },
+  "include": [
+    "./src"
+  ],
+  "exclude": [
+    "**/__mocks__/*",
+    "**/__tests__/*"
+  ]
+}

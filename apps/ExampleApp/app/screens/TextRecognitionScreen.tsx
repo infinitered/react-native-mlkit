@@ -1,0 +1,188 @@
+import React, { FC, useState, useEffect, useCallback } from "react"
+import { observer } from "mobx-react-lite"
+import { ViewStyle, View, ImageStyle, TextStyle, ScrollView, Pressable } from "react-native"
+import { NativeStackScreenProps } from "@react-navigation/native-stack"
+import { AppStackScreenProps } from "../navigators"
+import { Text, Icon, ImageSelector, Screen } from "../components"
+import { useTypedNavigation } from "../navigators/useTypedNavigation"
+
+import { recognizeText, Text as RecognizedText } from "@infinitered/react-native-mlkit-text-recognition"
+import { UseExampleImageStatus, SelectedImage } from "../utils/useExampleImage"
+
+type TextRecognitionScreenProps = NativeStackScreenProps<AppStackScreenProps<"TextRecognition">>
+
+function DebugOutput({ data }: { data: unknown }) {
+  const [expanded, setExpanded] = useState(false)
+
+  return (
+    <View style={$debugContainer}>
+      <Pressable onPress={() => setExpanded(!expanded)} style={$debugHeader}>
+        <Text style={$debugTitle}>{expanded ? "▼" : "▶"} Debug Output</Text>
+      </Pressable>
+      {expanded && (
+        <ScrollView style={$debugContent} horizontal>
+          <ScrollView nestedScrollEnabled>
+            <Text style={$debugText}>{JSON.stringify(data, null, 2)}</Text>
+          </ScrollView>
+        </ScrollView>
+      )}
+    </View>
+  )
+}
+export const TextRecognitionScreen: FC<TextRecognitionScreenProps> = observer(
+  function TextRecognitionScreen() {
+    const navigation = useTypedNavigation<"TextRecognition">()
+
+    const [image, setImage] = useState<SelectedImage | null>(null)
+
+    const handleImageChange = useCallback((nextImage: SelectedImage) => {
+      setImage(nextImage)
+    }, [])
+
+    const [result, setResult] = useState<RecognizedText | null>(null)
+    const [status, setStatus] = useState<
+      "init" | "noPermissions" | "done" | "error" | "loading" | UseExampleImageStatus
+    >("init")
+
+    const onStatusChange = React.useCallback(
+      (status: "init" | "noPermissions" | "done" | "error" | "loading" | UseExampleImageStatus) => {
+        setStatus(status)
+      },
+      [],
+    )
+
+    useEffect(() => {
+      const recognizeImage = async () => {
+        if (!image?.uri) return
+        setStatus("recognizing")
+        try {
+          const recognitionResult = await recognizeText(image.uri)
+          setResult(recognitionResult)
+          setStatus("done")
+        } catch (error) {
+          console.error("Error recognizing image:", error)
+          setStatus("error")
+        }
+      }
+
+      recognizeImage().then(() => null)
+    }, [image])
+
+    const statusMessage = React.useMemo(() => {
+      if (!image && status !== "init") {
+        setStatus("init")
+      }
+      switch (status) {
+        case "init":
+          return "Take a photo or select one from your camera roll"
+        case "noPermissions":
+          return "You need to grant camera permissions to take a photo"
+        case "takingPhoto":
+          return "Taking photo..."
+        case "selectingPhoto":
+          return "Selecting photo..."
+        case "done":
+          return "Done!"
+        case "error":
+          return "Error during recognition!"
+        case "recognizing":
+          return "Recognizing Image..."
+        case "loading":
+          return "Loading Example Images..."
+        default:
+          throw new Error("Invalid status")
+      }
+    }, [result, image, status])
+
+    const clearResults = useCallback(() => {
+      setResult(null)
+    }, [])
+
+    return (
+      <Screen style={$root} preset="scroll" safeAreaEdges={["top", "bottom"]}>
+        <View>
+          <Icon icon={"back"} onPress={() => navigation.navigate("Home")} style={$backIcon} />
+          <Text preset={"heading"} text="Text Recognition" />
+          <Text style={$description}>Take a photo, and extract text from it.</Text>
+        </View>
+        <ImageSelector
+          onImageChange={handleImageChange}
+          onImageClear={clearResults}
+          onStatusChange={onStatusChange}
+          statusMessage={statusMessage}
+          status={status}
+          isLoading={false}
+          images={{
+            filter: "all",
+            groupBy: "label",
+          }}
+        />
+
+        {result && (
+          <>
+            <View style={$resultContainer}>
+              <Text preset="subheading">Recognized Text</Text>
+              <Text style={$resultText}>{result.text}</Text>
+            </View>
+            <DebugOutput data={result} />
+          </>
+        )}
+      </Screen>
+    )
+  },
+)
+
+const $root: ViewStyle = {
+  flex: 1,
+  padding: 16,
+  display: "flex",
+  flexDirection: "column",
+}
+const $backIcon: ImageStyle = { marginVertical: 8 }
+
+const $description: TextStyle = {
+  marginVertical: 8,
+  color: "rgba(0,0,0,0.6)",
+}
+
+const $resultContainer: ViewStyle = {
+  width: "100%",
+  borderWidth: 1,
+  borderColor: "rgba(0,0,0,0.2)",
+  borderRadius: 8,
+  padding: 12,
+  marginVertical: 16,
+}
+
+const $resultText: TextStyle = {
+  marginTop: 8,
+}
+
+const $debugContainer: ViewStyle = {
+  width: "100%",
+  borderWidth: 1,
+  borderColor: "rgba(0,0,0,0.2)",
+  borderRadius: 8,
+  marginBottom: 24,
+  overflow: "hidden",
+}
+
+const $debugHeader: ViewStyle = {
+  padding: 12,
+  backgroundColor: "rgba(0,0,0,0.05)",
+}
+
+const $debugTitle: TextStyle = {
+  fontWeight: "bold",
+}
+
+const $debugContent: ViewStyle = {
+  maxHeight: 300,
+  padding: 12,
+  backgroundColor: "rgba(0,0,0,0.02)",
+}
+
+const $debugText: TextStyle = {
+  fontFamily: "monospace",
+  fontSize: 12,
+}

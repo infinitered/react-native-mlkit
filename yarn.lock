@@ -4661,6 +4661,22 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@infinitered/react-native-mlkit-core@npm:3.1.0":
+  version: 3.1.0
+  resolution: "@infinitered/react-native-mlkit-core@npm:3.1.0"
+  dependencies:
+    "@testing-library/jest-native": ^5.4.3
+    "@testing-library/react-hooks": ^8.0.1
+    "@types/jest": ^29.5.5
+  peerDependencies:
+    expo: "*"
+    expo-image: "*"
+    react: "*"
+    react-native: "*"
+  checksum: 7d7febc935fa64adb9504b5f76d9500dc3875bad60709dcf7180e0e09ff82b4fa665e5019b8b4b2f31078926f80b2c16a8576b24f2a232befe8aafa011aec9c8
+  languageName: node
+  linkType: hard
+
 "@infinitered/react-native-mlkit-docs@workspace:packages/docusaurus":
   version: 0.0.0-use.local
   resolution: "@infinitered/react-native-mlkit-docs@workspace:packages/docusaurus"
@@ -4734,6 +4750,22 @@ __metadata:
     expo-module-scripts: ^3.4.1
     expo-modules-core: ~3.0.25
     typescript: ~5.9.2
+  peerDependencies:
+    expo: "*"
+    react: "*"
+    react-native: "*"
+  languageName: unknown
+  linkType: soft
+
+"@infinitered/react-native-mlkit-text-recognition@workspace:^1.0.0, @infinitered/react-native-mlkit-text-recognition@workspace:modules/react-native-mlkit-text-recognition":
+  version: 0.0.0-use.local
+  resolution: "@infinitered/react-native-mlkit-text-recognition@workspace:modules/react-native-mlkit-text-recognition"
+  dependencies:
+    "@infinitered/react-native-mlkit-core": 3.1.0
+    "@types/react": ~18.3.12
+    expo-module-scripts: ^3.4.1
+    expo-modules-core: ~2.2.0
+    typescript: ~5.1.6
   peerDependencies:
     expo: "*"
     react: "*"
@@ -6746,7 +6778,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:29.5.14":
+"@types/jest@npm:29.5.14, @types/jest@npm:^29.5.5":
   version: 29.5.14
   resolution: "@types/jest@npm:29.5.14"
   dependencies:
@@ -6970,6 +7002,16 @@ __metadata:
     "@types/prop-types": "*"
     csstype: ^3.0.2
   checksum: c63d6a78163244e2022b01ef79b0baec4fe4da3475dc4a90bb8accefad35ef0c43560fd0312e5974f92a0f1108aa4d669ac72d73d66396aa060ea03b5d2e3873
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:~18.3.12":
+  version: 18.3.27
+  resolution: "@types/react@npm:18.3.27"
+  dependencies:
+    "@types/prop-types": "*"
+    csstype: ^3.2.2
+  checksum: c74d0ab5155226998a52b568f6280536205f8fe4317f77bd5d5258bc131cc9134a2db68dc818cb8e8402a2f229843c4a5bde339faf7e64d441630e569a9e5421
   languageName: node
   linkType: hard
 
@@ -10197,6 +10239,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"csstype@npm:^3.2.2":
+  version: 3.2.3
+  resolution: "csstype@npm:3.2.3"
+  checksum: cb882521b3398958a1ce6ca98c011aec0bde1c77ecaf8a1dd4db3b112a189939beae3b1308243b2fe50fc27eb3edeb0f73a5a4d91d928765dc6d5ecc7bda92ee
+  languageName: node
+  linkType: hard
+
 "csv-generate@npm:^3.4.3":
   version: 3.4.3
   resolution: "csv-generate@npm:3.4.3"
@@ -11991,6 +12040,7 @@ __metadata:
     "@infinitered/react-native-mlkit-face-detection": "workspace:^5.0.0"
     "@infinitered/react-native-mlkit-image-labeling": "workspace:^5.0.0"
     "@infinitered/react-native-mlkit-object-detection": "workspace:^5.0.0"
+    "@infinitered/react-native-mlkit-text-recognition": "workspace:^1.0.0"
     "@infinitered/tsconfig": 0.7.0
     "@react-native-async-storage/async-storage": 2.2.0
     "@react-native-community/cli": ^15.0.0
@@ -12395,6 +12445,15 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 360fa2f7295c5e2e9db403fb1e32aeb2e5c3d42964a3007b6305a8795cdb66f9c1d36d23bc62197c66319897f8b13bc0f2fc6fb88920a7ba0b13eb3422ed8201
+  languageName: node
+  linkType: hard
+
+"expo-modules-core@npm:~2.2.0":
+  version: 2.2.3
+  resolution: "expo-modules-core@npm:2.2.3"
+  dependencies:
+    invariant: ^2.2.4
+  checksum: 7b2952f1220b55eb03f395d1549525edeb5bff7bf805257d9652ea4ef85ea71e34ad13b5971f1b559e7aa080f41130846b24cbe3d754660c08196c3ce899143b
   languageName: node
   linkType: hard
 

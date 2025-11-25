@@ -28,7 +28,10 @@
         "foregroundImage": "./assets/images/app-icon-android-adaptive-foreground.png",
         "backgroundImage": "./assets/images/app-icon-android-adaptive-background.png",
         "backgroundColor": "#F4F2F1"
-      }
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "ios": {
       "icon": "./assets/images/app-icon-ios.png",
@@ -37,7 +40,8 @@
       "infoPlist": {
         "NSCameraUsageDescription": "This app uses the camera to take pictures to demo the machine learning algorithms. (Face detection, Object detection and Image Labeling).",
         "NSPhotoLibraryUsageDescription": "This app uses the photo library to select images for Machine Learning purposes. i.e. Object and Image detection."
-      }
+      },
+      "appleTeamId": "L7YNDPLSEB"
     },
     "web": {
       "favicon": "./assets/images/app-icon-web-favicon.png",
@@ -63,6 +67,12 @@
           "image": "./assets/images/splash-logo-android-universal.png",
           "backgroundColor": "#F4F2F1",
           "imageWidth": 250
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "This app uses the photo library to select images for Machine Learning purposes. i.e. Object and Image detection."
         }
       ]
     ],

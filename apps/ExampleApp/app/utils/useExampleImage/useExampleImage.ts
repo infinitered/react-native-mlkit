@@ -23,6 +23,7 @@ export type UseExampleImageStatus =
   | "takingPhoto"
   | "selectingPhoto"
   | "classifying"
+  | "recognizing"
   | "done"
   | "error"
   | "loading"
@@ -126,13 +127,13 @@ export function useExampleImage(predicates?: {
       return
     }
     setStatus("takingPhoto")
-    const result = await launchCameraAsync(IMAGE_PICKER_OPTIONS)
+    const result: ImagePickerResult = await launchCameraAsync(IMAGE_PICKER_OPTIONS)
     if (result.assets?.[0]) {
       setImage({ ...result.assets?.[0], localUri: result.assets?.[0].uri } as SelectedImage)
     } else {
       setImage(undefined)
     }
-  }, [checkPermissions, setStatus]) // Note: Removed parentheses from launchCameraAsync
+  }, [checkPermissions, setStatus])
 
   const [currentIndexes, setCurrentIndexes] = useState<Record<string, number>>(
     {} as Record<string, number>,
