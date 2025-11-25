@@ -1,5 +1,16 @@
 # example-app
 
+## 7.0.0
+
+### Major Changes
+
+- 21f3109: Added first version of Text Recognition module
+
+### Patch Changes
+
+- Updated dependencies [21f3109]
+  - @infinitered/react-native-mlkit-text-recognition@1.1.0
+
 ## 6.0.0
 
 ### Major Changes
