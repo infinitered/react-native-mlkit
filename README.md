@@ -169,7 +169,7 @@ We're tracking this issue and will update when Google releases compatible versio
       <td align="center" valign="top" width="14.28%"><a href="http://diogocarmo.com/"><img src="https://avatars.githubusercontent.com/u/638474?v=4?s=100" width="100px;" alt="Diogo Carmo"/><br /><sub><b>Diogo Carmo</b></sub></a><br /><a href="#code-dccarmo" title="Code">💻</a> <a href="#doc-dccarmo" title="Documentation">📖</a></td>
     </tr>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://infinite.red"><img src="https://avatars.githubusercontent.com/u/29899554?v=4?s=100" width="100px;" alt="Tyler Scott Williams"/><br /><sub><b>Tyler Scott Williams</b></sub></a><br /><a href="#code-coolsoftwaretyler" title="Code">💻</a> <a href="#doc-coolsoftwaretyler" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://infinite.red"><img src="https://avatars.githubusercontent.com/u/29899554?v=4?s=100" width="100px;" alt="Tyler Scott Williams"/><br /><sub><b>Tyler Scott Williams</b></sub></a><br /><a href="#code-coolsoftwaretyler" title="Code">💻</a> <a href="#doc-coolsoftwaretyler" title="Documentation">📖</a> <a href="#maintenance-coolsoftwaretyler" title="Maintenance">🚧</a></td>
     </tr>
   </tbody>
 </table>
