@@ -1,0 +1,17 @@
+{
+  "platforms": [
+    "ios",
+    "android",
+    "web"
+  ],
+  "ios": {
+    "modules": [
+      "RNMLKitBarcodeScanningModule"
+    ]
+  },
+  "android": {
+    "modules": [
+      "red.infinite.reactnativemlkit.barcodescanning.RNMLKitBarcodeScanningModule"
+    ]
+  }
+}
