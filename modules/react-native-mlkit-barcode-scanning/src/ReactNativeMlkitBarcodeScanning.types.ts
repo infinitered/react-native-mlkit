@@ -1,3 +1,6 @@
+// TODO: make this an actual dependency of the module so we can share types
+import { RNMLKitRect, RNMLKitPoint } from "../../react-native-mlkit-core/src/types";
+
 export enum BarcodeFormat {
   ALL = "all",
   code128 = "code128",
@@ -15,13 +18,6 @@ export enum BarcodeFormat {
   aztec = "AZTEC",
 }
 
-// TOOD: should we have a shared interface from core for this?
-interface Rect {
-  left: number;
-  top: number;
-  right: number;
-  bottom: number;
-}
 
 export interface BarcodeScannerOptions {
   formats: BarcodeFormat[]
@@ -31,13 +27,22 @@ export interface BarcodeScannerResult {
   barcodes: Barcode[]
 }
 
+/**
+ * RawData is a byte[] in Android, and Data in iOS:
+ * https://developers.google.com/android/reference/com/google/mlkit/vision/barcode/common/Barcode#getRawValue()
+ * https://developers.google.com/ml-kit/reference/swift/mlkitbarcodescanning/api/reference/Classes/Barcode
+ * https://developer.apple.com/documentation/foundation/data
+ */
+export type BarcodeRawData = Uint8Array[];
+
+
 export interface Barcode {
-  frame: Rect
+  frame: RNMLKitRect
   rawValue?: string
-  rawData?: Data
+  rawData?: BarcodeRawData
   displayValue?: string
   format: BarcodeFormat
-  cornerPoints: Point[]
+  cornerPoints: RNMLKitPoint[]
   valueType: BarcodeValueType
   email?: BarcodeEmail
   phone?: BarcodePhone
