@@ -4637,6 +4637,21 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@infinitered/react-native-mlkit-barcode-scanning@workspace:modules/react-native-mlkit-barcode-scanning":
+  version: 0.0.0-use.local
+  resolution: "@infinitered/react-native-mlkit-barcode-scanning@workspace:modules/react-native-mlkit-barcode-scanning"
+  dependencies:
+    "@infinitered/react-native-mlkit-core": 5.0.0
+    "@types/react": ~19.1.10
+    expo-module-scripts: ^3.4.1
+    expo-modules-core: ~3.0.25
+  peerDependencies:
+    expo: "*"
+    react: "*"
+    react-native: "*"
+  languageName: unknown
+  linkType: soft
+
 "@infinitered/react-native-mlkit-core@5.0.0, @infinitered/react-native-mlkit-core@workspace:modules/react-native-mlkit-core":
   version: 0.0.0-use.local
   resolution: "@infinitered/react-native-mlkit-core@workspace:modules/react-native-mlkit-core"

@@ -1,5 +1,4 @@
-// TODO: make this an actual dependency of the module so we can share types
-import { RNMLKitRect, RNMLKitPoint } from "../../react-native-mlkit-core/src/types";
+import { RNMLKitRect, RNMLKitPoint } from "@infinitered/react-native-mlkit-core"
 
 export enum BarcodeFormat {
   ALL = "all",
