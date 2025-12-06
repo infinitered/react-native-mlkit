@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.source         = { git: 'http://github.com/infinitered/react-native-mlkit' }
   s.static_framework = true
 
-  s.dependency 'GoogleMLKit/FaceDetection'
+  s.dependency 'GoogleMLKit/BarcodeScanning'
   s.dependency 'ExpoModulesCore'
   s.dependency 'RNMLKitCore'
 
