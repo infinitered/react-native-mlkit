@@ -12,7 +12,9 @@ Pod::Spec.new do |s|
   s.source         = { git: '' }
   s.static_framework = true
 
+  s.dependency 'GoogleMLKit/FaceDetection'
   s.dependency 'ExpoModulesCore'
+  s.dependency 'RNMLKitCore'
 
   # Swift/Objective-C compatibility
   s.pod_target_xcconfig = {
