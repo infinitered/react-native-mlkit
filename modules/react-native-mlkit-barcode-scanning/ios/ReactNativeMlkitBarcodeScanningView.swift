@@ -3,7 +3,7 @@ import WebKit
 
 // This view will be used as a native component. Make sure to inherit from `ExpoView`
 // to apply the proper styling (e.g. border radius and shadows).
-class ReactNativeMlkitBarcodeScanningView: ExpoView {
+class RNMLKitBarcodeScanningView: ExpoView {
   let webView = WKWebView()
   let onLoad = EventDispatcher()
   var delegate: WebViewDelegate?

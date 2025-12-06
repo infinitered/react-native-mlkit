@@ -1,9 +1,9 @@
 {
   "platforms": ["apple", "android", "web"],
   "apple": {
-    "modules": ["ReactNativeMlkitBarcodeScanningModule"]
+    "modules": ["RNMLKitBarcodeScanningModule"]
   },
   "android": {
-    "modules": ["expo.modules.mlkitbarcodescanning.ReactNativeMlkitBarcodeScanningModule"]
+    "modules": ["expo.modules.mlkitbarcodescanning.RNMLKitBarcodeScanningModule"]
   }
 }
