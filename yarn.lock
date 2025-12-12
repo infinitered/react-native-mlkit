@@ -4637,7 +4637,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@infinitered/react-native-mlkit-barcode-scanning@workspace:modules/react-native-mlkit-barcode-scanning":
+"@infinitered/react-native-mlkit-barcode-scanning@workspace:^5.0.0, @infinitered/react-native-mlkit-barcode-scanning@workspace:modules/react-native-mlkit-barcode-scanning":
   version: 0.0.0-use.local
   resolution: "@infinitered/react-native-mlkit-barcode-scanning@workspace:modules/react-native-mlkit-barcode-scanning"
   dependencies:
@@ -12051,6 +12051,7 @@ __metadata:
     "@babel/runtime": ^7.20.0
     "@expo-google-fonts/space-grotesk": ^0.2.2
     "@expo/metro-runtime": ~6.1.2
+    "@infinitered/react-native-mlkit-barcode-scanning": "workspace:^5.0.0"
     "@infinitered/react-native-mlkit-document-scanner": "workspace:^5.0.0"
     "@infinitered/react-native-mlkit-face-detection": "workspace:^5.0.0"
     "@infinitered/react-native-mlkit-image-labeling": "workspace:^5.0.0"
