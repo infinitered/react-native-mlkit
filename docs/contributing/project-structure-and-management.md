@@ -12,8 +12,7 @@ Our monorepo consists of several key directories, each serving a specific purpos
 
 - **apps/**: Contains the example app(s) demonstrating how to use the modules. It's a great place for testing and
   showcasing real-world usage.
-- **docs/**: Houses the documentation for the modules and contribution guidelines. We use Docusaurus for a smooth
-  documentation experience.
+- **docs/**: Houses the documentation for the modules and contribution guidelines.
 - **modules/**: The core of our monorepo, this directory contains the source code for each module. Each module is a
   separate npm package.
 - **packages/**: Includes internal packages such as configurations for ESLint, TypeScript, and other tooling that
