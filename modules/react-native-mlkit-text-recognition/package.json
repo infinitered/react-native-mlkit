@@ -27,7 +27,7 @@
   "license": "MIT",
   "homepage": "https://docs.infinite.red/react-native-mlkit/text-recognition",
   "dependencies": {
-    "@infinitered/react-native-mlkit-core": "3.1.0"
+    "@infinitered/react-native-mlkit-core": "5.0.0"
   },
   "devDependencies": {
     "@infinitered/react-native-mlkit-core": "5.0.0",
