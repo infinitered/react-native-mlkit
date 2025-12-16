@@ -3817,22 +3817,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@infinitered/react-native-mlkit-core@npm:3.1.0":
-  version: 3.1.0
-  resolution: "@infinitered/react-native-mlkit-core@npm:3.1.0"
-  dependencies:
-    "@testing-library/jest-native": ^5.4.3
-    "@testing-library/react-hooks": ^8.0.1
-    "@types/jest": ^29.5.5
-  peerDependencies:
-    expo: "*"
-    expo-image: "*"
-    react: "*"
-    react-native: "*"
-  checksum: 7d7febc935fa64adb9504b5f76d9500dc3875bad60709dcf7180e0e09ff82b4fa665e5019b8b4b2f31078926f80b2c16a8576b24f2a232befe8aafa011aec9c8
-  languageName: node
-  linkType: hard
-
 "@infinitered/react-native-mlkit-document-scanner@workspace:^5.0.0, @infinitered/react-native-mlkit-document-scanner@workspace:modules/react-native-mlkit-document-scanner":
   version: 0.0.0-use.local
   resolution: "@infinitered/react-native-mlkit-document-scanner@workspace:modules/react-native-mlkit-document-scanner"
@@ -3898,7 +3882,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@infinitered/react-native-mlkit-text-recognition@workspace:modules/react-native-mlkit-text-recognition"
   dependencies:
-    "@infinitered/react-native-mlkit-core": 3.1.0
+    "@infinitered/react-native-mlkit-core": 5.0.0
     "@types/react": ~18.3.12
     expo-module-scripts: ^3.4.1
     expo-modules-core: ~2.2.0
@@ -5533,7 +5517,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:29.5.14, @types/jest@npm:^29.5.5":
+"@types/jest@npm:29.5.14":
   version: 29.5.14
   resolution: "@types/jest@npm:29.5.14"
   dependencies:
