@@ -4,6 +4,6 @@
     "modules": ["RNMLKitBarcodeScanningModule"]
   },
   "android": {
-    "modules": ["red.infinite.reactnativemlkit.RNMLKitBarcodeScanningModule"]
+    "modules": ["red.infinite.reactnativemlkit.barcodescanning.RNMLKitBarcodeScanningModule"]
   }
 }
