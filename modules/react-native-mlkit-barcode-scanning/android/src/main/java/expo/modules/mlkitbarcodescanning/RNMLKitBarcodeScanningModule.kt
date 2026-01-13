@@ -1,10 +1,18 @@
-package red.infinite.reactnativemlkit
+package red.infinite.reactnativemlkit.barcodescanning
 
+import RNMLKitBarcodeScanner
+
+import android.net.Uri
+
+import expo.modules.kotlin.Promise
+import expo.modules.kotlin.exception.CodedException
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
-import java.net.URL
+import kotlinx.coroutines.runBlocking
+import red.infinite.reactnativemlkit.core.RNMLKitModule
 
-class RNMLKitBarcodeScanningModule : Module() {
+class RNMLKitBarcodeScanningModule : RNMLKitModule("RNMLKitBarcodeScanning") {
+  private var barcodeScanner: RNMLKitBarcodeScanner? = null
   // Each module class must implement the definition function. The definition consists of components
   // that describes the module's functionality and behavior.
   // See https://docs.expo.dev/modules/module-api for more details about available components.
@@ -14,37 +22,38 @@ class RNMLKitBarcodeScanningModule : Module() {
     // The module will be accessible from `requireNativeModule('RNMLKitBarcodeScanning')` in JavaScript.
     Name("RNMLKitBarcodeScanning")
 
-    // Defines constant property on the module.
-    Constant("PI") {
-      Math.PI
-    }
 
-    // Defines event names that the module can send to JavaScript.
-    Events("onChange")
-
-    // Defines a JavaScript synchronous function that runs the native code on the JavaScript thread.
-    Function("hello") {
-      "Hello world! 👋"
+    // options: RNMLKitFaceDetectorOptionsRecord,
+    AsyncFunction("initialize") { promise: Promise ->
+        log.d("initialize: Initializing Barcode Scanner")
+        barcodeScanner = RNMLKitBarcodeScanner()
+        log.d("initialize: Initializing Barcode Scanner")
+        promise.resolve(null)
     }
 
     // Defines a JavaScript function that always returns a Promise and whose native code
     // is by default dispatched on the different thread than the JavaScript runtime runs on.
-    AsyncFunction("setValueAsync") { value: String ->
-      // Send an event to JavaScript.
-      sendEvent("onChange", mapOf(
-        "value" to value
-      ))
-    }
+    AsyncFunction("process") { imagePath: String, promise: Promise ->
+      val imageUri = Uri.parse(imagePath)
 
-    // Enables the module to be used as a native view. Definition components that are accepted as part of
-    // the view definition: Prop, Events.
-    View(RNMLKitBarcodeScanningView::class) {
-      // Defines a setter for the `url` prop.
-      Prop("url") { view: RNMLKitBarcodeScanningView, url: URL ->
-        view.webView.loadUrl(url.toString())
+      runBlocking suspend@{
+        val barcodeScanner = barcodeScanner
+        if (barcodeScanner == null) {
+          handleException(promise, message = "Barcode Scanner not initialized")
+          return@suspend
+        }
+        try {
+          var result =
+              barcodeScanner.detectInImage(imagePath, appContext).getOrElse {
+                handleException(promise, it)
+                throw it
+              }
+          promise.resolve(result.record)
+        } catch (e: Exception) {
+          handleException(promise, e)
+        }
+
       }
-      // Defines an event that the view can send to JavaScript.
-      Events("onLoad")
     }
   }
 }
