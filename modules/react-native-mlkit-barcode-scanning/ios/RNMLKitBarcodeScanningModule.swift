@@ -17,11 +17,15 @@ let ERROR_DOMAIN: String =
     "red.infinite.reactnativemlkit.BarcodeScanningErrorDomain"
 
 public class RNMLKitBarcodeScanningModule: Module {
-    // TODO: set up ways to initialize and change this
-    var barcodeScanner: BarcodeScanner? = BarcodeScanner.barcodeScanner()
+    var barcodeScanner: BarcodeScanner? = nil
 
     public func definition() -> ModuleDefinition {
         Name("RNMLKitBarcodeScanning")
+
+        AsyncFunction("initialize") { (promise: Promise) in
+            self.barcodeScanner = BarcodeScanner.barcodeScanner()
+            promise.resolve(nil)
+        }
 
         AsyncFunction("process") { (imagePath: String, promise: Promise) in
             let logger = Logger(logHandlers: [
