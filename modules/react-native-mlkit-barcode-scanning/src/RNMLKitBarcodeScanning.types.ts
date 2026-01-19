@@ -1,4 +1,7 @@
-import { RNMLKitRect, RNMLKitPoint } from "@infinitered/react-native-mlkit-core"
+import {
+  RNMLKitRect,
+  RNMLKitPoint,
+} from "@infinitered/react-native-mlkit-core";
 
 export enum BarcodeFormat {
   ALL = "all",
@@ -38,11 +41,12 @@ export enum BarcodeValueType {
 }
 
 export interface BarcodeScannerOptions {
-  formats: BarcodeFormat[]
+  barcodeFormats?: BarcodeFormat[];
+  enableAllPotentialBarcodes?: boolean;
 }
 
 export interface BarcodeScannerResult {
-  barcodes: Barcode[]
+  barcodes: Barcode[];
 }
 
 /**
@@ -64,10 +68,10 @@ export enum BarcodeEmailType {
 }
 
 export interface BarcodeEmail {
-  address?: string
-  body?: string
-  subject?: string
-  type: BarcodeEmailType
+  address?: string;
+  body?: string;
+  subject?: string;
+  type: BarcodeEmailType;
 }
 
 /**
@@ -79,22 +83,22 @@ export enum BarcodePhoneType {
   WORK = "WORK",
   HOME = "HOME",
   FAX = "FAX",
-  MOBILE = "MOBILE"
+  MOBILE = "MOBILE",
 }
 
 export interface BarcodePhone {
-  number?: string
-  type: BarcodePhoneType
+  number?: string;
+  type: BarcodePhoneType;
 }
 
 export interface BarcodeSMS {
-  message?: string
-  phoneNumber?: string
+  message?: string;
+  phoneNumber?: string;
 }
 
 export interface BarcodeURLBookmark {
-  title?: string
-  url?: string
+  title?: string;
+  url?: string;
 }
 
 /**
@@ -103,18 +107,18 @@ export interface BarcodeURLBookmark {
 export enum BarcodeWifiEncryptionType {
   OPEN = "OPEN",
   WPA = "WPA",
-  WEP = "WEP"
+  WEP = "WEP",
 }
 
 export interface BarcodeWifi {
-  ssid?: string
-  password?: string
-  type: BarcodeWifiEncryptionType 
+  ssid?: string;
+  password?: string;
+  type: BarcodeWifiEncryptionType;
 }
 
 export interface BarcodeGeoPoint {
-  latitude: number
-  longitude: number
+  latitude: number;
+  longitude: number;
 }
 
 /**
@@ -127,76 +131,76 @@ export enum BarcodeAddressType {
 }
 
 export interface BarcodeAddress {
-  addressLines?: Array<string>
-  type: BarcodeAddressType
+  addressLines?: Array<string>;
+  type: BarcodeAddressType;
 }
 
 export interface BarcodePersonName {
-  formattedName?: string
-  first?: string
-  last?: string
-  middle?: string
-  prefix?: string
-  pronunciation?: string
-  suffix?: string
+  formattedName?: string;
+  first?: string;
+  last?: string;
+  middle?: string;
+  prefix?: string;
+  pronunciation?: string;
+  suffix?: string;
 }
 
 export interface BarcodeContactInfo {
-  addresses?: Array<BarcodeAddress>
-  emails?: Array<BarcodeEmail>
-  name?: BarcodePersonName
-  phones?: Array<BarcodePhone>
-  urls?: Array<string>
-  jobTitle?: string
-  organization?: string
+  addresses?: Array<BarcodeAddress>;
+  emails?: Array<BarcodeEmail>;
+  name?: BarcodePersonName;
+  phones?: Array<BarcodePhone>;
+  urls?: Array<string>;
+  jobTitle?: string;
+  organization?: string;
 }
 
 export interface BarcodeCalendarEvent {
-  eventDescription?: string
-  location?: string
-  organizer?: string
-  status?: string
-  summary?: string
-  start?: number // We use an epoch millisecond time stamp to represent the Date field here
-  end?: number // We use an epoch millisecond time stamp to represent the Date field here
+  eventDescription?: string;
+  location?: string;
+  organizer?: string;
+  status?: string;
+  summary?: string;
+  start?: number; // We use an epoch millisecond time stamp to represent the Date field here
+  end?: number; // We use an epoch millisecond time stamp to represent the Date field here
 }
 
 /**
  * DL for driver's license, ID for ID cards
  */
-export type BarcodeDriverLicenseDocumentType = 'DL' | 'ID'
+export type BarcodeDriverLicenseDocumentType = "DL" | "ID";
 
 export interface BarcodeDriverLicense {
-  firstName?: string
-  middleName?: string
-  lastName?: string
-  gender?: string
-  addressCity?: string
-  addressState?: string
-  addressStreet?: string
-  addressZip?: string
-  birthDate?: string
-  documentType?: BarcodeDriverLicenseDocumentType
-  expiryDate?: string
-  issuingDate?: string
-  issuingCountry?: string
+  firstName?: string;
+  middleName?: string;
+  lastName?: string;
+  gender?: string;
+  addressCity?: string;
+  addressState?: string;
+  addressStreet?: string;
+  addressZip?: string;
+  birthDate?: string;
+  documentType?: BarcodeDriverLicenseDocumentType;
+  expiryDate?: string;
+  issuingDate?: string;
+  issuingCountry?: string;
 }
 
 export interface Barcode {
-  frame: RNMLKitRect
-  rawValue?: string
-  rawData?: BarcodeRawData
-  displayValue?: string
-  format: BarcodeFormat
-  cornerPoints: RNMLKitPoint[]
-  valueType: BarcodeValueType
-  email?: BarcodeEmail
-  phone?: BarcodePhone
-  sms?: BarcodeSMS
-  url?: BarcodeURLBookmark
-  wifi?: BarcodeWifi
-  geoPoint?: BarcodeGeoPoint
-  contactInfo?: BarcodeContactInfo
-  calendarEvent?: BarcodeCalendarEvent
-  driverLicense?: BarcodeDriverLicense
+  frame: RNMLKitRect;
+  rawValue?: string;
+  rawData?: BarcodeRawData;
+  displayValue?: string;
+  format: BarcodeFormat;
+  cornerPoints: RNMLKitPoint[];
+  valueType: BarcodeValueType;
+  email?: BarcodeEmail;
+  phone?: BarcodePhone;
+  sms?: BarcodeSMS;
+  url?: BarcodeURLBookmark;
+  wifi?: BarcodeWifi;
+  geoPoint?: BarcodeGeoPoint;
+  contactInfo?: BarcodeContactInfo;
+  calendarEvent?: BarcodeCalendarEvent;
+  driverLicense?: BarcodeDriverLicense;
 }

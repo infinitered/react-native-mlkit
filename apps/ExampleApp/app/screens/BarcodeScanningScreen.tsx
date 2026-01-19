@@ -6,8 +6,13 @@ import { AppStackScreenProps } from "../navigators"
 import { Text, Icon, ImageSelector, Screen } from "../components"
 import { useTypedNavigation } from "../navigators/useTypedNavigation"
 
-import RNMLKitBarcodeScanningModule from "@infinitered/react-native-mlkit-barcode-scanning"
-import type { BarcodeScannerResult } from "@infinitered/react-native-mlkit-barcode-scanning"
+import RNMLKitBarcodeScanningModule, {
+  BarcodeFormat,
+} from "@infinitered/react-native-mlkit-barcode-scanning"
+import type {
+  BarcodeScannerOptions,
+  BarcodeScannerResult,
+} from "@infinitered/react-native-mlkit-barcode-scanning"
 import { UseExampleImageStatus, SelectedImage } from "../utils/useExampleImage"
 
 type BarcodeScanningScreenProps = NativeStackScreenProps<AppStackScreenProps<"BarcodeScanning">>
@@ -30,6 +35,11 @@ function DebugOutput({ data }: { data: unknown }) {
     </View>
   )
 }
+
+const DEFAULT_OPTIONS: BarcodeScannerOptions = {
+  barcodeFormats: [BarcodeFormat.ALL],
+  enableAllPotentialBarcodes: false,
+}                                                                                                                                                                                                                                         
 
 export const BarcodeScanningScreen: FC<BarcodeScanningScreenProps> = observer(
   function BarcodeScanningScreen() {
@@ -60,7 +70,7 @@ export const BarcodeScanningScreen: FC<BarcodeScanningScreenProps> = observer(
         if (!image?.uri) return
         setIsScanning(true)
         try {
-          // await RNMLKitBarcodeScanningModule.initialize()
+          await RNMLKitBarcodeScanningModule.initialize(DEFAULT_OPTIONS)
           const scanResult = await RNMLKitBarcodeScanningModule.process(image.uri)
           setResult(scanResult)
           setStatus("done")
