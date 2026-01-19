@@ -6,11 +6,11 @@ import expo.modules.kotlin.AppContext
 import kotlinx.coroutines.CompletableDeferred
 import red.infinite.reactnativemlkit.core.RNMLKitImage
 import red.infinite.reactnativemlkit.barcodescanning.RNMLKitBarcodeScannerResult
+import red.infinite.reactnativemlkit.barcodescanning.RNMLKitBarcodeScannerOptions
 
-// private var options: RNMLKitBarcodeScannerOptions
-class RNMLKitBarcodeScanner() {
+class RNMLKitBarcodeScanner(options: RNMLKitBarcodeScannerOptions) {
 
-    private var barcodeScanner: BarcodeScanner? = BarcodeScanning.getClient()
+    private var barcodeScanner: BarcodeScanner? = BarcodeScanning.getClient(options.options)
 
     suspend fun detectInImage(imagePath: String, appContext: AppContext): Result<RNMLKitBarcodeScannerResult> {
         val result = CompletableDeferred<Result<RNMLKitBarcodeScannerResult>>()

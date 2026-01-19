@@ -23,11 +23,11 @@ class RNMLKitBarcodeScanningModule : RNMLKitModule("RNMLKitBarcodeScanning") {
     Name("RNMLKitBarcodeScanning")
 
 
-    // options: RNMLKitFaceDetectorOptionsRecord,
-    AsyncFunction("initialize") { promise: Promise ->
+    AsyncFunction("initialize") { options: RNMLKitBarcodeScannerOptionsRecord, promise: Promise ->
         log.d("initialize: Initializing Barcode Scanner")
-        barcodeScanner = RNMLKitBarcodeScanner()
-        log.d("initialize: Initializing Barcode Scanner")
+        val scannerOptions = RNMLKitBarcodeScannerOptions(options)
+        barcodeScanner = RNMLKitBarcodeScanner(scannerOptions)
+        log.d("initialize: Barcode Scanner initialized")
         promise.resolve(null)
     }
 
