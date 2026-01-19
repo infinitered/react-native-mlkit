@@ -75,25 +75,5 @@ class RNMLKitBarcodeScannerOptions(
                 else -> Barcode.FORMAT_ALL_FORMATS
             }
         }
-
-        fun formatIntToString(format: Int): String {
-            return when (format) {
-                Barcode.FORMAT_ALL_FORMATS -> "all"
-                Barcode.FORMAT_CODE_128 -> "code128"
-                Barcode.FORMAT_CODE_39 -> "code39"
-                Barcode.FORMAT_CODE_93 -> "code93"
-                Barcode.FORMAT_CODABAR -> "codaBar"
-                Barcode.FORMAT_DATA_MATRIX -> "dataMatrix"
-                Barcode.FORMAT_EAN_13 -> "EAN13"
-                Barcode.FORMAT_EAN_8 -> "EAN8"
-                Barcode.FORMAT_ITF -> "ITF"
-                Barcode.FORMAT_PDF417 -> "PDF417"
-                Barcode.FORMAT_QR_CODE -> "qrCode"
-                Barcode.FORMAT_UPC_A -> "UPCA"
-                Barcode.FORMAT_UPC_E -> "UPCE"
-                Barcode.FORMAT_AZTEC -> "AZTEC"
-                else -> "unknown"
-            }
-        }
     }
 }
