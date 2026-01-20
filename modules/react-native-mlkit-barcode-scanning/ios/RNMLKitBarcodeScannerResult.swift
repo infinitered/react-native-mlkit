@@ -39,6 +39,8 @@ struct RNMLKitBarcode: Record {
     @Field
     var rawValue: String?
     @Field
+    var rawData: [Int]?
+    @Field
     var displayValue: String?
     @Field
     var format: String = ""
@@ -70,6 +72,7 @@ struct RNMLKitBarcode: Record {
 
         result.frame = RNMLKitRect.fromCGRect(rect: barcode.frame)
         result.rawValue = barcode.rawValue
+        result.rawData = barcode.rawData.map { [UInt8]($0).map { Int($0) } }
         result.displayValue = barcode.displayValue
         result.format = formatToString(barcode.format)
         result.cornerPoints = barcode.cornerPoints?.map { point in
