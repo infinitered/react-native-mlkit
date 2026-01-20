@@ -148,6 +148,7 @@ struct RNMLKitBarcode: Record {
         case .text: return "TEXT"
         case .URL: return "URL"
         case .wiFi: return "WIFI"
+        case .geographicCoordinates: return "GEO"
         case .calendarEvent: return "CALENDAR_EVENT"
         case .driversLicense: return "DRIVER_LICENSE"
         default: return "UNKNOWN"
