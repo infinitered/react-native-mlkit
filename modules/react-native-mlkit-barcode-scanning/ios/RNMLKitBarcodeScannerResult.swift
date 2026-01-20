@@ -252,13 +252,13 @@ struct RNMLKitBarcodeWifi: Record {
     @Field
     var password: String?
     @Field
-    var encryptionType: String = "OPEN"
+    var type: String = "OPEN"
 
     static func from(wifi: BarcodeWifi) -> RNMLKitBarcodeWifi {
         let result = RNMLKitBarcodeWifi()
         result.ssid = wifi.ssid
         result.password = wifi.password
-        result.encryptionType = wifiEncryptionTypeToString(wifi.type)
+        result.type = wifiEncryptionTypeToString(wifi.type)
         return result
     }
 
