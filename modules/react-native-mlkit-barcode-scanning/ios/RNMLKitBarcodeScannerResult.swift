@@ -450,6 +450,8 @@ struct RNMLKitBarcodeDriverLicense: Record {
     @Field
     var issuingCountry: String?
     @Field
+    var issuingDate: String?
+    @Field
     var lastName: String?
     @Field
     var licenseNumber: String?
@@ -468,6 +470,7 @@ struct RNMLKitBarcodeDriverLicense: Record {
         result.firstName = driverLicense.firstName
         result.gender = driverLicense.gender
         result.issuingCountry = driverLicense.issuingCountry
+        result.issuingDate = driverLicense.issuingDate
         result.lastName = driverLicense.lastName
         result.licenseNumber = driverLicense.licenseNumber
         result.middleName = driverLicense.middleName
