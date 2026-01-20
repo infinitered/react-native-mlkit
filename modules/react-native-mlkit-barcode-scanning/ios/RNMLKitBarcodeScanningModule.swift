@@ -22,8 +22,9 @@ public class RNMLKitBarcodeScanningModule: Module {
     public func definition() -> ModuleDefinition {
         Name("RNMLKitBarcodeScanning")
 
-        AsyncFunction("initialize") { (promise: Promise) in
-            self.barcodeScanner = BarcodeScanner.barcodeScanner()
+        AsyncFunction("initialize") { (options: RNMLKitBarcodeScannerOptionsRecord, promise: Promise) in
+            let scannerOptions = buildBarcodeScannerOptions(from: options)
+            self.barcodeScanner = BarcodeScanner.barcodeScanner(options: scannerOptions)
             promise.resolve(nil)
         }
 
