@@ -6,6 +6,7 @@ import {
   ImagePickerAsset,
   useCameraPermissions,
 } from "expo-image-picker"
+import { Platform } from "react-native"
 import { useCallback, useState, useMemo } from "react"
 import { useAssets, Asset } from "expo-asset"
 import {
@@ -42,6 +43,10 @@ interface UseExpoCameraImageReturnType {
   nextPhoto?: (category: string) => void
   categories?: string[]
   status: UseExampleImageStatus
+  // Android camera modal support (workaround for expo-image-picker issues on Android 16)
+  showCameraModal: boolean
+  onCameraCapture: (uri: string) => void
+  onCameraClose: () => void
 }
 
 export interface RandomImage {
@@ -68,6 +73,7 @@ export function useExampleImage(predicates?: {
   const [status, setStatus] = useState<UseExampleImageStatus>("init")
   const [cameraPermission, requestCameraPermission] = useCameraPermissions()
   const [image, setImage] = useState<SelectedImage | undefined>(undefined)
+  const [showCameraModal, setShowCameraModal] = useState(false)
 
   const filter = predicates?.filter ? imageFilters[predicates.filter] : imageFilters.sfw
   const groupBy = predicates?.groupBy ? imageGroupers[predicates.groupBy] : imageGroupers.none
@@ -110,27 +116,61 @@ export function useExampleImage(predicates?: {
 
   const selectPhoto = useCallback(async () => {
     setStatus("selectingPhoto")
-    const result: ImagePickerResult = await launchImageLibraryAsync(IMAGE_PICKER_OPTIONS)
-    if (result.assets?.[0]) {
-      setImage({ ...result.assets?.[0], localUri: result.assets?.[0].uri } as SelectedImage)
-    } else {
+    try {
+      const result: ImagePickerResult = await launchImageLibraryAsync(IMAGE_PICKER_OPTIONS)
+      if (result.assets?.[0]) {
+        setImage({ ...result.assets?.[0], localUri: result.assets?.[0].uri } as SelectedImage)
+      } else {
+        setImage(undefined)
+      }
+    } catch (error) {
+      console.warn("Image picker error (may be non-fatal):", error)
       setImage(undefined)
     }
-  }, [setStatus]) // Note: Removed parentheses from launchImageLibraryAsync
+  }, [setStatus])
 
   const categories = Object.keys(annotatedAssets) as Array<keyof typeof annotatedAssets>
 
+  // Android camera modal callbacks (workaround for expo-image-picker issues on Android 16)
+  const onCameraCapture = useCallback(
+    (uri: string) => {
+      setShowCameraModal(false)
+      setImage({ uri, localUri: uri, width: 0, height: 0 } as SelectedImage)
+    },
+    [setImage],
+  )
+
+  const onCameraClose = useCallback(() => {
+    setShowCameraModal(false)
+    setStatus("init")
+  }, [setStatus])
+
   const takePhoto = useCallback(async () => {
+    // Android 16 workaround: use custom camera modal instead of expo-image-picker
+    // See: https://github.com/expo/expo/issues/39480
+    if (Platform.OS === "android") {
+      setStatus("takingPhoto")
+      setShowCameraModal(true)
+      return
+    }
+
+    // iOS: use original expo-image-picker flow
     const hasPermissions = await checkPermissions()
     if (!hasPermissions) {
       setImage(undefined)
       return
     }
+
     setStatus("takingPhoto")
-    const result: ImagePickerResult = await launchCameraAsync(IMAGE_PICKER_OPTIONS)
-    if (result.assets?.[0]) {
-      setImage({ ...result.assets?.[0], localUri: result.assets?.[0].uri } as SelectedImage)
-    } else {
+    try {
+      const result: ImagePickerResult = await launchCameraAsync(IMAGE_PICKER_OPTIONS)
+      if (result.assets?.[0]) {
+        setImage({ ...result.assets?.[0], localUri: result.assets?.[0].uri } as SelectedImage)
+      } else {
+        setImage(undefined)
+      }
+    } catch (error) {
+      console.warn("Camera error (may be non-fatal):", error)
       setImage(undefined)
     }
   }, [checkPermissions, setStatus])
@@ -178,7 +218,10 @@ export function useExampleImage(predicates?: {
       nextPhoto,
       categories,
       status,
+      showCameraModal,
+      onCameraCapture,
+      onCameraClose,
     }),
-    [image, clearPhoto, selectPhoto, takePhoto, nextPhoto, categories, status],
+    [image, clearPhoto, selectPhoto, takePhoto, nextPhoto, categories, status, showCameraModal, onCameraCapture, onCameraClose],
   )
 }
