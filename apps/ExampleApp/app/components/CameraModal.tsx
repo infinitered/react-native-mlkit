@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react"
 import { Modal, View, TouchableOpacity, StyleSheet, ActivityIndicator } from "react-native"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
-import { CameraView, useCameraPermissions } from "expo-camera"
+import { CameraView, useCameraPermissions, CameraType } from "expo-camera"
 import { Text } from "./Text"
 
 interface CameraModalProps {
@@ -14,7 +14,12 @@ export function CameraModal({ visible, onCapture, onClose }: CameraModalProps) {
   const cameraRef = useRef<CameraView>(null)
   const [permission, requestPermission] = useCameraPermissions()
   const [isCapturing, setIsCapturing] = useState(false)
+  const [facing, setFacing] = useState<CameraType>("back")
   const insets = useSafeAreaInsets()
+
+  const toggleFacing = () => {
+    setFacing((current) => (current === "back" ? "front" : "back"))
+  }
 
   const handleCapture = async () => {
     if (!cameraRef.current || isCapturing) return
@@ -61,7 +66,7 @@ export function CameraModal({ visible, onCapture, onClose }: CameraModalProps) {
   return (
     <Modal visible={visible} animationType="slide" onRequestClose={onClose}>
       <View style={styles.container}>
-        <CameraView ref={cameraRef} style={styles.camera} facing="back">
+        <CameraView ref={cameraRef} style={styles.camera} facing={facing}>
           <View
             style={[
               styles.overlay,
@@ -71,6 +76,9 @@ export function CameraModal({ visible, onCapture, onClose }: CameraModalProps) {
             <View style={styles.topBar}>
               <TouchableOpacity style={styles.closeButton} onPress={onClose}>
                 <Text style={styles.closeButtonText}>✕</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.flipButton} onPress={toggleFacing}>
+                <Text style={styles.flipButtonText}>⟲</Text>
               </TouchableOpacity>
             </View>
             <View style={styles.bottomBar}>
@@ -107,8 +115,20 @@ const styles = StyleSheet.create({
   },
   topBar: {
     flexDirection: "row",
-    justifyContent: "flex-start",
+    justifyContent: "space-between",
     padding: 16,
+  },
+  flipButton: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: "rgba(0,0,0,0.5)",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  flipButtonText: {
+    color: "#fff",
+    fontSize: 24,
   },
   closeButton: {
     width: 44,
