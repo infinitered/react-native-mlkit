@@ -53,5 +53,11 @@ export const DEMO_LIST: DemoInfo[] = [
     screen: "TextRecognition",
     image: TEXT_RECOGNITION,
   },
+  {
+    title: "Barcode Scanning",
+    description: "Scan barcodes and QR codes from images",
+    screen: "BarcodeScanning",
+    image: FACE_HOLDER,
+  },
   ...PLATFORM_SPECIFIC_DEMOS,
 ]

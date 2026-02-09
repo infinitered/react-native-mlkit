@@ -6,6 +6,7 @@ import { Text } from "app/components/Text"
 import { useExampleImage, UseExampleImageStatus, SelectedImage } from "../utils/useExampleImage"
 import { RNMLKitImageView } from "./RNMLKitImageView"
 import { Button } from "./Button"
+import { CameraModal } from "./CameraModal"
 import { colors } from "../theme"
 import { ImageFilter, ImageGrouper } from "../utils/useExampleImage/examples"
 import { BoundingBox } from "@infinitered/react-native-mlkit-core"
@@ -36,7 +37,7 @@ export const ImageSelector = observer(function ImageSelector({
 }: ImageSelectorProps) {
   const [_status, _setStatus] = React.useState<UseExampleImageStatus>("init")
 
-  const { image, takePhoto, selectPhoto, clearPhoto } = useExampleImage({
+  const { image, takePhoto, selectPhoto, clearPhoto, showCameraModal, onCameraCapture, onCameraClose } = useExampleImage({
     filter: images?.filter ?? "all",
     groupBy: images?.groupBy ?? "none",
   })
@@ -94,6 +95,11 @@ export const ImageSelector = observer(function ImageSelector({
           />
         )}
       </View>
+      <CameraModal
+        visible={showCameraModal}
+        onCapture={onCameraCapture}
+        onClose={onCameraClose}
+      />
     </View>
   )
 })

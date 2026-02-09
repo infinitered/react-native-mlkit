@@ -7,6 +7,7 @@ import { Screen, Text, Button, RNMLKitImageView, ScreenTitle } from "~/component
 import { useTypedNavigation } from "~/navigators/useTypedNavigation"
 import { colors } from "~/theme"
 import { useExampleImage } from "~/utils/useExampleImage"
+import { CameraModal } from "~/components/CameraModal"
 import { BOX_COLORS } from "~/screens"
 import { BoundingBox } from "@infinitered/react-native-mlkit-core"
 import {
@@ -33,7 +34,7 @@ const FaceDetectionScreenComponent: FC<FaceDetectionScreenProps> = observer(
   function FaceDetectionScreen() {
     const navigation = useTypedNavigation<"FaceDetection">()
 
-    const { image, clearPhoto, takePhoto, selectPhoto } = useExampleImage()
+    const { image, clearPhoto, takePhoto, selectPhoto, showCameraModal, onCameraCapture, onCameraClose } = useExampleImage()
 
     const {
       faces,
@@ -99,6 +100,11 @@ const FaceDetectionScreenComponent: FC<FaceDetectionScreenProps> = observer(
         ) : (
           <Button text={"Select Photo"} onPress={selectPhoto} style={$button} />
         )}
+        <CameraModal
+          visible={showCameraModal}
+          onCapture={onCameraCapture}
+          onClose={onCameraClose}
+        />
       </Screen>
     )
   },
