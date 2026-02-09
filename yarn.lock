@@ -12088,7 +12088,9 @@ __metadata:
     expo-asset: ~12.0.9
     expo-atlas: ^0.3.0
     expo-build-properties: ~1.0.9
+    expo-camera: ~17.0.10
     expo-dev-client: ~6.0.17
+    expo-file-system: ~19.0.21
     expo-font: ~14.0.9
     expo-image: ~3.0.10
     expo-image-picker: ~17.0.8
@@ -12236,6 +12238,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"expo-camera@npm:~17.0.10":
+  version: 17.0.10
+  resolution: "expo-camera@npm:17.0.10"
+  dependencies:
+    invariant: ^2.2.4
+  peerDependencies:
+    expo: "*"
+    react: "*"
+    react-native: "*"
+    react-native-web: "*"
+  peerDependenciesMeta:
+    react-native-web:
+      optional: true
+  checksum: 5cae1769e8483e2d8f0fe52e18083040a52a6beb0178470cb28d7669f9ec6565be6861223842e82b1b8a20ab7178987e969cf295958b0a28bfdd6e5ad1e1ddc8
+  languageName: node
+  linkType: hard
+
 "expo-constants@npm:~18.0.10, expo-constants@npm:~18.0.8, expo-constants@npm:~18.0.9":
   version: 18.0.10
   resolution: "expo-constants@npm:18.0.10"
@@ -12303,6 +12322,16 @@ __metadata:
     expo: "*"
     react-native: "*"
   checksum: 96ab615599ef14475285f6fdc4c1cede948bcdd47f26c99e02c6d834e7b2c6c08d1144cc8f85212fe26b561d483fb378b6458811a6c1147556bec20a34caf46b
+  languageName: node
+  linkType: hard
+
+"expo-file-system@npm:~19.0.21":
+  version: 19.0.21
+  resolution: "expo-file-system@npm:19.0.21"
+  peerDependencies:
+    expo: "*"
+    react-native: "*"
+  checksum: 26b4c95c8d30580723995bf8e32287b72eadf0e3442ca14854c15dc47021c4c22eefbc490ab4fadf98b3f0b14847eba3012dfe663c8a8b42de7b1587f6811d8f
   languageName: node
   linkType: hard
 

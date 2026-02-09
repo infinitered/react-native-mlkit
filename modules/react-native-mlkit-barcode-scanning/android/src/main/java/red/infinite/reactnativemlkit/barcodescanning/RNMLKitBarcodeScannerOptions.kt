@@ -1,8 +1,3 @@
-//
-//  RNMLKitBarcodeScannerOptions.kt
-//  RNMLKitBarcodeScanning
-//
-
 package red.infinite.reactnativemlkit.barcodescanning
 
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions

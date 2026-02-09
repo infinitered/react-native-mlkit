@@ -1,6 +1,6 @@
 apply plugin: 'com.android.library'
 
-group = 'expo.modules.mlkitbarcodescanning'
+group = 'red.infinite.reactnativemlkit.barcodescanning'
 version = '0.7.6'
 
 def expoModulesCorePlugin = new File(project(":expo-modules-core").projectDir.absolutePath, "ExpoModulesCorePlugin.gradle")
@@ -41,7 +41,7 @@ if (useManagedAndroidSdkVersions) {
 }
 
 android {
-  namespace "expo.modules.mlkitbarcodescanning"
+  namespace "red.infinite.reactnativemlkit.barcodescanning"
   defaultConfig {
     versionCode 1
     versionName "0.7.6"

@@ -1,7 +1,5 @@
 package red.infinite.reactnativemlkit.barcodescanning
 
-import RNMLKitBarcodeScanner
-
 import android.net.Uri
 
 import expo.modules.kotlin.Promise

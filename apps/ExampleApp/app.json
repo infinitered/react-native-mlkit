@@ -74,7 +74,8 @@
         {
           "photosPermission": "This app uses the photo library to select images for Machine Learning purposes. i.e. Object and Image detection."
         }
-      ]
+      ],
+      "expo-asset"
     ],
     "experiments": {
       "tsconfigPaths": true

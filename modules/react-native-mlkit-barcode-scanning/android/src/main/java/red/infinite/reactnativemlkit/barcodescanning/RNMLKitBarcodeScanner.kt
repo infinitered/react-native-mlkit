@@ -1,3 +1,5 @@
+package red.infinite.reactnativemlkit.barcodescanning                        
+
 import android.net.Uri
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.barcode.BarcodeScanning
