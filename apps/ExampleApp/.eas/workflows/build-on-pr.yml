@@ -1,0 +1,41 @@
+name: Build ExampleApp on PRs
+
+# Native build validation for pull requests.
+#
+# CircleCI already lints, type-checks (`yarn ci:build` == `tsc`) and runs Jest,
+# but it never compiles any native code. Every module under `modules/*` ships
+# real native sources (Swift podspecs + Android Gradle/Kotlin), and none of it
+# is compiled in CircleCI. This workflow closes that gap by building the
+# ExampleApp on EAS for both platforms: because the app depends on every module,
+# a successful build transitively proves the native code for all of them
+# compiles.
+#
+# Profiles come from eas.json:
+#   - preview (iOS): simulator build  -> no Apple distribution credentials needed
+#   - preview (Android): APK build    -> EAS-managed keystore, no Play creds needed
+#
+# Setup required (one-time) before this runs:
+#   1. Connect this GitHub repo to the Expo project (infinitered/react-native-mlkit)
+#      in the Expo dashboard: Project settings -> GitHub.
+#   2. Ensure EAS build credits / billing are in place (each PR triggers 2 builds).
+# See ./README.md in this directory for details.
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build_android:
+    name: Build Android (preview APK)
+    type: build
+    params:
+      platform: android
+      profile: preview
+
+  build_ios:
+    name: Build iOS (preview simulator)
+    type: build
+    params:
+      platform: ios
+      profile: preview
