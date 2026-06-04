@@ -10,6 +10,13 @@ on:
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
+  # Run the same lint/changeset/build/test checks that gate every pull request
+  # (see ci.yml) before doing anything irreversible like versioning or
+  # publishing. This keeps `main` in lockstep with PRs.
+  verify:
+    name: "CI checks"
+    uses: ./.github/workflows/ci.yml
+
   version_or_release:
     # This job checks whether any changesets are present in './changesets'
     #
@@ -21,6 +28,7 @@ jobs:
     #    etc.
     #
     name: "Changesets version or release"
+    needs: verify
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo

@@ -8,6 +8,7 @@
     "test": "turbo run test -- --run-in-band",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
+    "ci:lint": "turbo run lint --filter=!example-app && yarn workspace example-app lint:ci",
     "clean": "turbo run clean --force",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "setup": "./scripts/setup.sh",

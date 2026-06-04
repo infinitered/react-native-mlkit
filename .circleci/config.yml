@@ -10,44 +10,10 @@ parameters:
 orbs:
   publish-docs: infinitered/publish-docs@0.4
 
-# Docker defaults
-defaults: &defaults
-  docker:
-    - image: cimg/node:18.16.1
-  working_directory: /mnt/ramdisk/repo
-
-# Jobs
-jobs:
-  test_and_build:
-    <<: *defaults
-    steps:
-      - checkout
-      # Restore Yarn cache (Yarn 3 uses .yarn/cache directory)
-      - restore_cache:
-          name: Restore Yarn Cache
-          keys:
-            - yarn-cache-{{ checksum "yarn.lock" }}
-      - run:
-          name: Use local Yarn version
-          command: echo "export PATH=$(pwd)/.yarn/releases:$PATH" >> $BASH_ENV
-      - run:
-          name: Install Dependencies
-          command: yarn install --immutable
-      # Save Yarn cache
-      - save_cache:
-          name: Save Yarn Cache
-          key: yarn-cache-{{ checksum "yarn.lock" }}
-          paths:
-            - .yarn/cache
-      - run:
-          name: Lint code
-          command: yarn lint
-      - run:
-          name: Build modules and packages
-          command: yarn ci:build
-      - run:
-          name: Run tests
-          command: yarn test
+# Lint/build/test now live in GitHub Actions (.github/workflows/ci.yml) so that
+# pull requests and `main` run the exact same checks. CircleCI is kept solely
+# for docs publishing, which relies on the Infinite Red publish-docs orb and
+# CircleCI-managed SSH access to the ir-docs repo.
 
 # Publishing docs details
 publish-details: &publish-details
@@ -67,7 +33,6 @@ workflows:
   version: 2
   build-and-test:
     jobs:
-      - test_and_build
       - publish-docs/build_docs:
           <<: *publish-details
           filters:
