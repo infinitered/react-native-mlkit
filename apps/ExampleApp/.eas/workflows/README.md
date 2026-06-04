@@ -61,3 +61,23 @@ from source as part of the app build.
   most common and Android needs no credentials) and keep iOS for `main` only.
 - Or gate builds behind a label / path filter so they only run when native files or
   `modules/*` change.
+
+## Caching
+
+EAS Build provides built-in caches (JS packages, CocoaPods, Maven/Gradle, and
+native compilation via `ccache`) with no configuration, so these builds are not
+fully cold.
+
+On top of that we set `EAS_USE_CACHE=1` (in the `production` profile in
+`eas.json`, inherited by `preview`) to enable native-compilation caching. It's
+safe even for a build whose job is to catch native breakage, because `ccache` is
+content-addressed — changed source always recompiles, so it can't mask a failure.
+
+We intentionally do **not** add a custom `cache` block (e.g. caching
+`Podfile.lock`). This repo's local Expo modules live in `modules/*`, and changing
+a module's podspec / `build.gradle` / `expo-module.config.json` alters the
+generated native project **without** touching `yarn.lock`. A lockfile-keyed cache
+would go stale and could hide exactly the native breakage this CI exists to catch.
+If build times become a real bottleneck, revisit this with a cache key that also
+invalidates on `modules/*` native config — and never cache the generated `ios/` or
+`android/` directories (CNG regenerates them every build).
