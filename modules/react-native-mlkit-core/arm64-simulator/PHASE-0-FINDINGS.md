@@ -20,7 +20,7 @@ document changes runtime behavior.
 | Podfile mechanism | `withDangerousMod(['ios','podfile'])` that injects a **minimal `require` + call** of the shipped Ruby helper into the existing `post_install` block (append, never clobber). There is **no** first-class AST Podfile modifier in `@expo/config-plugins` for SDK 56 — see §2. |
 | Transform tool | a **pinned Ruby script** shipped in `core`, using only Xcode CLI tools (`lipo`, `vtool`, `otool`, `codesign`). No third-party packaging tool. |
 | Framework kind | MLKit ships **static** frameworks (proven by the `(GMLImage.o)` archive-member notation in #259's linker error) — see §3. |
-| Slice strategy | **Option A** — `ios-arm64` (pristine device) + `ios-arm64-simulator` (retagged). Documented Intel-Mac caveat. See §4. |
+| Slice strategy | **Option B (universal sim)** — device slice stays pristine `arm64`; the simulator binary is `lipo(retagged-arm64, original-x86_64)`, so both Apple-Silicon and Intel Macs can build the sim with the flag on. See §4. |
 | Assembly | build a per-framework **`.xcframework`** into a git-ignored build dir; rewire only the **simulator** linkage to it; device slice stays the pristine Google binary. |
 
 > ⚠️ **Environment limitation (must read).** Phase 0 was performed in a **Linux
@@ -146,22 +146,39 @@ removing pods.
   framework-internal resources into each xcframework slice. Exact carry
   behavior must be confirmed on a Mac.
 
-## 4. Slice strategy — chosen: **Option A**, with rationale
+## 4. Slice strategy — chosen: **Option B (universal sim)**
 
-- **Option A (chosen):** emit `ios-arm64` (pristine device) +
-  `ios-arm64-simulator` (one retag, no `lipo` merge of x86_64).
-- **Option B:** additionally retain `x86_64` in the simulator slice (universal
-  sim), so Intel Macs can also build the simulator with the flag on.
+- **Option A:** emit `ios-arm64` (pristine device) + `ios-arm64-simulator`
+  (one retag, no `lipo` merge of x86_64). Cost: Intel Macs can't build the sim
+  with the flag on.
+- **Option B (chosen):** device slice stays the pristine `arm64`; the
+  **simulator** binary is `lipo(retagged-arm64, original-x86_64)`. Works on both
+  Apple Silicon and Intel with the flag on; the extra cost is a single
+  `lipo -thin x86_64` + `lipo -create`, which is trivial.
 
-**Why A:** the entire purpose of the flag is *native Apple-Silicon* simulator
-builds. Intel-Mac contributors already have a fully working simulator path
-**today** — it's the default flag-off behavior (x86_64 sim, no Rosetta). So the
-only cost of Option A — "Intel Macs can't build the sim with the flag on" — is
-mitigated by "Intel users simply leave the flag off and lose nothing." That
-keeps the transform to a single retag with the fewest moving parts, matching
-the brief's "pick one, don't over-build" guidance. The Intel caveat will be
-documented prominently, and Option B remains a clean future prop if demand
-appears. (Per the brief: do **not** build both up front.)
+**Why B (per maintainer decision):** for an open-source library with external
+contributors who may be on Intel hardware, "the flag just works regardless of
+the contributor's Mac" is worth the one extra `lipo` step. If the source
+framework happens to lack an `x86_64` simulator slice, the script logs that and
+falls back to an arm64-only simulator slice (Option-A behavior) rather than
+failing — so Option B degrades gracefully. We do **not** expose A vs B as a prop
+yet (per the brief: don't build both); B is the single built-in behavior.
+
+### Linkage rewire (how only the simulator is affected)
+
+The synthesized simulator framework is written to a git-ignored build dir
+(`Pods/.rnmlkit-arm64sim/<Name>.framework`) whose binary is the universal-sim
+binary above. The `post_install` hook then prepends that dir to
+`FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]` on the affected pod targets and
+the app's aggregate target. Because the override is **sdk-scoped to the
+simulator**, device/Release builds never see it and keep linking the pristine
+Google `.framework` — this is the structural guarantee that App Store / device
+builds are byte-for-byte unaffected. (This "spliced retagged slice via
+sdk-scoped search path" is the form the brief permits as an alternative to a
+full `.xcframework`; it is far simpler to integrate programmatically into an
+already-resolved CocoaPods graph and keeps the device slice provably untouched.
+The Mac runbook also documents the equivalent `xcodebuild -create-xcframework`
+form for reviewers who prefer it.)
 
 ## 5. Safety constraints — how the design satisfies each
 
