@@ -1,0 +1,217 @@
+# frozen_string_literal: true
+
+# ---------------------------------------------------------------------------
+# mlkit_arm64_sim.rb — shared CocoaPods post_install logic for the experimental
+# arm64 iOS-Simulator feature of @infinitered/react-native-mlkit-core.
+#
+# This single file is the one place the transform is wired into a build. It is
+# used identically by:
+#   * the Expo config plugin (Phase 3), which injects a `require` + call of
+#     `RNMLKitArm64Sim.apply!` into the generated Podfile's post_install, and
+#   * bare React Native consumers (Phase 4), who add the same two lines to their
+#     hand-written Podfile and gate it on the RN_MLKIT_ARM64_SIM env var.
+#
+# SAFETY: with the feature disabled this is a hard no-op. When enabled it only
+# ever creates a SIMULATOR-ONLY copy of each affected framework and points
+# `FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]` at it. Device / Release builds
+# are never touched. See ../arm64-simulator/PHASE-0-FINDINGS.md.
+# ---------------------------------------------------------------------------
+
+require_relative "transmogrify"
+
+module RNMLKitArm64Sim
+  # The git-ignored directory (under the Pods sandbox) where converted
+  # simulator frameworks are written.
+  OUTPUT_DIRNAME = ".rnmlkit-arm64sim"
+
+  # Build setting key CocoaPods adds to force the simulator off arm64.
+  EXCLUDED_KEY = "EXCLUDED_ARCHS[sdk=iphonesimulator*]"
+  SEARCH_PATHS_KEY = "FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]"
+
+  # Pods whose vendored fat frameworks are known to lack an arm64-simulator
+  # slice. Used to SCOPE discovery so we never touch unrelated frameworks; the
+  # real selection still verifies the slices per framework (see #affected?).
+  GOOGLE_POD_PATTERN = /
+    \A(
+      MLKit | MLImage | GoogleMLKit | GoogleDataTransport | GoogleUtilities |
+      GoogleUtilitiesComponents | GTMSessionFetcher | nanopb | PromisesObjC |
+      GoogleToolboxForMac | Protobuf | TensorFlowLite
+    )
+  /ix
+
+  module_function
+
+  # Entry point. Call from a Podfile post_install block:
+  #
+  #   post_install do |installer|
+  #     RNMLKitArm64Sim.apply!(installer)            # bare RN: reads env var
+  #     RNMLKitArm64Sim.apply!(installer, enabled: true)  # Expo plugin path
+  #   end
+  #
+  # @param installer  the CocoaPods installer passed to post_install
+  # @param enabled    nil => read RN_MLKIT_ARM64_SIM; true/false => force
+  # @param keep_x86_64 keep a universal (arm64+x86_64) simulator slice (Option B)
+  def apply!(installer, enabled: nil, keep_x86_64: true)
+    enabled = (ENV["RN_MLKIT_ARM64_SIM"] == "1") if enabled.nil?
+    return unless enabled
+
+    print_banner
+
+    sandbox_root = installer.sandbox.root
+    output_root = File.join(sandbox_root.to_s, OUTPUT_DIRNAME)
+
+    frameworks = discover_frameworks(sandbox_root)
+    if frameworks.empty?
+      warn "[rnmlkit-arm64sim] No MLKit fat frameworks needing conversion were " \
+           "found under #{sandbox_root}. If you expected some, your MLKit " \
+           "version's layout may have changed — please open an issue."
+      return
+    end
+
+    converted = []
+    frameworks.each do |fw|
+      out = Transmogrify.convert(fw, output_dir: output_root, keep_x86_64: keep_x86_64,
+                                     verbose: ENV["RN_MLKIT_ARM64_SIM_VERBOSE"] == "1")
+      converted << File.basename(fw, ".framework") if out
+    end
+
+    rewire_simulator_linkage(installer, output_root)
+    strip_simulator_exclusion(installer)
+
+    puts "[rnmlkit-arm64sim] Converted #{converted.length} framework(s) for " \
+         "arm64 simulator: #{converted.sort.join(', ')}"
+    puts "[rnmlkit-arm64sim] Removed #{EXCLUDED_KEY} and pointed the simulator " \
+         "linker at #{File.join(OUTPUT_DIRNAME, '')}. Device/Release builds are unchanged."
+  rescue Transmogrify::LayoutError => e
+    # Fail loud: abort the install rather than silently produce a broken sim build.
+    raise "[rnmlkit-arm64sim] Aborting: #{e.message}"
+  end
+
+  # ---- discovery ----------------------------------------------------------
+
+  # Find every installed framework that (a) belongs to the Google/MLKit pod set
+  # and (b) actually lacks an arm64-simulator slice. Returns absolute paths.
+  def discover_frameworks(sandbox_root)
+    root = sandbox_root.to_s
+    Dir.glob(File.join(root, "**", "*.framework"))
+       .reject { |p| p.include?("/#{OUTPUT_DIRNAME}/") } # never re-scan our output
+       .select { |p| google_pod?(root, p) }
+       .select { |p| affected?(p) }
+       .uniq
+       .sort
+  end
+
+  # True when the framework lives under a Google/MLKit pod directory.
+  def google_pod?(root, framework_path)
+    rel = framework_path.sub(/\A#{Regexp.escape(root)}\/?/, "")
+    top = rel.split("/").first.to_s
+    return true if top.match?(GOOGLE_POD_PATTERN)
+    # CocoaPods may nest vendored frameworks; also match on the framework name.
+    File.basename(framework_path, ".framework").match?(GOOGLE_POD_PATTERN)
+  end
+
+  # True when the framework has an arm64 device slice but no arm64 simulator
+  # slice — i.e. it is the thing that forces EXCLUDED_ARCHS.
+  def affected?(framework_path)
+    conv = Transmogrify::Converter.new(framework_path)
+    bin = conv.send(:binary_path)
+    return false unless File.file?(bin)
+    archs = conv.send(:lipo_archs, bin)
+    return false unless archs.include?("arm64")
+    # Already simulator-tagged (newer xcframework-based MLKit) => not affected.
+    !conv.send(:arm64_simulator_already_present?, bin, archs)
+  rescue Transmogrify::ToolError, Transmogrify::LayoutError
+    # If we cannot inspect it, don't claim it; the convert step will fail loud
+    # later if it is genuinely one we must handle.
+    false
+  end
+
+  # ---- xcconfig / build-setting surgery -----------------------------------
+
+  # Prepend the converted-frameworks dir to the simulator framework search path
+  # on every pod target and the Pods project itself, so the simulator build
+  # links our patched copy first. Device builds are unaffected (sdk-scoped).
+  def rewire_simulator_linkage(installer, output_root)
+    quoted = "\"#{output_root}\""
+    each_build_configuration(installer) do |config|
+      existing = config.build_settings[SEARCH_PATHS_KEY]
+      list =
+        case existing
+        when Array then existing.dup
+        when String then [existing]
+        else ["$(inherited)"]
+        end
+      list.unshift("$(inherited)") unless list.include?("$(inherited)")
+      unless list.include?(quoted) || list.include?(output_root)
+        # keep $(inherited) first, our path immediately after
+        idx = list.index("$(inherited)") || 0
+        list.insert(idx + 1, quoted)
+      end
+      config.build_settings[SEARCH_PATHS_KEY] = list
+    end
+  end
+
+  # Remove arm64 from the simulator exclusion everywhere CocoaPods set it: the
+  # Pods project + targets (Xcodeproj objects) AND the generated xcconfig files
+  # the app target actually reads.
+  def strip_simulator_exclusion(installer)
+    each_build_configuration(installer) do |config|
+      clear_exclusion_in_settings(config.build_settings)
+    end
+    installer.pods_project.save if installer.pods_project.respond_to?(:save)
+    strip_exclusion_in_xcconfigs(installer.sandbox.root)
+  end
+
+  def clear_exclusion_in_settings(settings)
+    val = settings[EXCLUDED_KEY]
+    return if val.nil?
+    cleaned = Array(val).flat_map { |v| v.to_s.split(/\s+/) }.reject { |a| a == "arm64" || a.empty? }
+    if cleaned.empty?
+      settings.delete(EXCLUDED_KEY)
+    else
+      settings[EXCLUDED_KEY] = cleaned.join(" ")
+    end
+  end
+
+  # The aggregate Pods-*.xcconfig files carry the exclusion into the app target.
+  def strip_exclusion_in_xcconfigs(sandbox_root)
+    pattern = File.join(sandbox_root.to_s, "Target Support Files", "**", "*.xcconfig")
+    Dir.glob(pattern).each do |path|
+      original = File.read(path)
+      # NB: the setting *key* contains '=', so capture the value group explicitly
+      # rather than splitting on '='.
+      updated = original.gsub(/^EXCLUDED_ARCHS\[sdk=iphonesimulator\*\]\s*=\s*(.*)$/) do
+        archs = Regexp.last_match(1).to_s.split(/\s+/).reject { |a| a == "arm64" || a.empty? }
+        archs.empty? ? "" : "EXCLUDED_ARCHS[sdk=iphonesimulator*] = #{archs.join(' ')}"
+      end
+      # Collapse the blank line we may have left behind, idempotently.
+      updated = updated.gsub(/\n{3,}/, "\n\n")
+      File.write(path, updated) if updated != original
+    end
+  end
+
+  # ---- helpers ------------------------------------------------------------
+
+  # Yields every build configuration of the Pods project and each pod target.
+  def each_build_configuration(installer)
+    project = installer.pods_project
+    project.build_configurations.each { |c| yield c }
+    project.targets.each do |target|
+      target.build_configurations.each { |c| yield c }
+    end
+  end
+
+  def print_banner
+    line = "=" * 72
+    warn ""
+    warn line
+    warn "  ⚠️  EXPERIMENTAL: react-native-mlkit arm64 iOS-Simulator support is ON"
+    warn "  This retags MLKit's simulator linkage so the simulator can build"
+    warn "  natively on Apple Silicon (no Rosetta). It is SIMULATOR-ONLY and"
+    warn "  NEVER alters device/Release builds. If a future MLKit version breaks"
+    warn "  it, the install will fail loudly. Disable by removing the config"
+    warn "  plugin prop / unsetting RN_MLKIT_ARM64_SIM."
+    warn line
+    warn ""
+  end
+end
