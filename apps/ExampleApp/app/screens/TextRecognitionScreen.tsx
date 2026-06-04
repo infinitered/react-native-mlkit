@@ -6,7 +6,10 @@ import { AppStackScreenProps } from "../navigators"
 import { Text, Icon, ImageSelector, Screen } from "../components"
 import { useTypedNavigation } from "../navigators/useTypedNavigation"
 
-import { recognizeText, Text as RecognizedText } from "@infinitered/react-native-mlkit-text-recognition"
+import {
+  recognizeText,
+  Text as RecognizedText,
+} from "@infinitered/react-native-mlkit-text-recognition"
 import { UseExampleImageStatus, SelectedImage } from "../utils/useExampleImage"
 
 type TextRecognitionScreenProps = NativeStackScreenProps<AppStackScreenProps<"TextRecognition">>

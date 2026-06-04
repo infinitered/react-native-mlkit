@@ -40,17 +40,17 @@ jobs:
       - name: Install Dependencies
         run: yarn install --immutable
 
-      # Runs before `lint` on purpose: `yarn lint` reformats files in place
-      # (prettier --write), which would otherwise make changesets think a
-      # package changed. This requires a changeset for changed published
-      # packages and fails on changesets that reference a missing package
-      # (#247). Private packages (example-app, configs) are exempt via
-      # `privatePackages.version: false` in .changeset/config.json.
+      # Requires a changeset for changed published packages and fails on
+      # changesets that reference a missing package (#247). Private packages
+      # (example-app, configs) are exempt via `privatePackages.version: false`
+      # in .changeset/config.json.
       - name: Validate changesets
         run: yarn changeset status --since=origin/main
 
+      # CI lints without mutating (eslint without --fix, prettier --check), so
+      # formatting drift fails the build. Locally `yarn lint` still auto-fixes.
       - name: Lint code
-        run: yarn lint
+        run: yarn ci:lint
 
       - name: Build modules and packages
         run: yarn ci:build
