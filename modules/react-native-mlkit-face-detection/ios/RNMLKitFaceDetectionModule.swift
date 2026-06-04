@@ -3,13 +3,6 @@ import ExpoModulesCore
 import MLKitFaceDetection
 import RNMLKitCore
 
-// Function to reject a promise with a specified message and domain
-func rejectPromiseWithMessage(promise: Promise, message: String, domain: String) {
-    promise.reject(
-        NSError(domain: domain, code: 1, userInfo: [NSLocalizedDescriptionKey: message])
-    )
-}
-
 let ERROR_DOMAIN: String = "red.infinite.reactnativemlkit.FaceDetectorErrorDomain"
 
 

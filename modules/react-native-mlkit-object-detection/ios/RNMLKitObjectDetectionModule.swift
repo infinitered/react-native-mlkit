@@ -1,11 +1,5 @@
 import ExpoModulesCore
-
-// Function to reject a promise with a specified message and domain
-func rejectPromiseWithMessage(promise: Promise, message: String, domain: String) {
-    promise.reject(
-        NSError(domain: domain, code: 1, userInfo: [NSLocalizedDescriptionKey: message])
-    )
-}
+import RNMLKitCore
 
 public struct RNMLKitObjectDetectionModelSpec: Record {
     public init() {}
