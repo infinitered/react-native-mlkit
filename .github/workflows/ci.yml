@@ -1,0 +1,61 @@
+name: CI
+
+# Single source of truth for the checks that gate the repo.
+#
+# This workflow runs on every pull request AND is called by the release
+# workflow (via `workflow_call`) before anything is versioned or published.
+# Running the exact same `verify` job in both places keeps PR and `main`
+# checks in lockstep, so a PR can't go green and then break on merge.
+
+on:
+  pull_request:
+  workflow_call:
+
+# Least privilege: this job only reads the repo to lint, build, and test.
+# No publishing or writes happen here (that stays in release.yml).
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    # Keep this name stable: it's referenced by the branch protection
+    # "required status checks" rule on main.
+    name: verify
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          # Full history so `changeset status` can find where the branch
+          # diverged from origin/main.
+          fetch-depth: 0
+
+      - name: Setup Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+
+      - name: Install Dependencies
+        run: yarn install --immutable
+
+      # Requires a changeset for changed published packages and fails on
+      # changesets that reference a missing package (#247). Private packages
+      # (example-app, configs) are exempt via `privatePackages.version: false`
+      # in .changeset/config.json.
+      - name: Validate changesets
+        run: yarn changeset status --since=origin/main
+
+      # CI lints without mutating (eslint without --fix, prettier --check), so
+      # formatting drift fails the build. Locally `yarn lint` still auto-fixes.
+      - name: Lint code
+        run: yarn ci:lint
+
+      - name: Build modules and packages
+        run: yarn ci:build
+
+      - name: Run tests
+        run: yarn test
