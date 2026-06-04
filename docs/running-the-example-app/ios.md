@@ -8,15 +8,22 @@ title: iOS
 An example app is provided that demonstrates the correct use of the modules in a react-native app.
 
 :::info
-The iOS MLKit Libraries currently only support `arm64` architectures, so they currently will not work on the iOS
-simulator (which always runs in `x86_64`).
+Google ships the MLKit pods as fat `.framework` bundles with no `arm64`-simulator
+slice, so CocoaPods sets `EXCLUDED_ARCHS[sdk=iphonesimulator*] = arm64` and the
+simulator builds as `x86_64` (under Rosetta on Apple Silicon). By default you
+should run on a hardware device.
 
-This is a [known issue](https://issuetracker.google.com/issues/178965151?pli=1) with the MLKit Swift API, and we are
-waiting either for a fix from Google, or for Apple to release a native `arm64` simulator.
+This is a [known issue](https://issuetracker.google.com/issues/178965151?pli=1) with how
+Google packages MLKit, and the upstream-correct fix is for Google to ship
+xcframeworks with a real `arm64`-simulator slice.
 :::
 
-:::note
-MLKit is not supported in the iOS simulator. You will need to use a hardware device.
+:::tip Experimental: native arm64 simulator
+There is an **experimental, opt-in** flag that retags MLKit's simulator linkage
+at `pod install` time so the simulator builds natively on Apple Silicon (no
+Rosetta) — enable `experimentalArm64Simulator` on any MLKit plugin. It is
+simulator-only and never touches device/Release builds. See
+[`modules/react-native-mlkit-core/arm64-simulator/README.md`](https://github.com/infinitered/react-native-mlkit/blob/main/modules/react-native-mlkit-core/arm64-simulator/README.md).
 :::
 
 ## 1. Clone the project
