@@ -1,10 +1,5 @@
 {
   "compilerOptions": {
-    // SDK 56's base tsconfig switched to the automatic JSX runtime ("react-jsx"),
-    // which flags this app's classic-style `import React` statements as unused.
-    // Metro/Babel still use the automatic runtime at build time; this only pins
-    // tsc's type-checking to the classic runtime to match the existing source.
-    "jsx": "react-native",
     "baseUrl": ".",
     "paths": {
       "app/*": [

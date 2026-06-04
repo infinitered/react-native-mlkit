@@ -192,6 +192,8 @@
       "react-native/no-raw-text": 0,
       "react/no-unescaped-entities": 0,
       "react/prop-types": 0,
+      "react/react-in-jsx-scope": 0,
+      "react/jsx-uses-react": 0,
       "space-before-function-paren": 0,
       "reactotron/no-tron-in-production": "error"
     }

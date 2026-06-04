@@ -1,4 +1,3 @@
-import * as React from "react"
 import { StyleProp, ViewStyle, Pressable, ImageStyle, TextStyle, View } from "react-native"
 import { observer } from "mobx-react-lite"
 import { Text } from "app/components/Text"

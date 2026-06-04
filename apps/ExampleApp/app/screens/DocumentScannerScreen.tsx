@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import { observer } from "mobx-react-lite"
 import { ViewStyle, View, ImageStyle } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
