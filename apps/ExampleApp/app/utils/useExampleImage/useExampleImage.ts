@@ -5,6 +5,7 @@ import {
   ImagePickerOptions,
   ImagePickerAsset,
   useCameraPermissions,
+  UIImagePickerPresentationStyle,
 } from "expo-image-picker"
 import { useCallback, useState, useMemo } from "react"
 import { useAssets, Asset } from "expo-asset"
@@ -59,6 +60,9 @@ const IMAGE_PICKER_OPTIONS: ImagePickerOptions = {
   mediaTypes: "images",
   allowsEditing: false,
   quality: 0.5,
+  // Present as a card sheet (iOS) instead of the default full-screen picker,
+  // which renders its nav bar under the status bar / Dynamic Island.
+  presentationStyle: UIImagePickerPresentationStyle.PAGE_SHEET,
 }
 
 export function useExampleImage(predicates?: {
