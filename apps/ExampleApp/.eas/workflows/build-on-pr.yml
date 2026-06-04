@@ -25,6 +25,13 @@ on:
     branches:
       - main
 
+# When new commits land on a PR branch, cancel any builds still running for an
+# older commit on that same branch so only the latest commit gets built. EAS
+# currently supports cancel_in_progress only for same-branch concurrency.
+concurrency:
+  group: ${{ workflow.filename }}-${{ github.ref }}
+  cancel_in_progress: true
+
 jobs:
   build_android:
     name: Build Android (preview APK)

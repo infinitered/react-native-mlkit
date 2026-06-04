@@ -48,6 +48,15 @@ EAS Workflows are triggered by Expo, not by GitHub Actions or CircleCI. To enabl
    integration, you can run `eas workflow:run .eas/workflows/build-on-pr.yml` from a
    job that has `EXPO_TOKEN` set, but the native EAS GitHub integration is simpler.
 
+## Superseded builds are cancelled
+
+The workflow sets a `concurrency` group keyed on the workflow file + branch
+(`${{ workflow.filename }}-${{ github.ref }}`) with `cancel_in_progress: true`.
+When you push new commits to a PR branch, any builds still running for an older
+commit on that same branch are cancelled, so only the latest commit gets built.
+This avoids wasting build credits on already-stale commits. (EAS currently only
+supports `cancel_in_progress` for same-branch concurrency.)
+
 ## Monorepo note
 
 This is a Yarn 3 monorepo. EAS resolves project config (`app.json`/`eas.json`) from
