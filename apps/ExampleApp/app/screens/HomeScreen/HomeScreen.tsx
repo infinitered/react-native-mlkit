@@ -8,6 +8,7 @@ import { DEMO_LIST, DemoInfo } from "./demoInfo"
 import { DemoListItem } from "./components/DemoListItem"
 import { useTypedNavigation } from "../../navigators/useTypedNavigation"
 import { colors } from "../../theme"
+import { useSafeAreaInsetsStyle } from "../../utils/useSafeAreaInsetsStyle"
 
 type HomeScreenProps = NativeStackScreenProps<AppStackScreenProps<"Home">>
 
@@ -17,6 +18,10 @@ export const HomeScreen: FC<HomeScreenProps> = observer(function HomeScreen() {
 
   // Pull in navigation via hook
   const navigation = useTypedNavigation<"Home">()
+
+  // The navigator hides the native header, so apply the safe area insets here
+  // to keep content clear of the status bar, notch, and home indicator.
+  const $safeAreaInsets = useSafeAreaInsetsStyle(["top", "left", "right"])
 
   const renderItem = React.useCallback(
     ({ item }: { item: DemoInfo }) => {
@@ -38,6 +43,7 @@ export const HomeScreen: FC<HomeScreenProps> = observer(function HomeScreen() {
       }
       data={DEMO_LIST}
       renderItem={renderItem}
+      style={[$listStyle, $safeAreaInsets]}
       contentContainerStyle={$contentContainerStyle}
     />
   )
@@ -48,6 +54,8 @@ const $shadowSpace: ViewStyle = {
   backgroundColor: "rgba(0,0,0,0)",
   zIndex: 1,
 }
+
+const $listStyle: ViewStyle = { backgroundColor: colors.background }
 
 const $contentContainerStyle: ViewStyle = { paddingBottom: 100, paddingTop: 24 }
 
