@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.license        = package['license']
   s.author         = package['author']
   s.homepage       = package['homepage']
-  s.platform       = :ios, '15.1'
+  s.platform       = :ios, '16.4'
   s.swift_version  = '5.4'
   s.source         = { git: 'https://github.com/infinitered/react-native-mlkit' }
   s.static_framework = true

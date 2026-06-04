@@ -13,7 +13,7 @@ orbs:
 # Docker defaults
 defaults: &defaults
   docker:
-    - image: cimg/node:18.16.1
+    - image: cimg/node:20.19.5
   working_directory: /mnt/ramdisk/repo
 
 # Jobs
