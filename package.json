@@ -1,7 +1,7 @@
 {
   "private": true,
   "//": [
-    "CI scripts are all --no-cache because we aren't using Vercel's remote cache and the caches aren't working. It may be possible to cache dependencies in the future, but for now caching breaks the build."
+    "The release/publish path (ci:build) stays --no-cache because we aren't using Vercel's remote cache. ci:build:eas is a cache-enabled variant used only by the EAS build hook (eas-build-post-install), mirroring the cached turbo run that postinstall already performs, so modules aren't tsc-built twice per EAS build."
   ],
   "scripts": {
     "build": "turbo run build",
@@ -13,6 +13,7 @@
     "setup": "./scripts/setup.sh",
     "version": "changeset version && yarn install --mode update-lockfile",
     "ci:build": "turbo run ci:build --filter=@infinitered/react-native-mlkit-core --no-cache && turbo run ci:build --filter=!@infinitered/react-native-mlkit-core --no-cache",
+    "ci:build:eas": "turbo run ci:build --filter=@infinitered/react-native-mlkit-core && turbo run ci:build --filter=!@infinitered/react-native-mlkit-core",
     "ci:publish": "changeset publish",
     "ci:push-tags": "git push --follow-tags",
     "ci:trust": "./scripts/git-push-fork-to-upstream-repo.sh",

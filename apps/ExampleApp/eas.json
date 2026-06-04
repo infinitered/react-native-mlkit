@@ -34,7 +34,10 @@
       "ios": { "simulator": false }
     },
     "production": {
-      "autoIncrement": true
+      "autoIncrement": true,
+      "env": {
+        "EAS_USE_CACHE": "1"
+      }
     }
   },
   "submit": {
