@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite"
 import { ViewStyle, FlatList, View } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { AppStackScreenProps } from "app/navigators"
-import { Text } from "app/components"
+import { Screen, Text } from "app/components"
 import { DEMO_LIST, DemoInfo } from "./demoInfo"
 import { DemoListItem } from "./components/DemoListItem"
 import { useTypedNavigation } from "../../navigators/useTypedNavigation"
@@ -27,21 +27,36 @@ export const HomeScreen: FC<HomeScreenProps> = observer(function HomeScreen() {
     [navigation],
   )
 
+  // Use a "fixed" preset so the FlatList does its own scrolling — a
+  // VirtualizedList must not be nested inside the ScrollView that the
+  // "scroll" preset would provide.
   return (
-    <FlatList
-      ListHeaderComponent={
-        <View style={$shadowSpace}>
-          <View style={$titleContainer}>
-            <Text preset={"heading"} text={"Infinite Red AI"} />
+    <Screen
+      preset="fixed"
+      contentContainerStyle={$screenContentContainer}
+      safeAreaEdges={["top", "bottom"]}
+    >
+      <FlatList
+        ListHeaderComponent={
+          <View style={$shadowSpace}>
+            <View style={$titleContainer}>
+              <Text preset={"heading"} text={"Infinite Red AI"} />
+            </View>
           </View>
-        </View>
-      }
-      data={DEMO_LIST}
-      renderItem={renderItem}
-      contentContainerStyle={$contentContainerStyle}
-    />
+        }
+        data={DEMO_LIST}
+        renderItem={renderItem}
+        style={$list}
+        contentContainerStyle={$contentContainerStyle}
+      />
+    </Screen>
   )
 })
+
+// Let the inner container fill the screen so the FlatList can size itself.
+const $screenContentContainer: ViewStyle = { flex: 1 }
+
+const $list: ViewStyle = { flex: 1 }
 
 const $shadowSpace: ViewStyle = {
   paddingBottom: 4,
