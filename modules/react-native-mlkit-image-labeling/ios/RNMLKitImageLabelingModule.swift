@@ -2,6 +2,7 @@ import ExpoModulesCore
 import MLKitCommon
 import MLKitImageLabelingCustom
 import MLKitVision
+import RNMLKitCore
 
 // Structure to represent the result of image labeling
 struct RNMLKitImageLabelResult: Record {
@@ -21,13 +22,6 @@ struct RNMLKitImageLabelerOptionsRecord: Record {
     var confidenceThreshold: Float? = nil
     @Field
     var maxResultCount: Int = 10
-}
-
-// Function to reject a promise with a specified message and domain
-func rejectPromiseWithMessage(promise: Promise, message: String, domain: String) {
-    promise.reject(
-        NSError(domain: domain, code: 1, userInfo: [NSLocalizedDescriptionKey: message])
-    )
 }
 
 struct RNMLKitImageLabelerSpec: Record {

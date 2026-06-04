@@ -50,6 +50,23 @@ var image:InputImage = RNMLKitImage(imagePath, appContext.reactContext!!).image
   ImagePickerAsset.
 - `appContext` is the AppContext from your expo module -- it's accessible as a property on the Module class.
 
+### rejectPromiseWithMessage
+
+#### Swift
+
+A shared helper for rejecting an Expo `Promise` with a consistent `NSError` shape. Use it from any RNMLKit module to
+surface errors back to JavaScript.
+
+```swift
+import RNMLKitCore
+
+rejectPromiseWithMessage(promise: promise, message: "Something went wrong", domain: ERROR_DOMAIN)
+```
+
+- `promise` is the Expo `Promise` to reject.
+- `message` is the localized description attached to the error.
+- `domain` is the error domain (e.g. a module-specific error domain constant).
+
 ### React Components
 
 #### BoundingBoxView
