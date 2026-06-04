@@ -60,9 +60,20 @@ const IMAGE_PICKER_OPTIONS: ImagePickerOptions = {
   mediaTypes: "images",
   allowsEditing: false,
   quality: 0.5,
-  // Present as a card sheet (iOS) instead of the default full-screen picker,
-  // which renders its nav bar under the status bar / Dynamic Island.
+}
+
+// The photo library picker presents as a card sheet (iOS) instead of the
+// default full-screen presentation, whose nav bar renders under the status
+// bar / Dynamic Island.
+const LIBRARY_PICKER_OPTIONS: ImagePickerOptions = {
+  ...IMAGE_PICKER_OPTIONS,
   presentationStyle: UIImagePickerPresentationStyle.PAGE_SHEET,
+}
+
+// The camera stays full-screen, which is the conventional capture experience.
+const CAMERA_PICKER_OPTIONS: ImagePickerOptions = {
+  ...IMAGE_PICKER_OPTIONS,
+  presentationStyle: UIImagePickerPresentationStyle.FULL_SCREEN,
 }
 
 export function useExampleImage(predicates?: {
@@ -114,7 +125,7 @@ export function useExampleImage(predicates?: {
 
   const selectPhoto = useCallback(async () => {
     setStatus("selectingPhoto")
-    const result: ImagePickerResult = await launchImageLibraryAsync(IMAGE_PICKER_OPTIONS)
+    const result: ImagePickerResult = await launchImageLibraryAsync(LIBRARY_PICKER_OPTIONS)
     if (result.assets?.[0]) {
       setImage({ ...result.assets?.[0], localUri: result.assets?.[0].uri } as SelectedImage)
     } else {
@@ -131,7 +142,7 @@ export function useExampleImage(predicates?: {
       return
     }
     setStatus("takingPhoto")
-    const result: ImagePickerResult = await launchCameraAsync(IMAGE_PICKER_OPTIONS)
+    const result: ImagePickerResult = await launchCameraAsync(CAMERA_PICKER_OPTIONS)
     if (result.assets?.[0]) {
       setImage({ ...result.assets?.[0], localUri: result.assets?.[0].uri } as SelectedImage)
     } else {
