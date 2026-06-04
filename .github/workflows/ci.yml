@@ -1,0 +1,49 @@
+name: CI
+
+# Single source of truth for the checks that gate the repo.
+#
+# This workflow runs on every pull request AND is called by the release
+# workflow (via `workflow_call`) before anything is versioned or published.
+# Running the exact same `verify` job in both places keeps PR and `main`
+# checks in lockstep, so a PR can't go green and then break on merge.
+
+on:
+  pull_request:
+  workflow_call:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Lint, validate changesets, build, and test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          # Full history so `changeset status` can diff against the base branch.
+          fetch-depth: 0
+
+      - name: Setup Node.js 18.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+
+      - name: Install Dependencies
+        run: yarn install --immutable
+
+      - name: Lint code
+        run: yarn lint
+
+      # Catches changesets that reference packages that no longer exist (or were
+      # renamed) before they reach `main`, where `changeset version` would fail.
+      - name: Validate changesets
+        run: yarn changeset status
+
+      - name: Build modules and packages
+        run: yarn ci:build
+
+      - name: Run tests
+        run: yarn test
