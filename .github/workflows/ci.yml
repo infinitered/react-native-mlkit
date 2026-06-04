@@ -27,9 +27,6 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
-        with:
-          # Full history so `changeset status` can diff against the base branch.
-          fetch-depth: 0
 
       - name: Setup Node.js 18.x
         uses: actions/setup-node@v4
@@ -42,13 +39,13 @@ jobs:
       - name: Lint code
         run: yarn lint
 
-      # Catches changesets that reference packages that no longer exist (or were
-      # renamed) before they reach `main`, where `changeset version` would fail.
-      # `--since=origin/main` is required because a fresh Actions checkout has no
-      # local `main` branch for changesets' default merge-base lookup; it also
-      # scopes the check to changesets the PR actually adds.
+      # Fails if any changeset references a package that no longer exists (e.g.
+      # a deleted/renamed package, as in #247) before it reaches `main`, where
+      # `changeset version` would otherwise fail. Unlike `changeset status`,
+      # this does not require PRs to include a changeset, so CI/docs/chore PRs
+      # don't need an empty one.
       - name: Validate changesets
-        run: yarn changeset status --since=origin/main
+        run: node scripts/validate-changesets.mjs
 
       - name: Build modules and packages
         run: yarn ci:build
