@@ -11,6 +11,11 @@ on:
   pull_request:
   workflow_call:
 
+# Least privilege: this job only reads the repo to lint, build, and test.
+# No publishing or writes happen here (that stays in release.yml).
+permissions:
+  contents: read
+
 concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
@@ -39,8 +44,11 @@ jobs:
 
       # Catches changesets that reference packages that no longer exist (or were
       # renamed) before they reach `main`, where `changeset version` would fail.
+      # `--since=origin/main` is required because a fresh Actions checkout has no
+      # local `main` branch for changesets' default merge-base lookup; it also
+      # scopes the check to changesets the PR actually adds.
       - name: Validate changesets
-        run: yarn changeset status
+        run: yarn changeset status --since=origin/main
 
       - name: Build modules and packages
         run: yarn ci:build
