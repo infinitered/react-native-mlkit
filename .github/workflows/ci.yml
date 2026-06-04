@@ -22,7 +22,9 @@ concurrency:
 
 jobs:
   verify:
-    name: Lint, validate changesets, build, and test
+    # Keep this name stable: it's referenced by the branch protection
+    # "required status checks" rule on main.
+    name: verify
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
