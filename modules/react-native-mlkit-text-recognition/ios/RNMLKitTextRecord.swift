@@ -70,7 +70,7 @@ func mapTextBlockToRecord(_ textBlock: TextBlock) -> BlockRecord {
     )
 }
 
-func mapTextToRecord(_ text: Text) -> TextRecord {
+func mapTextToRecord(_ text: MLKitTextRecognitionCommon.Text) -> TextRecord {
     return TextRecord(
         text: text.text,
         blocks: text.blocks.map(mapTextBlockToRecord)
