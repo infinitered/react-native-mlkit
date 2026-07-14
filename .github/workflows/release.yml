@@ -13,8 +13,13 @@ jobs:
   # Run the same lint/changeset/build/test checks that gate every pull request
   # (see ci.yml) before doing anything irreversible like versioning or
   # publishing. This keeps `main` in lockstep with PRs.
+  #
+  # Skipped for pushes to changeset-release/main: those commits only bump
+  # versions and update changelogs, so re-running the full suite is unnecessary.
+  # The code changes were already validated before being merged to main.
   verify:
     name: "CI checks"
+    if: github.ref != 'refs/heads/changeset-release/main'
     uses: ./.github/workflows/ci.yml
 
   version_or_release:
@@ -29,6 +34,9 @@ jobs:
     #
     name: "Changesets version or release"
     needs: verify
+    # Run when verify succeeded (push to main) OR when verify was skipped
+    # (push to changeset-release/main, where CI is intentionally skipped).
+    if: always() && (needs.verify.result == 'success' || needs.verify.result == 'skipped')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
