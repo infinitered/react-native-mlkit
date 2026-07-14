@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "moduleResolution": "Node",
     "baseUrl": ".",
     "paths": {
       "app/*": [

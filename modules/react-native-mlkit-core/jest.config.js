@@ -3,7 +3,7 @@ const { defaults: tsjPreset } = require("ts-jest/presets");
 /** @type {import("ts-jest").JestConfigWithTsJest} */
 module.exports = {
   ...tsjPreset,
-  preset: "react-native",
+  preset: "@react-native/jest-preset",
   transform: {
     "^.+\\.jsx$": "babel-jest",
     "^.+\\.tsx?$": [
