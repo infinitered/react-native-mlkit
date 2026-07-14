@@ -1,5 +1,26 @@
 # Changelog
 
+## 6.0.0
+
+### Major Changes
+
+- 5ebcba6: Upgrade to Expo SDK 56 (React Native 0.85, React 19.2).
+
+  BREAKING CHANGE: The minimum iOS deployment target is raised from 15.1 to
+  16.4, and the modules now target the Expo SDK 56 native toolchain
+  (`expo-modules-core` ~56, Android `compileSdk` 36 / Kotlin 2.x). Consuming
+  apps must be on Expo SDK 56 and build with Xcode 26.4 for iOS.
+
+  No public JavaScript/TypeScript API changes — this is a native toolchain and
+  peer-dependency bump.
+
+### Patch Changes
+
+- 6f0d469: Move the `rejectPromiseWithMessage` Swift helper into RNMLKit core so it can be shared across modules instead of being duplicated in each one.
+- Updated dependencies [5ebcba6]
+- Updated dependencies [6f0d469]
+  - @infinitered/react-native-mlkit-core@6.0.0
+
 ## 5.0.0
 
 ### Major Changes
