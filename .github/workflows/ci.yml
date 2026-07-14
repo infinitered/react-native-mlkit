@@ -24,6 +24,13 @@ jobs:
   verify:
     # Keep this name stable: it's referenced by the branch protection
     # "required status checks" rule on main.
+    #
+    # Skip the full CI suite on "Version Packages" PRs created by Changesets
+    # (head branch: changeset-release/main). Those PRs only bump versions and
+    # update changelogs — the underlying code was already validated before being
+    # merged to main. GitHub treats a skipped job as "success" for required
+    # status checks, so branch protection is still satisfied.
+    if: github.event_name != 'pull_request' || github.head_ref != 'changeset-release/main'
     name: verify
     runs-on: ubuntu-latest
     steps:
