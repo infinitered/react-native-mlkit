@@ -17,7 +17,6 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "jsEngine": "hermes",
     "assetBundlePatterns": [
       "**/*"
     ],

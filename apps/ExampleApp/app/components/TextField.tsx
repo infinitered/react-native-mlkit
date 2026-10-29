@@ -2,6 +2,7 @@ import { ComponentType, forwardRef, Ref, useImperativeHandle, useRef } from "rea
 import {
   StyleProp,
   TextInput,
+  TextInputInstance,
   TextInputProps,
   TextStyle,
   TouchableOpacity,
@@ -102,7 +103,10 @@ export interface TextFieldProps extends Omit<TextInputProps, "ref"> {
  *
  * - [Documentation and Examples](https://github.com/infinitered/ignite/blob/master/docs/Components-TextField.md)
  */
-export const TextField = forwardRef(function TextField(props: TextFieldProps, ref: Ref<TextInput>) {
+export const TextField = forwardRef(function TextField(
+  props: TextFieldProps,
+  ref: Ref<TextInputInstance>,
+) {
   const {
     labelTx,
     label,
@@ -123,7 +127,7 @@ export const TextField = forwardRef(function TextField(props: TextFieldProps, re
     inputWrapperStyle: $inputWrapperStyleOverride,
     ...TextInputProps
   } = props
-  const input = useRef<TextInput | null>(null)
+  const input = useRef<TextInputInstance | null>(null)
 
   const disabled = TextInputProps.editable === false || status === "disabled"
 
