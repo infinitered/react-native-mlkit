@@ -43,7 +43,7 @@ Each major version of RN MLKit targets a specific Expo SDK. Install the version 
 
 | Expo SDK | RN MLKit |
 | -------- | -------- |
-| ^49.0.0  | <= 0.7.7 |
+| ^49.0.0  | &lt;= 0.7.7 |
 | ^50.0.0  | ^1.0.0   |
 | ^51.0.0  | ^2.0.0   |
 | ^52.0.0  | ^3.0.0   |
@@ -53,7 +53,7 @@ Each major version of RN MLKit targets a specific Expo SDK. Install the version 
 | ^58.0.0  | ^7.0.0   |
 
 The current release (`^7.0.0`) requires Expo SDK 58 (React Native 0.88). On iOS the minimum deployment target is
-16.4; on Android, `minSdkVersion` is 24 and `compileSdkVersion` is 36.
+16.4; on Android, `minSdkVersion` is 24 and `compileSdkVersion` is 37.
 
 ## FAQ
 
