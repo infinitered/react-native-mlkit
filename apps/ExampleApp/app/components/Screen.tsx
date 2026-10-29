@@ -7,6 +7,7 @@ import {
   LayoutChangeEvent,
   Platform,
   ScrollView,
+  ScrollViewInstance,
   ScrollViewProps,
   StyleProp,
   View,
@@ -155,7 +156,7 @@ function ScreenWithScrolling(props: ScreenProps) {
     style,
   } = props as ScrollScreenProps
 
-  const ref = useRef<ScrollView | null>(null)
+  const ref = useRef<ScrollViewInstance | null>(null)
 
   const { scrollEnabled, onContentSizeChange, onLayout } = useAutoPreset(props as AutoScreenProps)
 

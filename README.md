@@ -22,6 +22,12 @@ Here are some previews in action:
 
 ## Quickstart: Running the example app
 
+### Prerequisites
+
+- Node.js 22.13 or newer (the version we use is pinned in `.tool-versions`)
+- Yarn, via [Corepack](https://nodejs.org/api/corepack.html) (`corepack enable`) — the repo pins Yarn 3
+- Xcode (iOS) and/or Android Studio (Android) for native builds
+
 ### 1. Clone the project
 
 ```bash
@@ -117,6 +123,10 @@ Running `yarn build` inside of an expo module workspace will start watch mode fo
 | ^53.0.0  | ^4.0.0   |
 | ^54.0.0  | ^5.0.0   |
 | ^56.0.0  | ^6.0.0   |
+| ^58.0.0  | ^7.0.0   |
+
+The current release (`^7.0.0`) requires Expo SDK 58 (React Native 0.88). On iOS the minimum deployment target is
+16.4; on Android, `minSdkVersion` is 24 and `compileSdkVersion` is 37.
 
 ### React Native Firebase
 

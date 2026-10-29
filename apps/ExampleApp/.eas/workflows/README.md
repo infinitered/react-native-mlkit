@@ -5,9 +5,9 @@ that give us **native build coverage** on pull requests.
 
 ## Why this exists
 
-Our existing CI (CircleCI `test_and_build`) only does:
+Our existing CI (GitHub Actions, `.github/workflows/ci.yml`) only does:
 
-- `yarn lint`
+- `yarn ci:lint`
 - `yarn ci:build` — which at the module level is just `tsc` (TypeScript only)
 - `yarn test` — Jest
 
