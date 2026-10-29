@@ -37,6 +37,24 @@ the following pages:
 - [Document Scanner](./document-scanner)
 - [Text Recognition](./text-recognition/)
 
+## Compatibility
+
+Each major version of RN MLKit targets a specific Expo SDK. Install the version that matches your app's Expo SDK:
+
+| Expo SDK | RN MLKit |
+| -------- | -------- |
+| ^49.0.0  | <= 0.7.7 |
+| ^50.0.0  | ^1.0.0   |
+| ^51.0.0  | ^2.0.0   |
+| ^52.0.0  | ^3.0.0   |
+| ^53.0.0  | ^4.0.0   |
+| ^54.0.0  | ^5.0.0   |
+| ^56.0.0  | ^6.0.0   |
+| ^58.0.0  | ^7.0.0   |
+
+The current release (`^7.0.0`) requires Expo SDK 58 (React Native 0.88). On iOS the minimum deployment target is
+16.4; on Android, `minSdkVersion` is 24 and `compileSdkVersion` is 36.
+
 ## FAQ
 
 ### Why is each module a separate package?

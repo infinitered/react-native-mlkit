@@ -11,6 +11,12 @@ An example app is provided that demonstrates the correct use of the modules in a
 MLKit is not supported in the Android emulator. You will need to use a hardware device.
 :::
 
+## Prerequisites
+
+- Node.js 22.13 or newer (the version we use is pinned in `.tool-versions`)
+- Yarn, via [Corepack](https://nodejs.org/api/corepack.html) (`corepack enable`) — the repo pins Yarn 3
+- Xcode (iOS) and/or Android Studio (Android) for native builds
+
 ## 1. Clone the project
 
 ```bash
@@ -30,11 +36,9 @@ yarn install
 yarn build
 ```
 
-##
+## 4. Build and run the app
 
-## 5. Build and run the app
-
-From `~app/ExampleApp` use the included script to run the app in the android emulator.
+From `apps/ExampleApp` use the included script to run the app in the android emulator.
 
 ```bash
 yarn android
