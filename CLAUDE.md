@@ -2,18 +2,19 @@
 
 ## Changesets
 
-This repo uses [changesets](https://github.com/changesets/changesets), and a
-changeset-bot check runs on every PR.
+This repo uses [changesets](https://github.com/changesets/changesets). **Every
+PR must include a changeset** — this is a project rule, even where CI wouldn't
+catch its absence (`verify` runs `changeset status`, which only fails when a
+published package changed without one).
 
 - If a PR changes a **published package** (anything under `modules/`), add a
-  changeset describing the change and its semver bump (`npx changeset`).
-- If a PR's changes are confined to **non-published workspaces** (e.g. the
-  `example-app` in `apps/`, docs, CI config), no version bump is needed — but
-  the changeset check still requires a changeset to be present. In that case add
-  an **empty changeset** so the check passes without bumping any package:
+  changeset describing the change and its semver bump (`yarn changeset`).
+- If a PR doesn't bump any package (e.g. only the `example-app` in `apps/`,
+  docs, CI config, or tooling changes), add an **empty changeset**:
 
   ```sh
-  npx changeset --empty
+  yarn changeset --empty
   ```
 
-  Commit the generated `.changeset/*.md` file along with the PR.
+  Fill in a one-line summary of the change, and commit the generated
+  `.changeset/*.md` file along with the PR.
