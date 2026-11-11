@@ -16,11 +16,11 @@ For PRs from untrusted forks, to run the CI scripts, we need to:
 
 ## How to run the CI scripts on untrusted forks:
 
-1. Copy the name of the branch from the PR.
+1. Copy the name of the branch from the PR, in the form `<fork_username>:<fork_branchname>`.
    <img src="./images/ci-copy-fork-branch.png" alt="ci-copy-fork-branch" width="400"/>
 2. From your local clone of the main repository, run the `ci:trust` script.
     ```bash
-    yarn ci:trust <branch-name>
+    yarn ci:trust <fork_username>:<fork_branchname>
     ```
 3. The branch will be pushed and the tests will run
    <img src="./images/ci-tests-running.png" alt="ci-tests-running" width="400"/>
@@ -31,18 +31,20 @@ The `ci:trust` script does the following:
 
 1. Adds and fetches the untrusted fork as a temporary remote in your local repository.
 2. Pushes the specific branch from the untrusted fork to a designated temporary branch in your original repository.
-3. Pushing to a local branch triggers the continuous integration (CI) tests on the commits of the branch.
+3. Pushing to that branch triggers the `CI` GitHub workflow and the EAS `Build ExampleApp on PRs` workflow, both of
+   which run on pushes to `build-trusted-commits`.
 4. Because the commits are the same, the status of the PR will be updated automatically.
 
 ### Notes
 
 1. The ci:trust script will only work if you have write access to the main repository. This prevents malicious users
    from running the script on the main repository.
-2. The ci:trust script pushes the commits to a branch called `temp-branch-to-test-fork`.
+2. The ci:trust script pushes the commits to a branch called `build-trusted-commits` (override with the
+   `GPF_REACT_NATIVE_MLKIT_BRANCH` environment variable). It uses a temporary remote called `temp-branch-to-test-fork`,
+   which it removes when it's done.
 
 ::: warning
 
-The `temp-branch-to-test-fork` branch will be deleted and recreated if it already exists. This allows the script to
-clean up its own temporary branches.
+The `build-trusted-commits` branch is force-pushed on every run, so only one fork branch can be tested at a time.
 
 :::

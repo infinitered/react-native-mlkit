@@ -24,6 +24,11 @@ on:
   pull_request:
     branches:
       - main
+  # `yarn ci:trust` pushes reviewed fork commits here so fork PRs get native
+  # builds too (see docs/contributing/running-tests-on-untrusted-forks.md).
+  push:
+    branches:
+      - build-trusted-commits
 
 # When new commits land on a PR branch, cancel any builds still running for an
 # older commit on that same branch so only the latest commit gets built. EAS

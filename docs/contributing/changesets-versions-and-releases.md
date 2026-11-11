@@ -12,7 +12,8 @@ releases.
 The good news is most of this is automated for you! here is a quick overview of the process:
 
 1. **Make Changes**: Implement your feature or bug fix in your branch.
-2. **Include a Changeset**: Necessary for all changes requiring a version bump. Run `yarn changeset` to generate one.
+2. **Include a Changeset**: Every PR needs one. Run `yarn changeset` for changes that bump a package, or
+   `yarn changeset --empty` for changes that don't (see [Changes that don't bump a package](#changes-that-dont-bump-a-package)).
 3. **Open a PR against main**: Automated tests and builds will verify your changes.
 4. **Merge the PR**: Via GitHub Actions `changesets` checks for version bumps and automatically creates a "Version
    Packages" PR against main
@@ -49,13 +50,25 @@ A changeset is essentially a record of what packages need to be released and how
    It shouldn't be necessary to manually edit the changeset file.
    :::
 
+   #### Changes that don't bump a package
+
+   If your PR doesn't change any published package (for example, it only touches the example app, docs, CI config, or
+   tooling), you still need to include an **empty changeset**:
+
+   ```bash
+   yarn changeset --empty
+   ```
+
+   This creates a changeset that releases nothing. Add a one-line summary of the change to it and commit it with your
+   PR, so every PR records whether it is meant to release anything.
+
 2. **Reviewing Changesets in PRs**
 
    Changesets included in pull requests are reviewed as part of the code review process. This ensures that the
    versioning and changelogs will accurately reflect the changes once merged.
 
    As a reviewer, be on the lookout for changes in PRs that will require version bumps and ensure they are included
-   when necessary.
+   when necessary. PRs that don't bump a package should include an empty changeset.
 
 3. **Releasing Changes**
 

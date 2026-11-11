@@ -6,9 +6,16 @@ name: CI
 # workflow (via `workflow_call`) before anything is versioned or published.
 # Running the exact same `verify` job in both places keeps PR and `main`
 # checks in lockstep, so a PR can't go green and then break on merge.
+#
+# It also runs on pushes to `build-trusted-commits`, where `yarn ci:trust`
+# pushes reviewed fork commits. Fork PRs don't get CI on their own; because the
+# commits are identical, the results show up on the fork PR's head commit.
 
 on:
   pull_request:
+  push:
+    branches:
+      - build-trusted-commits
   workflow_call:
 
 # Least privilege: this job only reads the repo to lint, build, and test.
