@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+description: "React Native MLKit provides Expo modules for using Google MLKit in your app, including document scanning, face detection, image labeling, and object detection."
 ---
 
 # React Native MLKit
@@ -9,7 +10,7 @@ sidebar_position: 1
   <h2 align="center">RN MLKit Wrapper for Expo</h2>
 </p>
 
-# Introduction
+## Introduction
 
 `react-native-mlkit` is an native module for Expo and React Native that lets you use
 the [MLKit](https://developers.google.com/ml-kit) library in your Expo app.
