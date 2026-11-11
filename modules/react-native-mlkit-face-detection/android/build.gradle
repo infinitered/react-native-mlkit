@@ -22,7 +22,7 @@ buildscript {
     if (ext.has("kotlinVersion")) {
       ext.kotlinVersion()
     } else {
-      ext.safeExtGet("kotlinVersion", "2.1.20")
+      ext.safeExtGet("kotlinVersion", "2.2.0")
     }
   }
 
@@ -52,7 +52,7 @@ afterEvaluate {
 
 android {
   namespace "red.infinite.reactnativemlkit.facedetection"
-  compileSdkVersion safeExtGet("compileSdkVersion", 36)
+  compileSdkVersion safeExtGet("compileSdkVersion", 37)
 
   compileOptions {
     sourceCompatibility JavaVersion.VERSION_17

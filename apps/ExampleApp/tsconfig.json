@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    // Metro resolves imports like a bundler; Node16 rejects ESM-only type packages (e.g. reanimated 4.7)
+    "module": "preserve",
+    "moduleResolution": "bundler",
+    // TS 6 no longer auto-includes every @types package; test/ uses Node APIs
+    "types": ["jest", "node"],
     "paths": {
       "app/*": [
         "./app/*"

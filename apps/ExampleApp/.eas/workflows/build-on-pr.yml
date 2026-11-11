@@ -2,10 +2,10 @@ name: Build ExampleApp on PRs
 
 # Native build validation for pull requests.
 #
-# CircleCI already lints, type-checks (`yarn ci:build` == `tsc`) and runs Jest,
+# GitHub Actions (ci.yml) already lints, type-checks (`yarn ci:build` == `tsc`) and runs Jest,
 # but it never compiles any native code. Every module under `modules/*` ships
 # real native sources (Swift podspecs + Android Gradle/Kotlin), and none of it
-# is compiled in CircleCI. This workflow closes that gap by building the
+# is compiled there. This workflow closes that gap by building the
 # ExampleApp on EAS for both platforms: because the app depends on every module,
 # a successful build transitively proves the native code for all of them
 # compiles.

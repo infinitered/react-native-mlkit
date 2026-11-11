@@ -15,10 +15,10 @@ autocompletion, and linting.
 
 ## iOS
 
-1. If you haven't already, run the `prebuild` script to create the ios example app
+1. If you haven't already, run `expo prebuild` to create the ios example app
    ```shell
    cd apps/ExampleApp
-   yarn prebuild
+   npx expo prebuild
    ```
 2. Open Xcode and open the `./apps/ExampleApp/ios` directory.
 3. In the project navigator, find the module you want to edit. It will be
@@ -27,10 +27,10 @@ autocompletion, and linting.
 
 ## Android
 
-1. If you haven't already, run the `prebuild` script to create the android example app
+1. If you haven't already, run `expo prebuild` to create the android example app
    ```shell
    cd apps/ExampleApp
-   yarn prebuild
+   npx expo prebuild
    ```
 2. Open Android Studio and open the `./apps/ExampleApp/android` directory.
 3. In the project navigator, find the module you want to edit.

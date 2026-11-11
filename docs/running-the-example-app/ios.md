@@ -8,16 +8,22 @@ title: iOS
 An example app is provided that demonstrates the correct use of the modules in a react-native app.
 
 :::info
-The iOS MLKit Libraries currently only support `arm64` architectures, so they currently will not work on the iOS
-simulator (which always runs in `x86_64`).
+The iOS MLKit libraries don't ship an `arm64` simulator slice, so they won't run in the iOS simulator on Apple
+Silicon Macs.
 
-This is a [known issue](https://issuetracker.google.com/issues/178965151?pli=1) with the MLKit Swift API, and we are
-waiting either for a fix from Google, or for Apple to release a native `arm64` simulator.
+This is a [known issue](https://issuetracker.google.com/issues/178965151?pli=1) with the MLKit iOS SDK, and we are
+waiting for a fix from Google.
 :::
 
 :::note
 MLKit is not supported in the iOS simulator. You will need to use a hardware device.
 :::
+
+## Prerequisites
+
+- Node.js 22.13 or newer (the version we use is pinned in `.tool-versions`)
+- Yarn, via [Corepack](https://nodejs.org/api/corepack.html) (`corepack enable`) — the repo pins Yarn 3
+- Xcode (iOS) and/or Android Studio (Android) for native builds
 
 ## 1. Clone the project
 
@@ -38,9 +44,7 @@ yarn install
 yarn build
 ```
 
-##
-
-## 5. Build and run the app
+## 4. Build and run the app
 
 #### Via Terminal
 
@@ -60,9 +64,9 @@ yarn ios -d
    cd apps/ExampleApp
 
    # creates both android and ios native project folders
-   yarn prebuild
+   npx expo prebuild
    # creates only the ios native project folder
-   yarn prebuild --platform ios
+   npx expo prebuild --platform ios
    ```
 
 2. Open `~/apps/ExampleApp/ios/ExampleApp.xcworkspace` in XCode
